@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{57F75ADC-3D5C-4C55-9E69-155D74D1E619}</ProjectGuid>
+    <ProjectGuid>{FEE14E6F-8DA1-4414-9206-C8BB59FCF146}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -173,9 +173,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601101339039_Test.cs" />
+    <Compile Include="Migrations\201601101339039_Test.Designer.cs">
+      <DependentUpon>201601101339039_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101347426_FIRST.cs" />
+    <Compile Include="Migrations\201601101347426_FIRST.Designer.cs">
+      <DependentUpon>201601101347426_FIRST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101356104_TestForEF.cs" />
+    <Compile Include="Migrations\201601101356104_TestForEF.Designer.cs">
+      <DependentUpon>201601101356104_TestForEF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101405581_SomeID.cs" />
+    <Compile Include="Migrations\201601101405581_SomeID.Designer.cs">
+      <DependentUpon>201601101405581_SomeID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101407521_remove-someid.cs" />
+    <Compile Include="Migrations\201601101407521_remove-someid.Designer.cs">
+      <DependentUpon>201601101407521_remove-someid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101422044_Movie.cs" />
+    <Compile Include="Migrations\201601101422044_Movie.Designer.cs">
+      <DependentUpon>201601101422044_Movie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -188,7 +214,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\ec2-aws.pubxml" />
+    <None Include="Properties\PublishProfiles\ec2.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -201,7 +227,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -247,6 +275,26 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601101339039_Test.resx">
+      <DependentUpon>201601101339039_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101347426_FIRST.resx">
+      <DependentUpon>201601101347426_FIRST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101356104_TestForEF.resx">
+      <DependentUpon>201601101356104_TestForEF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101405581_SomeID.resx">
+      <DependentUpon>201601101405581_SomeID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101407521_remove-someid.resx">
+      <DependentUpon>201601101407521_remove-someid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101422044_Movie.resx">
+      <DependentUpon>201601101422044_Movie.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -263,9 +311,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>29423</DevelopmentServerPort>
+          <DevelopmentServerPort>23725</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:29423/</IISUrl>
+          <IISUrl>http://localhost:23725/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
