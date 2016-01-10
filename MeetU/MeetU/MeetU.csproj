@@ -197,11 +197,18 @@
     <Compile Include="Migrations\201601101422044_Movie.Designer.cs">
       <DependentUpon>201601101422044_Movie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601102213076_NickName.cs" />
+    <Compile Include="Migrations\201601102213076_NickName.Designer.cs">
+      <DependentUpon>201601102213076_NickName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601102234587_remove-nick-name.cs" />
+    <Compile Include="Migrations\201601102234587_remove-nick-name.Designer.cs">
+      <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -293,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601101422044_Movie.resx">
       <DependentUpon>201601101422044_Movie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601102213076_NickName.resx">
+      <DependentUpon>201601102213076_NickName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601102234587_remove-nick-name.resx">
+      <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
