@@ -49,8 +49,9 @@ namespace MeetU.Models
     public class LoginViewModel
     {
         [Required]
+        [StringLength(100)]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only English alphabets allowed")]
         [Display(Name = "User Name")]
-        //[EmailAddress]
         public string UserName { get; set; }
 
         [Required]
@@ -65,6 +66,8 @@ namespace MeetU.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(100)]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only English alphabets allowed")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
