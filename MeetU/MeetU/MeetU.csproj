@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201601102234587_remove-nick-name.Designer.cs">
       <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601130801362_back-to-last-commit.cs" />
+    <Compile Include="Migrations\201601130801362_back-to-last-commit.Designer.cs">
+      <DependentUpon>201601130801362_back-to-last-commit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601102234587_remove-nick-name.resx">
       <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130801362_back-to-last-commit.resx">
+      <DependentUpon>201601130801362_back-to-last-commit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
