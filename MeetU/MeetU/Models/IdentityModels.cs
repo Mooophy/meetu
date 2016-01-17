@@ -18,6 +18,9 @@ namespace MeetU.Models
         }
     }
 
+    //
+    //  To be abstract away as a single layer.
+    //
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -29,5 +32,7 @@ namespace MeetU.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Domain.Tag> Tags { get; set; }
     }
 }
