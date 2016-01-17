@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tags</h2>
+<h3>Tags</h3>
 
 <table class="table">
     <tr>
@@ -36,7 +36,7 @@
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
                 @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default btn-xs" }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
             </td>
         </tr>
     }
@@ -45,5 +45,5 @@
 <hr />
 
 <p>
-    @Html.ActionLink("New Tag", "Create", null, new { @class = "btn btn-success btn-sm" })
+    @Html.ActionLink("New Tag", "Create", null, new { @class = "btn btn-success" })
 </p>
