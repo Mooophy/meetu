@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "DateTimePicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var dateTimePlaceHolder = DateTime.Now.ToString() + "10:00";
+}
+
+<h2>DateTimePicker</h2>
+
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.datetimepicker.full.min.js"></script>
+
+<input class="form-control text-box single-line" id="datetimepicker" placeholder=@dateTimePlaceHolder>
+<script>
+    $('#datetimepicker').datetimepicker();
+</script>
