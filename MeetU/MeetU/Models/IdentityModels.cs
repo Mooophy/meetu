@@ -34,5 +34,6 @@ namespace MeetU.Models
         }
 
         public DbSet<Domain.Tag> Tags { get; set; }
+        public DbSet<Meetup> Meetups { get; set; }
     }
 }
