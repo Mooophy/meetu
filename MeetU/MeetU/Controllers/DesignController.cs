@@ -20,5 +20,11 @@ namespace MeetU.Controllers
             return View();
         }
 
+        public ActionResult BootStrap()
+        {
+            return View();
+        }
+
+
     }
 }
