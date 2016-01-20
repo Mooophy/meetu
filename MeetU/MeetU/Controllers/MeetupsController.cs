@@ -38,6 +38,9 @@ namespace MeetU.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.IsJoined = null != await db.Joins.FindAsync(id, User.Identity.GetUserId());
+            ViewBag.JoinedNum = await db.Joins.CountAsync(j => j.MeetupId == id);
             return View(meetup);
         }
 

@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JoinsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
@@ -252,10 +253,27 @@
     <Compile Include="Migrations\201601200448545_user-number.Designer.cs">
       <DependentUpon>201601200448545_user-number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601201208323_Join.cs" />
+    <Compile Include="Migrations\201601201208323_Join.Designer.cs">
+      <DependentUpon>201601201208323_Join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201329168_add-compisit-key-to-Join.cs" />
+    <Compile Include="Migrations\201601201329168_add-compisit-key-to-Join.Designer.cs">
+      <DependentUpon>201601201329168_add-compisit-key-to-Join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201337235_remove-join.cs" />
+    <Compile Include="Migrations\201601201337235_remove-join.Designer.cs">
+      <DependentUpon>201601201337235_remove-join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201338530_add-join-again.cs" />
+    <Compile Include="Migrations\201601201338530_add-join-again.Designer.cs">
+      <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -349,6 +367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Joins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -412,6 +431,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601200448545_user-number.resx">
       <DependentUpon>201601200448545_user-number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201208323_Join.resx">
+      <DependentUpon>201601201208323_Join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201329168_add-compisit-key-to-Join.resx">
+      <DependentUpon>201601201329168_add-compisit-key-to-Join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201337235_remove-join.resx">
+      <DependentUpon>201601201337235_remove-join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201338530_add-join-again.resx">
+      <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
