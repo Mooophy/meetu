@@ -171,6 +171,7 @@
     <Compile Include="Controllers\DesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MeetupsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +243,10 @@
     <Compile Include="Migrations\201601190752331_Meetup-P1.cs" />
     <Compile Include="Migrations\201601190752331_Meetup-P1.Designer.cs">
       <DependentUpon>201601190752331_Meetup-P1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601200138217_split-datetime-to-date-plus-time.cs" />
+    <Compile Include="Migrations\201601200138217_split-datetime-to-date-plus-time.Designer.cs">
+      <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -331,6 +336,11 @@
     <Content Include="Views\Tags\Index.cshtml" />
     <Content Include="Views\Design\DateTimePicker.cshtml" />
     <Content Include="Views\Design\BootStrap.cshtml" />
+    <Content Include="Views\Meetups\Create.cshtml" />
+    <Content Include="Views\Meetups\Delete.cshtml" />
+    <Content Include="Views\Meetups\Details.cshtml" />
+    <Content Include="Views\Meetups\Edit.cshtml" />
+    <Content Include="Views\Meetups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601190752331_Meetup-P1.resx">
       <DependentUpon>201601190752331_Meetup-P1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601200138217_split-datetime-to-date-plus-time.resx">
+      <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
