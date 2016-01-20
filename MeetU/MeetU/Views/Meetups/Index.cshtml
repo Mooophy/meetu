@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MeetU.Models.Meetup>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Meetups";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,9 +33,6 @@
                     <span class="glyphicon glyphicon-th"></span> Detail
                 </a>
 
-                <a class="btn btn-default" href='#'>
-                    <span class="glyphicon glyphicon-tags"></span> Tags
-                </a>
             </div>
 
             <div class="collapse" id='@("Where" + item.Id.ToString())'>

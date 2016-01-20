@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>蜜柚-Meet.U</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,10 +22,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Meetups", "Index", "Meetups")</li>
+                    <li>@Html.ActionLink("Meetup", "Index", "Meetups")</li>
                     <li>@Html.ActionLink("Tags", "Index", "Tags")</li>
+                    <li><a href="https://github.com/Mooophy/meetu"  target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/Mooophy/meetu/issues" target="_blank">Issues</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
