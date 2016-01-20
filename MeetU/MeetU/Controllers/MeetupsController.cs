@@ -31,6 +31,9 @@ namespace MeetU.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Meetup meetup = await db.Meetups.FindAsync(id);
+            //change to Nick Name later on
+            //try to hook Sponsor to Nick Name
+            meetup.Sponsor = db.Users.Find(meetup.Sponsor).UserName;
             if (meetup == null)
             {
                 return HttpNotFound();
