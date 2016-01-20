@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201601200138217_split-datetime-to-date-plus-time.Designer.cs">
       <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601200448545_user-number.cs" />
+    <Compile Include="Migrations\201601200448545_user-number.Designer.cs">
+      <DependentUpon>201601200448545_user-number.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
@@ -404,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601200138217_split-datetime-to-date-plus-time.resx">
       <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601200448545_user-number.resx">
+      <DependentUpon>201601200448545_user-number.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
