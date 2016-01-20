@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Something like 'BBQ'" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Make it attractive!" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,3 +66,11 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+<script src="~/Scripts/jquery.placepicker.min.js"></script>
+
+<script type="text/javascript">
+    $("#Where").placepicker();
+</script>

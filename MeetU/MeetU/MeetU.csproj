@@ -289,6 +289,7 @@
     <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.datetimepicker.min.js" />
+    <Content Include="Scripts\jquery.placepicker.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
