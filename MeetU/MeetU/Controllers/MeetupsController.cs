@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace MeetU.Controllers
 {
+    [Authorize]
     public class MeetupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,6 +20,7 @@ namespace MeetU.Controllers
         // GET: Meetups
         public async Task<ActionResult> Index()
         {
+            var user = User.Identity.GetUserId();
             var meetups = db.Meetups.Include(m => m.ApplicationUser);
             return View(await meetups.ToListAsync());
         }

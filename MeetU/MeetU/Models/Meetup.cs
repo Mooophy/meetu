@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace MeetU.Models
 {
@@ -32,6 +33,7 @@ namespace MeetU.Models
         public string Where { get; set; }
 
         public string Sponsor { get; set; }
+        [JsonIgnore]
         [ForeignKey("Sponsor")]
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

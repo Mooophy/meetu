@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
+using MeetU.Models;
+using Microsoft.AspNet.Identity;
+
+namespace MeetU.API
+{
+    [Authorize]
+    public class MeetupsController : ApiController
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: api/Meetups
+        public IQueryable<Meetup> GetMeetups()
+        {
+            var user = User.Identity.GetUserId(); // User id can be fetched here.
+            return db.Meetups;
+        }
+
+        // GET: api/Meetups/5
+        [ResponseType(typeof(Meetup))]
+        public async Task<IHttpActionResult> GetMeetup(int id)
+        {
+            Meetup meetup = await db.Meetups.FindAsync(id);
+            if (meetup == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(meetup);
+        }
+
+        // PUT: api/Meetups/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutMeetup(int id, Meetup meetup)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != meetup.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(meetup).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MeetupExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Meetups
+        [ResponseType(typeof(Meetup))]
+        public async Task<IHttpActionResult> PostMeetup(Meetup meetup)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Meetups.Add(meetup);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = meetup.Id }, meetup);
+        }
+
+        // DELETE: api/Meetups/5
+        [ResponseType(typeof(Meetup))]
+        public async Task<IHttpActionResult> DeleteMeetup(int id)
+        {
+            Meetup meetup = await db.Meetups.FindAsync(id);
+            if (meetup == null)
+            {
+                return NotFound();
+            }
+
+            db.Meetups.Remove(meetup);
+            await db.SaveChangesAsync();
+
+            return Ok(meetup);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool MeetupExists(int id)
+        {
+            return db.Meetups.Count(e => e.Id == id) > 0;
+        }
+    }
+}

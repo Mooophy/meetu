@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div ng-app>
+    <div>
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-info">{{yourName}}</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+
+        <hr>
+            <h1>Hello {{yourName}}!</h1>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/angular.js")
+}
+
+
+

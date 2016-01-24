@@ -5,52 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
+<div class="row" ng-app="meetu" ng-cloak>
     <br />
-    <a class="btn btn-success" href='@Url.Action("Create")'><span class="glyphicon glyphicon-plus"></span> New Meetup </a>
-    <hr />
-</p>
 
-@foreach (var item in Model)
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h6>
-                <strong> @item.Title</strong> <span class="label label-default"> 45 | 32</span>
-            </h6>
-        </div>
-        <div class="panel-body">
-            <div class="btn-group" role="group">
-                <a class="btn btn-default" data-toggle="collapse" href='@("#Where" + item.Id.ToString())' aria-expanded="false" aria-controls="collapseExample">
-                    <span class="glyphicon glyphicon-home"></span> Where
-                </a>
-
-                <a class="btn btn-default" data-toggle="collapse" href='@("#When" + item.Id.ToString())' aria-expanded="false" aria-controls="collapseExample">
-                    <span class="glyphicon glyphicon-time"></span> When
-                </a>
-
-                <a class="btn btn-info" href='@Url.Action("Details", "Meetups", new { id = item.Id })' >
-                    <span class="glyphicon glyphicon-th"></span> Detail
-                </a>
-
-            </div>
-
-            <div class="collapse" id='@("Where" + item.Id.ToString())'>
-                <h4>
-                    <span class="label label-default">
-                        @item.Where
-                    </span>
-                </h4>
-            </div>
-
-            <div class="collapse" id='@("When" + item.Id.ToString())'>
-                <h4>
-                    <span class="label label-default">
-                        @item.Date.ToShortDateString()&nbsp;&nbsp;&nbsp;@item.When
-                    </span>
-                </h4>
-            </div>
-        </div>
+    <div class="col-md-1">
     </div>
-}
 
+    <div class="col-md-8" ng-controller="indexController">
+        <div ng-repeat="meetup in meetups">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="btn-group btn-group-xs" role="group">
+                        <button type="button" class="btn btn-info">22</button>
+                        <button type="button" class="btn btn-success">15</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <span class="text-capitalize text-primary" href="#">
+                        &nbsp;&nbsp;&nbsp;{{meetup.title}}
+                        <a class="btn btn-toolbar btn-xs" href="" ng-click="showDetails = ! showDetails">
+                            <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
+                            <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
+                        </a>
+                    </span>
+                    <p class="jumbotron" ng-show="showDetails">
+                        {{meetup.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <pre>{{meetups | json}}</pre>
+    </div>
+    <div class="col-md-offset-3">
+        <p>
+            <a class="btn btn-success" href='@Url.Action("Create")'><span class="glyphicon glyphicon-plus"></span> New Meetup </a>
+        </p>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/meetu.js")
+}
