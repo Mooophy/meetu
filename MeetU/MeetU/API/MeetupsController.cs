@@ -16,7 +16,7 @@ namespace MeetU.API
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Meetups
-        // note: this controller returns an arrary of MeetupViewModels to front end, rather than array of Meetup.
+        // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         public IQueryable<MeetupViewModel> GetMeetups()
         {
 

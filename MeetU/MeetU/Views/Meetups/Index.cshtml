@@ -7,7 +7,6 @@
 
 <div class="row" ng-app="meetu" ng-cloak>
     <br />
-
     <div class="col-md-1">
     </div>
 
@@ -16,8 +15,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="btn-group btn-group-xs" role="group">
-                        <button type="button" class="btn btn-info">{{meetup.watches.length}}</button>
-                        <button type="button" class="btn btn-success">{{meetup.joins.length}}</button>
+                        <button type="button" class="btn btn-info">{{ meetup.watches.length }}</button>
+                        <button type="button" class="btn btn-success">{{ meetup.joins.length }}</button>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -26,16 +25,19 @@
                             <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
                             <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
                         </a>
-                        &nbsp;&nbsp;&nbsp;{{meetup.meetup.title}} by <span> {{meetup.sponsorUserName}}</span>
+                        &nbsp;&nbsp;&nbsp;{{ meetup.meetup.title }} by <span> {{ meetup.sponsorUserName }}</span>
                     </span>
                     <p class="jumbotron" ng-show="showDetails">
-                        {{meetup.meetup.description}}
+                        {{ meetup.meetup.description }}
                     </p>
                 </div>
             </div>
         </div>
-        <pre>{{meetups | json}}</pre>
+        <pre>{{ meetups | json }}</pre>
+        <hr />
+        <a class="btn btn-danger" ng-click="testCreateNewJoin()">Testing Angular</a>
     </div>
+
     <div class="col-md-offset-3">
         <p>
             <a class="btn btn-success" href='@Url.Action("Create")'><span class="glyphicon glyphicon-plus"></span> New Meetup </a>
@@ -45,5 +47,6 @@
 
 @section scripts{
     @Scripts.Render("~/Scripts/angular.js")
-    @Scripts.Render("~/Scripts/meetu.js")
+    @Scripts.Render("~/Scripts/angular-resource.min.js")
+    @Scripts.Render("~/Scripts/app.js")
 }
