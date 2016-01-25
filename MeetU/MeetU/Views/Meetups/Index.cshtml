@@ -17,19 +17,19 @@
                 <div class="panel-heading">
                     <div class="btn-group btn-group-xs" role="group">
                         <button type="button" class="btn btn-info">22</button>
-                        <button type="button" class="btn btn-success">15</button>
+                        <button type="button" class="btn btn-success">{{meetup.joins.length}}</button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <span class="text-capitalize text-primary" href="#">
-                        &nbsp;&nbsp;&nbsp;{{meetup.title}}
                         <a class="btn btn-toolbar btn-xs" href="" ng-click="showDetails = ! showDetails">
                             <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
                             <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
                         </a>
+                        &nbsp;&nbsp;&nbsp;{{meetup.meetup.title}} by <span> {{meetup.sponsorUserName}}</span>
                     </span>
                     <p class="jumbotron" ng-show="showDetails">
-                        {{meetup.description}}
+                        {{meetup.meetup.description}}
                     </p>
                 </div>
             </div>

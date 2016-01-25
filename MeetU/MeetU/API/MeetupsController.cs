@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MeetU.Models;
-using Microsoft.AspNet.Identity;
 
 namespace MeetU.API
 {
@@ -20,10 +16,18 @@ namespace MeetU.API
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Meetups
-        public IQueryable<Meetup> GetMeetups()
+        // note: this controller returns an arrary of MeetupViewModels to front end, rather than array of Meetup.
+        public IQueryable<MeetupViewModel> GetMeetups()
         {
-            var user = User.Identity.GetUserId(); // User id can be fetched here.
-            return db.Meetups;
+
+            return db.Meetups
+                .Select(
+                m => new MeetupViewModel
+                {
+                    Meetup = m,
+                    SponsorUserName = m.ApplicationUser.UserName,
+                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                });
         }
 
         // GET: api/Meetups/5

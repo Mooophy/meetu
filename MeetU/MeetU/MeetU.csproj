@@ -203,6 +203,7 @@
     <Compile Include="Controllers\JoinsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
+    <Compile Include="Controllers\MeetupViewModelController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -306,6 +307,7 @@
     <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
+    <Compile Include="Models\MeetupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
