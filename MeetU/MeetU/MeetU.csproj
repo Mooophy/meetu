@@ -300,6 +300,10 @@
     <Compile Include="Migrations\201601201338530_add-join-again.Designer.cs">
       <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601250804119_Watch.cs" />
+    <Compile Include="Migrations\201601250804119_Watch.Designer.cs">
+      <DependentUpon>201601250804119_Watch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
@@ -308,6 +312,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Models\MeetupViewModel.cs" />
+    <Compile Include="Models\Watch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -481,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601201338530_add-join-again.resx">
       <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601250804119_Watch.resx">
+      <DependentUpon>201601250804119_Watch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

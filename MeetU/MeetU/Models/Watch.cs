@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace MeetU.Models
 {
-    public class Join
+    public class Watch
     {
         [Key, Column(Order = 0)]
         [Required]

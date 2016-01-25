@@ -26,7 +26,8 @@ namespace MeetU.API
                 {
                     Meetup = m,
                     SponsorUserName = m.ApplicationUser.UserName,
-                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                    Joins = db.Joins.Where(j => j.MeetupId == m.Id),
+                    Watches = db.Watches.Where(w=>w.MeetupId == m.Id)
                 });
         }
 
