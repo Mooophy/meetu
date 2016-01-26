@@ -27,15 +27,46 @@
                         </a>
                         &nbsp;&nbsp;&nbsp;{{ meetup.meetup.title }} by <span> {{ meetup.sponsorUserName }}</span>
                     </span>
-                    <p class="jumbotron" ng-show="showDetails">
-                        {{ meetup.meetup.description }}
-                    </p>
+                    <div ng-show="showDetails">
+                        <hr />
+                        <p class="jumbotron">
+                            {{ meetup.meetup.description }}
+                        </p>
+                        <hr />
+                        <a class="btn btn-info" ng-show="! isIn(meetup.watches)">
+                            <span class="glyphicon glyphicon-eye-open"> Watch</span>
+                        </a>
+                        <a class="btn btn-info" ng-show="isIn(meetup.watches)">
+                            <span class="glyphicon glyphicon-eye-close"> UnWatch</span>
+                        </a>
+                        <a class="btn btn-success" ng-show="! isIn(meetup.joins)">
+                            <span class="glyphicon glyphicon-heart"> Join</span>
+                        </a>
+                        <a class="btn btn-success" ng-show="isIn(meetup.joins)">
+                            <span class="glyphicon glyphicon-heart-empty"> UnJoin</span>
+                        </a>
+
+
+
+
+                        <hr />
+                        <pre>{{ meetup | json }}</pre>
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
+
+        @*for testing*@
         <pre>{{ meetups | json }}</pre>
         <hr />
-        <a class="btn btn-danger" ng-click="deleteOneJoin()">Testing Angular</a>
+        <pre>{{ user }}</pre>
+        <a class="btn btn-danger" ng-click="test()">Testing Angular</a>
+        @*for testing*@
+
+
     </div>
 
     <div class="col-md-offset-3">

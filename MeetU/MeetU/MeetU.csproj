@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\JoinsController.cs" />
+    <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -204,7 +205,6 @@
     <Compile Include="Controllers\JoinsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
-    <Compile Include="Controllers\MeetupViewModelController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
