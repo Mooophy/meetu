@@ -5,18 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row" ng-app="meetu" ng-cloak>
+<div class="row" ng-cloak ng-app="meetuApp">
     <br />
     <div class="col-md-1">
     </div>
 
     <div class="col-md-8" ng-controller="indexController">
-        <div ng-repeat="meetup in meetups">
+        <div ng-repeat="meetupView in meetupViews">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="btn-group btn-group-xs" role="group">
-                        <button type="button" class="btn btn-info">{{ meetup.watches.length }}</button>
-                        <button type="button" class="btn btn-success">{{ meetup.joins.length }}</button>
+                        <button type="button" class="btn btn-info" ng-click="toggleJoin(meetupView)">
+                            <span> {{isIn(meetupView.joins) ? 'unjoin' : 'join'}} </span>
+                        </button>
+                        <button type="button" class="btn btn-success">
+                            <span> {{ meetupView.joins.length }} </span>
+                        </button>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -25,50 +29,25 @@
                             <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
                             <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
                         </a>
-                        &nbsp;&nbsp;&nbsp;{{ meetup.meetup.title }} by <span> {{ meetup.sponsorUserName }}</span>
+                        &nbsp;&nbsp;&nbsp;{{ meetupView.meetup.title }} by <span> {{ meetupView.sponsorUserName }}</span>
                     </span>
                     <div ng-show="showDetails">
                         <hr />
                         <p class="jumbotron">
-                            {{ meetup.meetup.description }}
+                            {{ meetupView.meetup.description }}
                         </p>
                         <hr />
-                        <a class="btn btn-info" ng-show="! isIn(meetup.watches)">
-                            <span class="glyphicon glyphicon-eye-open"> Watch</span>
-                        </a>
-                        <a class="btn btn-info" ng-show="isIn(meetup.watches)">
-                            <span class="glyphicon glyphicon-eye-close"> UnWatch</span>
-                        </a>
-                        <a class="btn btn-success" ng-show="! isIn(meetup.joins)">
-                            <span class="glyphicon glyphicon-heart"> Join</span>
-                        </a>
-                        <a class="btn btn-success" ng-show="isIn(meetup.joins)">
-                            <span class="glyphicon glyphicon-heart-empty"> UnJoin</span>
-                        </a>
-
-
-
-
-                        <hr />
-                        <pre>{{ meetup | json }}</pre>
-
-
-
+                        @*<pre>{{ meetupView | json }}</pre>*@
                     </div>
                 </div>
             </div>
         </div>
-
         @*for testing*@
-        <pre>{{ meetups | json }}</pre>
+        <pre>{{ meetupViews | json }}</pre>
         <hr />
         <pre>{{ user }}</pre>
-        <a class="btn btn-danger" ng-click="test()">Testing Angular</a>
         @*for testing*@
-
-
     </div>
-
     <div class="col-md-offset-3">
         <p>
             <a class="btn btn-success" href='@Url.Action("Create")'><span class="glyphicon glyphicon-plus"></span> New Meetup </a>
@@ -80,4 +59,5 @@
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-resource.min.js")
     @Scripts.Render("~/Scripts/app.js")
+    @Scripts.Render("~/Scripts/angular-route.min.js")
 }

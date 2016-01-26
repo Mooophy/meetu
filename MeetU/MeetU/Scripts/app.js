@@ -1,12 +1,14 @@
-﻿var meetu = angular.module('meetu', ['ngResource']);
+﻿var app = angular.module('meetuApp', ['ngResource']);
 
-meetu.controller('indexController', function ($scope, $http, $resource) {
+app.controller('indexController', function ($scope, $http, $resource) {
     var Meetup = $resource('/api/Meetups');
-    Meetup.query(function (data) {
-        $scope.meetups = data;
-    });
-    
     var LoggedAs = $resource('/api/loggedUser');
+    var Join = $resource('/api/Joins');
+
+    Meetup.query(function (data) {
+        $scope.meetupViews = data;
+    });
+
     LoggedAs.query(function (users) {
         $scope.user = users[0];
     });
@@ -20,20 +22,35 @@ meetu.controller('indexController', function ($scope, $http, $resource) {
         return false;
     }
 
-
-    //for testing
-    $scope.test = function () {
-        var Join = $resource('/api/Joins');
-        //var LoggedUser = $resource('/api/loggedUser');
-        //LoggedUser.get(function (data) {
-        //    alert(JSON.stringify( data ));
-        //});
-
-        //belew is the example to delete.
-        //Join.delete({
-        //  "meetupId": 4,
-        //  "userId": "b1d9d320-15cc-4d44-ad4d-9bd57d48ecd5"
-        //});
-        alert("delete test function called");
+    $scope.toggleJoin = function (mview) {
+        if ($scope.isIn(mview.joins)) {
+            Join.delete({
+                "meetupId": mview.meetup.id,
+                "userId": $scope.user
+            }).$promise.then(
+            // if success:
+            function () {
+                for (var i in mview.joins) {
+                    if (mview.joins[i].userId == $scope.user) {
+                        mview.joins.splice(i, 1);
+                        break;
+                    }
+                }
+            },
+            //if rejected
+            function (e) {
+                alert(e);
+            });
+        }
+        else {
+            var newJoin = {
+                meetupId: mview.meetup.id,
+                userId: $scope.user
+            };
+            var j = new Join(newJoin);
+            j.$save(function () {
+                mview.joins.push(newJoin);
+            });
+        }
     }
 });
