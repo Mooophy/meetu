@@ -305,6 +305,14 @@
     <Compile Include="Migrations\201601250804119_Watch.Designer.cs">
       <DependentUpon>201601250804119_Watch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601260203542_add-id-to-join.cs" />
+    <Compile Include="Migrations\201601260203542_add-id-to-join.Designer.cs">
+      <DependentUpon>201601260203542_add-id-to-join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601260205586_remove-id-from-join.cs" />
+    <Compile Include="Migrations\201601260205586_remove-id-from-join.Designer.cs">
+      <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
@@ -493,6 +501,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601250804119_Watch.resx">
       <DependentUpon>201601250804119_Watch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601260203542_add-id-to-join.resx">
+      <DependentUpon>201601260203542_add-id-to-join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601260205586_remove-id-from-join.resx">
+      <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,6 +11,7 @@ namespace MeetU
     {
         public static void Register(HttpConfiguration config)
         {
+            // Attribute routing.
             config.MapHttpAttributeRoutes();
 
             // make api controllers return json instead of xml.

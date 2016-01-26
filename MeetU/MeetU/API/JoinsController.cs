@@ -104,9 +104,9 @@ namespace MeetU.API
 
         // DELETE: api/Joins/5
         [ResponseType(typeof(Join))]
-        public async Task<IHttpActionResult> DeleteJoin(int id)
+        public async Task<IHttpActionResult> DeleteJoin(int meetupId, string userId)
         {
-            Join join = await db.Joins.FindAsync(id);
+            Join join = await db.Joins.FindAsync(meetupId, userId);
             if (join == null)
             {
                 return NotFound();
