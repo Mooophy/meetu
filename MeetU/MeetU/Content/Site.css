@@ -17,8 +17,18 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
+/*comment out by Yue*/
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.jumbotron{
+    margin-bottom: 0px;
 }
