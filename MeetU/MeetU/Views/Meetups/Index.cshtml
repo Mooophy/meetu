@@ -34,13 +34,12 @@
                     <div ng-show="showDetails">
                         <hr />
                         <p class="jumbotron">
-                            {{ meetupView.meetup.description }}
-                        </p>
-                        <p>
-                            <span class="label label-success">When</span>
-                            {{meetupView.meetup.date | date:'dd-MM-yyyy'}} {{meetupView.meetup.when |  date: "HH:mm"}}
+                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{meetupView.meetup.createdAt | date:'dd-MM-yyyy'}}</span>
+                            <br /><br />
+                            <span class="label label-default">When</span>
+                            {{meetupView.meetup.when |  date: "HH:mm"}} {{meetupView.meetup.date | date:'dd-MM-yyyy'}}
                             <br />
-                            <span class="label label-success">Address</span>
+                            <span class="label label-default">Address</span>
                             {{meetupView.meetup.where}}
                         </p>
                         <hr />
