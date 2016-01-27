@@ -17,10 +17,18 @@ namespace MeetU.API
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Comments?meetupid=value
-        public IQueryable<Comment> GetComments(int? meetupId)
+        // GET: api/Comments
+        public IQueryable<Comment> GetComments()
         {
-            return db.Comments.Where(c => c.MeetupId == meetupId);
+            return db.Comments;
+        }
+
+        // Get: api/Comments/:meetupId/byMeetup
+        // This is a custom api, to get comments with meetupId
+        [Route("api/comments/{meetupId:int}/byMeetup")]
+        public IQueryable<Comment> GetCommentsByMeetupId(int meetupId)
+        {
+            return db.Comments.Where(c=>c.MeetupId == meetupId);
         }
 
         // GET: api/Comments/5
