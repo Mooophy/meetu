@@ -25,7 +25,7 @@ namespace MeetU.API
 
         // Get: api/Comments/:meetupId/byMeetup
         // This is a custom api, to get comments with meetupId
-        [Route("api/comments/{meetupId:int}/byMeetup")]
+        [Route("api/comments/{meetupId:int}/byMeetupId")]
         public IQueryable<Comment> GetCommentsByMeetupId(int meetupId)
         {
             return db.Comments.Where(c=>c.MeetupId == meetupId);

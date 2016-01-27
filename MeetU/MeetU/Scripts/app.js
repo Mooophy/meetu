@@ -53,4 +53,10 @@ app.controller('indexController', function ($scope, $http, $resource) {
             });
         }
     }
+
+    var Comment = $resource('/api/Comments/:meetupId//byMeetupId');
+    Comment.query({meetupId: 8},function (data) {
+        $scope.comments = data;
+    })
+
 });

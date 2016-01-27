@@ -41,15 +41,16 @@
                             {{meetupView.meetup.where}}
                         </p>
                         <hr />
+                        <pre>{{ comments | json }}</pre>
                         @*<pre>{{ meetupView | json }}</pre>*@
                     </div>
                 </div>
             </div>
         </div>
         @*for testing*@
-        @*<pre>{{ meetupViews | json }}</pre>
+        <pre>{{ meetupViews | json }}</pre>
         <hr />
-        <pre>{{ user }}</pre>*@
+        <pre>{{ user }}</pre>
         @*for testing*@
     </div>
     <div class="col-md-offset-3">
