@@ -190,6 +190,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\CommentsController.cs" />
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
@@ -312,17 +313,13 @@
     <Compile Include="Migrations\201601260205586_remove-id-from-join.Designer.cs">
       <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601270536276_delete-commnent.cs" />
-    <Compile Include="Migrations\201601270536276_delete-commnent.Designer.cs">
-      <DependentUpon>201601270536276_delete-commnent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601270541385_Commnent.cs" />
-    <Compile Include="Migrations\201601270541385_Commnent.Designer.cs">
-      <DependentUpon>201601270541385_Commnent.cs</DependentUpon>
+    <Compile Include="Migrations\201601270603577_comments.cs" />
+    <Compile Include="Migrations\201601270603577_comments.Designer.cs">
+      <DependentUpon>201601270603577_comments.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Content.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Join.cs" />
@@ -519,11 +516,8 @@
     <EmbeddedResource Include="Migrations\201601260205586_remove-id-from-join.resx">
       <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601270536276_delete-commnent.resx">
-      <DependentUpon>201601270536276_delete-commnent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601270541385_Commnent.resx">
-      <DependentUpon>201601270541385_Commnent.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601270603577_comments.resx">
+      <DependentUpon>201601270603577_comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

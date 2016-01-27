@@ -7,13 +7,13 @@ namespace MeetU.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Commnent : IMigrationMetadata
+    public sealed partial class comments : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Commnent));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(comments));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601270541385_Commnent"; }
+            get { return "201601270603577_comments"; }
         }
         
         string IMigrationMetadata.Source

@@ -23,6 +23,11 @@ namespace MeetU.Models
         [ForeignKey("By")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
+        public int MeetupId { get; set; }
+        [JsonIgnore]
+        [ForeignKey("MeetupId")]
+        public virtual Meetup Meetup { get; set; }
+
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime At { get; set; }
