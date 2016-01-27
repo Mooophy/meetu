@@ -202,7 +202,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JoinsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
@@ -426,7 +425,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Joins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
