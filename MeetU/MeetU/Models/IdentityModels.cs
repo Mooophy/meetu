@@ -43,6 +43,7 @@ namespace MeetU.Models
         public DbSet<Join> Joins { get; set; }
         public DbSet<Watch> Watches { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ProfileImage> ProfileImages { get; set; }
 
     }
 }

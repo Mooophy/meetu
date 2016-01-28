@@ -194,6 +194,7 @@
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
+    <Compile Include="API\TestController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -325,6 +326,10 @@
     <Compile Include="Migrations\201601271130105_check-d.Designer.cs">
       <DependentUpon>201601271130105_check-d.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601281135203_ProfileImages.cs" />
+    <Compile Include="Migrations\201601281135203_ProfileImages.Designer.cs">
+      <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Content.cs" />
@@ -334,6 +339,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Models\MeetupViewModel.cs" />
+    <Compile Include="Models\ProfileImage.cs" />
     <Compile Include="Models\Watch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -532,6 +538,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601271130105_check-d.resx">
       <DependentUpon>201601271130105_check-d.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281135203_ProfileImages.resx">
+      <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
