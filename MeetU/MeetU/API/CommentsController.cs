@@ -15,12 +15,28 @@ namespace MeetU.API
 {
     public class CommentsController : ApiController
     {
+        public class CommentView 
+        {
+            public int Id { get; set; }
+            public string Content { get; set; }
+            public string By { get; set; }
+            public int MeetupId { get; set; }
+            public DateTime At { get; set; }
+        }
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Comments
-        public IQueryable<Comment> GetComments()
+        //GET: api/Comments
+        public IQueryable<CommentView> GetComments()
         {
-            return db.Comments;
+            return db.Comments.Select(c => new CommentView
+            {
+                Id = c.Id,
+                Content = c.Content,
+                By = c.ApplicationUser.UserName,
+                MeetupId = c.MeetupId,
+                At = c.At
+            });
         }
 
         // Get: api/Comments/:meetupId/byMeetup
@@ -83,6 +99,7 @@ namespace MeetU.API
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> PostComment(Comment comment)
         {
+            comment.At = DateTime.Now;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

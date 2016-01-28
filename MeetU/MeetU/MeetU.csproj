@@ -317,6 +317,14 @@
     <Compile Include="Migrations\201601270603577_comments.Designer.cs">
       <DependentUpon>201601270603577_comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601271124253_check.cs" />
+    <Compile Include="Migrations\201601271124253_check.Designer.cs">
+      <DependentUpon>201601271124253_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601271130105_check-d.cs" />
+    <Compile Include="Migrations\201601271130105_check-d.Designer.cs">
+      <DependentUpon>201601271130105_check-d.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Content.cs" />
@@ -347,8 +355,6 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -363,6 +369,8 @@
     <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -518,6 +526,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601270603577_comments.resx">
       <DependentUpon>201601270603577_comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601271124253_check.resx">
+      <DependentUpon>201601271124253_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601271130105_check-d.resx">
+      <DependentUpon>201601271130105_check-d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

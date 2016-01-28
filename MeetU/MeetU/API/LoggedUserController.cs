@@ -5,14 +5,30 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using MeetU.Models;
 
 namespace MeetU.API
 {
     public class LoggedUserController : ApiController
     {
-        public IQueryable<string> GetLoggedUser()
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        public class UserView
         {
-            var result = new List<string> { User.Identity.GetUserId() };
+            public string UserId { get; set; }
+            public string UserName { get; set; }
+        }
+
+        public IQueryable<UserView> GetLoggedUser()
+        {
+            var result = new List<UserView>
+            {
+                new UserView
+                {
+                    UserId = User.Identity.GetUserId(),
+                    UserName = User.Identity.GetUserName()
+                }
+            };
             return result.AsQueryable();
         }
     }

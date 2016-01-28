@@ -27,30 +27,40 @@
                             <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
                             <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
                         </a>
-                        &nbsp;&nbsp;&nbsp;{{ meetupView.meetup.title }} <span> @@{{ meetupView.sponsorUserName }}</span>
+                        &nbsp;&nbsp;&nbsp; <span class="text-capitalize"> {{ meetupView.meetup.title }}</span> | {{ meetupView.sponsorUserName }}
                     </span>
                     <div ng-show="showDetails">
                         <hr />
-                        <p class="jumbotron">
+                        <p class="jumbotron text-capitalize">
                             {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{meetupView.meetup.createdAt | date:'dd-MM-yyyy'}}</span>
                             <br /><br />
                             <span class="label label-default">When</span>
-                            {{meetupView.meetup.when |  date: "HH:mm"}} {{meetupView.meetup.date | date:'dd-MM-yyyy'}}
+                            {{ meetupView.meetup.when |  date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
                             <br />
                             <span class="label label-default">Where</span>
                             {{meetupView.meetup.where}}
                         </p>
                         <hr />
-                        <pre>{{ comments | json }}</pre>
-                        @*<pre>{{ meetupView | json }}</pre>*@
+                        <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id }">
+                            <p class="small text-capitalize">
+                                {{cv.content}}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{cv.by}}&nbsp;{{cv.at | date: 'dd-MM-yyyy'}}</span>
+                            </p>
+                            <hr />
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" style="max-width:100%" placeholder="How about you?" ng-model="meetupView.newComment">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-sm" type="button" ng-click="addComment(meetupView)" >Comment</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         @*for testing*@
-        <pre>{{ meetupViews | json }}</pre>
+        @*<pre>{{ meetupViews | json }}</pre>*@
         <hr />
-        <pre>{{ user }}</pre>
+        <pre>{{ allCommentViews | json }}</pre>
         @*for testing*@
     </div>
     <div class="col-md-offset-3">

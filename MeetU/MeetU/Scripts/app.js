@@ -1,16 +1,21 @@
 ﻿var app = angular.module('meetuApp', ['ngResource']);
 
-app.controller('indexController', function ($scope, $http, $resource) {
+app.controller('indexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
     var LoggedAs = $resource('/api/loggedUser');
     var Join = $resource('/api/Joins');
+    var CommentView = $resource('/api/Comments/');
 
     Meetup.query(function (data) {
         $scope.meetupViews = data;
     });
+    LoggedAs.query(function (userViews) {
+        $scope.user = userViews[0].userId;
+        $scope.userName = userViews[0].userName;
+    });
 
-    LoggedAs.query(function (users) {
-        $scope.user = users[0];
+    CommentView.query(function (data) {
+        $scope.allCommentViews = data;
     });
 
     //Check if logged user is in the relationship table, the argument can be either Joins or Watches of one meetup.
@@ -38,9 +43,7 @@ app.controller('indexController', function ($scope, $http, $resource) {
                 }
             },
             //if rejected
-            function (e) {
-                alert(e);
-            });
+            function (e) { console.log(e); });
         }
         else {
             var newJoin = {
@@ -53,10 +56,26 @@ app.controller('indexController', function ($scope, $http, $resource) {
             });
         }
     }
-
-    var Comment = $resource('/api/Comments/:meetupId//byMeetupId');
-    Comment.query({meetupId: 8},function (data) {
-        $scope.comments = data;
-    })
-
+    //
+    //  add comment to server, if successful: push it into local array, otherwise: write log.
+    //
+    $scope.addComment = function (mview) {
+        var c = new CommentView({
+            "content": mview.newComment,
+            "by": $scope.user,
+            "meetupId": mview.meetup.id,
+        });
+        c.$save(
+            function () {
+                $scope.allCommentViews.push({
+                    "content": mview.newComment,
+                    "by": $scope.userName,
+                    "meetupId": mview.meetup.id,
+                    "at": new Date
+                });
+                mview.newComment = "";
+            },
+            function (e) { console.log(e); }
+        );
+    };
 });
