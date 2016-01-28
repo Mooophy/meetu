@@ -31,7 +31,7 @@
                     </span>
                     <div ng-show="showDetails">
                         <hr />
-                        <p class="jumbotron text-capitalize">
+                        <p class="jumbotron">
                             {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{meetupView.meetup.createdAt | date:'dd-MM-yyyy'}}</span>
                             <br /><br />
                             <span class="label label-default">When</span>
@@ -42,7 +42,7 @@
                         </p>
                         <hr />
                         <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id }">
-                            <p class="small text-capitalize">
+                            <p class="small">
                                 {{cv.content}}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{cv.by}}&nbsp;{{cv.at | date: 'dd-MM-yyyy'}}</span>
                             </p>
                             <hr />

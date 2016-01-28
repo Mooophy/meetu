@@ -2,18 +2,17 @@
 
 app.controller('indexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
-    var LoggedAs = $resource('/api/loggedUser');
+    var Userview = $resource('/api/loggedUser');
     var Join = $resource('/api/Joins');
     var CommentView = $resource('/api/Comments/');
 
     Meetup.query(function (data) {
         $scope.meetupViews = data;
     });
-    LoggedAs.query(function (userViews) {
+    Userview.query(function (userViews) {
         $scope.user = userViews[0].userId;
         $scope.userName = userViews[0].userName;
     });
-
     CommentView.query(function (data) {
         $scope.allCommentViews = data;
     });
