@@ -1,6 +1,6 @@
 ﻿var app = angular.module('meetuApp', ['ngResource']);
 
-app.controller('indexController', function ($scope, $http, $resource, $filter) {
+app.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
     var Userview = $resource('/api/loggedUser');
     var Join = $resource('/api/Joins');
@@ -77,8 +77,6 @@ app.controller('indexController', function ($scope, $http, $resource, $filter) {
             function (e) { console.log(e); }
         );
     };
-
-    $scope.ago = convertToTimeAgo;
 });
 
 // 
