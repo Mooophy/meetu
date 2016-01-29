@@ -32,7 +32,7 @@
                     <div ng-show="showDetails">
                         <hr />
                         <p class="jumbotron">
-                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{ ago(meetupView.meetup.createdAt) }}</span>
+                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}</span>
                             <br /><br />
                             <span class="label label-default">When</span>
                             {{ meetupView.meetup.when |  date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
@@ -43,7 +43,7 @@
                         <hr />
                         <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id }">
                             <p class="small">
-                                {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ cv.by }}&nbsp;{{ ago(cv.at) }}</span>
+                                {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ cv.by }}&nbsp;{{ cv.at | date: 'dd-MM-yyyy' }}</span>
                             </p>
                             <hr />
                         </div>
