@@ -78,3 +78,10 @@ app.controller('indexController', function ($scope, $http, $resource, $filter) {
         );
     };
 });
+
+// here : date should be type : Date
+function convertToTimeAgo(date) {
+
+    //something like :
+    return "3 days ago";
+}
