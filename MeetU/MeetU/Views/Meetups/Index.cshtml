@@ -6,7 +6,8 @@
 }
 
 <div class="row" ng-cloak ng-app="meetuApp">
-    <br /><div class="col-md-1"></div>
+    <br />
+    <div class="col-md-1"></div>
 
     <div class="col-md-8" ng-controller="meetupIndexController">
         <div ng-repeat="meetupView in meetupViews">
@@ -45,7 +46,7 @@
                             <p class="small">
                                 {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ cv.by }}&nbsp;{{ cv.at | date: 'dd-MM-yyyy' }}</span>
                             </p>
-                            <hr />
+                            <hr style="margin-top:10px; margin-bottom:10px"/>
                         </div>
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control" style="max-width:100%" placeholder="How about you?" ng-model="meetupView.newComment">
