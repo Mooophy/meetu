@@ -5,94 +5,98 @@
 
 <br />
 
-<div class="row" ng-app="profileModule">
-    <div class="col-md-1"></div>
+<div ng-app="profileModule">
 
-    @* Proile *@
-    <div class="col-md-4 text-center">
-        <div class="panel panel-default" style="max-width: 100%">
-            <div class="panel-heading" style="text-align:left">Public Profile</div>
-            <div class="panel-body">
-                <img src="//placehold.it/180" class="avatar img-circle" alt="avatar">
-                <br /><br />
-                <div class="btn-group btn-group-sm" role="group">
-                    <button type="button" class="btn btn-success" style="min-width:60px">New</button>
-                    <button type="button" class="btn btn-info">Update</button>
-                </div>
-                <br />
-                <hr style="margin-top:20px; margin-bottom:20px" />
-                <h2>Yue.Wang</h2>
-                <h4>
-                    No. <span style="color:aliceblue; background-color:#5cb85c; font-size:14px; padding:4px; border-radius:4px;">11</span>
-                </h4>
-                <br />
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" style="max-width:100%" placeholder="New nick name?">
-                    <span class="input-group-btn">
-                        <button class="btn btn-info" type="button">Update</button>
-                    </span>
-                </div><!-- /input-group -->
-                <br />
-            </div>
-        </div>
-    </div>
-    <div class="col-md-1"></div>
+    <div class="row" ng-controller="profileController">
+        <div class="col-md-1"></div>
 
-    @* Statistics *@
-    <div class="col-md-5">
-        <div class="panel panel-default" style="max-width: 100%">
-            <div class="panel-heading" style="text-align:left">Statistics</div>
-            <div class="panel-body">
-                <div class="col-md-1"></div>
-                <div class="col-md-8">
-                    <dl class="dl-horizontal">
-                        <dt>Meetups Created:</dt>
-                        <dd>3</dd>
-                        <dt>Meetups Created:</dt>
-                        <dd>3</dd>
-                        <dt>Meetup Joined:</dt>
-                        <dd>12</dd>
-                        <dt>Comments Created:</dt>
-                        <dd>24</dd>
-                        <dt>Calculated at:</dt>
-                        <dd>Jan-30</dd>
-                        <dt>M.U Points:</dt>
-                        <dt>Meetups Created:</dt>
-                        <dd>3</dd>
-                        <dt>Meetup Joined:</dt>
-                        <dd>12</dd>
-                        <dt>Comments Created:</dt>
-                        <dd>24</dd>
-                        <dt>Calculated at:</dt>
-                        <dd>Jan-30</dd>
-                        <dt>M.U Points:</dt>
-                        <dt>Meetups Created:</dt>
-                        <dd>3</dd>
-                        <dt>Meetup Joined:</dt>
-                        <dd>12</dd>
-                        <dt>Comments Created:</dt>
-                        <dd>24</dd>
-                        <dt>Calculated at:</dt>
-                        <dd>Jan-30</dd>
-                        <dt>Meetups Created:</dt>
-                        <dd>3</dd>
-                        <dt>Meetup Joined:</dt>
-                        <dd>12</dd>
-                        <dt>Comments Created:</dt>
-                        <dd>24</dd>
-                        <dt>Calculated at:</dt>
-                        <dd>Jan-30</dd>
-                        <dt>M.U Points:</dt>
-                        <dd style="color:aliceblue;background-color:#5cb85c; padding:2px; border-radius:4px;">13.256409</dd>
-                    </dl>
+        @* Proile *@
+        <div class="col-md-4 text-center">
+            <div class="panel panel-default" style="max-width: 100%">
+                <div class="panel-heading" style="text-align:left">Public Profile</div>
+                <div class="panel-body">
+                    <img src="//placehold.it/180" class="avatar img-circle" alt="avatar">
+                    <br /><br />
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-success" style="min-width:60px">New</button>
+                        <button type="button" class="btn btn-info">Update</button>
+                    </div>
+                    <br />
+                    <hr style="margin-top:20px; margin-bottom:20px" />
+                    <h2>Yue.Wang</h2>
+                    <h4>
+                        No. <span style="color:aliceblue; background-color:#5cb85c; font-size:14px; padding:4px; border-radius:4px;">11</span>
+                    </h4>
+                    <br />
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" style="max-width:100%" placeholder="New nick name?">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button">Update</button>
+                        </span>
+                    </div><!-- /input-group -->
+                    <br />
                 </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
+
+        @* Statistics *@
+        <div class="col-md-5">
+            <div class="panel panel-default" style="max-width: 100%">
+                <div class="panel-heading" style="text-align:left">Statistics</div>
+                <div class="panel-body">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8">
+                        <dl class="dl-horizontal">
+                            <dt>Meetups Created:</dt>
+                            <dd>3</dd>
+                            <dt>Meetups Created:</dt>
+                            <dd>3</dd>
+                            <dt>Meetup Joined:</dt>
+                            <dd>12</dd>
+                            <dt>Comments Created:</dt>
+                            <dd>24</dd>
+                            <dt>Calculated at:</dt>
+                            <dd>Jan-30</dd>
+                            <dt>M.U Points:</dt>
+                            <dt>Meetups Created:</dt>
+                            <dd>3</dd>
+                            <dt>Meetup Joined:</dt>
+                            <dd>12</dd>
+                            <dt>Comments Created:</dt>
+                            <dd>24</dd>
+                            <dt>Calculated at:</dt>
+                            <dd>Jan-30</dd>
+                            <dt>M.U Points:</dt>
+                            <dt>Meetups Created:</dt>
+                            <dd>3</dd>
+                            <dt>Meetup Joined:</dt>
+                            <dd>12</dd>
+                            <dt>Comments Created:</dt>
+                            <dd>24</dd>
+                            <dt>Calculated at:</dt>
+                            <dd>Jan-30</dd>
+                            <dt>Meetups Created:</dt>
+                            <dd>3</dd>
+                            <dt>Meetup Joined:</dt>
+                            <dd>12</dd>
+                            <dt>Comments Created:</dt>
+                            <dd>24</dd>
+                            <dt>Calculated at:</dt>
+                            <dd>Jan-30</dd>
+                            <dt>M.U Points:</dt>
+                            <dd style="color:aliceblue;background-color:#5cb85c; padding:2px; border-radius:4px;">13.256409</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <hr />
+    Charts
+
 </div>
-
-<hr />
-Charts
 
 
 @section scripts{

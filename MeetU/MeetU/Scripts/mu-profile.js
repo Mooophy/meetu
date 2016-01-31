@@ -1,3 +1,4 @@
 ﻿var pm = angular.module('profileModule', ['ngResource']);
-
-alert("zzzzzzzzzzzzz");
+pm.controller('profileController', function ($scope, $http, $resource) {
+    alert("from profile controller ");
+});
