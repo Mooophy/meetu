@@ -1,6 +1,6 @@
-﻿var app = angular.module('meetuApp', ['ngResource']);
+﻿var mm = angular.module('meetupModule', ['ngResource']);
 
-app.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
+mm.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
     var Userview = $resource('/api/loggedUser');
     var Join = $resource('/api/Joins');
