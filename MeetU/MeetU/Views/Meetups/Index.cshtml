@@ -33,7 +33,7 @@
                     <div ng-show="showDetails">
                         <hr />
                         <p class="jumbotron">
-                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}</span>
+                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} </span> <span am-time-ago=meetupView.meetup.date></span>
                             <br /><br />
                             <span class="label label-default">When</span>
                             {{ meetupView.meetup.when |  date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
@@ -44,14 +44,14 @@
                         <hr />
                         <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id }">
                             <p class="small">
-                                {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ cv.by }}&nbsp;{{ cv.at | date: 'dd-MM-yyyy' }}</span>
+                                {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ cv.by }}&nbsp; </span> <span class="text-primary" am-time-ago=cv.at></span>
                             </p>
-                            <hr style="margin-top:10px; margin-bottom:10px"/>
+                            <hr style="margin-top:10px; margin-bottom:10px" />
                         </div>
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control" style="max-width:100%" placeholder="How about you?" ng-model="meetupView.newComment">
                             <span class="input-group-btn">
-                                <button class="btn btn-info btn-sm" type="button" ng-click="addComment(meetupView)" >Comment</button>
+                                <button class="btn btn-info btn-sm" type="button" ng-click="addComment(meetupView)">Comment</button>
                             </span>
                         </div>
                     </div>
@@ -74,5 +74,7 @@
 @section scripts{
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-resource.min.js")
+    @Scripts.Render("~/Scripts/moment.min.js")
+    @Scripts.Render("~/Scripts/angular-moment.min.js")
     @Scripts.Render("~/Scripts/mu-meetup.js")
 }

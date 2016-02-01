@@ -5,9 +5,73 @@
 
 <br />
 
+<style>
+    img-crop {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+        img-crop canvas {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            outline: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width: 500px;
+        height: 350px;
+    }
+
+    form .progress {
+        line-height: 15px;
+    }
+
+    .progress {
+        display: inline-block;
+        width: 100px;
+        border: 3px groove #CCC;
+    }
+
+        .progress div {
+            font-size: smaller;
+            background: orange;
+            width: 0;
+        }
+</style>
+
 <div ng-app="profileModule">
 
     <div class="row" ng-controller="profileController">
+
+
+        <form name="myForm">
+            <div>Crop Image and Upload</div>
+            <button ngf-select ng-model="picFile" accept="image/*">
+                Select Picture
+            </button>
+            <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                 class="cropArea">
+                <img-crop image="picFile  | ngfDataUrl"
+                          result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+                </img-crop>
+            </div>
+            <button ng-click="upload(croppedDataUrl)">Submit</button>
+
+            <span class="progress" ng-show="progress >= 0">
+                <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+            </span>
+            <span ng-show="result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+        </form>
+
         <div class="col-md-1"></div>
 
         @* Proile *@
@@ -15,10 +79,13 @@
             <div class="panel panel-default" style="max-width: 100%">
                 <div class="panel-heading" style="text-align:left">Public Profile</div>
                 <div class="panel-body">
-                    <img src="//placehold.it/180" class="avatar img-circle" alt="avatar">
+                    <img src="{{ croppedDataUrl }}" class="avatar img-circle" alt="avatar" style="width:180px; height:180px">
                     <br /><br />
                     <div class="btn-group btn-group-sm" role="group">
-                        <button type="button" class="btn btn-success" style="min-width:60px">New</button>
+                        <button type="button" class="btn btn-success" ngf-select ng-model="picFile" accept="image/*" style="min-width:60px">
+                            New
+                        </button>
+                        @*<button type="button" class="btn btn-success" style="min-width:60px">New</button>*@
                         <button type="button" class="btn btn-info">Update</button>
                     </div>
                     <br />
@@ -102,6 +169,8 @@
 @section scripts{
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-resource.min.js")
-    @Scripts.Render("~/Scripts/ng-flow-standalone.min.js")
+    @*@Scripts.Render("~/Scripts/ng-flow-standalone.min.js")*@
+    @Scripts.Render("~/Scripts/ng-file-upload-all.min.js")
+    @Scripts.Render("~/Scripts/ng-img-crop.js")
     @Scripts.Render("~/Scripts/mu-profile.js")
 }

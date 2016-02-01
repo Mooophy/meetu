@@ -1,4 +1,4 @@
-﻿var mm = angular.module('meetupModule', ['ngResource']);
+﻿var mm = angular.module('meetupModule', ['ngResource', 'angularMoment']);
 
 mm.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
