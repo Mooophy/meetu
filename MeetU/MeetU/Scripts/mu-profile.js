@@ -1,6 +1,6 @@
 ﻿var pm = angular.module('profileModule', ['ngResource', 'ngFileUpload', 'ngImgCrop']);
 pm.controller('profileController', function ($scope, $http, $resource, Upload, $timeout) {
-    alert("from profile controller ");
+    //alert("from profile controller ");
 
     $scope.upload = function (dataUrl) {
         Upload.upload({
