@@ -4,6 +4,9 @@ pm.controller('profileController', function ($scope) {
     $scope.myCroppedImage = '';
 
     var handleFileSelect = function (evt) {
+
+        $scope.isShowPic = true;
+
         var file = evt.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function (evt) {

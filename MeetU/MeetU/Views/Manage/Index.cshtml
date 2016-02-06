@@ -21,7 +21,7 @@
 
 
         <div>Select an image file: <input type="file" id="fileInput" /></div>
-        <div class="cropArea">
+        <div class="cropArea" ng-init="isShowPic=false" ng-show="isShowPic">
             <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
         </div>
         <div>Cropped Image:</div>
@@ -37,7 +37,7 @@
                     <br /><br />
                     <div class="btn-group btn-group-sm" role="group">
                         <button type="button" class="btn btn-info">New</button>
-                        <button type="button" class="btn btn-info">Update</button>
+                        <button type="button" class="btn btn-info" ng-click="isShowPic=false">Update</button>
                     </div>
                     <br />
                     <hr style="margin-top:20px; margin-bottom:20px" />
@@ -51,8 +51,7 @@
                         <span class="input-group-btn">
                             <button class="btn btn-info" type="button">Update</button>
                         </span>
-                    </div><!-- /input-group -->
-                    <br />
+                    </div>
                 </div>
             </div>
         </div>
