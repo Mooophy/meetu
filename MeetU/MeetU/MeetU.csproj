@@ -194,6 +194,7 @@
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
+    <Compile Include="API\ProfileImagesController.cs" />
     <Compile Include="API\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -329,6 +330,14 @@
     <Compile Include="Migrations\201601281135203_ProfileImages.cs" />
     <Compile Include="Migrations\201601281135203_ProfileImages.Designer.cs">
       <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602070533557_add-imageType.cs" />
+    <Compile Include="Migrations\201602070533557_add-imageType.Designer.cs">
+      <DependentUpon>201602070533557_add-imageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602070541148_rename-to-imageFormat.cs" />
+    <Compile Include="Migrations\201602070541148_rename-to-imageFormat.Designer.cs">
+      <DependentUpon>201602070541148_rename-to-imageFormat.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -560,6 +569,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601281135203_ProfileImages.resx">
       <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602070533557_add-imageType.resx">
+      <DependentUpon>201602070533557_add-imageType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602070541148_rename-to-imageFormat.resx">
+      <DependentUpon>201602070541148_rename-to-imageFormat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

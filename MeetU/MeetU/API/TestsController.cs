@@ -30,7 +30,7 @@ namespace MeetU.API
 
             var response = new HttpResponseMessage();
             response.Content = new ByteArrayContent(profileImage.Image);
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/");
             response.StatusCode = HttpStatusCode.OK;
             return response;
         }
