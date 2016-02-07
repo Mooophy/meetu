@@ -19,5 +19,8 @@ namespace MeetU.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public byte[] Image { get; set; }
+
+        [Required]
+        public string ImageFormat { get; set; } 
     }
 }
