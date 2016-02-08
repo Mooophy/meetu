@@ -44,6 +44,7 @@ namespace MeetU.Models
         public DbSet<Watch> Watches { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProfileImage> ProfileImages { get; set; }
+        public DbSet<ProfileDataUri> ProfileDataUri { get; set; } 
 
     }
 }

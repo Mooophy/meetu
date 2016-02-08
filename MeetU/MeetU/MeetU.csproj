@@ -339,6 +339,10 @@
     <Compile Include="Migrations\201602070541148_rename-to-imageFormat.Designer.cs">
       <DependentUpon>201602070541148_rename-to-imageFormat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602081254546_add-ProfileDataUri.cs" />
+    <Compile Include="Migrations\201602081254546_add-ProfileDataUri.Designer.cs">
+      <DependentUpon>201602081254546_add-ProfileDataUri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Content.cs" />
@@ -348,6 +352,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Models\MeetupViewModel.cs" />
+    <Compile Include="Models\ProfileDataUri.cs" />
     <Compile Include="Models\ProfileImage.cs" />
     <Compile Include="Models\Watch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -584,6 +589,12 @@
     <EmbeddedResource Include="Migrations\201602070541148_rename-to-imageFormat.resx">
       <DependentUpon>201602070541148_rename-to-imageFormat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602081254546_add-ProfileDataUri.resx">
+      <DependentUpon>201602081254546_add-ProfileDataUri.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
