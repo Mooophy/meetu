@@ -1,3 +1,8 @@
+//
+//  the code below has been commented out to preventing detecting by Tests Explorer
+//      --Yue.
+//
+
 //describe("Player", function() {
 //  var player;
 //  var song;

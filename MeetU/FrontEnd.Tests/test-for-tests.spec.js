@@ -1,6 +1,11 @@
 ﻿/// <reference path="../MeetU/Scripts/angular.js"/>
 /// <reference path="../MeetU/Scripts/angular-mocks.js"/>
 
+//
+//  the tests here is to test if the setup for jasmine and angular works as expected.
+//  --Yue.
+//
+
 describe("To check if Jasmine works", function () {
     it("contains spec with an expectation", function () {
         expect(true).toBe(true);
