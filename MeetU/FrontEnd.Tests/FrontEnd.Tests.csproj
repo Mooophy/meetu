@@ -54,8 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\angular.min.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\Tests\data-uri-experiment.spec.js" />
     <Content Include="Scripts\jasmine-samples\Player.js" />
     <Content Include="Scripts\jasmine-samples\PlayerSpec.js" />
     <Content Include="Scripts\jasmine-samples\Song.js" />
@@ -64,7 +69,7 @@
     <Content Include="Scripts\jasmine\console.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
-    <Content Include="test-for-tests.spec.js" />
+    <Content Include="Scripts\Tests\test-for-tests.spec.js" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

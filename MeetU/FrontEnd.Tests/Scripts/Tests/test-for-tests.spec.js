@@ -1,13 +1,17 @@
-﻿/// <reference path="../MeetU/Scripts/angular.js"/>
-/// <reference path="../MeetU/Scripts/angular-mocks.js"/>
+﻿/// <reference path="../jasmine/jasmine.js" />
+/// <reference path="../jasmine/boot.js" />
+/// <reference path="../jasmine/console.js" />
+/// <reference path="../jasmine/jasmine-html.js" />
+/// <reference path="../angular.js" />
+/// <reference path="../angular-mocks.js" />
 
 //
 //  the tests here is to test if the setup for jasmine and angular works as expected.
 //  --Yue.
 //
 
-describe("To check if Jasmine works", function () {
-    it("contains spec with an expectation", function () {
+describe("jasmine", function () {
+    it("", function () {
         expect(true).toBe(true);
     });
 });
@@ -27,7 +31,7 @@ angular.module('test-for-jasmine-app', [])
     };
 });
 
-describe('To check if Jasmine + angular works together', function () {
+describe('Jasmine + angular', function () {
     beforeEach(module('test-for-jasmine-app'));
 
     var $controller;
@@ -37,13 +41,11 @@ describe('To check if Jasmine + angular works together', function () {
         $controller = _$controller_;
     }));
 
-    describe('$scope.grade', function () {
-        it('sets the strength to "strong" if the password length is >8 chars', function () {
-            var $scope = {};
-            var controller = $controller('PasswordController', { $scope: $scope });
-            $scope.password = 'longerthaneightchars';
-            $scope.grade();
-            expect($scope.strength).toEqual('strong');
-        });
+    it('', function () {
+        var $scope = {};
+        var controller = $controller('PasswordController', { $scope: $scope });
+        $scope.password = 'longerthaneightchars';
+        $scope.grade();
+        expect($scope.strength).toEqual('strong');
     });
 });

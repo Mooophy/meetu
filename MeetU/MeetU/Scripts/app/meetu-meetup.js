@@ -1,5 +1,4 @@
 ﻿var meetupModule = angular.module('meetupModule', ['ngResource', 'angularMoment']);
-
 meetupModule.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
     var Userview = $resource('/api/loggedUser');

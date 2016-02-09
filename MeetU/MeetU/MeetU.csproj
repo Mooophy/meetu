@@ -393,6 +393,8 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\meetu-meetup.js" />
+    <Content Include="Scripts\app\meetu-profile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -414,8 +416,6 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\mu-meetup.js" />
-    <Content Include="Scripts\mu-profile.js" />
     <Content Include="Scripts\ng-file-upload-all.js" />
     <Content Include="Scripts\ng-file-upload-all.min.js" />
     <Content Include="Scripts\ng-file-upload-shim.js" />
