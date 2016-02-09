@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetU", "MeetU\MeetU.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.Tests", "FrontEnd.Tests\FrontEnd.Tests.csproj", "{2028A8C2-517F-4E3D-A7D4-05BE4AA55D3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd.Tests", "BackEnd.Tests\BackEnd.Tests.csproj", "{6AD94483-204E-48C3-89B5-80634E57C047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2028A8C2-517F-4E3D-A7D4-05BE4AA55D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2028A8C2-517F-4E3D-A7D4-05BE4AA55D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2028A8C2-517F-4E3D-A7D4-05BE4AA55D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD94483-204E-48C3-89B5-80634E57C047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD94483-204E-48C3-89B5-80634E57C047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD94483-204E-48C3-89B5-80634E57C047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD94483-204E-48C3-89B5-80634E57C047}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
