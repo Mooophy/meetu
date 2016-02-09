@@ -1,5 +1,5 @@
 //
-//  the code below has been commented out to preventing detecting by Tests Explorer
+//  the code below has been commented out to prevent detecting by Tests Explorer
 //      --Yue.
 //
 
