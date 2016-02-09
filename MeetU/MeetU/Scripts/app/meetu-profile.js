@@ -1,5 +1,6 @@
 ﻿var profileModule = angular.module('profileModule', ['ngResource', 'ngFileUpload', 'ngImgCrop']);
 profileModule.controller('profileController', function ($scope) {
+
     $scope.myImage = '';
     $scope.myCroppedImage = '';
 
