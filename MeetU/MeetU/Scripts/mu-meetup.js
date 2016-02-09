@@ -1,6 +1,6 @@
-﻿var mm = angular.module('meetupModule', ['ngResource', 'angularMoment']);
+﻿var meetupModule = angular.module('meetupModule', ['ngResource', 'angularMoment']);
 
-mm.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
+meetupModule.controller('meetupIndexController', function ($scope, $http, $resource, $filter) {
     var Meetup = $resource('/api/Meetups');
     var Userview = $resource('/api/loggedUser');
     var Join = $resource('/api/Joins');
@@ -78,49 +78,3 @@ mm.controller('meetupIndexController', function ($scope, $http, $resource, $filt
         );
     };
 });
-
-// 
-//  implemented by: scottszb1987
-//
-//function convertToTimeAgo(inputTime) {
-//    var currentTime = new Date();
-//    var timeDiffInMil = currentTime.getTime() - (new Date(inputTime)).getTime();
-
-//    var enums = {
-//        year: 1000 * 60 * 60 * 24 * 365,
-//        month: 1000 * 60 * 60 * 24 * 30,
-//        week: 1000 * 60 * 60 * 24 * 7,
-//        day: 1000 * 60 * 60 * 24,
-//        hour: 1000 * 60 * 60,
-//        minute: 1000 * 60
-//    }
-
-//    var result;
-//    if (timeDiffInMil >= enums.year) {
-//        result = Math.floor(timeDiffInMil / enums.year);
-//        result += result > 1 ? " years" : " year";
-//    } else if (timeDiffInMil >= enums.month) {
-//        result = Math.floor(timeDiffInMil / enums.month);
-//        result += result > 1 ? " months" : " month";
-//    } else if (timeDiffInMil >= enums.week) {
-//        result = Math.floor(timeDiffInMil / enums.week);
-//        result += result > 1 ? " weeks" : " week";
-//    } else if (timeDiffInMil >= enums.day) {
-//        result = Math.floor(timeDiffInMil / enums.day);
-//        result += result > 1 ? " days" : " day";
-//    } else if (timeDiffInMil >= enums.hour) {
-//        result = Math.floor(timeDiffInMil / enums.hour);
-//        result += result > 1 ? " hours" : " hour";
-//    } else if (timeDiffInMil >= enums.minute) {
-//        var minutes = Math.floor(timeDiffInMil / enums.minute);
-//        var seconds = Math.floor(timeDiffInMil / 1000 - minutes * 60);
-//        minutes += minutes > 1 ? " minutes " : " minute ";
-//        seconds += seconds > 1 ? " seconds" : " second";
-//        result = minutes + seconds;
-//    } else {
-//        result = Math.floor(timeDiffInMil / 1000);
-//        result += result > 1 ? " seconds" : " second";
-//    }
-//    result += " ago";
-//    return result;
-//}
