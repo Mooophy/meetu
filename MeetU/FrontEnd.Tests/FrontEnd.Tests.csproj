@@ -54,10 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\angular.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\Tests\data-uri-experiment.spec.js" />
