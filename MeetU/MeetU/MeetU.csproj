@@ -194,6 +194,7 @@
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
+    <Compile Include="API\ProfileDataUrisController.cs" />
     <Compile Include="API\ProfileImagesController.cs" />
     <Compile Include="API\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
