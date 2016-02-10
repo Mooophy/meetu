@@ -9,7 +9,7 @@
 
 //
 //  Experiment: 
-//      Syntax for service definnition using .module(...).factory(...).
+//      Syntax for service definition using .module(...).factory(...).
 //      Also how to unit test.
 //  @Yue
 //
@@ -36,8 +36,8 @@ describe("syntax for service only", function () {
     //test the service injected.
     it('', function () {
         expect(add(41, 2)).toEqual(43);
-    })
-})
+    });
+});
 //
 //  Experiment: 
 //      Syntax for service injected into a controller defined in another module.
