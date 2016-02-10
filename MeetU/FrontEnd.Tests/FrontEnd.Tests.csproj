@@ -72,6 +72,7 @@
     <Content Include="Scripts\jasmine\console.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\Tests\experiments-for-angular.spec.js" />
     <Content Include="Scripts\Tests\test-for-tests.spec.js" />
   </ItemGroup>
   <Choose>
