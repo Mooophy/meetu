@@ -58,11 +58,11 @@ namespace MeetU
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "193892015040-ciq88ld68vmmc28fgspbfr2tuls4uufd.apps.googleusercontent.com",
+                ClientSecret = "y_i3e_UCu6RfqSEm17OL12xH"
+            });
         }
     }
 }
