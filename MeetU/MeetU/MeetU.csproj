@@ -345,6 +345,10 @@
     <Compile Include="Migrations\201602081254546_add-ProfileDataUri.Designer.cs">
       <DependentUpon>201602081254546_add-ProfileDataUri.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602260336432_add-username-to-join.cs" />
+    <Compile Include="Migrations\201602260336432_add-username-to-join.Designer.cs">
+      <DependentUpon>201602260336432_add-username-to-join.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Content.cs" />
@@ -585,6 +589,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602081254546_add-ProfileDataUri.resx">
       <DependentUpon>201602081254546_add-ProfileDataUri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602260336432_add-username-to-join.resx">
+      <DependentUpon>201602260336432_add-username-to-join.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

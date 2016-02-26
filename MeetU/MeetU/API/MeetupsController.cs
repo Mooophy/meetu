@@ -20,15 +20,21 @@ namespace MeetU.API
         public IQueryable<MeetupViewModel> GetMeetups()
         {
 
-            return db.Meetups
-                .Select(
+            var meetups = db.Meetups.Select(
                 m => new MeetupViewModel
                 {
                     Meetup = m,
                     SponsorUserName = m.ApplicationUser.UserName,
-                    Joins = db.Joins.Where(j => j.MeetupId == m.Id),
-                    //Watches = db.Watches.Where(w => w.MeetupId == m.Id)
+                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
                 });
+
+            //append user name
+            foreach (var m in meetups)
+                foreach (var j in m.Joins)
+                    if (j.UserName == null)
+                        j.UserName = j.ApplicationUser.UserName;
+
+            return meetups;
         }
 
         // GET: api/Meetups/5

@@ -23,6 +23,8 @@ namespace MeetU.Models
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
 
+        public string UserName { get; set; }
+
         [JsonIgnore]
         public virtual ApplicationUser ApplicationUser { get; set; }
 

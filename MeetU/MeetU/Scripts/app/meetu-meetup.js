@@ -17,7 +17,7 @@ meetupModule.controller('meetupIndexController', function ($scope, $http, $resou
         $scope.allCommentViews = data;
     });
 
-    //Check if logged user is in the relationship table, the argument can be either Joins or Watches of one meetup.
+    //Check if logged user is in the relationship table.
     $scope.isIn = function (arr) {
         for (var i in arr) {
             if (arr[i].userId == $scope.user)
@@ -25,7 +25,9 @@ meetupModule.controller('meetupIndexController', function ($scope, $http, $resou
         }
         return false;
     }
-
+    //
+    //handel join and unjoin button  
+    //
     $scope.toggleJoin = function (mview) {
         if ($scope.isIn(mview.joins)) {
             Join.delete({
