@@ -3,7 +3,6 @@
 //  used for template file : ~/Meetups/Index.cshtml.
 //
 (function () {//iife
-
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
         .controller('meetupIndexController', function ($scope, $resource) {
@@ -126,5 +125,4 @@
     String.prototype.muCapitalizeFirstLetter = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
-
 })();//End of iife
