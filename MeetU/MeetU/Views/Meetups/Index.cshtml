@@ -10,8 +10,15 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-8" ng-controller="meetupIndexController">
+
+        @* Message *@
+        <div class="alert alert-success alert-dismissible" role="alert" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            To Crystal: <strong>Happy Birthday!</strong> 
+        </div>
+        
         <div ng-repeat="meetupView in meetupViews">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19)">
                 <div class="panel-heading">
                     <div class="btn-group btn-group-xs" role="group">
                         <button type="button" class="btn btn-info" ng-click="toggleJoin(meetupView)">
@@ -59,7 +66,7 @@
             </div>
         </div>
         @*for testing*@
-        @*<pre>{{ meetupViews | json }}</pre>*@
+        <pre>{{ meetupViews | json }}</pre>
         <hr />
         @*<pre>{{ allCommentViews | json }}</pre>*@
         @*for testing*@
