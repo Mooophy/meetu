@@ -34,7 +34,7 @@
                 return js.some(function (j) { return j.userId == $scope.userId; });
             }
             //
-            //  Handel join and unjoin toggle button  
+            //  Handle join and unjoin toggle button  
             //
             $scope.toggleJoin = function (mview) {
                 if ($scope.isIn(mview.joins)) {
