@@ -2,7 +2,8 @@
 //  This code implements controller 'meetupIndexController',
 //  used for template file : ~/Meetups/Index.cshtml.
 //
-(function () {//iife
+(function () {
+
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
         .controller('meetupIndexController', function ($scope, $resource) {
@@ -31,7 +32,7 @@
             //
             $scope.isIn = function (js) {
                 return js.some(function (j) { return j.userId == $scope.userId; });
-            }
+            };
             //
             //  Handle join and unjoin toggle button  
             //
@@ -50,7 +51,7 @@
                             }
                         }
                     },
-                    //if rejected
+                    //if rejected:
                     function (e) {
                         console.log(e);
                     });
@@ -117,12 +118,13 @@
             return this;
         else
             return this.substring(0, this.indexOf(strToStrip));
-    }
+    };
     //
     //  Capitalize the first letter
     //  To be tested later on
     //
     String.prototype.muCapitalizeFirstLetter = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
-    }
-})();//End of iife
+    };
+
+})();
