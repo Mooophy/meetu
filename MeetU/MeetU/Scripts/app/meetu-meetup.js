@@ -91,7 +91,9 @@
                         });
                         mview.newComment = "";
                     },
-                    function (e) { console.log(e); }
+                    function (e) {
+                        console.log(e);
+                    }
                 );
             };
             //
