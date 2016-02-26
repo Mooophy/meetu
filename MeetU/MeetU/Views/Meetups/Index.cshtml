@@ -35,12 +35,12 @@
                             <span class="glyphicon glyphicon-menu-down" ng-show="! showDetails"></span>
                             <span class="glyphicon glyphicon-menu-up" ng-show="showDetails"></span>
                         </a>
-                        &nbsp;&nbsp;&nbsp; <span class="text-capitalize"> {{ meetupView.meetup.title }}</span> | {{ meetupView.sponsorUserName }}
+                        &nbsp;&nbsp;&nbsp; <span class="text-capitalize"> {{ meetupView.meetup.title }}</span> | @@{{ meetupView.sponsorUserName }}
                     </span>
                     <div ng-show="showDetails">
                         <hr />
                         <p class="jumbotron">
-                            {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} </span> <span am-time-ago=meetupView.meetup.date></span>
+                            {{ meetupView.meetup.description }} <span class="text-justify"> |  @@{{ meetupView.sponsorUserName }} </span> <span am-time-ago=meetupView.meetup.date></span>
                             <br /><br />
                             <span class="label label-default">When&nbsp;</span>
                             {{ meetupView.meetup.when |  date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
