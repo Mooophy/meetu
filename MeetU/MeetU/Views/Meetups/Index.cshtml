@@ -42,11 +42,14 @@
                         <p class="jumbotron">
                             {{ meetupView.meetup.description }} <span class="text-justify"> |  {{ meetupView.sponsorUserName }} </span> <span am-time-ago=meetupView.meetup.date></span>
                             <br /><br />
-                            <span class="label label-default">When</span>
+                            <span class="label label-default">When&nbsp;</span>
                             {{ meetupView.meetup.when |  date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
                             <br />
                             <span class="label label-default">Where</span>
                             {{meetupView.meetup.where}}
+                            <br />
+                            <span class="label label-default">&nbsp;Who&nbsp;&nbsp;</span>
+                            {{ joinedUserNames(meetupView.joins)}}
                         </p>
                         <hr />
                         <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id }">
@@ -66,7 +69,7 @@
             </div>
         </div>
         @*for testing*@
-        <pre>{{ meetupViews | json }}</pre>
+        @*<pre>{{ meetupViews | json }}</pre>*@
         @*<hr />*@
         @*<pre>{{ allCommentViews | json }}</pre>*@
         @*for testing*@

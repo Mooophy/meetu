@@ -47,13 +47,17 @@ meetupModule.controller('meetupIndexController', function ($scope, $http, $resou
             function (e) { console.log(e); });
         }
         else {
-            var newJoin = {
+            var j = new Join({
                 meetupId: mview.meetup.id,
                 userId: $scope.user
-            };
-            var j = new Join(newJoin);
+            });
+
             j.$save(function () {
-                mview.joins.push(newJoin);
+                mview.joins.push({
+                    meetupId: mview.meetup.id,
+                    userId: $scope.user,
+                    userName: $scope.userName //append username locally
+                });
             });
         }
     }
@@ -79,4 +83,20 @@ meetupModule.controller('meetupIndexController', function ($scope, $http, $resou
             function (e) { console.log(e); }
         );
     };
+
+    //
+    //  Generate joined user names 
+    //
+    $scope.joinedUserNames = function (joins) {
+        var names = [];
+        for (var i = 0; i != joins.length; ++i) {
+            var rawName = joins[i].userName;
+            if (rawName.indexOf('@') < 0)
+                names.push('@' + rawName);
+            else 
+                names.push('@' + rawName.substring(0, rawName.indexOf('@')))
+        }
+        return names.join(' ');
+    };
+
 });
