@@ -18,7 +18,7 @@
         </div>
         
         <div ng-repeat="meetupView in meetupViews">
-            <div class="panel panel-default" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19)">
+            <div class="panel panel-default" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19)">
                 <div class="panel-heading">
                     <div class="btn-group btn-group-xs" role="group">
                         <button type="button" class="btn btn-info" ng-click="toggleJoin(meetupView)">
@@ -66,8 +66,8 @@
             </div>
         </div>
         @*for testing*@
-        <pre>{{ meetupViews | json }}</pre>
-        <hr />
+        @*<pre>{{ meetupViews | json }}</pre>*@
+        @*<hr />*@
         @*<pre>{{ allCommentViews | json }}</pre>*@
         @*for testing*@
     </div>

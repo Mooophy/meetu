@@ -15,7 +15,8 @@ namespace MeetU.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return Redirect("Meetups/Index");
+            //return View();
         }
 
         public ActionResult About()
