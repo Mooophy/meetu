@@ -17,6 +17,19 @@ namespace MeetU.API
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //public class JoinView
+        //{
+        //    public int MeetupId { get; set; }
+        //    public string UserName { get; set; }
+        //}
+
+        //[Route("api/JoinViews")]
+        //public IQueryable<JoinView> GetJoinViews()
+        //{
+
+        //}
+
+
         // GET: api/Joins
         public IQueryable<Join> GetJoins()
         {
