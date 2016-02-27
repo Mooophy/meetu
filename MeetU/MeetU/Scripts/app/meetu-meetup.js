@@ -34,7 +34,7 @@
                 return js.some(function (j) { return j.userId == $scope.userId; });
             };
             //
-            //  Handle join and unjoin toggle button  
+            //  Handle join/quit  button  
             //
             $scope.toggleJoin = function (mview) {
                 if ($scope.isIn(mview.joins)) {
@@ -70,7 +70,7 @@
                         });
                     });
                 }
-            }
+            };
             //
             //  Add comment to backend
             //  If succeed, push to local array, otherwise: log it
@@ -109,7 +109,7 @@
             //
             $scope.polishUserName = function (name) {
                 return name.muStrip('@').muCapitalizeFirstLetter();
-            }
+            };
         });//End of controller
     //
     //  Strip the string specified
