@@ -44,12 +44,7 @@
                     }).$promise.then(
                     // if success:
                     function () {
-                        for (var i in mview.joins) {
-                            if (mview.joins[i].userId == $scope.userId) {
-                                mview.joins.splice(i, 1);
-                                break;
-                            }
-                        }
+                        mview.joins.splice(mview.joins.indexOf($scope.userId), 1);
                     },
                     //if rejected:
                     function (e) {
