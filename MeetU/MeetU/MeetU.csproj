@@ -364,7 +364,6 @@
     <Compile Include="Models\MeetupViewModel.cs" />
     <Compile Include="Models\ProfileDataUri.cs" />
     <Compile Include="Models\ProfileImage.cs" />
-    <Compile Include="Models\Watch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
