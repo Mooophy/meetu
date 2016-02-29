@@ -473,9 +473,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Meetups\Create.cshtml" />
-    <Content Include="Views\Meetups\Delete.cshtml" />
-    <Content Include="Views\Meetups\Details.cshtml" />
-    <Content Include="Views\Meetups\Edit.cshtml" />
     <Content Include="Views\Meetups\Index.cshtml" />
     <Content Include="Views\Home\TestNg.cshtml" />
   </ItemGroup>
