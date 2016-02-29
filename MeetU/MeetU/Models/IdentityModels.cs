@@ -45,6 +45,5 @@ namespace MeetU.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProfileImage> ProfileImages { get; set; }
         public DbSet<ProfileDataUri> ProfileDataUri { get; set; } 
-
     }
 }

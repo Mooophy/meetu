@@ -351,7 +351,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Domain\Tag.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Join.cs" />
