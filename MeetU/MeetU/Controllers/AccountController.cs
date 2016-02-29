@@ -179,7 +179,7 @@ namespace MeetU.Controllers
                     mailer.IsHtml = true;
                     mailer.Send();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Meetups");
                 }
                 AddErrors(result);
             }
@@ -408,7 +408,7 @@ namespace MeetU.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Meetups");
         }
 
         //
@@ -465,7 +465,7 @@ namespace MeetU.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Meetups");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
