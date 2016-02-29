@@ -205,7 +205,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
@@ -476,8 +475,6 @@
     <Content Include="Views\Tags\Details.cshtml" />
     <Content Include="Views\Tags\Edit.cshtml" />
     <Content Include="Views\Tags\Index.cshtml" />
-    <Content Include="Views\Design\DateTimePicker.cshtml" />
-    <Content Include="Views\Design\BootStrap.cshtml" />
     <Content Include="Views\Meetups\Create.cshtml" />
     <Content Include="Views\Meetups\Delete.cshtml" />
     <Content Include="Views\Meetups\Details.cshtml" />

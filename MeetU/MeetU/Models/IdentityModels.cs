@@ -22,7 +22,6 @@ namespace MeetU.Models
             return userIdentity;
         }
     }
-
     //
     //  To be abstract away as a single layer.
     //
@@ -41,7 +40,6 @@ namespace MeetU.Models
         public DbSet<Domain.Tag> Tags { get; set; }
         public DbSet<Meetup> Meetups { get; set; }
         public DbSet<Join> Joins { get; set; }
-        //public DbSet<Watch> Watches { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProfileImage> ProfileImages { get; set; }
         public DbSet<ProfileDataUri> ProfileDataUri { get; set; } 
