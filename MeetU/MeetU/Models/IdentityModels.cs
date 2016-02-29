@@ -37,7 +37,6 @@ namespace MeetU.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Domain.Tag> Tags { get; set; }
         public DbSet<Meetup> Meetups { get; set; }
         public DbSet<Join> Joins { get; set; }
         public DbSet<Comment> Comments { get; set; }

@@ -352,10 +352,13 @@
     <Compile Include="Migrations\201602291044238_remove-watch.Designer.cs">
       <DependentUpon>201602291044238_remove-watch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602291134544_remove-tag.cs" />
+    <Compile Include="Migrations\201602291134544_remove-tag.Designer.cs">
+      <DependentUpon>201602291134544_remove-tag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Domain\Tag.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -470,11 +473,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Tags\Create.cshtml" />
-    <Content Include="Views\Tags\Delete.cshtml" />
-    <Content Include="Views\Tags\Details.cshtml" />
-    <Content Include="Views\Tags\Edit.cshtml" />
-    <Content Include="Views\Tags\Index.cshtml" />
     <Content Include="Views\Meetups\Create.cshtml" />
     <Content Include="Views\Meetups\Delete.cshtml" />
     <Content Include="Views\Meetups\Details.cshtml" />
@@ -595,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602291044238_remove-watch.resx">
       <DependentUpon>201602291044238_remove-watch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602291134544_remove-tag.resx">
+      <DependentUpon>201602291134544_remove-tag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
