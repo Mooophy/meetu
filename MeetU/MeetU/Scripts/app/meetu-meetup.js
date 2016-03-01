@@ -3,7 +3,7 @@
 //  used for template file : ~/Meetups/Index.cshtml.
 //
 (function () {
-
+    "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
         .controller('meetupIndexController', function ($scope, $resource) {
@@ -14,24 +14,31 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
+
+            $scope.hasLoaded = false;
+
             //
             //  Queries
             //
-            Meetup.query(function (data) {
+            Meetup.query(function(data) {
                 $scope.meetupViews = data;
-            });
-            Userview.query(function (userViews) {
-                $scope.userId = userViews[0].userId;
-                $scope.userName = userViews[0].userName;
-            });
-            CommentView.query(function (data) {
-                $scope.allCommentViews = data;
+            }).$promise.then(function() {
+                Userview.query(function(userViews) {
+                    $scope.userId = userViews[0].userId;
+                    $scope.userName = userViews[0].userName;
+                }).$promise.then(function() {
+                    CommentView.query(function(data) {
+                        $scope.allCommentViews = data;
+                    }).$promise.then(function() {
+                        $scope.hasLoaded = true;
+                    });
+                });
             });
             //
             //  Check if logged userId has joined.
             //
             $scope.isIn = function (js) {
-                return js.some(function (j) { return j.userId == $scope.userId; });
+                return js.some(function (j) { return j.userId === $scope.userId; });
             };
             //
             //  Handle join/quit  button  
