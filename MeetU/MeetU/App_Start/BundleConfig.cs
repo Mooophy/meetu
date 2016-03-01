@@ -27,19 +27,8 @@ namespace MeetU
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new LessBundle("~/Content/less").Include("~/Content/*.less"));
+            bundles.Add(new LessBundle("~/Content/less").Include(
+                      "~/Content/*.less"));
         }
     }
-    ////
-    ////  For *.less transform
-    ////  Reference: http://www.asp.net/mvc/overview/performance/bundling-and-minification
-    ////
-    //public class LessTransform : IBundleTransform
-    //{
-    //    public void Process(BundleContext context, BundleResponse response)
-    //    {
-    //        response.Content = dotless.Core.Less.Parse(response.Content);
-    //        response.ContentType = "text/css";
-    //    }
-    //}
 }
