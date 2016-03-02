@@ -13,7 +13,7 @@ namespace MeetU.API
     [Authorize]
     public class MeetupsController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Models.DbContext db = new Models.DbContext();
 
         // GET: api/Meetups
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.

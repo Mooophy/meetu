@@ -7,7 +7,7 @@ namespace BackEnd.Tests.Experiments
     public class MoqExperiments
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod()
         {
         }
     }

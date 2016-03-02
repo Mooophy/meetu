@@ -24,7 +24,7 @@ namespace MeetU.API
             public DateTime At { get; set; }
         }
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Models.DbContext db = new Models.DbContext();
 
         //GET: api/Comments
         public IQueryable<CommentView> GetComments()
