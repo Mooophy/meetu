@@ -11,7 +11,7 @@ namespace MeetU.API
 {
     public class LoggedUserController : ApiController
     {
-        private DbContext db = new DbContext();
+        private MuDbContext db = new MuDbContext();
 
         public class UserView
         {

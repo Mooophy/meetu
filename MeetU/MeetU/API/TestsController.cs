@@ -10,7 +10,7 @@ namespace MeetU.API
 {
     public class TestsController : ApiController
     {
-        private DbContext db = new DbContext();
+        private MuDbContext db = new MuDbContext();
 
         [Route("api/Developer/Scot/Now")]
         public DateTime GetTests()

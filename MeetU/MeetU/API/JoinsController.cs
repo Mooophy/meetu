@@ -15,7 +15,7 @@ namespace MeetU.API
 {
     public class JoinsController : ApiController
     {
-        private Models.DbContext db = new Models.DbContext();
+        private Models.MuDbContext db = new Models.MuDbContext();
 
         // GET: api/Joins
         public IQueryable<Join> GetJoins()

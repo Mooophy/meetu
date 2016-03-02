@@ -13,7 +13,7 @@ namespace MeetU.Controllers
     [Authorize]
     public class MeetupsController : Controller
     {
-        private Models.DbContext db = new Models.DbContext();
+        private Models.MuDbContext db = new Models.MuDbContext();
 
         // GET: Meetups
         public async Task<ActionResult> Index()

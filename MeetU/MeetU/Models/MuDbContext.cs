@@ -7,16 +7,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MeetU.Models
 {
-    public class DbContext : IdentityDbContext<ApplicationUser>
+    public class MuDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbContext()
+        public MuDbContext()
             : base("MeetUDB", throwIfV1Schema: false)
         {
         }
 
-        public static DbContext Create()
+        public static MuDbContext Create()
         {
-            return new DbContext();
+            return new MuDbContext();
         }
 
         public DbSet<Meetup> Meetups { get; set; }
