@@ -1,4 +1,8 @@
-﻿using System.Data.Entity;
+﻿//
+//  The unique database context used in this project
+//  @Yue
+//
+using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MeetU.Models

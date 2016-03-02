@@ -1,4 +1,7 @@
-﻿using System;
+﻿//
+//  This controller to return views of meetup index and create pages.
+//  
+using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Mvc;

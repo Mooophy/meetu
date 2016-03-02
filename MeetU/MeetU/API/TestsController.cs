@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿//
+//  This code can be used to do experiments on API
+//
+
+using System;
 using System.Web.Http;
-using System.Web.Http.Description;
 using MeetU.Models;
-using System.Net.Http.Headers;
 
 namespace MeetU.API
 {
