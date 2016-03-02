@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace MeetU
 {
@@ -27,6 +26,10 @@ namespace MeetU
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            //
+            //  Added to bundle less files.
+            //  @Yue
+            //
             bundles.Add(new LessBundle("~/Content/less").Include(
                       "~/Content/*.less"));
         }
