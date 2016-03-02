@@ -1,9 +1,7 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeetU.Models
@@ -21,24 +19,5 @@ namespace MeetU.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
-    //
-    //  To be abstract away as a single layer.
-    //
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("MeetUDB", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
-        public DbSet<Meetup> Meetups { get; set; }
-        public DbSet<Join> Joins { get; set; }
-        public DbSet<Comment> Comments { get; set; }
     }
 }
