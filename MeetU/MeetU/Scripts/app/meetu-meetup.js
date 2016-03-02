@@ -6,7 +6,7 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
-        .controller('meetupIndexController', function ($scope, $resource) {
+        .controller('meetupIndexController', function ($scope, $resource, $q) {
             //
             //  Lazy resources
             //
@@ -15,25 +15,25 @@
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
 
-            $scope.hasLoaded = false;
-
             //
             //  Queries
             //
-            Meetup.query(function(data) {
-                $scope.meetupViews = data;
-            }).$promise.then(function() {
+            $scope.hasLoaded = false;
+            $q.all([
+                Meetup.query(function(data) {
+                    $scope.meetupViews = data;
+                }),
                 Userview.query(function(userViews) {
                     $scope.userId = userViews[0].userId;
                     $scope.userName = userViews[0].userName;
-                }).$promise.then(function() {
-                    CommentView.query(function(data) {
-                        $scope.allCommentViews = data;
-                    }).$promise.then(function() {
-                        $scope.hasLoaded = true;
-                    });
-                });
+                }),
+                CommentView.query(function(data) {
+                    $scope.allCommentViews = data;
+                })
+            ]).then(function() {
+                $scope.hasLoaded = true;
             });
+
             //
             //  Check if logged userId has joined.
             //
