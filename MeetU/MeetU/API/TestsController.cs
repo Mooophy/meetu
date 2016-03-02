@@ -19,20 +19,5 @@ namespace MeetU.API
         {
             return DateTime.Now;
         }
-
-        [Route("api/Test/Image")]
-        public HttpResponseMessage GetImage()
-        {
-            var profileImage = db.ProfileImages
-                .FirstOrDefault(
-                    p => p.UserId == "21dad012-aa70-4d43-b824-5fa7a94d0f82"
-                );
-
-            var response = new HttpResponseMessage();
-            response.Content = new ByteArrayContent(profileImage.Image);
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/");
-            response.StatusCode = HttpStatusCode.OK;
-            return response;
-        }
     }
 }

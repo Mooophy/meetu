@@ -203,8 +203,6 @@
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
-    <Compile Include="API\ProfileDataUrisController.cs" />
-    <Compile Include="API\ProfileImagesController.cs" />
     <Compile Include="API\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -228,8 +226,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Models\MeetupViewModel.cs" />
-    <Compile Include="Models\ProfileDataUri.cs" />
-    <Compile Include="Models\ProfileImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
