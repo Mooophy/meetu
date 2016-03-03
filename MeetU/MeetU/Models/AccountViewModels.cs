@@ -48,6 +48,11 @@ namespace MeetU.Models
 
     public class LoginViewModel
     {
+        public LoginViewModel()
+        {
+            RememberMe = true;
+        }
+
         [Required]
         [StringLength(100)]
         [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only English alphabets allowed")]
