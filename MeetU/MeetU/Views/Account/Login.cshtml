@@ -6,9 +6,8 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3" style="padding: 4em;">
-
-        <div class="panel panel-default" style="box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19)">
-            <div class="panel-heading ">Log in</div>
+        <div class="panel panel-primary" style="box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19)">
+            <div class="panel-heading ">Great to Meet.u</div>
             <div class="panel-body">
                 <div class="col-md-8 col-md-offset-2">
                     <section id="loginForm">
@@ -17,18 +16,19 @@
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @style = "max-width: none" })
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @style = "max-width: none", @placeholder = "User Name" })
                                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @style = "max-width: none" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @style = "max-width: none", @placeholder = "Password" })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Go!" class="btn btn-info btn-block" style="max-width: none" />
+                                <input type="submit" value="Go!" class="btn btn-primary btn-block" style="max-width: none" />
                             </div>
                         }
                     </section>
+                    <hr />
                     <section id="socialLoginForm">
                         @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
                     </section>
