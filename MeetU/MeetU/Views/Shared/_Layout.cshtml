@@ -8,8 +8,8 @@
     @Styles.Render("~/Content/less")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style="background-color: #E4E8EA">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top main-toolbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,11 +29,11 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content main-content-wrapper">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Yue Wang</p>
+        <footer class="main-content-footer">
+            <p>&copy; @DateTime.Now.Year copyright - Yue Wang</p>
         </footer>
     </div>
 

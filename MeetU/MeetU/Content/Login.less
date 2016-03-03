@@ -1,0 +1,59 @@
+﻿@import "variables.less";
+
+body {
+    min-width: 380px;
+}
+
+@media (min-width: 380px) {
+    .login-content-wrapper {
+        padding: 15px;
+        height: 600px;
+        background-image: url('Images/login-page-background.jpg');
+        background-position: left top;
+        background-repeat: no-repeat;
+
+        .login-wrapper {
+            background-color: @login-form-backgroud;
+            width: 350px;
+            height: 450px;
+            float: right;
+            margin: 70px 30px;
+        }
+    }
+}
+
+.login-wrapper {
+    .login-heading {
+        height: 70px;
+        color: @text-color-light;
+        background-color: @login-form-heading-backgroud;
+        font-size: @login-heading-font-size;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 20px 30px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .login-body {
+        background-color: transparent;
+        padding-top: 30px;
+        border-radius: 0px;
+
+        .login-input {
+            margin-bottom: 24px;
+            height: 40px;
+        }
+
+        .login-separator{
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .login-button {
+            height: 40px;
+        }
+    }
+}

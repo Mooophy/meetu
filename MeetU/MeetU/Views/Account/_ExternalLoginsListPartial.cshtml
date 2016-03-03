@@ -9,8 +9,8 @@
         <div id="socialLoginList" class="form-group">
             @foreach (AuthenticationDescription p in loginProviders)
             {
-                <button type="submit" class="btn btn-danger btn-block" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
-                    Log in With @p.AuthenticationType
+                <button type="submit" class="btn btn-success btn-block form-control login-button" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                    Log in with @p.AuthenticationType
                 </button>
             }
         </div>
