@@ -7,6 +7,9 @@ using Moq;
 using MeetU.Models;
 using MeetU.API;
 
+//
+//  This experiment shows how to unit test an API, using Moq.
+//
 namespace BackEnd.Tests.Experiments
 {
     [TestClass]
@@ -54,6 +57,7 @@ namespace BackEnd.Tests.Experiments
             //  Tests
             //  
 
+            // GET: api/Joins
             {
                 var js = c.GetJoins();
                 Assert.AreEqual(2, js.Count());
