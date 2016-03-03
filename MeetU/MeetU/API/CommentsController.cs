@@ -51,7 +51,7 @@ namespace MeetU.API
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> GetComment(int id)
         {
-            Comment comment = await db.Comments.FindAsync(id);
+            Comment comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
             if (comment == null)
             {
                 return NotFound();
@@ -115,7 +115,7 @@ namespace MeetU.API
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> DeleteComment(int id)
         {
-            Comment comment = await db.Comments.FindAsync(id);
+            Comment comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
             if (comment == null)
             {
                 return NotFound();
