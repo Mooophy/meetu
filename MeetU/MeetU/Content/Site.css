@@ -25,19 +25,23 @@ textarea {
 
 /*Below is added by Yue*/
 
-hr{
+hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.jumbotron{
+.jumbotron {
     margin-bottom: 0px;
 }
 
-.small{
-    font-size:80%
+.small {
+    font-size: 80%;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+    display: none !important;
+}
+
+.toShowWhereImagesToStore {
+    background-image: url(Images/bg.jpg);
 }
