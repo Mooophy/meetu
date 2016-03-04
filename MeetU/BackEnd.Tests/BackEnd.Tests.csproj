@@ -70,6 +70,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="API\JoinsControllerTest.cs" />
     <Compile Include="Experiments\ImageExperiments.cs" />
     <Compile Include="Experiments\MoqExperiments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
