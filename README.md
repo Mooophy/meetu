@@ -5,10 +5,10 @@ A simple social web app developped, and used, by me and my friends. Built with `
  * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
 
-Creator:
+---
+
+By:
  * [@Yue Wang](https://github.com/Mooophy)
- 
-Collaborator:
  * [@Rongrong Luo](https://github.com/rong4188)
 
 
