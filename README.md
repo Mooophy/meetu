@@ -7,12 +7,12 @@ A simple social web app developped, and used, by me and my friends.
  * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
 
---
+
 with:
 ```java
 Asp.net MVC 4 + webapi 2 + Entity Framework 6 + SqlServer 2014 + Angular.js + Bootstrap 3 + etc
 ```
---
+
 By:
  * [@Yue Wang](https://github.com/Mooophy), [@Rongrong Luo](https://github.com/rong4188), [@feedfedfat](https://github.com/scottszb1987).
 
