@@ -15,9 +15,6 @@ Developed with:
 Tech Stack = Asp.Net MVC 4 + Web Api 2  + Sql Server 2014 + Angular.js + Bootstrap 3 + etc
 ```
 
-
--
-
 Developed by: 
 
 &nbsp;&nbsp;&nbsp;&nbsp;[@Yue Wang](https://github.com/Mooophy), [@Rongrong Luo](https://github.com/rong4188), [@feedfedfat](https://github.com/scottszb1987).
