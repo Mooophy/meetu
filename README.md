@@ -1,6 +1,6 @@
 # [Meet.u](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Mooophy/meet-u)
 
-A simple social web app developped, and used, by me and my friends. 
+A simple social web app developed, and used, by me and my friends. 
 
  * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) to use.
  * [GitHub](https://github.com/Mooophy/meetu) for code repository.
