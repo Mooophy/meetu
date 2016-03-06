@@ -10,7 +10,7 @@ A simple social web app developped, and used, by me and my friends.
 --
 with:
 ```java
-asp.net mvc + webapi + entity framework + sqlserver + angular.js + twitter's bootstrap + etc
+Asp.net MVC 4 + webapi 2 + Entity Framework 6 + SqlServer 2014 + Angular.js + Bootstrap 3 + etc
 ```
 --
 By:
