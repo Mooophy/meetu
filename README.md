@@ -11,8 +11,8 @@ A small social web app developed, and being used, by me and my friends.
 -
 Developed with:
 
-```java
-Tech Stack = Asp.Net MVC 4 + Web Api 2 + Entity Framework 6 + Sql Server 2014 + Angular.js + Bootstrap 3 + etc
+```js
+Tech Stack = Asp.Net MVC 4 + Web Api 2  + Sql Server 2014 + Angular.js + Bootstrap 3 + etc
 ```
 
 
