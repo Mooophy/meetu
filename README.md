@@ -2,21 +2,8 @@
 
 A small social web app developed, and being used, by me and my friends. 
 
-```js
-meet.u =
-
-  developed_with(
-    {
-      front end:  [ Angular.js, Bootstrap 3, Less, Jasmine ],
-      back end:   [ Asp.Net MVC 4, Web Api 2, Entity Framework 6 ],
-      database:   [ Sql Server 2014 ],
-      hosting:    [ AWS EC2, AWS RDS ]
-    }
-  )
-
-  .developed_by(
-      @Yue Wang, @Rongrong Luo, @feedfedfat
-  )
+```java
+Tech Stack = Asp.Net MVC 4 + Web Api 2 + Entity Framework 6 + Sql Server 2014 + Angular.js + Bootstrap 3 + etc;
 ```
 
  * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) to use.
@@ -26,9 +13,7 @@ meet.u =
 
 
 
-```java
-Tech Stack = Asp.Net MVC 4 + Web Api 2 + Entity Framework 6 + Sql Server 2014 + Angular.js + Bootstrap 3 + etc;
-```
+
 -
 
 By: 
