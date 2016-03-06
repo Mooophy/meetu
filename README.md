@@ -2,16 +2,14 @@
 
 A small social web app developed, and being used, by me and my friends. 
 
-```java
-Tech Stack = Asp.Net MVC 4 + Web Api 2 + Entity Framework 6 + Sql Server 2014 + Angular.js + Bootstrap 3 + etc;
-```
-
  * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) to use.
  * [GitHub](https://github.com/Mooophy/meetu) for code repository.
  * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
 
-
+```java
+Tech Stack = Asp.Net MVC 4 + Web Api 2 + Entity Framework 6 + Sql Server 2014 + Angular.js + Bootstrap 3 + etc;
+```
 
 
 -
