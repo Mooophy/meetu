@@ -15,7 +15,19 @@ namespace MeetU.API
 {
     public class JoinsController : ApiController
     {
-        private Models.MuDbContext db = new Models.MuDbContext();
+        private readonly MuDbContext db;
+
+        public JoinsController()
+        {
+            db = new MuDbContext();
+        }
+        //
+        //  Database Context DI
+        //
+        public JoinsController(MuDbContext context)
+        {
+            db = context;
+        }
 
         // GET: api/Joins
         public IQueryable<Join> GetJoins()
@@ -24,17 +36,17 @@ namespace MeetU.API
         }
 
         // GET: api/Joins/5
-        [ResponseType(typeof(Join))]
-        public async Task<IHttpActionResult> GetJoin(int id)
-        {
-            Join join = await db.Joins.FindAsync(id);
-            if (join == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Join))]
+        //public async Task<IHttpActionResult> GetJoin(int id)
+        //{
+        //    Join join = await db.Joins.FindAsync(id);
+        //    if (join == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(join);
-        }
+        //    return Ok(join);
+        //}
 
         // PUT: api/Joins/5
         [ResponseType(typeof(void))]
@@ -106,7 +118,9 @@ namespace MeetU.API
         [ResponseType(typeof(Join))]
         public async Task<IHttpActionResult> DeleteJoin(int meetupId, string userId)
         {
-            Join join = await db.Joins.FindAsync(meetupId, userId);
+            Join join = await db.Joins.FirstOrDefaultAsync(
+                x => x.MeetupId == meetupId && x.UserId == userId
+                );
             if (join == null)
             {
                 return NotFound();

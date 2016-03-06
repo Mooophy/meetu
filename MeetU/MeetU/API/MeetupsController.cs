@@ -41,7 +41,7 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FindAsync(id);
+            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
@@ -104,7 +104,7 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> DeleteMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FindAsync(id);
+            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
