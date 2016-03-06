@@ -9,7 +9,6 @@ A simple social web app developped, and used, by me and my friends.
 
 
 
--
 
 With:
 ```java
