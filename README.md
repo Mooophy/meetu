@@ -2,5 +2,9 @@
 
 A social web app developped by, and for, me and my friends.
 
+ * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) to use the app.
+ * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
+ * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the whole tech stack we are using.
+
 
 
