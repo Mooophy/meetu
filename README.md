@@ -12,7 +12,7 @@ with:
 ```java
 Asp.net MVC 4 + webapi 2 + Entity Framework 6 + SqlServer 2014 + Angular.js + Bootstrap 3 + etc
 ```
-
+-
 By:
  * [@Yue Wang](https://github.com/Mooophy), [@Rongrong Luo](https://github.com/rong4188), [@feedfedfat](https://github.com/scottszb1987).
 
