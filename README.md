@@ -2,13 +2,11 @@
 
 A simple social web app developped, and used, by me and my friends. Built with `asp.net + angularjs + etc`.
  * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) to use.
+ * [GitHub](https://github.com/Mooophy/meetu) for code repository.
  * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
 
-
-
 --
-
 By:
  * [@Yue Wang](https://github.com/Mooophy), [@Rongrong Luo](https://github.com/rong4188), [@feedfedfat](https://github.com/scottszb1987).
 
