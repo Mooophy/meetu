@@ -8,7 +8,7 @@ A simple social web app developped, and used, by me and my friends.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
 
 
-with:
+With:
 ```java
 Asp.net MVC 4 + webapi 2 + Entity Framework 6 + SqlServer 2014 + Angular.js + Bootstrap 3 + etc
 ```
