@@ -10,7 +10,7 @@ A simple social web app developped, and used, by me and my friends. Built with `
 --
 
 By:
- * [@Yue Wang](https://github.com/Mooophy) [@Rongrong Luo](https://github.com/rong4188) [@feedfedfat](https://github.com/scottszb1987)
+ * [@Yue Wang](https://github.com/Mooophy), [@Rongrong Luo](https://github.com/rong4188), [@feedfedfat](https://github.com/scottszb1987).
 
 
 
