@@ -16,99 +16,87 @@
 }
 
 @media (min-width: @max-width-for-phone) {
-
-    .login-phone-mode-homepage-wrapper,.login-footer {
-        display: none;
-    }
-
-    .login-content-wrapper {
-        padding: 15px;
-        height: 600px;
-        background-image: url('Images/login-page-background.jpg');
-        background-position: left top;
-        background-repeat: no-repeat;
-
-        .login-wrapper {
-            background-color: @login-form-backgroud;
-            width: 350px;
-            height: 450px;
-            float: right;
-            margin: 70px 30px;
-        }
+    .login-wrapper {
+        width: 350px;
+        height: 450px;
     }
 }
 
 @media (max-width: @max-width-for-phone) {
-    .login-phone-mode-homepage-wrapper {
-        background-color: @main-background-color-dark;
-        .u-full-size();
+    .login-wrapper {
+        width: 280px;
+        height: 400px;
     }
+}
 
-    .login-content-wrapper {
+.login-phone-mode-homepage-wrapper {
+    background-color: @main-background-color-dark;
+    .u-full-size();
+}
 
-        .login-phone-mode-homepage {
-            width: 240px;
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            text-align: center;
+.login-content-wrapper {
+    height: calc(~"200vh - 50px");
 
-            .login-phone-mode-logo {
-                width: 100px;
-            }
+    .login-phone-mode-homepage {
+        width: 240px;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
 
-            .login-phone-mode-text {
-                width: 200px;
-            }
+        .login-phone-mode-logo {
+            width: 100px;
         }
 
-        .login-phone-mode-homepage-arrow-wrapper {
-            position: absolute;
-            top: 90%;
-            .u-horizontal-alignment();
-        }
-
-        .login-phone-mode-homepage-arrow {
-            color: #FFFFFE;
-            padding: 10px;
-            background-color: fade(@heading-background-color-dark, 50%);
-            font-size: 24px;
-            border-radius: 50px;
-            animation: bounce 2.5s infinite;
-        }
-
-        .login-wrapper {
-            background-color: @login-form-backgroud;
-            width: 280px;
-            height: 400px;
-            position: absolute;
-            top: 115%;
-            .u-horizontal-alignment();
-            margin-bottom: 100px;
-
-            .login-heading {
-                padding: 20px 15px 0 15px;
-            }
-
-            .login-footer {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-
-                .login-footer-text {
-                    padding: 3px;
-                    margin: 0;
-                    font-size: 10px;
-                    color: rgb(210, 95, 0);
-                }
-            }
+        .login-phone-mode-text {
+            width: 200px;
         }
     }
 
-    .main-content-footer {
-        display: none;
+    .login-phone-mode-homepage-arrow-wrapper {
+        position: absolute;
+        top: 90%;
+        .u-horizontal-alignment();
     }
+
+    .login-phone-mode-homepage-arrow {
+        color: #FFFFFE;
+        padding: 10px;
+        background-color: fade(@heading-background-color-dark, 50%);
+        font-size: 24px;
+        border-radius: 50px;
+        animation: bounce 2.5s infinite;
+    }
+
+    .login-wrapper {
+        background-color: @login-form-backgroud;
+        position: absolute;
+        top: 115%;
+        .u-horizontal-alignment();
+        margin-bottom: 100px;
+
+        .login-heading {
+            padding: 20px 15px 0 15px;
+        }
+
+        .login-footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            .login-footer-text {
+                padding: 3px;
+                margin: 0;
+                font-size: 10px;
+                color: rgb(210, 95, 0);
+            }
+        }
+    }
+}
+
+.main-content-footer {
+    display: none;
 }
 
 .login-wrapper {
