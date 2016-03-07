@@ -1,9 +1,7 @@
-[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Mooophy/meet-u)
-
 ![alt text](MeetU/MeetU/Content/Images/Logos/meetu-logo-160x160.png "")
 ![alt text](MeetU/MeetU/Content/Images/Logos/MeetU-text-240x80.png "")
 
-#[Meet.u](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups)
+#[Meet.u](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Mooophy/meet-u)
 
 A small social web app developed, and being used, by me and my friends. 
 
