@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 using MeetU.Models;
 
 namespace MeetU.API
@@ -121,6 +122,14 @@ namespace MeetU.API
             if (comment == null)
             {
                 return NotFound();
+            }
+            //
+            //  To check if logged user is comment's author
+            //  @Yue
+            //
+            if (comment.By != User.Identity.GetUserId())
+            {
+                return BadRequest();
             }
 
             db.Comments.Remove(comment);
