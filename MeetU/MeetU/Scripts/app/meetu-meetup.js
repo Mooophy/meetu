@@ -14,7 +14,6 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
-
             //
             //  Queries
             //
@@ -33,7 +32,6 @@
             ]).then(function () {
                 $scope.hasLoaded = true;
             });
-
             //
             //  Check if logged userId has joined.
             //
@@ -81,10 +79,16 @@
                 var c = new CommentView({
                     "content": mview.newComment,
                     "by": $scope.userId,
-                    "meetupId": mview.meetup.id,
+                    "meetupId": mview.meetup.id
                 });
                 c.$save(c, function (response) {
-                    $scope.allCommentViews.push(response);
+                    $scope.allCommentViews.push({
+                        "id": response.id,
+                        "content": mview.newComment,
+                        "by": $scope.userName,
+                        "meetupId": mview.meetup.id,
+                        "at": response.at
+                    });
                     mview.newComment = "";
                 },
                     function (e) {
