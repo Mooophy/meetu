@@ -20,17 +20,17 @@
             //
             $scope.hasLoaded = false;
             $q.all([
-                Meetup.query(function(data) {
+                Meetup.query(function (data) {
                     $scope.meetupViews = data;
                 }),
-                Userview.query(function(userViews) {
+                Userview.query(function (userViews) {
                     $scope.userId = userViews[0].userId;
                     $scope.userName = userViews[0].userName;
                 }),
-                CommentView.query(function(data) {
+                CommentView.query(function (data) {
                     $scope.allCommentViews = data;
                 })
-            ]).then(function() {
+            ]).then(function () {
                 $scope.hasLoaded = true;
             });
 
@@ -83,16 +83,10 @@
                     "by": $scope.userId,
                     "meetupId": mview.meetup.id,
                 });
-                c.$save(
-                    function () {
-                        $scope.allCommentViews.push({
-                            "content": mview.newComment,
-                            "by": $scope.userName,
-                            "meetupId": mview.meetup.id,
-                            "at": new Date
-                        });
-                        mview.newComment = "";
-                    },
+                c.$save(c, function (response) {
+                    $scope.allCommentViews.push(response);
+                    mview.newComment = "";
+                },
                     function (e) {
                         console.log(e);
                     }
@@ -103,8 +97,8 @@
             //
             $scope.joinedUserNames = function (js) {
                 return js.map(function (j) {
-                        return '@' + j.userName.muStrip('@').muCapitalizeFirstLetter();
-                    }).join(' ');
+                    return '@' + j.userName.muStrip('@').muCapitalizeFirstLetter();
+                }).join(' ');
             };
             //
             //  Strip and Capitalize first letter for scope
