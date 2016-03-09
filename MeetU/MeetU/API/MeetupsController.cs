@@ -39,7 +39,7 @@ namespace MeetU.API
             return meetups;
         }
 
-        // GET: api/Meetups?first=the-first-index&amount=how-many-to-fetch
+        // GET: api/Meetups?start=the-starting-index&amount=how-many-to-fetch
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         // To be abstact together with the api controller: GetMeetups() 
         public IQueryable<MeetupViewModel> GetMeetups(int start, int amount)
