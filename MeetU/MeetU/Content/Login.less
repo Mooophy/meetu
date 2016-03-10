@@ -57,11 +57,11 @@
     .login-phone-mode-homepage-arrow-wrapper {
         position: absolute;
         top: 90%;
-        .u-horizontal-alignment();
+        .u-horizontal-alignment-center();
     }
 
     .login-phone-mode-homepage-arrow {
-        color: #FFFFFE;
+        color: @text-color-light;
         padding: 10px;
         background-color: fade(@heading-background-color-dark, 50%);
         font-size: 24px;
@@ -73,7 +73,7 @@
         background-color: @login-form-backgroud;
         position: absolute;
         top: 115%;
-        .u-horizontal-alignment();
+        .u-horizontal-alignment-center();
         margin-bottom: 100px;
 
         .login-heading {
@@ -89,7 +89,7 @@
                 padding: 3px;
                 margin: 0;
                 font-size: 10px;
-                color: rgb(210, 95, 0);
+                color: @text-color-dark;
             }
         }
     }
@@ -116,21 +116,21 @@
 
     .login-body {
         background-color: transparent;
-        padding-top: 30px;
+        padding-top: @padding-base * 2.5;
         border-radius: 0px;
 
         .login-input {
-            margin-bottom: 24px;
-            height: 40px;
+            margin-bottom: @padding-base * 2;
+            height: @login-form-control-height;
         }
 
         .login-separator {
-            margin-top: 12px;
-            margin-bottom: 12px;
+            margin-top: @separator-margin;
+            margin-bottom: @separator-margin;
         }
 
         .login-button {
-            height: 40px;
+            height: @login-form-control-height;
         }
     }
 }
