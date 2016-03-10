@@ -96,23 +96,6 @@
                     }
                 );
             };
-
-            $scope.deleteComment = function (commentId) {
-                CommentView
-                    .delete({ id: commentId })
-                    .$promise
-                    .then(deleteLocally, logError);
-
-                function deleteLocally() {
-                    $scope
-                        .allCommentViews
-                        .splice($scope.allCommentViews.indexOf(commentId), 1);
-                }
-                function logError(e) {
-                    console.log(e);
-                }
-            };
-
             //
             //  Generate joined user names 
             //

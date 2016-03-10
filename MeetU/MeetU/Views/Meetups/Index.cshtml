@@ -37,7 +37,7 @@
                                 </span>
                                 <br /><br />
                                 <span class="label label-default">Who&nbsp;&nbsp;&nbsp;</span>
-                                {{ joinedUserNames(meetupView.joins) }}
+                                {{ joinedUserNames(meetupView.joins)}}
                                 <br />
                                 <span class="label label-default">When&nbsp;</span>
                                 {{ meetupView.meetup.when | date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
@@ -47,17 +47,12 @@
                             </p>
                             <hr />
                             <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id } | limitTo : numLimit || (numLimit = 5)">
-                                <div ng-init="cv.isDeleted = false" ng-show="! cv.isDeleted">
-                                    <p class="small">
-                                        {{ cv.content }} &nbsp;&nbsp;&nbsp;
-                                        <span class="text-primary">{{ polishUserName( cv.by ) }}&nbsp; </span>
-                                        <span class="text-primary" am-time-ago=cv.at></span>
-                                        <a class="alert-link" style="cursor: pointer" ng-show="cv.by == userName" ng-click="deleteComment( cv.id ); cv.isDeleted = true; "> | Delete</a>
-                                    </p>
-                                    <hr style="margin-top: 10px; margin-bottom: 10px" />
-                                </div>
+                                <p class="small">
+                                    {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ polishUserName( cv.by ) }}&nbsp; </span> <span class="text-primary" am-time-ago=cv.at></span>
+                                </p>
+                                <hr style="margin-top: 10px; margin-bottom: 10px" />
                             </div>
-                            <div class="comment-paging-trigger" ng-click="numLimit = numLimit + 5;" ng-hide="numLimit >= ( allCommentViews | filter : { meetupId : meetupView.meetup.id } ).length">Show more comments...</div>
+                            <div class="comment-paging-trigger" ng-click="numLimit = numLimit + 5;" ng-hide="numLimit >= (allCommentViews | filter : { meetupId : meetupView.meetup.id }).length">Show more comments...</div>
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" style="max-width: 100%" placeholder="How about you?" ng-model="meetupView.newComment">
                                 <span class="input-group-btn">
