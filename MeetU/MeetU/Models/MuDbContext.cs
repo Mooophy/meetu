@@ -24,5 +24,6 @@ namespace MeetU.Models
 
         public virtual IDbSet<Join> Joins { get; set; }
         public virtual IDbSet<Comment> Comments { get; set; }
+        public virtual IDbSet<Profile> Profiles { get; set; }
     }
 }
