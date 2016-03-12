@@ -97,6 +97,22 @@
                 );
             };
             //
+            //  Delete comment 
+            //
+            $scope.deleteComment = function (commentId) {
+                var CommentView = $resource('/api/Comments/');
+                if (confirm("Are you sure you want to delete this comment?")) {
+                    CommentView
+                        .delete({ id: commentId })
+                        .$promise
+                        .then(function () {
+                            CommentView.query(function (data) {
+                                $scope.allCommentViews = data;
+                            });
+                        });
+                }
+            };
+            //
             //  Generate joined user names 
             //
             $scope.joinedUserNames = function (js) {
