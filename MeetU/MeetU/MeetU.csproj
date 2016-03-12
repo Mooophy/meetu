@@ -222,6 +222,14 @@
     <Compile Include="Migrations\201603110120509_add-profile.Designer.cs">
       <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.cs" />
+    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.Designer.cs">
+      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603120335448_remove-google-id.cs" />
+    <Compile Include="Migrations\201603120335448_remove-google-id.Designer.cs">
+      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -362,6 +370,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603110120509_add-profile.resx">
       <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.resx">
+      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120335448_remove-google-id.resx">
+      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
