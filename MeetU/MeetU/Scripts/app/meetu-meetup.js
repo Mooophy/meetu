@@ -6,7 +6,7 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
-        .controller('meetupIndexController', function ($scope, $resource, $q) {
+        .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
             //
             //  Lazy resources
             //
@@ -53,7 +53,7 @@
                     },
                     //if rejected:
                     function (e) {
-                        console.log(e);
+                        $log.error(e);
                     });
                 }
                 else {
@@ -92,7 +92,7 @@
                     mview.newComment = "";
                 },
                     function (e) {
-                        console.log(e);
+                        $log.error(e);
                     }
                 );
             };
@@ -106,9 +106,10 @@
                         .delete({ id: commentId })
                         .$promise
                         .then(function () {
-                            CommentView.query(function (data) {
-                                $scope.allCommentViews = data;
-                            });
+                            var comments = $scope.allCommentViews;
+                            comments.splice(comments.findIndex(function(c) { return c.id === commentId; }), 1);
+                        }, function(message) {
+                            $log.error(message);
                         });
                 }
             };
