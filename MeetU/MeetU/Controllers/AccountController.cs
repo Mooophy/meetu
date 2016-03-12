@@ -18,6 +18,7 @@ namespace MeetU.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private MuDbContext db = new MuDbContext();
 
         public AccountController()
         {
@@ -154,6 +155,18 @@ namespace MeetU.Controllers
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                //
+                //  Create a profile with basic info, using UserName as NickName
+                //
+                var profile = new Profile
+                {
+                    UserId = user.Id,
+                    NickName = user.UserName,
+                    CreatedAt = DateTime.Now,
+                    LoginCount = 0,
+                };
+                db.Profiles.Add(profile);
+                await db.SaveChangesAsync();
 
                 if (result.Succeeded)
                 {
@@ -449,6 +462,8 @@ namespace MeetU.Controllers
                     _signInManager.Dispose();
                     _signInManager = null;
                 }
+
+                db.Dispose();
             }
 
             base.Dispose(disposing);
