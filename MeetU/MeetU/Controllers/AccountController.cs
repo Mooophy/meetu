@@ -81,6 +81,11 @@ namespace MeetU.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    {//increment login count
+                        var userId = db.Users.FirstOrDefault(u => u.UserName == model.UserName).Id;
+                        ++db.Profiles.FirstOrDefault(p => p.UserId == userId).LoginCount;
+                        await db.SaveChangesAsync();
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
