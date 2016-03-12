@@ -13,12 +13,13 @@ namespace MeetU.Models
         [Required]
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
+        [Required]
         public string NickName { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public string Pricture { get; set; }
         public string Gender { get; set; }
         public DateTime CreatedAt { get; set; }
-        public int? LoginCount { get; set; }
+        public int LoginCount { get; set; }
     }
 }

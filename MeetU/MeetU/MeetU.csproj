@@ -230,6 +230,14 @@
     <Compile Include="Migrations\201603120335448_remove-google-id.Designer.cs">
       <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.cs" />
+    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.Designer.cs">
+      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.cs" />
+    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
+      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -376,6 +384,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603120335448_remove-google-id.resx">
       <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120401142_LoginCountCanntBeNull.resx">
+      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
+      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
