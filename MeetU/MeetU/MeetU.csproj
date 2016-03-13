@@ -286,6 +286,7 @@
     <Content Include="Content\Toolbar.less" />
     <Content Include="Content\utilities.less" />
     <Content Include="Content\Meetups.less" />
+    <Content Include="Content\z-index.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
