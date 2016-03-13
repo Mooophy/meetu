@@ -475,6 +475,7 @@ namespace MeetU.Controllers
 
         #region Helpers
         // Used for increment Login count, by specified user id.
+        // @Yue
         private async Task<int> IncrementLoginCountAsync(string userId)
         {
             var loginCount = ++db.Profiles.FirstOrDefault(p => p.UserId == userId).LoginCount;
