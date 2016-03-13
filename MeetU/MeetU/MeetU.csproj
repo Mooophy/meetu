@@ -257,6 +257,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\login-page-background.jpg" />
+    <Content Include="Content\Images\Logos\Logo-with-text-160x80.png" />
+    <Content Include="Content\Images\Logos\Logo-with-text-320x160.png" />
+    <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
+    <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
+    <Content Include="Content\Images\pusheencat.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
@@ -368,7 +375,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
