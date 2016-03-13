@@ -49,7 +49,8 @@
                     }).$promise.then(
                     // if success:
                     function () {
-                        mview.joins.splice(mview.joins.indexOf($scope.userId), 1);
+                        var joins = mview.joins;
+                        joins.splice(joins.findIndex(function (c) { return c.userId === $scope.userId; }), 1);
                     },
                     //if rejected:
                     function (e) {

@@ -1,6 +1,8 @@
 ﻿@import "variables.less";
 @import "utilities.less";
+@import "z-index.less";
 
+@screen-xs-max: 480px;
 @meetup-font-size-sm: 10px;
 @meetup-font-size-md: 12px;
 @meetup-font-size-lg: 16px;
@@ -78,7 +80,25 @@
             color: @meetup-join-button-color-dark;
         }
     }
-
+    @media(max-width: @screen-xs-max){
+        .meetup-join-button-container {
+            margin-top: -10px;
+            padding-left: 5px;
+        }
+        .meetup-join {
+            .meetup-join-button {
+                min-width: 56px;
+                height: 40px;
+            }
+            .meetup-join-count {
+                margin-top: -1px;
+                margin-left: 0px;
+                height: @meetup-join-button-height;
+                min-width: 56px;
+                height: 20px;
+            }
+        }
+    }
     .meetup-detail {
         padding: 0 15px;
         hr {
@@ -102,10 +122,33 @@
     display: inline;
     cursor: pointer;
     padding-left: @padding-base;
-    color: fade(grey, 70%);
+    color: fade(grey, 60%);
     font-size: 11px;
 }
 
 .comment-delete-button:hover {
     color: grey;
+}
+
+
+.meetup-create {
+    position: fixed;
+    height: 30px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: @zIndex-footerbar;
+
+    .meetup-create-button {
+        padding: 8px 8px;
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        font-size: 18px;
+        top: -20px;
+        .u-horizontal-alignment-center();
+        background-color: @meetup-join-button-color-dark;
+        color: @text-color-light;
+    }
 }
