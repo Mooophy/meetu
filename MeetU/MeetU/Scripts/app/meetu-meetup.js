@@ -100,7 +100,6 @@
             //  Delete comment 
             //
             $scope.deleteComment = function (commentId) {
-                var CommentView = $resource('/api/Comments/');
                 if (confirm("Are you sure you want to delete this comment?")) {
                     CommentView
                         .delete({ id: commentId })

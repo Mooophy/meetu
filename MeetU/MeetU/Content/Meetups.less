@@ -1,6 +1,92 @@
 ﻿@import "variables.less";
 @import "utilities.less";
 
+@meetup-font-size-sm: 10px;
+@meetup-font-size-md: 12px;
+@meetup-font-size-lg: 16px;
+
+@meetup-padding-base: 3px;
+
+@meetup-join-button-height: 40px;
+
+@meetup-join-button-color-dark: @text-color-dark;
+@meetup-join-button-color-light: @text-color-light;
+
+.meetup-wrapper {
+    overflow: hidden; // make a BFC to clear float
+    .meetup-from {
+        font-size: @meetup-font-size-sm;
+        padding-bottom: @meetup-padding-base;
+        color: gray;
+    }
+    .meetup-title {
+        font-size: @meetup-font-size-lg;
+        padding-bottom: @meetup-padding-base;
+        font-weight: bold;
+    }
+    .meetup-description {
+        font-size: @meetup-font-size-md;
+        padding-bottom: @meetup-padding-base * 2;
+    }
+    .meetup-brief {
+        overflow: hidden; // make a BFC to clear float
+        padding-bottom: @meetup-padding-base * 4;
+        padding-top: @meetup-padding-base * 4;
+    }
+    .meetup-brief:hover, .meetup-brief:hover {
+        background-color: @main-background-color-dark;
+    }
+
+    .meetup-join {
+        height: @meetup-join-button-height;
+        min-width: 86px;
+        .meetup-join-button {
+            min-width: 56px;
+            height: @meetup-join-button-height;
+            border: 1px solid @meetup-join-button-color-dark;
+            border-radius: 0;
+            text-transform: uppercase;
+            outline:0;
+        }
+        .meetup-join-count {
+            height: @meetup-join-button-height;
+            min-width: 26px;
+            border: 1px solid @meetup-join-button-color-dark;
+            border-radius: 0;
+            text-transform: uppercase;
+            outline:0;
+        }
+    }
+    .meetup-join:not(.meetup-join-joined) {
+        .meetup-join-button {
+            background-color: transparent;
+            color: @meetup-join-button-color-dark;
+        }
+        .meetup-join-count {
+            background-color: transparent;
+            color: @meetup-join-button-color-dark;
+        }
+    }
+
+    .meetup-join.meetup-join-joined {
+        .meetup-join-button {
+            background-color: @meetup-join-button-color-dark;
+            color: @meetup-join-button-color-light;
+        }
+        .meetup-join-count {
+            background-color: transparent;
+            color: @meetup-join-button-color-dark;
+        }
+    }
+
+    .meetup-detail {
+        padding: 0 15px;
+        hr {
+            opacity: 0.7;
+        }
+    }
+}
+
 .comment-paging-trigger {
     width: 100%;
     font-weight: bold;
