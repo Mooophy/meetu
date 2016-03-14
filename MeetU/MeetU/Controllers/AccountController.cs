@@ -155,6 +155,10 @@ namespace MeetU.Controllers
         {
             if (ModelState.IsValid)
             {
+                //
+                //  To be abstracted out.
+                //
+
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 //
@@ -165,10 +169,14 @@ namespace MeetU.Controllers
                     UserId = user.Id,
                     NickName = user.UserName,
                     CreatedAt = DateTime.Now,
-                    LoginCount = 0,
+                    LoginCount = 0
                 };
                 db.Profiles.Add(profile);
                 await db.SaveChangesAsync();
+
+                //
+                //
+                //
 
                 if (result.Succeeded)
                 {
@@ -176,22 +184,9 @@ namespace MeetU.Controllers
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    //
-                    // To be abstracted away and make it async. -Yue
-                    // Try to use more decent smtp server later.-Yue 
-                    //
-                    GMailer.GmailUsername = "meet.u.email@gmail.com";
-                    GMailer.GmailPassword = "meetuuuu";
-                    GMailer mailer = new GMailer();
-                    mailer.ToEmail = user.Email;
-                    mailer.Subject = "Confirm your account";
-                    mailer.Body = "Hi " + user.UserName + "!<br><br><br>Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a><br><br><br>From Meet.U";
-                    mailer.IsHtml = true;
-                    mailer.Send();
 
                     return RedirectToAction("Index", "Meetups");
                 }
@@ -540,48 +535,5 @@ namespace MeetU.Controllers
             }
         }
         #endregion
-    }
-}
-
-/// <summary>
-/// To be abstracted away and make it async. -Yue
-/// </summary>
-public class GMailer
-{
-    public static string GmailUsername { get; set; }
-    public static string GmailPassword { get; set; }
-    public static string GmailHost { get; set; }
-    public static int GmailPort { get; set; }
-    public static bool GmailSSL { get; set; }
-
-    public string ToEmail { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
-    public bool IsHtml { get; set; }
-
-    static GMailer()
-    {
-        GmailHost = "smtp.gmail.com";
-        GmailPort = 25; // Gmail can use ports 25, 465 & 587; but must be 25 for medium trust environment.
-        GmailSSL = true;
-    }
-
-    public void Send()
-    {
-        SmtpClient smtp = new SmtpClient();
-        smtp.Host = GmailHost;
-        smtp.Port = GmailPort;
-        smtp.EnableSsl = GmailSSL;
-        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-        smtp.UseDefaultCredentials = false;
-        smtp.Credentials = new NetworkCredential(GmailUsername, GmailPassword);
-
-        using (var message = new MailMessage(GmailUsername, ToEmail))
-        {
-            message.Subject = Subject;
-            message.Body = Body;
-            message.IsBodyHtml = IsHtml;
-            smtp.Send(message);
-        }
     }
 }
