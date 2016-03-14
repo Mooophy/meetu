@@ -133,10 +133,8 @@
             //
             //  Generate joined user names 
             //
-            $scope.joinedUserNames = function (js) {
-                return js.map(function (j) {
-                    return '@' + j.userName.muStrip('@').muCapitalizeFirstLetter();
-                }).join(' ');
+            $scope.parseParticipantName = function (participant) {
+                return '@' + participant.userName.muStrip('@').muCapitalizeFirstLetter();
             };
             //
             //  Strip and Capitalize first letter for scope
