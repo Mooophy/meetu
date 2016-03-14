@@ -2,11 +2,6 @@
 @import "utilities.less";
 @import "z-index.less";
 
-@screen-xs-max: 480px;
-@meetup-font-size-sm: 10px;
-@meetup-font-size-md: 12px;
-@meetup-font-size-lg: 16px;
-
 @meetup-padding-base: 3px;
 @meetup-padding-horizontal: @meetup-padding-base * 2;
 
@@ -18,7 +13,7 @@
 .meetup-wrapper {
     overflow: hidden; // make a BFC to clear float
     .meetup-from {
-        font-size: @meetup-font-size-sm;
+        font-size: @meetup-font-size-xs;
         padding-bottom: @meetup-padding-base;
         padding-left: @meetup-padding-horizontal;
         padding-right: @meetup-padding-horizontal;
@@ -126,6 +121,17 @@
         hr {
             opacity: 0.7;
         }
+
+        .meetup-detail-title {
+            font-size: @meetup-font-size-lg;
+            font-weight: bold;
+            margin-bottom: @meetup-padding-base * 2;
+        }
+
+        .meetup-detail-content {
+            font-size: @meetup-font-size-md;
+            margin-bottom: @meetup-padding-base * 4;
+        }
     }
 
     @media(max-width: @screen-xs-max) {
@@ -149,19 +155,46 @@
 .meetup-comment-control {
     display: inline-block;
     padding-right: @padding-base/3;
+    font-size: @meetup-font-size-sm;
 }
 
 .comment-delete-button {
     display: inline-block;
     cursor: pointer;
     color: fade(grey, 60%);
-    font-size: 11px;
+    font-size: @meetup-font-size-sm;
 }
 
     .comment-delete-button:hover {
         color: grey;
     }
 
+.comment-input-group {
+    border-radius: 0 !important;
+    padding-bottom: @meetup-padding-base * 4;
+    margin-top: -10px;
+
+    * {
+        border-radius: 0 !important;
+    }
+
+    .comment-input-box {
+        border: 1px solid @meetup-join-button-color-dark;
+        height: 35px;
+        &:focus {
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @input-box-shadow;
+        }
+    }
+
+    .input-group-btn .comment-input-btn {
+        border: 1px solid @meetup-join-button-color-dark;
+        color: @meetup-join-button-color-light;
+        background-color: @meetup-join-button-color-dark;
+        outline: 0;
+        height: 35px;
+    }
+
+}
 
 .meetup-create {
     position: fixed;
