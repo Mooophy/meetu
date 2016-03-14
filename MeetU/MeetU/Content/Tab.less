@@ -1,0 +1,53 @@
+﻿@import "variables.less";
+@import "utilities.less";
+@import "z-index.less";
+
+@meetu-tab-border-color: @text-color-dark;
+@meetu-tab-background-color: @text-color-light;
+
+.meetu-tab-tabs {
+    margin-bottom: 0;
+    padding-left: 0; // Override default ul/ol
+    list-style: none;
+    overflow: hidden;
+
+    > li {
+        position: relative;
+        display: block;
+        min-width: 80px;
+        text-transform: uppercase;
+        float: left;
+        margin-bottom: -1px;
+
+        > a {
+            position: relative;
+            display: block;
+            padding: 5px 10px;
+            font-size: 12px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid @meetu-tab-border-color;
+            border-radius: 0;
+            background-color: @text-color-dark;
+            color: @text-color-light;
+        }
+
+            > a:focus, > a:hover {
+                outline: 0;
+                text-decoration: initial;
+            }
+
+        &.active > a {
+            background-color: @text-color-light;
+            color: @text-color-dark;
+            border-bottom-color: @meetu-tab-background-color;
+        }
+    }
+}
+
+.meetu-tab-content-container {
+    min-height: 250px;
+    border-radius: 0;
+    border: @meetu-tab-border-color solid 1px;
+    padding: 20px 10px;
+}

@@ -12,10 +12,10 @@
             <div ng-repeat="meetupView in meetupViews">
                 <div class="meetup-wrapper">
                     <div class="meetup-brief" ng-click="showDetails = ! showDetails">
-                        <div class="meetup-from col-sm-11">
+                        <div class="meetup-from col-sm-10 col-xs-10">
                             <span>@@{{ meetupView.sponsorUserName }} 发起了活动</span>
                         </div>
-                        <div class="meetup-catagory-logo col-sm-1"></div>
+                        <div class="meetup-catagory-logo col-sm-1 col-xs-1"></div>
                         <div class="meetup-content-wrapper col-sm-10 col-xs-9">
                             <div class="meetup-title">
                                 <span class="text-capitalize"> {{ meetupView.meetup.title }}</span>
@@ -36,40 +36,51 @@
                         </div>
                     </div>
 
-                    <div class="panel-body meetup-detail" ng-show="showDetails">
-                        <div class="jumbotron">
-                            <div>
-                                <span class="label label-default">Who</span>
-                                <span>{{ joinedUserNames(meetupView.joins)}}</span>
-                            </div>
-                            <div>
-                                <span class="label label-default">When</span>
-                                <span>
-                                    {{ meetupView.meetup.when | date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
-                                </span>
-                            </div>
-                            <div>
-                                <span class="label label-default">Where</span>
-                                <span>{{ meetupView.meetup.where }}</span>
-                            </div>
-                        </div>
-                        <hr />
-                        <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id } | limitTo : -(numLimit || (numLimit = 5)) | orderBy:'-at'">
-                            <div class="small">
-                                {{ cv.content }}&nbsp;&nbsp;&nbsp;<span class="text-primary">{{ polishUserName( cv.by ) }}&nbsp; </span> <span class="text-primary" am-time-ago=cv.at></span>
-                                <div class="comment-delete-button" ng-click="deleteComment(cv.id)" ng-show="cv.by === userName">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                    <span>Delete</span>
+                    <div class="meetup-detail" ng-show="showDetails">
+                        <div class="meetup-detail-container meetu-tab-container" ng-controller="TabController">
+                            <ul class="meetup-detail-tabs meetu-tab-tabs">
+                                <li class="meetu-tab-item" ng-class="{ active: isSet(1) }"><a ng-click="setTab(1)">Info</a></li>
+                                <li class="meetu-tab-item" ng-class="{ active: isSet(2) }"><a ng-click="setTab(2)">Comments({{ meetupView.commentCount }})</a></li>
+                            </ul>
+                            <div class="meetup-detail-content meetu-tab-content-container">
+                                <div ng-show="isSet(1)">
+                                    <div>
+                                        <span class="label label-default">Who</span>
+                                        <span>{{ joinedUserNames(meetupView.joins)}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="label label-default">When</span>
+                                        <span>
+                                            {{ meetupView.meetup.when | date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="label label-default">Where</span>
+                                        <span>{{ meetupView.meetup.where }}</span>
+                                    </div>
+                                </div>
+                                <div ng-show="isSet(2)">
+                                    <div ng-repeat="cv in allCommentViews | filter : { meetupId : meetupView.meetup.id } | limitTo : -(numLimit || (numLimit = 5)) | orderBy:'-at'">
+                                        <div class="small">
+                                            <span class="meetup-comment-control">{{ cv.content }}</span>
+                                            <span class="text-primary meetup-comment-control">{{ polishUserName( cv.by ) }}</span>
+                                            <span class="text-primary meetup-comment-control" am-time-ago=cv.at></span>
+                                            <div class="comment-delete-button meetup-comment-control" ng-click="deleteComment(cv.id)" ng-show="cv.by === userName">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                <span>Delete</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                    <div class="comment-paging-trigger" ng-click="numLimit = numLimit + 5;" ng-hide="numLimit >= (allCommentViews | filter : { meetupId : meetupView.meetup.id }).length">Show more comments...</div>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control" style="max-width: 100%" placeholder="How about you?" ng-model="meetupView.newComment">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success btn-sm" type="button" ng-click="addComment( meetupView )">Comment</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <hr />
-                        </div>
-                        <div class="comment-paging-trigger" ng-click="numLimit = numLimit + 5;" ng-hide="numLimit >= (allCommentViews | filter : { meetupId : meetupView.meetup.id }).length">Show more comments...</div>
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" style="max-width: 100%" placeholder="How about you?" ng-model="meetupView.newComment">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success btn-sm" type="button" ng-click="addComment( meetupView )">Comment</button>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -92,4 +103,5 @@
     @Scripts.Render("~/Scripts/moment.min.js")
     @Scripts.Render("~/Scripts/angular-moment.min.js")
     @Scripts.Render("~/Scripts/app/meetu-meetup.js")
+    @Scripts.Render("~/Scripts/app/meetu-tabController.js")
 }

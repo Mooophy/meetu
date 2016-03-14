@@ -294,6 +294,7 @@
     <Content Include="Content\utilities.less" />
     <Content Include="Content\Meetups.less" />
     <Content Include="Content\z-index.less" />
+    <Content Include="Content\Tab.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -303,6 +304,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\meetu-meetup.js" />
     <Content Include="Scripts\app\meetu-profile.js" />
+    <Content Include="Scripts\app\meetu-tabController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />

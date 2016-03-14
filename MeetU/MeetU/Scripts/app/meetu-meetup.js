@@ -6,7 +6,7 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
-        .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
+        .controller('meetupIndexController', function ($scope, $resource, $q, $log, $filter) {
             //
             //  Lazy resources
             //
@@ -14,6 +14,20 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
+
+            function initializeComment() {
+                angular.forEach($scope.meetupViews, function (value) {
+                    value.commentData = $filter('filter')($scope.allCommentViews, function (comment) {
+                        return value.meetup.id === comment.meetupId;
+                    });
+                    value.commentCount = value.commentData.length;
+                });
+            };
+
+            function initializeData() {
+                initializeComment();
+            }
+
             //
             //  Queries
             //
@@ -21,15 +35,16 @@
             $q.all([
                 Meetup.query(function (data) {
                     $scope.meetupViews = data;
-                }),
+                }).$promise,
                 Userview.query(function (userViews) {
                     $scope.userId = userViews[0].userId;
                     $scope.userName = userViews[0].userName;
-                }),
+                }).$promise,
                 CommentView.query(function (data) {
                     $scope.allCommentViews = data;
-                })
+                }).$promise
             ]).then(function () {
+                initializeData();
                 $scope.hasLoaded = true;
             });
             //
@@ -91,7 +106,8 @@
                         "at": response.at
                     });
                     mview.newComment = "";
-                },
+                        initializeComment();
+                    },
                     function (e) {
                         $log.error(e);
                     }
@@ -107,7 +123,8 @@
                         .$promise
                         .then(function () {
                             var comments = $scope.allCommentViews;
-                            comments.splice(comments.findIndex(function(c) { return c.id === commentId; }), 1);
+                            comments.splice(comments.findIndex(function (c) { return c.id === commentId; }), 1);
+                            initializeComment();
                         }, function(message) {
                             $log.error(message);
                         });
@@ -145,5 +162,4 @@
     String.prototype.muCapitalizeFirstLetter = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
     };
-
 })();
