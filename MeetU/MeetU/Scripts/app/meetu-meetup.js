@@ -43,19 +43,26 @@
             // trigger it when scrolled to bottom-100px
             //
             function triggerMeetupLoading() {
+                var hasFetchedAll = false;
+                var actualFetchedDataCount = 0;
                 Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
                     $scope.meetupViews.push.apply($scope.meetupViews, data);
+                    actualFetchedDataCount = data.length;
+                    currentShowingMeetupCount += actualFetchedDataCount;
+                    if (actualFetchedDataCount < 5) {
+                    	hasFetchedAll = true;
+                    }
+                    if (!hasFetchedAll) {
+                    	$(window).bind('scroll', bindScroll);
+                    }
                 });
-                currentShowingMeetupCount += MEETUPS_PER_PAGE;
-                $(window).bind('scroll', bindScroll);
             }
-            //todo: should be debounced after underscorejs being introduced;
-            function bindScroll() {
+            var bindScroll = _.debounce(function() {
                 if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                     $(window).unbind('scroll');
                     triggerMeetupLoading();
                 }
-            }
+            }, 200);
 
             //
             //  Check if logged userId has joined.
