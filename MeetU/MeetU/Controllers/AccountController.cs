@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +9,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MeetU.Models;
 using System.Net;
-using System.Net.Mail;
 using Newtonsoft.Json;
 
 namespace MeetU.Controllers
@@ -183,7 +183,7 @@ namespace MeetU.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Meetups");
                 }
-                AddErrors(result);
+                AddErrors(result.Errors);
             }
 
             // If we got this far, something failed, redisplay form
@@ -277,7 +277,7 @@ namespace MeetU.Controllers
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            AddErrors(result);
+            AddErrors(result.Errors);
             return View();
         }
 
@@ -414,7 +414,7 @@ namespace MeetU.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                AddErrors(result);
+                AddErrors(result.Errors);
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -482,9 +482,9 @@ namespace MeetU.Controllers
             }
         }
 
-        private void AddErrors(IdentityResult result)
+        private void AddErrors(IEnumerable<string> errors)
         {
-            foreach (var error in result.Errors)
+            foreach (var error in errors)
             {
                 ModelState.AddModelError("", error);
             }
