@@ -155,35 +155,22 @@ namespace MeetU.Controllers
         {
             if (ModelState.IsValid)
             {
-                //
-                //  To be abstracted out.
-                //
-
+                //create both new user and its profile
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                //
-                //  Create a profile with basic info, using UserName as NickName
-                //
-                var profile = new Profile
-                {
-                    UserId = user.Id,
-                    NickName = user.UserName,
-                    CreatedAt = DateTime.Now,
-                    LoginCount = 0
-                };
-                db.Profiles.Add(profile);
-                await db.SaveChangesAsync();
+                var userCreatedResult = await UserManager.CreateAsync(user, model.Password);
+                var isProfileCreated = await CreateProfileAsync(user);
 
-                //
-                //
-                //
-
-                if (result.Succeeded)
+                //When both created successfully.
+                if (userCreatedResult.Succeeded && isProfileCreated)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Meetups");
                 }
-                AddErrors(result.Errors);
+
+                //Add errors when either failed
+                if (!isProfileCreated)
+                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
+                AddErrors(userCreatedResult.Errors);
             }
 
             // If we got this far, something failed, redisplay form
@@ -462,6 +449,19 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
+        private async Task<bool> CreateProfileAsync(ApplicationUser user)
+        {
+            var profile = new Profile
+            {
+                UserId = user.Id,
+                NickName = user.UserName,
+                CreatedAt = DateTime.Now,
+                LoginCount = 0
+            };
+            db.Profiles.Add(profile);
+            return await db.SaveChangesAsync() > 0;
+        }
+
         // Used for increment Login count, by specified user id.
         // @Yue
         private async Task<int> IncrementLoginCountAsync(string userId)
