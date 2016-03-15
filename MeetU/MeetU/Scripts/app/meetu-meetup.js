@@ -6,7 +6,10 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
-        .controller('meetupIndexController', function ($scope, $resource, $q, $log, $filter) {
+        .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
+
+            var currentShowingMeetupCount = 0;
+            var MEETUPS_PER_PAGE = 5;
             //
             //  Lazy resources
             //
@@ -19,8 +22,9 @@
             //
             $scope.hasLoaded = false;
             $q.all([
-                Meetup.query(function (data) {
+                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
                     $scope.meetupViews = data;
+                    currentShowingMeetupCount += MEETUPS_PER_PAGE;
                 }).$promise,
                 Userview.query(function (userViews) {
                     $scope.userId = userViews[0].userId;
@@ -28,7 +32,31 @@
                 }).$promise
             ]).then(function () {
                 $scope.hasLoaded = true;
+                //todo: should be unbound at some moment;
+                $(window).scroll(bindScroll);
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                    triggerMeetupLoading();
+                }
             });
+            //
+            // Meetup pagination: bind an event handler to window.scroll event
+            // trigger it when scrolled to bottom-100px
+            //
+            function triggerMeetupLoading() {
+                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
+                    $scope.meetupViews.push.apply($scope.meetupViews, data);
+                });
+                currentShowingMeetupCount += MEETUPS_PER_PAGE;
+                $(window).bind('scroll', bindScroll);
+            }
+            //todo: should be debounced after underscorejs being introduced;
+            function bindScroll() {
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                    $(window).unbind('scroll');
+                    triggerMeetupLoading();
+                }
+            }
+
             //
             //  Check if logged userId has joined.
             //
