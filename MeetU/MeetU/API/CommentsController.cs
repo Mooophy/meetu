@@ -63,7 +63,6 @@ namespace MeetU.API
                 };
         }
 
-
         // GET: api/Comments/5
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> GetComment(int id)
