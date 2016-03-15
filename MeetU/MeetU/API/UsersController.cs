@@ -12,12 +12,6 @@ namespace MeetU.API
     {
         private readonly MuDbContext db = new MuDbContext();
 
-        // GET: api/Users
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET: api/Users/5
         [ResponseType(typeof(UserViewModel))]
         public async Task<IHttpActionResult> Get(string userId)
@@ -45,18 +39,8 @@ namespace MeetU.API
             return Ok(userView);
         }
 
-        // POST: api/Users
-        public void Post([FromBody]string value)
-        {
-        }
-
         // PUT: api/Users/5
         public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Users/5
-        public void Delete(int id)
         {
         }
 
