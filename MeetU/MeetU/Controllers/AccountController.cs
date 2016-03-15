@@ -392,7 +392,8 @@ namespace MeetU.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
+                var isProfileCreated = await CreateProfileAsync(user);
+                if (result.Succeeded && isProfileCreated)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
@@ -401,6 +402,8 @@ namespace MeetU.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
+                if(! isProfileCreated)
+                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
                 AddErrors(result.Errors);
             }
 
