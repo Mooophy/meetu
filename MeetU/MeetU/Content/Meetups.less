@@ -10,6 +10,26 @@
 @meetup-join-button-color-dark: @text-color-dark;
 @meetup-join-button-color-light: @text-color-light;
 
+* {
+	&::-webkit-scrollbar {
+		width: 0;
+        height: 0;
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb { 
+		background-color: transparent;
+	}
+}
+
 .meetup-wrapper {
     overflow: hidden; // make a BFC to clear float
     .meetup-from {
@@ -207,7 +227,8 @@
     z-index: @zIndex-footerbar;
 
     .meetup-create-button {
-        padding: 8px 8px;
+        padding: 9px 12px;
+        border: 0;
         border-radius: 50px;
         height: 40px;
         width: 40px;
