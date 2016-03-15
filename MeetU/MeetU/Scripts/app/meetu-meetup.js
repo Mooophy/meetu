@@ -6,7 +6,10 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment'])
-        .controller('meetupIndexController', function ($scope, $resource, $q, $log, $filter) {
+        .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
+
+            var currentShowingMeetupCount = 0;
+            var MEETUPS_PER_PAGE = 5;
             //
             //  Lazy resources
             //
@@ -14,39 +17,46 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
-
-            function initializeComment() {
-                angular.forEach($scope.meetupViews, function (value) {
-                    value.commentData = $filter('filter')($scope.allCommentViews, function (comment) {
-                        return value.meetup.id === comment.meetupId;
-                    });
-                    value.commentCount = value.commentData.length;
-                });
-            };
-
-            function initializeData() {
-                initializeComment();
-            }
-
             //
             //  Queries
             //
             $scope.hasLoaded = false;
             $q.all([
-                Meetup.query(function (data) {
+                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
                     $scope.meetupViews = data;
+                    currentShowingMeetupCount += MEETUPS_PER_PAGE;
                 }).$promise,
                 Userview.query(function (userViews) {
                     $scope.userId = userViews[0].userId;
                     $scope.userName = userViews[0].userName;
-                }).$promise,
-                CommentView.query(function (data) {
-                    $scope.allCommentViews = data;
                 }).$promise
             ]).then(function () {
-                initializeData();
                 $scope.hasLoaded = true;
+                //todo: should be unbound at some moment;
+                $(window).scroll(bindScroll);
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                    triggerMeetupLoading();
+                }
             });
+            //
+            // Meetup pagination: bind an event handler to window.scroll event
+            // trigger it when scrolled to bottom-100px
+            //
+            function triggerMeetupLoading() {
+                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
+                    $scope.meetupViews.push.apply($scope.meetupViews, data);
+                });
+                currentShowingMeetupCount += MEETUPS_PER_PAGE;
+                $(window).bind('scroll', bindScroll);
+            }
+            //todo: should be debounced after underscorejs being introduced;
+            function bindScroll() {
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                    $(window).unbind('scroll');
+                    triggerMeetupLoading();
+                }
+            }
+
             //
             //  Check if logged userId has joined.
             //
@@ -88,6 +98,18 @@
                 }
             };
             //
+            //  toggle Meetup details
+            //
+            $scope.toggleDetail = function (meetupView, isDetailShowing) {
+                if (isDetailShowing) {
+                    meetupView.commentCount = 0;
+                    CommentView.query({ meetupId: meetupView.meetup.id }, function (data) {
+                        meetupView.commentData = data;
+                        meetupView.commentCount = meetupView.commentData.length;
+                    });
+                }
+            }
+            //
             //  Add comment to backend
             //  If succeed, push to local array, otherwise: log it
             //
@@ -98,7 +120,7 @@
                     "meetupId": mview.meetup.id
                 });
                 c.$save(c, function (response) {
-                    $scope.allCommentViews.push({
+                    mview.commentData.push({
                         "id": response.id,
                         "content": mview.newComment,
                         "by": $scope.userName,
@@ -106,7 +128,7 @@
                         "at": response.at
                     });
                     mview.newComment = "";
-                        initializeComment();
+                    mview.commentCount = mview.commentData.length;
                     },
                     function (e) {
                         $log.error(e);
@@ -116,15 +138,15 @@
             //
             //  Delete comment 
             //
-            $scope.deleteComment = function (commentId) {
+            $scope.deleteComment = function (meetupView, commentId) {
                 if (confirm("Are you sure you want to delete this comment?")) {
                     CommentView
                         .delete({ id: commentId })
                         .$promise
                         .then(function () {
-                            var comments = $scope.allCommentViews;
+                            var comments = meetupView.commentData;
                             comments.splice(comments.findIndex(function (c) { return c.id === commentId; }), 1);
-                            initializeComment();
+                            meetupView.commentCount = meetupView.commentData.length;
                         }, function(message) {
                             $log.error(message);
                         });
