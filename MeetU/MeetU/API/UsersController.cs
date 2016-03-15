@@ -39,10 +39,25 @@ namespace MeetU.API
             return Ok(userView);
         }
 
-        // PUT: api/Users/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        // PUT: api/Users?
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> Put(string userId, UserViewModel user)
+        //{
+        //    //var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
+        //    //if(profile == null)
+        //    //{
+        //    //    return NotFound();
+        //    //}
+
+        //    //profile.FamilyName = user.FamilyName;
+        //    //profile.GivenName = user.GivenName;
+        //    //profile.NickName = user.NickName;
+        //    //profile.Pricture = user.Pricture;
+        //    //profile.Gender = user.Gender;
+
+        //    //db.Entry(profile).State = EntityState.Modified;
+
+        //}
 
         protected override void Dispose(bool disposing)
         {
