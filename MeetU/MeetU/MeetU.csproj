@@ -336,6 +336,8 @@
     <Content Include="Scripts\ng-img-crop.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -375,6 +377,7 @@
     <Content Include="Views\Meetups\Create.cshtml" />
     <Content Include="Views\Meetups\Index.cshtml" />
     <Content Include="Views\Design\Index.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
