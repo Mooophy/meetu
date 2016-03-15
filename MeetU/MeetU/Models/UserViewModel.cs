@@ -8,17 +8,17 @@ namespace MeetU.Models
     public class UserViewModel
     {
         //
-        // below from table AspNetUsers
+        // AspNetUsers
         //
 
         // Read
         public string UserId { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
-        public string Number { get; set; }
+        public int Number { get; set; }
         
         //
-        // from table Profiles
+        // Profiles
         //
 
         // Read and Update
