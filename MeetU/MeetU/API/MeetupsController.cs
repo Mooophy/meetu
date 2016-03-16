@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MeetU.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MeetU.API
 {
@@ -141,11 +143,11 @@ namespace MeetU.API
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
-            {
                 return NotFound();
-            }
-
-            db.Meetups.Remove(meetup);
+            if(meetup.Sponsor != User.Identity.GetUserId())
+                return BadRequest();
+            meetup.IsCancelled = true;
+            meetup.CancelledAt = DateTime.Now;
             await db.SaveChangesAsync();
 
             return Ok(meetup);
