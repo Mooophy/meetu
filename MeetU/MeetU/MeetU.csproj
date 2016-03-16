@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.Designer.cs">
       <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603161344502_FixTypo.cs" />
+    <Compile Include="Migrations\201603161344502_FixTypo.Designer.cs">
+      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -418,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603160342012_MakeCancelledAtNullable.resx">
       <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161344502_FixTypo.resx">
+      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,7 +31,7 @@ namespace MeetU.API
                 NickName = profile.NickName,
                 GivenName = profile.GivenName,
                 FamilyName = profile.FamilyName,
-                Pricture = profile.Pricture,
+                Pricture = profile.Picture,
                 Gender = profile.Gender,
                 CreatedAt = profile.CreatedAt
             };
