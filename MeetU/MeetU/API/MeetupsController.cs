@@ -13,15 +13,15 @@ namespace MeetU.API
     [Authorize]
     public class MeetupsController : ApiController
     {
-        private Models.MuDbContext db = new Models.MuDbContext();
+        private MuDbContext db = new MuDbContext();
 
         // GET: api/Meetups
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         public IQueryable<MeetupViewModel> GetMeetups()
         {
             var meetups =
-                db
-                .Meetups
+                db.Meetups
+                .Where(m => m.IsCancelled == false)
                 .Select(
                 m => new MeetupViewModel
                 {
@@ -45,8 +45,8 @@ namespace MeetU.API
         public IQueryable<MeetupViewModel> GetMeetups(int start, int amount)
         {
             var pagedMeetups =
-                db
-                .Meetups
+                db.Meetups
+                .Where(m => m.IsCancelled == false)
                 .OrderByDescending(m => m.Date)
                 .Skip(start)
                 .Take(amount)
@@ -70,7 +70,10 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
+            Meetup meetup = 
+                await db.Meetups
+                .Where(m => m.IsCancelled == false)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
@@ -133,7 +136,10 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> DeleteMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
+            Meetup meetup = 
+                await db.Meetups
+                .Where(m => m.IsCancelled == false)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
