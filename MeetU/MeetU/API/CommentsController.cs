@@ -142,7 +142,7 @@ namespace MeetU.API
             //
             if (comment.By != User.Identity.GetUserId())
             {
-                return BadRequest();
+                return StatusCode(HttpStatusCode.Forbidden);
             }
 
             db.Comments.Remove(comment);

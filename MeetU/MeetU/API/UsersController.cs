@@ -39,25 +39,25 @@ namespace MeetU.API
             return Ok(userView);
         }
 
-        // PUT: api/Users?
-        //[ResponseType(typeof(void))]
-        //public async Task<IHttpActionResult> Put(string userId, UserViewModel user)
-        //{
-        //    //var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
-        //    //if(profile == null)
-        //    //{
-        //    //    return NotFound();
-        //    //}
+        //PUT: api/Users?
+       //[ResponseType(typeof(void))]
+       // public async Task<IHttpActionResult> Put(string userId, UserViewModel user)
+       // {
+       //     var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
+       //     if (profile == null)
+       //     {
+       //         return NotFound();
+       //     }
 
-        //    //profile.FamilyName = user.FamilyName;
-        //    //profile.GivenName = user.GivenName;
-        //    //profile.NickName = user.NickName;
-        //    //profile.Pricture = user.Pricture;
-        //    //profile.Gender = user.Gender;
+       //     profile.FamilyName = user.FamilyName;
+       //     profile.GivenName = user.GivenName;
+       //     profile.NickName = user.NickName;
+       //     profile.Picture = user.Pricture;
+       //     profile.Gender = user.Gender;
 
-        //    //db.Entry(profile).State = EntityState.Modified;
-
-        //}
+       //     db.Entry(profile).State = EntityState.Modified;
+       //     await db.SaveChangesAsync();
+       // }
 
         protected override void Dispose(bool disposing)
         {

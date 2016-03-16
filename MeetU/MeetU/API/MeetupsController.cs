@@ -145,7 +145,7 @@ namespace MeetU.API
             if (meetup == null)
                 return NotFound();
             if(meetup.Sponsor != User.Identity.GetUserId())
-                return BadRequest();
+                return StatusCode(HttpStatusCode.Forbidden);
             meetup.IsCancelled = true;
             meetup.CancelledAt = DateTime.Now;
             await db.SaveChangesAsync();
