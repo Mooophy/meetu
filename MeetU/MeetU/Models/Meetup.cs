@@ -36,5 +36,10 @@ namespace MeetU.Models
         [JsonIgnore]
         [ForeignKey("Sponsor")]
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        [Required]
+        public bool IsCancelled { get; set; }
+
+        public DateTime? CancelledAt { get; set; }
     }
 }

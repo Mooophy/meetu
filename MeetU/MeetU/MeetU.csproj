@@ -239,6 +239,14 @@
     <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
       <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.cs" />
+    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.Designer.cs">
+      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.cs" />
+    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.Designer.cs">
+      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -404,6 +412,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
       <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.resx">
+      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160342012_MakeCancelledAtNullable.resx">
+      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
