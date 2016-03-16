@@ -50,14 +50,14 @@
                     actualFetchedDataCount = data.length;
                     currentShowingMeetupCount += actualFetchedDataCount;
                     if (actualFetchedDataCount < 5) {
-                    	hasFetchedAll = true;
+                        hasFetchedAll = true;
                     }
                     if (!hasFetchedAll) {
-                    	$(window).bind('scroll', bindScroll);
+                        $(window).bind('scroll', bindScroll);
                     }
                 });
             }
-            var bindScroll = _.debounce(function() {
+            var bindScroll = _.debounce(function () {
                 if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                     $(window).unbind('scroll');
                     triggerMeetupLoading();
@@ -136,7 +136,7 @@
                     });
                     mview.newComment = "";
                     mview.commentCount = mview.commentData.length;
-                    },
+                },
                     function (e) {
                         $log.error(e);
                     }
@@ -154,7 +154,7 @@
                             var comments = meetupView.commentData;
                             comments.splice(comments.findIndex(function (c) { return c.id === commentId; }), 1);
                             meetupView.commentCount = meetupView.commentData.length;
-                        }, function(message) {
+                        }, function (message) {
                             $log.error(message);
                         });
                 }
