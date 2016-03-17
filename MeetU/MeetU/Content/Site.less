@@ -1,0 +1,29 @@
+﻿@import "variables.less";
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: @main-background-color-light;
+    min-width: @screen-xs-min;
+    font-family: Arial,'Times New Roman','Microsoft YaHei';
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+hr {
+    margin-top: @separator-margin;
+    margin-bottom: @separator-margin;
+    border-top: 1px solid @heading-background-color-dark;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.toShowWhereImagesToStore {
+    background-image: url(Images/bg.jpg);
+}
+
