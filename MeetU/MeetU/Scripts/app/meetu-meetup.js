@@ -152,9 +152,28 @@
                         .$promise
                         .then(function () {
                             var comments = meetupView.commentData;
-                            comments.splice(comments.findIndex(function (c) { return c.id === commentId; }), 1);
+                            comments.splice(comments.findIndex(function(c) {
+                                 return c.id === commentId;
+                            }), 1);
                             meetupView.commentCount = meetupView.commentData.length;
                         }, function (message) {
+                            $log.error(message);
+                        });
+                }
+            };
+
+            $scope.deleteMeetup = function (meetupId) {
+
+                // TODO: need to show a joined name list in confirm box
+                if (confirm("Are you sure you want to delete this MeetUp?")) {
+                    Meetup.delete({ id: meetupId })
+                        .$promise
+                        .then(function () {
+                            var meetupViews = $scope.meetupViews;
+                            meetupViews.splice(meetupViews.findIndex(function(meetup) {
+                                 return meetup.meetup.id === meetupId;
+                            }), 1);
+                        }, function(message) {
                             $log.error(message);
                         });
                 }
