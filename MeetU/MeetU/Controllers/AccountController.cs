@@ -378,7 +378,7 @@ namespace MeetU.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 var isProfileCreated = await CreateProfileAsync(user);
-                await SyncWithGoogleAsync(info);
+                await FillProfileByGoogleAsync(info);
                 if (result.Succeeded && isProfileCreated)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -438,7 +438,7 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
-        private async Task<bool> SyncWithGoogleAsync (ExternalLoginInfo loginInfo)
+        private async Task<bool> FillProfileByGoogleAsync (ExternalLoginInfo loginInfo)
         {
             //get access token to use in profile image request
             var token =
@@ -459,10 +459,8 @@ namespace MeetU.Controllers
             {
                 return false;
             }
-
-            var userId = db.Users.FirstOrDefault(u => u.Email == loginInfo.Email).Id;
+            var userId = (await db.Users.FirstOrDefaultAsync(u => u.Email == loginInfo.Email)).Id;
             var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == userId);
-
             profile.NickName = dataFromGoogle.name;
             profile.FamilyName = dataFromGoogle.family_name;
             profile.GivenName = dataFromGoogle.given_name;
