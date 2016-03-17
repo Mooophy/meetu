@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using MeetU.Models;
 using System.Net;
 using Newtonsoft.Json;
+using System.Data.Entity;
 
 namespace MeetU.Controllers
 {
@@ -333,22 +334,6 @@ namespace MeetU.Controllers
                 return RedirectToAction("Login");
             }
 
-            //
-            //  google profile image experiment
-            //
-            {
-                //get access token to use in profile image request
-                var accessToken = loginInfo.ExternalIdentity.Claims.Where(c => c.Type.Equals("urn:google:accesstoken")).Select(c => c.Value).FirstOrDefault();
-                Uri apiRequestUri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
-                //request profile image
-                using (var webClient = new WebClient())
-                {
-                    var json = webClient.DownloadString(apiRequestUri);
-                    dynamic r = JsonConvert.DeserializeObject(json);
-                    var userPicture = r.picture;
-                }
-            }
-
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -393,6 +378,7 @@ namespace MeetU.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 var isProfileCreated = await CreateProfileAsync(user);
+                await SyncWithGoogleAsync(info);
                 if (result.Succeeded && isProfileCreated)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -402,7 +388,7 @@ namespace MeetU.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                if(! isProfileCreated)
+                if (!isProfileCreated)
                     AddErrors(new List<string> { "Profile failed to create. -- Yue" });
                 AddErrors(result.Errors);
             }
@@ -452,6 +438,40 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
+        private async Task<bool> SyncWithGoogleAsync (ExternalLoginInfo loginInfo)
+        {
+            //get access token to use in profile image request
+            var token =
+                loginInfo
+                .ExternalIdentity
+                .Claims
+                .Where(c => c.Type.Equals("urn:google:accesstoken"))
+                .Select(c => c.Value)
+                .FirstOrDefault();
+            var uri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + token);
+            string json;
+            using (var webClient = new WebClient())
+            {
+                json = await webClient.DownloadStringTaskAsync(uri);
+            }
+            dynamic dataFromGoogle = JsonConvert.DeserializeObject(json);
+            if (dataFromGoogle == null)
+            {
+                return false;
+            }
+
+            var userId = db.Users.FirstOrDefault(u => u.Email == loginInfo.Email).Id;
+            var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == userId);
+
+            profile.NickName = dataFromGoogle.name;
+            profile.FamilyName = dataFromGoogle.family_name;
+            profile.GivenName = dataFromGoogle.given_name;
+            profile.Gender = dataFromGoogle.gender;
+            profile.Picture = dataFromGoogle.picture;
+
+            return await db.SaveChangesAsync() > 0;
+        }
+
         private async Task<bool> CreateProfileAsync(ApplicationUser user)
         {
             var profile = new Profile
@@ -459,7 +479,7 @@ namespace MeetU.Controllers
                 UserId = user.Id,
                 NickName = user.UserName,
                 CreatedAt = DateTime.Now,
-                LoginCount = 0
+                LoginCount = 1
             };
             db.Profiles.Add(profile);
             return await db.SaveChangesAsync() > 0;
