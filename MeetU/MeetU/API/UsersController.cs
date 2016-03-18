@@ -45,33 +45,33 @@ namespace MeetU.API
 
                 CreatedAt = profile.CreatedAt,
                 UpdatedAt = profile.UpdatedAt,
-                LoginCount = profile.LoginCount,
+                LoginCount = profile.LoginCount
             };
             return Ok(userView);
         }
 
         //PUT: api/Users?
-        public async Task<IHttpActionResult> Put(UserViewModel user)
-        {
-            if (user.UserId != User.Identity.GetUserId())
-            {
-                return StatusCode(HttpStatusCode.Forbidden);
-            }
-            var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
-            if (profile == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IHttpActionResult> Put(UserViewModel user)
+        //{
+        //    if (user.UserId != User.Identity.GetUserId())
+        //    {
+        //        return StatusCode(HttpStatusCode.Forbidden);
+        //    }
+        //    var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
+        //    if (profile == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            profile.FamilyName = user.FamilyName;
-            profile.GivenName = user.GivenName;
-            profile.NickName = user.NickName;
-            profile.Picture = user.Picture;
-            profile.Gender = user.Gender;
+        //    profile.FamilyName = user.FamilyName;
+        //    profile.GivenName = user.GivenName;
+        //    profile.NickName = user.NickName;
+        //    profile.Picture = user.Picture;
+        //    profile.Gender = user.Gender;
 
-            await db.SaveChangesAsync();
-            return Ok();
-        }
+        //    await db.SaveChangesAsync();
+        //    return Ok();
+        //}
 
         protected override void Dispose(bool disposing)
         {
