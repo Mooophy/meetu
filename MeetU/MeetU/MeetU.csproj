@@ -277,12 +277,6 @@
     <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
     <Content Include="Content\Images\pusheencat.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
-    <Content Include="Content\Meetups.css">
-      <DependentUpon>Meetups.less</DependentUpon>
-    </Content>
-    <Content Include="Content\Meetups.min.css">
-      <DependentUpon>Meetups.less</DependentUpon>
-    </Content>
     <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
