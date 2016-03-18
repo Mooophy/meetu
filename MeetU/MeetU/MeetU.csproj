@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201603161344502_FixTypo.Designer.cs">
       <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.cs" />
+    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.Designer.cs">
+      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -424,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603161344502_FixTypo.resx">
       <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603181316578_AddNewColumnUpdatedAt.resx">
+      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
