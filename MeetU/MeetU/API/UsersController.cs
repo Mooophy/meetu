@@ -18,8 +18,16 @@ namespace MeetU.API
         {
             var user = await db.Users.FirstOrDefaultAsync(u => u.Id == userId);
             var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == userId);
-            if (user == null || profile == null)
+            // if neither presents
+            if (user == null && profile == null)
+            {
                 return NotFound();
+            }
+            //  if only one presents, reply 500, indicating that the two tables doesn't match
+            if(user == null || profile == null)
+            {
+                return StatusCode(HttpStatusCode.InternalServerError);
+            }
 
             var userView = new UserViewModel
             {
@@ -28,14 +36,17 @@ namespace MeetU.API
                 UserName = user.UserName,
                 Number = user.Number,
 
+                //this part can be updated by PUT.
                 NickName = profile.NickName,
                 GivenName = profile.GivenName,
                 FamilyName = profile.FamilyName,
-                Pricture = profile.Picture,
+                Picture = profile.Picture,
                 Gender = profile.Gender,
-                CreatedAt = profile.CreatedAt
-            };
 
+                CreatedAt = profile.CreatedAt,
+                UpdatedAt = profile.UpdatedAt,
+                LoginCount = profile.LoginCount,
+            };
             return Ok(userView);
         }
 
@@ -55,7 +66,7 @@ namespace MeetU.API
             profile.FamilyName = user.FamilyName;
             profile.GivenName = user.GivenName;
             profile.NickName = user.NickName;
-            profile.Picture = user.Pricture;
+            profile.Picture = user.Picture;
             profile.Gender = user.Gender;
 
             await db.SaveChangesAsync();
