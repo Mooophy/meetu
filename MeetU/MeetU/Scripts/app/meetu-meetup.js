@@ -17,11 +17,6 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
-
-            //  Service
-            var Users = $resource('/api/Users', null, {
-                'update': { method: 'PUT' }
-            });
             //
             //  Queries
             //
