@@ -255,6 +255,14 @@
     <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.Designer.cs">
       <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.cs" />
+    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.Designer.cs">
+      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.cs" />
+    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.Designer.cs">
+      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -431,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603181316578_AddNewColumnUpdatedAt.resx">
       <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182053403_RemoveUpdatedAt.resx">
+      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182057028_AddedUpdatedAtAgain.resx">
+      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
