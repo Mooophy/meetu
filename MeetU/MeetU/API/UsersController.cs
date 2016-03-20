@@ -80,7 +80,6 @@ namespace MeetU.API
             }
             catch (DbUpdateConcurrencyException)
             {
-
                 throw;
             }
 
