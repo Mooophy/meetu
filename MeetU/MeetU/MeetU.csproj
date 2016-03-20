@@ -263,6 +263,22 @@
     <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.Designer.cs">
       <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603201414242_check.cs" />
+    <Compile Include="Migrations\201603201414242_check.Designer.cs">
+      <DependentUpon>201603201414242_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603201423568_bug.cs" />
+    <Compile Include="Migrations\201603201423568_bug.Designer.cs">
+      <DependentUpon>201603201423568_bug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603201425511_bug1.cs" />
+    <Compile Include="Migrations\201603201425511_bug1.Designer.cs">
+      <DependentUpon>201603201425511_bug1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603201426352_bug2.cs" />
+    <Compile Include="Migrations\201603201426352_bug2.Designer.cs">
+      <DependentUpon>201603201426352_bug2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -447,6 +463,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603182057028_AddedUpdatedAtAgain.resx">
       <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603201414242_check.resx">
+      <DependentUpon>201603201414242_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603201423568_bug.resx">
+      <DependentUpon>201603201423568_bug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603201425511_bug1.resx">
+      <DependentUpon>201603201425511_bug1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603201426352_bug2.resx">
+      <DependentUpon>201603201426352_bug2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

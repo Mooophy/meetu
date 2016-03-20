@@ -11,6 +11,7 @@ using MeetU.Models;
 using System.Net;
 using Newtonsoft.Json;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MeetU.Controllers
 {
@@ -477,10 +478,22 @@ namespace MeetU.Controllers
                 UserId = user.Id,
                 NickName = user.UserName,
                 CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
                 LoginCount = 1
             };
             db.Profiles.Add(profile);
-            return await db.SaveChangesAsync() > 0;
+
+            bool result = false;
+
+            try{
+                result = await db.SaveChangesAsync() > 0;
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw e;
+            }
+
+            return result;
         }
 
         // Used for increment Login count, by specified user id.
