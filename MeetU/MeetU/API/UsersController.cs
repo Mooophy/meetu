@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Http;
@@ -24,7 +26,7 @@ namespace MeetU.API
                 return NotFound();
             }
             //  if only one presents, reply 500, indicating that the two tables doesn't match
-            if(user == null || profile == null)
+            if (user == null || profile == null)
             {
                 return StatusCode(HttpStatusCode.InternalServerError);
             }
@@ -51,27 +53,39 @@ namespace MeetU.API
         }
 
         //PUT: api/Users?
-        //public async Task<IHttpActionResult> Put(UserViewModel user)
-        //{
-        //    if (user.UserId != User.Identity.GetUserId())
-        //    {
-        //        return StatusCode(HttpStatusCode.Forbidden);
-        //    }
-        //    var profile = await db.Profiles.FirstOrDefaultAsync(u => u.UserId == user.UserId);
-        //    if (profile == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IHttpActionResult> Put(UserViewModel user)
+        {
+            if (user.UserId != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+            var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == user.UserId);
+            if (profile == null)
+            {
+                return NotFound();
+            }
 
-        //    profile.FamilyName = user.FamilyName;
-        //    profile.GivenName = user.GivenName;
-        //    profile.NickName = user.NickName;
-        //    profile.Picture = user.Picture;
-        //    profile.Gender = user.Gender;
+            profile.Gender = user.FamilyName;
+            profile.FamilyName = user.FamilyName;
+            profile.GivenName = user.GivenName;
+            profile.NickName = user.NickName;
+            profile.Picture = user.Picture;
+            profile.UpdatedAt = DateTime.Now;
 
-        //    await db.SaveChangesAsync();
-        //    return Ok();
-        //}
+            db.Entry(profile).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+
+                throw;
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
 
         protected override void Dispose(bool disposing)
         {

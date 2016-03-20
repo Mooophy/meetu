@@ -152,8 +152,8 @@
                         .$promise
                         .then(function () {
                             var comments = meetupView.commentData;
-                            comments.splice(comments.findIndex(function(c) {
-                                 return c.id === commentId;
+                            comments.splice(comments.findIndex(function (c) {
+                                return c.id === commentId;
                             }), 1);
                             meetupView.commentCount = meetupView.commentData.length;
                         }, function (message) {
@@ -170,10 +170,10 @@
                         .$promise
                         .then(function () {
                             var meetupViews = $scope.meetupViews;
-                            meetupViews.splice(meetupViews.findIndex(function(meetup) {
-                                 return meetup.meetup.id === meetupId;
+                            meetupViews.splice(meetupViews.findIndex(function (meetup) {
+                                return meetup.meetup.id === meetupId;
                             }), 1);
-                        }, function(message) {
+                        }, function (message) {
                             $log.error(message);
                         });
                 }
