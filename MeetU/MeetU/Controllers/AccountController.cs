@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +9,7 @@ using Microsoft.Owin.Security;
 using MeetU.Models;
 using System.Net;
 using System.Net.Mail;
+using Newtonsoft.Json;
 
 namespace MeetU.Controllers
 {
@@ -19,6 +18,7 @@ namespace MeetU.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private MuDbContext db = new MuDbContext();
 
         public AccountController()
         {
@@ -155,6 +155,18 @@ namespace MeetU.Controllers
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                //
+                //  Create a profile with basic info, using UserName as NickName
+                //
+                var profile = new Profile
+                {
+                    UserId = user.Id,
+                    NickName = user.UserName,
+                    CreatedAt = DateTime.Now,
+                    LoginCount = 0,
+                };
+                db.Profiles.Add(profile);
+                await db.SaveChangesAsync();
 
                 if (result.Succeeded)
                 {
@@ -179,7 +191,7 @@ namespace MeetU.Controllers
                     mailer.IsHtml = true;
                     mailer.Send();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Meetups");
                 }
                 AddErrors(result);
             }
@@ -344,6 +356,22 @@ namespace MeetU.Controllers
                 return RedirectToAction("Login");
             }
 
+            //
+            //  google profile image experiment
+            //
+            {
+                //get access token to use in profile image request
+                var accessToken = loginInfo.ExternalIdentity.Claims.Where(c => c.Type.Equals("urn:google:accesstoken")).Select(c => c.Value).FirstOrDefault();
+                Uri apiRequestUri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
+                //request profile image
+                using (var webClient = new WebClient())
+                {
+                    var json = webClient.DownloadString(apiRequestUri);
+                    dynamic r = JsonConvert.DeserializeObject(json);
+                    var userPicture = r.picture;
+                }
+            }
+
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -408,7 +436,7 @@ namespace MeetU.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Meetups");
         }
 
         //
@@ -434,6 +462,8 @@ namespace MeetU.Controllers
                     _signInManager.Dispose();
                     _signInManager = null;
                 }
+
+                db.Dispose();
             }
 
             base.Dispose(disposing);
@@ -465,7 +495,7 @@ namespace MeetU.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Meetups");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

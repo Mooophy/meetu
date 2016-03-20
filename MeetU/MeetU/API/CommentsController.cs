@@ -9,13 +9,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 using MeetU.Models;
 
 namespace MeetU.API
 {
     public class CommentsController : ApiController
     {
-        public class CommentView 
+        public class CommentView
         {
             public int Id { get; set; }
             public string Content { get; set; }
@@ -24,19 +25,21 @@ namespace MeetU.API
             public DateTime At { get; set; }
         }
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Models.MuDbContext db = new Models.MuDbContext();
 
         //GET: api/Comments
         public IQueryable<CommentView> GetComments()
         {
-            return db.Comments.Select(c => new CommentView
-            {
-                Id = c.Id,
-                Content = c.Content,
-                By = c.ApplicationUser.UserName,
-                MeetupId = c.MeetupId,
-                At = c.At
-            });
+            return db.Comments.Select(
+                c =>
+                new CommentView
+                {
+                    Id = c.Id,
+                    Content = c.Content,
+                    By = c.ApplicationUser.UserName,
+                    MeetupId = c.MeetupId,
+                    At = c.At
+                });
         }
 
         // Get: api/Comments/:meetupId/byMeetup
@@ -44,14 +47,14 @@ namespace MeetU.API
         [Route("api/comments/{meetupId:int}/byMeetupId")]
         public IQueryable<Comment> GetCommentsByMeetupId(int meetupId)
         {
-            return db.Comments.Where(c=>c.MeetupId == meetupId);
+            return db.Comments.Where(c => c.MeetupId == meetupId);
         }
 
         // GET: api/Comments/5
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> GetComment(int id)
         {
-            Comment comment = await db.Comments.FindAsync(id);
+            Comment comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
             if (comment == null)
             {
                 return NotFound();
@@ -115,10 +118,18 @@ namespace MeetU.API
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> DeleteComment(int id)
         {
-            Comment comment = await db.Comments.FindAsync(id);
+            Comment comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
             if (comment == null)
             {
                 return NotFound();
+            }
+            //
+            //  To check if logged user is comment's author
+            //  @Yue
+            //
+            if (comment.By != User.Identity.GetUserId())
+            {
+                return BadRequest();
             }
 
             db.Comments.Remove(comment);

@@ -3,88 +3,71 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
+<br />
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<style>
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width: 500px;
+        height: 350px;
+    }
 
-        <dt>Activated:</dt>
-        <dd>
-            @Model.EmailConfirmed
-        </dd>
+</style>
 
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None") [
-                @if (Model.PhoneNumber != null)
-                {
-                    @Html.ActionLink("Change", "AddPhoneNumber")
-                    @: &nbsp;|&nbsp;
-                    @Html.ActionLink("Remove", "RemovePhoneNumber")
-                }
-                else
-                {
-                    @Html.ActionLink("Add", "AddPhoneNumber")
-                }
-                ]
-            </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
+<div ng-app="profileModule">
+
+    <div class="row" ng-controller="profileController">
+
+
+        <div>Select an image file: <input type="file" id="fileInput" /></div>
+        <div class="cropArea" ng-init="isShowPic=false" ng-show="isShowPic">
+            <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+        </div>
+        <div>Cropped Image:</div>
+        <div><img ng-src="{{myCroppedImage}}" /></div>
+
+        <div class="col-md-1"></div>
+
+        @* Proile *@
+        <div class="col-md-4 text-center">
+            <div class="panel panel-default" style="max-width: 100%">
+                <div class="panel-heading" style="text-align:left">Public Profile</div>
+                <div class="panel-body">
+                    <br /><br />
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-info">New</button>
+                        <button type="button" class="btn btn-info" ng-click="isShowPic=false">Update</button>
+                    </div>
+                    <br />
+                    <hr style="margin-top:20px; margin-bottom:20px" />
+                    <h2>Yue.Wang</h2>
+                    <h4>
+                        No. <span style="color:aliceblue; background-color:#5cb85c; font-size:14px; padding:4px; border-radius:4px;">11</span>
+                    </h4>
+                    <br />
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" style="max-width:100%" placeholder="New nick name?">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button">Update</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+        </div>
+
+    </div>
 </div>
+
+
+@section scripts{
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/angular-resource.min.js")
+    @Scripts.Render("~/Scripts/ng-file-upload-all.min.js")
+    @Scripts.Render("~/Scripts/ng-img-crop.js")
+    @Styles.Render("~/Content/ng-img-crop.css")
+    @Scripts.Render("~/Scripts/app/meetu-profile.js")
+}

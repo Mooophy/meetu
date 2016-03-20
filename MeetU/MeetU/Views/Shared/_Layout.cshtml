@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蜜柚-Meet.U</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top main-toolbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,12 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Meet.U", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Meet.U", "Index", "Meetups", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Meetup", "Index", "Meetups")</li>
+                    <li>@Html.ActionLink("Meetups", "Index", "Meetups")</li>
                     <li><a href="https://github.com/Mooophy/meetu"  target="_blank">GitHub</a></li>
                     <li><a href="https://github.com/Mooophy/meetu/issues" target="_blank">Issues</a></li>
                 </ul>
@@ -29,11 +29,11 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content main-content-wrapper">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Yue Wang</p>
+        <footer class="main-content-footer">
+            <hr />
+            <p>&copy; @DateTime.Now.Year copyright - Yue Wang</p>
         </footer>
     </div>
 

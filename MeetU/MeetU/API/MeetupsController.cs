@@ -13,29 +13,64 @@ namespace MeetU.API
     [Authorize]
     public class MeetupsController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Models.MuDbContext db = new Models.MuDbContext();
 
         // GET: api/Meetups
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         public IQueryable<MeetupViewModel> GetMeetups()
         {
-
-            return db.Meetups
+            var meetups =
+                db
+                .Meetups
                 .Select(
                 m => new MeetupViewModel
                 {
                     Meetup = m,
                     SponsorUserName = m.ApplicationUser.UserName,
-                    Joins = db.Joins.Where(j => j.MeetupId == m.Id),
-                    Watches = db.Watches.Where(w => w.MeetupId == m.Id)
+                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
                 });
+
+            //append user name
+            foreach (var m in meetups)
+                foreach (var j in m.Joins)
+                    if (j.UserName == null)
+                        j.UserName = j.ApplicationUser.UserName;
+
+            return meetups;
+        }
+
+        // GET: api/Meetups?start=the-starting-index&amount=how-many-to-fetch
+        // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
+        // To be abstact together with the api controller: GetMeetups() 
+        public IQueryable<MeetupViewModel> GetMeetups(int start, int amount)
+        {
+            var pagedMeetups =
+                db
+                .Meetups
+                .OrderByDescending(m => m.Date)
+                .Skip(start)
+                .Take(amount)
+                .Select(
+                m => new MeetupViewModel
+                {
+                    Meetup = m,
+                    SponsorUserName = m.ApplicationUser.UserName,
+                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                });
+
+            foreach (var m in pagedMeetups)
+                foreach (var j in m.Joins)
+                    if (j.UserName == null)
+                        j.UserName = j.ApplicationUser.UserName;
+
+            return pagedMeetups;
         }
 
         // GET: api/Meetups/5
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FindAsync(id);
+            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
@@ -98,7 +133,7 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> DeleteMeetup(int id)
         {
-            Meetup meetup = await db.Meetups.FindAsync(id);
+            Meetup meetup = await db.Meetups.FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();

@@ -18,7 +18,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -44,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +89,10 @@
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization.Less, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9b7581e0240fe480, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Optimization.Less.1.3.4\lib\net40\System.Web.Optimization.Less.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -194,7 +203,7 @@
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
-    <Compile Include="API\TestController.cs" />
+    <Compile Include="API\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -206,141 +215,39 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeetupsController.cs" />
-    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601101339039_Test.cs" />
-    <Compile Include="Migrations\201601101339039_Test.Designer.cs">
-      <DependentUpon>201601101339039_Test.cs</DependentUpon>
+    <Compile Include="Migrations\201603110120509_add-profile.cs" />
+    <Compile Include="Migrations\201603110120509_add-profile.Designer.cs">
+      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601101347426_FIRST.cs" />
-    <Compile Include="Migrations\201601101347426_FIRST.Designer.cs">
-      <DependentUpon>201601101347426_FIRST.cs</DependentUpon>
+    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.cs" />
+    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.Designer.cs">
+      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601101356104_TestForEF.cs" />
-    <Compile Include="Migrations\201601101356104_TestForEF.Designer.cs">
-      <DependentUpon>201601101356104_TestForEF.cs</DependentUpon>
+    <Compile Include="Migrations\201603120335448_remove-google-id.cs" />
+    <Compile Include="Migrations\201603120335448_remove-google-id.Designer.cs">
+      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601101405581_SomeID.cs" />
-    <Compile Include="Migrations\201601101405581_SomeID.Designer.cs">
-      <DependentUpon>201601101405581_SomeID.cs</DependentUpon>
+    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.cs" />
+    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.Designer.cs">
+      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601101407521_remove-someid.cs" />
-    <Compile Include="Migrations\201601101407521_remove-someid.Designer.cs">
-      <DependentUpon>201601101407521_remove-someid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601101422044_Movie.cs" />
-    <Compile Include="Migrations\201601101422044_Movie.Designer.cs">
-      <DependentUpon>201601101422044_Movie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601102213076_NickName.cs" />
-    <Compile Include="Migrations\201601102213076_NickName.Designer.cs">
-      <DependentUpon>201601102213076_NickName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601102234587_remove-nick-name.cs" />
-    <Compile Include="Migrations\201601102234587_remove-nick-name.Designer.cs">
-      <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601130801362_back-to-last-commit.cs" />
-    <Compile Include="Migrations\201601130801362_back-to-last-commit.Designer.cs">
-      <DependentUpon>201601130801362_back-to-last-commit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601160951106_last-commit.cs" />
-    <Compile Include="Migrations\201601160951106_last-commit.Designer.cs">
-      <DependentUpon>201601160951106_last-commit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601161012279_add-tag.cs" />
-    <Compile Include="Migrations\201601161012279_add-tag.Designer.cs">
-      <DependentUpon>201601161012279_add-tag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601161030430_Test-Foreign-Key.cs" />
-    <Compile Include="Migrations\201601161030430_Test-Foreign-Key.Designer.cs">
-      <DependentUpon>201601161030430_Test-Foreign-Key.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601161039553_Rename-For-Tag-Creator.cs" />
-    <Compile Include="Migrations\201601161039553_Rename-For-Tag-Creator.Designer.cs">
-      <DependentUpon>201601161039553_Rename-For-Tag-Creator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601161050132_Full-Design-For-Tag.cs" />
-    <Compile Include="Migrations\201601161050132_Full-Design-For-Tag.Designer.cs">
-      <DependentUpon>201601161050132_Full-Design-For-Tag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601170427047_just-a-check.cs" />
-    <Compile Include="Migrations\201601170427047_just-a-check.Designer.cs">
-      <DependentUpon>201601170427047_just-a-check.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601181424181_revert-again.cs" />
-    <Compile Include="Migrations\201601181424181_revert-again.Designer.cs">
-      <DependentUpon>201601181424181_revert-again.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601190752331_Meetup-P1.cs" />
-    <Compile Include="Migrations\201601190752331_Meetup-P1.Designer.cs">
-      <DependentUpon>201601190752331_Meetup-P1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601200138217_split-datetime-to-date-plus-time.cs" />
-    <Compile Include="Migrations\201601200138217_split-datetime-to-date-plus-time.Designer.cs">
-      <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601200448545_user-number.cs" />
-    <Compile Include="Migrations\201601200448545_user-number.Designer.cs">
-      <DependentUpon>201601200448545_user-number.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201208323_Join.cs" />
-    <Compile Include="Migrations\201601201208323_Join.Designer.cs">
-      <DependentUpon>201601201208323_Join.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201329168_add-compisit-key-to-Join.cs" />
-    <Compile Include="Migrations\201601201329168_add-compisit-key-to-Join.Designer.cs">
-      <DependentUpon>201601201329168_add-compisit-key-to-Join.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201337235_remove-join.cs" />
-    <Compile Include="Migrations\201601201337235_remove-join.Designer.cs">
-      <DependentUpon>201601201337235_remove-join.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201338530_add-join-again.cs" />
-    <Compile Include="Migrations\201601201338530_add-join-again.Designer.cs">
-      <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601250804119_Watch.cs" />
-    <Compile Include="Migrations\201601250804119_Watch.Designer.cs">
-      <DependentUpon>201601250804119_Watch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601260203542_add-id-to-join.cs" />
-    <Compile Include="Migrations\201601260203542_add-id-to-join.Designer.cs">
-      <DependentUpon>201601260203542_add-id-to-join.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601260205586_remove-id-from-join.cs" />
-    <Compile Include="Migrations\201601260205586_remove-id-from-join.Designer.cs">
-      <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601270603577_comments.cs" />
-    <Compile Include="Migrations\201601270603577_comments.Designer.cs">
-      <DependentUpon>201601270603577_comments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601271124253_check.cs" />
-    <Compile Include="Migrations\201601271124253_check.Designer.cs">
-      <DependentUpon>201601271124253_check.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601271130105_check-d.cs" />
-    <Compile Include="Migrations\201601271130105_check-d.Designer.cs">
-      <DependentUpon>201601271130105_check-d.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601281135203_ProfileImages.cs" />
-    <Compile Include="Migrations\201601281135203_ProfileImages.Designer.cs">
-      <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
+    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.cs" />
+    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
+      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Content.cs" />
-    <Compile Include="Models\Domain\Tag.cs" />
+    <Compile Include="Models\MuDbContext.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetup.cs" />
     <Compile Include="Models\MeetupViewModel.cs" />
-    <Compile Include="Models\ProfileImage.cs" />
-    <Compile Include="Models\Watch.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -350,11 +257,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-moment.js" />
+    <Content Include="Scripts\angular-moment.min.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.js" />
@@ -369,14 +279,26 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Spinner.less" />
+    <Content Include="Content\Login.less" />
+    <Content Include="Content\variables.less" />
+    <Content Include="Content\Toolbar.less" />
+    <Content Include="Content\utilities.less" />
+    <Content Include="Content\Meetups.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\meetu-meetup.js" />
+    <Content Include="Scripts\app\meetu-profile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -388,8 +310,18 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
+    <Content Include="Scripts\ng-img-crop.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -408,7 +340,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -429,118 +360,36 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Tags\Create.cshtml" />
-    <Content Include="Views\Tags\Delete.cshtml" />
-    <Content Include="Views\Tags\Details.cshtml" />
-    <Content Include="Views\Tags\Edit.cshtml" />
-    <Content Include="Views\Tags\Index.cshtml" />
-    <Content Include="Views\Design\DateTimePicker.cshtml" />
-    <Content Include="Views\Design\BootStrap.cshtml" />
     <Content Include="Views\Meetups\Create.cshtml" />
-    <Content Include="Views\Meetups\Delete.cshtml" />
-    <Content Include="Views\Meetups\Details.cshtml" />
-    <Content Include="Views\Meetups\Edit.cshtml" />
     <Content Include="Views\Meetups\Index.cshtml" />
-    <Content Include="Views\Home\TestNg.cshtml" />
+    <Content Include="Views\Design\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601101339039_Test.resx">
-      <DependentUpon>201601101339039_Test.cs</DependentUpon>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603110120509_add-profile.resx">
+      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101347426_FIRST.resx">
-      <DependentUpon>201601101347426_FIRST.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.resx">
+      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101356104_TestForEF.resx">
-      <DependentUpon>201601101356104_TestForEF.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603120335448_remove-google-id.resx">
+      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101405581_SomeID.resx">
-      <DependentUpon>201601101405581_SomeID.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603120401142_LoginCountCanntBeNull.resx">
+      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101407521_remove-someid.resx">
-      <DependentUpon>201601101407521_remove-someid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101422044_Movie.resx">
-      <DependentUpon>201601101422044_Movie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601102213076_NickName.resx">
-      <DependentUpon>201601102213076_NickName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601102234587_remove-nick-name.resx">
-      <DependentUpon>201601102234587_remove-nick-name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601130801362_back-to-last-commit.resx">
-      <DependentUpon>201601130801362_back-to-last-commit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601160951106_last-commit.resx">
-      <DependentUpon>201601160951106_last-commit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601161012279_add-tag.resx">
-      <DependentUpon>201601161012279_add-tag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601161030430_Test-Foreign-Key.resx">
-      <DependentUpon>201601161030430_Test-Foreign-Key.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601161039553_Rename-For-Tag-Creator.resx">
-      <DependentUpon>201601161039553_Rename-For-Tag-Creator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601161050132_Full-Design-For-Tag.resx">
-      <DependentUpon>201601161050132_Full-Design-For-Tag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601170427047_just-a-check.resx">
-      <DependentUpon>201601170427047_just-a-check.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601181424181_revert-again.resx">
-      <DependentUpon>201601181424181_revert-again.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601190752331_Meetup-P1.resx">
-      <DependentUpon>201601190752331_Meetup-P1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601200138217_split-datetime-to-date-plus-time.resx">
-      <DependentUpon>201601200138217_split-datetime-to-date-plus-time.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601200448545_user-number.resx">
-      <DependentUpon>201601200448545_user-number.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201208323_Join.resx">
-      <DependentUpon>201601201208323_Join.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201329168_add-compisit-key-to-Join.resx">
-      <DependentUpon>201601201329168_add-compisit-key-to-Join.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201337235_remove-join.resx">
-      <DependentUpon>201601201337235_remove-join.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201338530_add-join-again.resx">
-      <DependentUpon>201601201338530_add-join-again.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601250804119_Watch.resx">
-      <DependentUpon>201601250804119_Watch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601260203542_add-id-to-join.resx">
-      <DependentUpon>201601260203542_add-id-to-join.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601260205586_remove-id-from-join.resx">
-      <DependentUpon>201601260205586_remove-id-from-join.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601270603577_comments.resx">
-      <DependentUpon>201601270603577_comments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601271124253_check.resx">
-      <DependentUpon>201601271124253_check.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601271130105_check-d.resx">
-      <DependentUpon>201601271130105_check-d.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601281135203_ProfileImages.resx">
-      <DependentUpon>201601281135203_ProfileImages.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
+      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -561,7 +410,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>23725</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:23725/</IISUrl>
+          <IISUrl>http://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,8 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #FFFFFE;
+    min-width: 320px;
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -25,19 +26,25 @@ textarea {
 
 /*Below is added by Yue*/
 
-hr{
+hr {
     margin-top: 10px;
     margin-bottom: 10px;
+    border-top: 1px solid #d25f00;
+    border-top: 1px solid rgba(210, 95, 0, 0.5);
 }
 
-.jumbotron{
+.jumbotron {
     margin-bottom: 0px;
 }
 
-.small{
-    font-size:80%
+.small {
+    font-size: 80%;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+    display: none !important;
+}
+
+.toShowWhereImagesToStore {
+    background-image: url(Images/bg.jpg);
 }
