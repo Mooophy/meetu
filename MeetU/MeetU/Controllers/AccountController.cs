@@ -81,6 +81,8 @@ namespace MeetU.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var userId = db.Users.FirstOrDefault(u => u.UserName == model.UserName).Id;
+                    await IncrementLoginCountAsync(userId);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -377,6 +379,8 @@ namespace MeetU.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var userId = db.Users.FirstOrDefault(u => u.Email == loginInfo.Email).Id;
+                    await IncrementLoginCountAsync(userId);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -470,6 +474,15 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
+        // Used for increment Login count, by specified user id.
+        // @Yue
+        private async Task<int> IncrementLoginCountAsync(string userId)
+        {
+            var loginCount = ++db.Profiles.FirstOrDefault(p => p.UserId == userId).LoginCount;
+            await db.SaveChangesAsync();
+            return loginCount;
+        }
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
