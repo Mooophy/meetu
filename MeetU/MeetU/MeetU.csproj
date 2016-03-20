@@ -219,66 +219,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603110120509_add-profile.cs" />
-    <Compile Include="Migrations\201603110120509_add-profile.Designer.cs">
-      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.cs" />
-    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.Designer.cs">
-      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120335448_remove-google-id.cs" />
-    <Compile Include="Migrations\201603120335448_remove-google-id.Designer.cs">
-      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.cs" />
-    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.Designer.cs">
-      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.cs" />
-    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
-      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.cs" />
-    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.Designer.cs">
-      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.cs" />
-    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.Designer.cs">
-      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603161344502_FixTypo.cs" />
-    <Compile Include="Migrations\201603161344502_FixTypo.Designer.cs">
-      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.cs" />
-    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.Designer.cs">
-      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.cs" />
-    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.Designer.cs">
-      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.cs" />
-    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.Designer.cs">
-      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603201414242_check.cs" />
-    <Compile Include="Migrations\201603201414242_check.Designer.cs">
-      <DependentUpon>201603201414242_check.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603201423568_bug.cs" />
-    <Compile Include="Migrations\201603201423568_bug.Designer.cs">
-      <DependentUpon>201603201423568_bug.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603201425511_bug1.cs" />
-    <Compile Include="Migrations\201603201425511_bug1.Designer.cs">
-      <DependentUpon>201603201425511_bug1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603201426352_bug2.cs" />
-    <Compile Include="Migrations\201603201426352_bug2.Designer.cs">
-      <DependentUpon>201603201426352_bug2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -429,53 +369,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603110120509_add-profile.resx">
-      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.resx">
-      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120335448_remove-google-id.resx">
-      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120401142_LoginCountCanntBeNull.resx">
-      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
-      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.resx">
-      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603160342012_MakeCancelledAtNullable.resx">
-      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603161344502_FixTypo.resx">
-      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603181316578_AddNewColumnUpdatedAt.resx">
-      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603182053403_RemoveUpdatedAt.resx">
-      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603182057028_AddedUpdatedAtAgain.resx">
-      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603201414242_check.resx">
-      <DependentUpon>201603201414242_check.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603201423568_bug.resx">
-      <DependentUpon>201603201423568_bug.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603201425511_bug1.resx">
-      <DependentUpon>201603201425511_bug1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603201426352_bug2.resx">
-      <DependentUpon>201603201426352_bug2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
