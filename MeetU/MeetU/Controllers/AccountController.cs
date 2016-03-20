@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -8,8 +9,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MeetU.Models;
 using System.Net;
-using System.Net.Mail;
 using Newtonsoft.Json;
+using System.Data.Entity;
 
 namespace MeetU.Controllers
 {
@@ -155,47 +156,22 @@ namespace MeetU.Controllers
         {
             if (ModelState.IsValid)
             {
+                //create both new user and its profile
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                //
-                //  Create a profile with basic info, using UserName as NickName
-                //
-                var profile = new Profile
-                {
-                    UserId = user.Id,
-                    NickName = user.UserName,
-                    CreatedAt = DateTime.Now,
-                    LoginCount = 0,
-                };
-                db.Profiles.Add(profile);
-                await db.SaveChangesAsync();
+                var userCreatedResult = await UserManager.CreateAsync(user, model.Password);
+                var isProfileCreated = await CreateProfileAsync(user);
 
-                if (result.Succeeded)
+                //When both created successfully.
+                if (userCreatedResult.Succeeded && isProfileCreated)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    //
-                    // To be abstracted away and make it async. -Yue
-                    // Try to use more decent smtp server later.-Yue 
-                    //
-                    GMailer.GmailUsername = "meet.u.email@gmail.com";
-                    GMailer.GmailPassword = "meetuuuu";
-                    GMailer mailer = new GMailer();
-                    mailer.ToEmail = user.Email;
-                    mailer.Subject = "Confirm your account";
-                    mailer.Body = "Hi " + user.UserName + "!<br><br><br>Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a><br><br><br>From Meet.U";
-                    mailer.IsHtml = true;
-                    mailer.Send();
-
                     return RedirectToAction("Index", "Meetups");
                 }
-                AddErrors(result);
+
+                //Add errors when either failed
+                if (!isProfileCreated)
+                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
+                AddErrors(userCreatedResult.Errors);
             }
 
             // If we got this far, something failed, redisplay form
@@ -289,7 +265,7 @@ namespace MeetU.Controllers
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            AddErrors(result);
+            AddErrors(result.Errors);
             return View();
         }
 
@@ -358,22 +334,6 @@ namespace MeetU.Controllers
                 return RedirectToAction("Login");
             }
 
-            //
-            //  google profile image experiment
-            //
-            {
-                //get access token to use in profile image request
-                var accessToken = loginInfo.ExternalIdentity.Claims.Where(c => c.Type.Equals("urn:google:accesstoken")).Select(c => c.Value).FirstOrDefault();
-                Uri apiRequestUri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
-                //request profile image
-                using (var webClient = new WebClient())
-                {
-                    var json = webClient.DownloadString(apiRequestUri);
-                    dynamic r = JsonConvert.DeserializeObject(json);
-                    var userPicture = r.picture;
-                }
-            }
-
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -417,7 +377,9 @@ namespace MeetU.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
+                var isProfileCreated = await CreateProfileAsync(user);
+                await FillProfileByGoogleAsync(info);
+                if (result.Succeeded && isProfileCreated)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
@@ -426,7 +388,9 @@ namespace MeetU.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                AddErrors(result);
+                if (!isProfileCreated)
+                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
+                AddErrors(result.Errors);
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -474,6 +438,51 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
+        private async Task<bool> FillProfileByGoogleAsync (ExternalLoginInfo loginInfo)
+        {
+            //get access token to use in profile image request
+            var token =
+                loginInfo
+                .ExternalIdentity
+                .Claims
+                .Where(c => c.Type.Equals("urn:google:accesstoken"))
+                .Select(c => c.Value)
+                .FirstOrDefault();
+            var uri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + token);
+            string json;
+            using (var webClient = new WebClient())
+            {
+                json = await webClient.DownloadStringTaskAsync(uri);
+            }
+            dynamic dataFromGoogle = JsonConvert.DeserializeObject(json);
+            if (dataFromGoogle == null)
+            {
+                return false;
+            }
+            var userId = (await db.Users.FirstOrDefaultAsync(u => u.Email == loginInfo.Email)).Id;
+            var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == userId);
+            profile.NickName = dataFromGoogle.name;
+            profile.FamilyName = dataFromGoogle.family_name;
+            profile.GivenName = dataFromGoogle.given_name;
+            profile.Gender = dataFromGoogle.gender;
+            profile.Picture = dataFromGoogle.picture;
+
+            return await db.SaveChangesAsync() > 0;
+        }
+
+        private async Task<bool> CreateProfileAsync(ApplicationUser user)
+        {
+            var profile = new Profile
+            {
+                UserId = user.Id,
+                NickName = user.UserName,
+                CreatedAt = DateTime.Now,
+                LoginCount = 1
+            };
+            db.Profiles.Add(profile);
+            return await db.SaveChangesAsync() > 0;
+        }
+
         // Used for increment Login count, by specified user id.
         // @Yue
         private async Task<int> IncrementLoginCountAsync(string userId)
@@ -494,9 +503,9 @@ namespace MeetU.Controllers
             }
         }
 
-        private void AddErrors(IdentityResult result)
+        private void AddErrors(IEnumerable<string> errors)
         {
-            foreach (var error in result.Errors)
+            foreach (var error in errors)
             {
                 ModelState.AddModelError("", error);
             }
@@ -540,48 +549,5 @@ namespace MeetU.Controllers
             }
         }
         #endregion
-    }
-}
-
-/// <summary>
-/// To be abstracted away and make it async. -Yue
-/// </summary>
-public class GMailer
-{
-    public static string GmailUsername { get; set; }
-    public static string GmailPassword { get; set; }
-    public static string GmailHost { get; set; }
-    public static int GmailPort { get; set; }
-    public static bool GmailSSL { get; set; }
-
-    public string ToEmail { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
-    public bool IsHtml { get; set; }
-
-    static GMailer()
-    {
-        GmailHost = "smtp.gmail.com";
-        GmailPort = 25; // Gmail can use ports 25, 465 & 587; but must be 25 for medium trust environment.
-        GmailSSL = true;
-    }
-
-    public void Send()
-    {
-        SmtpClient smtp = new SmtpClient();
-        smtp.Host = GmailHost;
-        smtp.Port = GmailPort;
-        smtp.EnableSsl = GmailSSL;
-        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-        smtp.UseDefaultCredentials = false;
-        smtp.Credentials = new NetworkCredential(GmailUsername, GmailPassword);
-
-        using (var message = new MailMessage(GmailUsername, ToEmail))
-        {
-            message.Subject = Subject;
-            message.Body = Body;
-            message.IsBodyHtml = IsHtml;
-            smtp.Send(message);
-        }
     }
 }

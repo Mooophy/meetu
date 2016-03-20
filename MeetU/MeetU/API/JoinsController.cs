@@ -35,54 +35,6 @@ namespace MeetU.API
             return db.Joins;
         }
 
-        // GET: api/Joins/5
-        //[ResponseType(typeof(Join))]
-        //public async Task<IHttpActionResult> GetJoin(int id)
-        //{
-        //    Join join = await db.Joins.FindAsync(id);
-        //    if (join == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(join);
-        //}
-
-        // PUT: api/Joins/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutJoin(int id, Join join)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != join.MeetupId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(join).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JoinExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Joins
         [ResponseType(typeof(Join))]
         public async Task<IHttpActionResult> PostJoin(Join join)

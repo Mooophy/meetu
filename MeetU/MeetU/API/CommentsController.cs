@@ -14,40 +14,53 @@ using MeetU.Models;
 
 namespace MeetU.API
 {
+    //
+    //  the view model of domain model Comment, 
+    //  as JSON at front end.
+    //  @Yue
+    //
+    public class CommentView
+    {
+        public int Id { get; set; }
+        public string Content { get; set; }
+        public string By { get; set; }
+        public int MeetupId { get; set; }
+        public DateTime At { get; set; }
+    }
+
     public class CommentsController : ApiController
     {
-        public class CommentView
-        {
-            public int Id { get; set; }
-            public string Content { get; set; }
-            public string By { get; set; }
-            public int MeetupId { get; set; }
-            public DateTime At { get; set; }
-        }
-
-        private Models.MuDbContext db = new Models.MuDbContext();
+        private MuDbContext db = new MuDbContext();
 
         //GET: api/Comments
         public IQueryable<CommentView> GetComments()
         {
-            return db.Comments.Select(
-                c =>
-                new CommentView
+            return
+                from c in db.Comments
+                select new CommentView
                 {
                     Id = c.Id,
                     Content = c.Content,
                     By = c.ApplicationUser.UserName,
                     MeetupId = c.MeetupId,
                     At = c.At
-                });
+                };
         }
 
-        // Get: api/Comments/:meetupId/byMeetup
-        // This is a custom api, to get comments with meetupId
-        [Route("api/comments/{meetupId:int}/byMeetupId")]
-        public IQueryable<Comment> GetCommentsByMeetupId(int meetupId)
+        //GET: api/comments?meetupId=some-meetupId
+        public IQueryable<CommentView> GetComments(int meetupId)
         {
-            return db.Comments.Where(c => c.MeetupId == meetupId);
+            return
+                from c in db.Comments
+                where c.MeetupId == meetupId
+                select new CommentView
+                {
+                    Id = c.Id,
+                    Content = c.Content,
+                    By = c.ApplicationUser.UserName,
+                    MeetupId = c.MeetupId,
+                    At = c.At
+                };
         }
 
         // GET: api/Comments/5
@@ -129,7 +142,7 @@ namespace MeetU.API
             //
             if (comment.By != User.Identity.GetUserId())
             {
-                return BadRequest();
+                return StatusCode(HttpStatusCode.Forbidden);
             }
 
             db.Comments.Remove(comment);

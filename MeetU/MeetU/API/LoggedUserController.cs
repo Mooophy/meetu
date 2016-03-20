@@ -13,23 +13,32 @@ namespace MeetU.API
     {
         private MuDbContext db = new MuDbContext();
 
-        public class UserView
+        public class LoggedInUserView
         {
             public string UserId { get; set; }
             public string UserName { get; set; }
         }
 
-        public IQueryable<UserView> GetLoggedUser()
+        public IQueryable<LoggedInUserView> GetLoggedUser()
         {
-            var result = new List<UserView>
+            var result = new List<LoggedInUserView>
             {
-                new UserView
+                new LoggedInUserView
                 {
                     UserId = User.Identity.GetUserId(),
                     UserName = User.Identity.GetUserName()
                 }
             };
             return result.AsQueryable();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

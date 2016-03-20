@@ -17,9 +17,11 @@ namespace MeetU.Models
         public string NickName { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
-        public string Pricture { get; set; }
+        public string Picture { get; set; }
         public string Gender { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public int LoginCount { get; set; }
+
     }
 }

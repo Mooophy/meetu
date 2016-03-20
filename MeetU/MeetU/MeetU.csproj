@@ -204,6 +204,7 @@
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
     <Compile Include="API\TestsController.cs" />
+    <Compile Include="API\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -238,6 +239,30 @@
     <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
       <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.cs" />
+    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.Designer.cs">
+      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.cs" />
+    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.Designer.cs">
+      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603161344502_FixTypo.cs" />
+    <Compile Include="Migrations\201603161344502_FixTypo.Designer.cs">
+      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.cs" />
+    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.Designer.cs">
+      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.cs" />
+    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.Designer.cs">
+      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.cs" />
+    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.Designer.cs">
+      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -253,16 +278,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Logos\Logo-with-text-160x80.png" />
+    <Content Include="Content\Images\Logos\Logo-with-text-320x160.png" />
+    <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
+    <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
+    <Content Include="Content\Images\pusheencat.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-moment.js" />
     <Content Include="Scripts\angular-moment.min.js" />
@@ -286,6 +316,9 @@
     <Content Include="Content\Toolbar.less" />
     <Content Include="Content\utilities.less" />
     <Content Include="Content\Meetups.less" />
+    <Content Include="Content\z-index.less" />
+    <Content Include="Content\Tab.less" />
+    <Content Include="Content\Site.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -295,6 +328,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\meetu-meetup.js" />
     <Content Include="Scripts\app\meetu-profile.js" />
+    <Content Include="Scripts\app\meetu-tabController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -325,6 +359,8 @@
     <Content Include="Scripts\ng-img-crop.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -364,10 +400,10 @@
     <Content Include="Views\Meetups\Create.cshtml" />
     <Content Include="Views\Meetups\Index.cshtml" />
     <Content Include="Views\Design\Index.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -391,6 +427,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
       <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.resx">
+      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160342012_MakeCancelledAtNullable.resx">
+      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161344502_FixTypo.resx">
+      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603181316578_AddNewColumnUpdatedAt.resx">
+      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182053403_RemoveUpdatedAt.resx">
+      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182057028_AddedUpdatedAtAgain.resx">
+      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
