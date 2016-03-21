@@ -5,7 +5,7 @@
 (function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment'])
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute'])
         .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
 
             var currentShowingMeetupCount = 0;
