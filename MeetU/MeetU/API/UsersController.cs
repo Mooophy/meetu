@@ -45,8 +45,8 @@ namespace MeetU.API
                 Picture = profile.Picture,
                 Gender = profile.Gender,
 
-                //CreatedAt = profile.CreatedAt,
-                //UpdatedAt = profile.UpdatedAt,
+                CreatedAt = profile.CreatedAt,
+                UpdatedAt = profile.UpdatedAt,
                 LoginCount = profile.LoginCount
             };
             return Ok(userView);
@@ -70,7 +70,7 @@ namespace MeetU.API
             profile.GivenName = user.GivenName;
             profile.NickName = user.NickName;
             profile.Picture = user.Picture;
-            //profile.UpdatedAt = DateTime.Now;
+            profile.UpdatedAt = DateTime.Now;
 
             db.Entry(profile).State = EntityState.Modified;
 

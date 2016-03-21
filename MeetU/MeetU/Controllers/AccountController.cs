@@ -157,22 +157,18 @@ namespace MeetU.Controllers
         {
             if (ModelState.IsValid)
             {
-                //create both new user and its profile
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
-                var userCreatedResult = await UserManager.CreateAsync(user, model.Password);
-                var isProfileCreated = await CreateProfileAsync(user);
-
-                //When both created successfully.
-                if (userCreatedResult.Succeeded && isProfileCreated)
+                var user = new ApplicationUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Meetups");
                 }
-
-                //Add errors when either failed
-                if (!isProfileCreated)
-                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
-                AddErrors(userCreatedResult.Errors);
+                AddErrors(result.Errors);
             }
 
             // If we got this far, something failed, redisplay form
@@ -367,7 +363,6 @@ namespace MeetU.Controllers
             {
                 return RedirectToAction("Index", "Manage");
             }
-
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
@@ -377,10 +372,13 @@ namespace MeetU.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-                var isProfileCreated = await CreateProfileAsync(user);
-                await FillProfileByGoogleAsync(info);
-                if (result.Succeeded && isProfileCreated)
+                var result = UserManager.Create(user);
+                if (null != db.Profiles.FirstOrDefault(p => p.UserId == user.Id))
+                {
+                    await ImportProfileFromGoogleAsync(info);
+                }
+
+                if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
@@ -389,11 +387,8 @@ namespace MeetU.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                if (!isProfileCreated)
-                    AddErrors(new List<string> { "Profile failed to create. -- Yue" });
                 AddErrors(result.Errors);
             }
-
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
@@ -439,7 +434,7 @@ namespace MeetU.Controllers
         }
 
         #region Helpers
-        private async Task<bool> FillProfileByGoogleAsync (ExternalLoginInfo loginInfo)
+        private async Task<bool> ImportProfileFromGoogleAsync(ExternalLoginInfo loginInfo)
         {
             //get access token to use in profile image request
             var token =
@@ -469,31 +464,6 @@ namespace MeetU.Controllers
             profile.Picture = dataFromGoogle.picture;
 
             return await db.SaveChangesAsync() > 0;
-        }
-
-        private async Task<bool> CreateProfileAsync(ApplicationUser user)
-        {
-            var profile = new Profile
-            {
-                UserId = user.Id,
-                NickName = user.UserName,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-                LoginCount = 1
-            };
-            db.Profiles.Add(profile);
-
-            bool result = false;
-
-            try{
-                result = await db.SaveChangesAsync() > 0;
-            }
-            catch(DbUpdateConcurrencyException e)
-            {
-                throw e;
-            }
-
-            return result;
         }
 
         // Used for increment Login count, by specified user id.
