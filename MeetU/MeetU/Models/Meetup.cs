@@ -41,5 +41,7 @@ namespace MeetU.Models
         public bool IsCancelled { get; set; }
 
         public DateTime? CancelledAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
     }
 }

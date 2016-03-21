@@ -29,7 +29,7 @@ namespace MeetU.Models
         public string Gender { get; set; }
 
         // Read only
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
         public int LoginCount { get; set; }
     }
