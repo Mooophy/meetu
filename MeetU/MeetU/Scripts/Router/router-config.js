@@ -11,12 +11,11 @@
                     controller: 'meetupIndexController'
                 })
                 .when('/Profile/:profileId', {
-                	templateUrl: '/Scripts/Views/Profile/ShowProfile.html',
+                    templateUrl: '/Scripts/Views/Profile/ShowProfile.html',
                     controller: 'ProfileController'
                 })
                 .when('/Meetup/Create', {
-                	templateUrl: '/Scripts/Views/Meetup/Create.html',
-                    controller: 'MeetupCreateController'
+                    templateUrl: '/Scripts/Views/Meetup/Create.html'
                 })
                 .otherwise({
                     redirectTo: '/index'

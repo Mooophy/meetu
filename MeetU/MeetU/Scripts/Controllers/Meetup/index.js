@@ -1,8 +1,4 @@
-﻿//
-//  This code implements controller 'meetupIndexController',
-//  used for template file : ~/Meetups/Index.cshtml.
-//
-(function () {
+﻿(function () {
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute'])

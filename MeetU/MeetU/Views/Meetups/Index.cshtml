@@ -15,7 +15,10 @@
     @Scripts.Render("~/Scripts/moment.min.js")
     @Scripts.Render("~/Scripts/angular-moment.min.js")
     @Scripts.Render("~/Scripts/angular-route.min.js")
-    @Scripts.Render("~/Scripts/Controllers/meetup-controller.js")
-    @Scripts.Render("~/Scripts/Controllers/tab-controller.js")
+    @Scripts.Render("~/Scripts/Controllers/Meetup/index.js")
+    @Scripts.Render("~/Scripts/Controllers/Meetup/create.js")
+    @Scripts.Render("~/Scripts/Controllers/Mixins/tab.js")
+    @Scripts.Render("~/Scripts/Directives/history-back.js")
     @Scripts.Render("~/Scripts/Router/router-config.js")
+    @Scripts.Render("http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places")
 }
