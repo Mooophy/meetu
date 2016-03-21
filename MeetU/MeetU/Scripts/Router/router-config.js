@@ -7,12 +7,10 @@
         .config(function ($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/index', {
-                    templateUrl: '/Scripts/Views/Meetup/Index.html',
-                    controller: 'meetupIndexController'
+                    templateUrl: '/Scripts/Views/Meetup/Index.html'
                 })
                 .when('/Profile/:profileId', {
-                    templateUrl: '/Scripts/Views/Profile/ShowProfile.html',
-                    controller: 'ProfileController'
+                    templateUrl: '/Scripts/Views/Profile/ShowProfile.html'
                 })
                 .when('/Meetup/Create', {
                     templateUrl: '/Scripts/Views/Meetup/Create.html'
