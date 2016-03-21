@@ -282,11 +282,11 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\app\meetu-historyBackDirective.js" />
-    <Content Include="Scripts\app\meetu-meetup.js" />
-    <Content Include="Scripts\app\meetu-profile.js" />
-    <Content Include="Scripts\app\meetu-routerConfig.js" />
-    <Content Include="Scripts\app\meetu-tabController.js" />
+    <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Directives\history-back.js" />
+    <Content Include="Scripts\Controllers\Meetup\index.js" />
+    <Content Include="Scripts\Router\router-config.js" />
+    <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -303,6 +303,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Views\Meetup\Create.html" />
+    <Content Include="Scripts\Views\Meetup\Index.html" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
