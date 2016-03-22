@@ -10,11 +10,11 @@
             <img class="login-phone-mode-logo" src="../../Content/Images/Logos/meetu-logo-160x160.png" />
             <img class="login-phone-mode-text" src="../../Content/Images/Logos/MeetU-text-240x80.png" />
         </div>
-        <div class="login-phone-mode-homepage-arrow-wrapper">
+        <div class="login-phone-mode-homepage-arrow-wrapper js-login-jump-icon">
             <span class="glyphicon glyphicon-menu-up login-phone-mode-homepage-arrow"></span>
         </div>
     </div>
-    <div class="panel login-wrapper">
+    <div class="panel login-wrapper js-login-form" >
         <div class="panel-heading login-heading">login</div>
         <div class="panel-body login-body">
             <div class="col-md-10 col-md-offset-1 login-form-wrapper">
@@ -48,9 +48,9 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(".login-content-wrapper .login-phone-mode-homepage-wrapper .login-phone-mode-homepage-arrow-wrapper").click(function () {
+        $(".js-login-jump-icon").click(function () {
             $('body').animate({
-                scrollTop: $(".login-content-wrapper .panel").offset().top
+                scrollTop: $(".js-login-form").offset().top
             },
                 700);
         });
