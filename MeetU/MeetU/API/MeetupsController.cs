@@ -49,7 +49,7 @@ namespace MeetU.API
             var pagedMeetups =
                 db.Meetups
                 .Where(m => m.IsCancelled == false)
-                .OrderByDescending(m => m.Date)
+                .OrderByDescending(m => m.When)
                 .Skip(start)
                 .Take(amount)
                 .Select(

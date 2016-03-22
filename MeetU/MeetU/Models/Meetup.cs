@@ -17,12 +17,7 @@ namespace MeetU.Models
         public string Description { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
-
-        [Required]
-        [DataType(DataType.Time)]
-        public TimeSpan When { get; set; }
+        public DateTime When { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
