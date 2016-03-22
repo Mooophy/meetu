@@ -72,7 +72,7 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = 
+            Meetup meetup =
                 await db.Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -123,6 +123,14 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> PostMeetup(Meetup meetup)
         {
+            if (meetup.Sponsor != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+
+            meetup.IsCancelled = false;
+            meetup.CreatedAt = DateTime.Now;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -138,13 +146,13 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> DeleteMeetup(int id)
         {
-            Meetup meetup = 
+            Meetup meetup =
                 await db.Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
                 return NotFound();
-            if(meetup.Sponsor != User.Identity.GetUserId())
+            if (meetup.Sponsor != User.Identity.GetUserId())
                 return StatusCode(HttpStatusCode.Forbidden);
             meetup.IsCancelled = true;
             meetup.CancelledAt = DateTime.Now;

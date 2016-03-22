@@ -11,10 +11,9 @@ namespace MeetU.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(40, ErrorMessage = "40 characters at most!")]
+        [MaxLength(200, ErrorMessage = "200 characters at most!")]
         public string Title { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
         [Required]
