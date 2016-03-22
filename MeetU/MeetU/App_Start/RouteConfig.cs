@@ -11,7 +11,7 @@ namespace MeetU
 
             routes.MapRoute(
                 name: "switch_to_ng_route",
-                url: "{i}ndex",
+                url: "index",
                 defaults: new { controller = "Meetups", action = "Index", id = UrlParameter.Optional }
             );
 
