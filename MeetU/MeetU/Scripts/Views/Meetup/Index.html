@@ -2,7 +2,7 @@
 <div ng-controller="meetupIndexController">
     <div class="col-md-1"></div>
     <div class="col-md-8 ng-cloak">
-        <div ng-repeat="meetupView in meetupViews">
+        <div ng-repeat="meetupView in meetupViews | orderBy:'-meetup.createdAt'">
             <div class="meetup-wrapper">
                 <div class="meetup-brief" ng-click="isDetailShowing = !isDetailShowing; toggleDetail(meetupView, isDetailShowing);">
                     <div class="meetup-from col-sm-10 col-xs-10">
@@ -94,7 +94,7 @@
                     <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="deleteMeetup(meetupView.meetup.id)"></span>
                 </div>
             </div>
-            <hr class="meetup-separator"/>
+            <hr class="meetup-separator" />
         </div>
     </div>
     <div class="meetup-create ng-cloak">
