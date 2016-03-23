@@ -1,8 +1,8 @@
 ﻿(function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute'])
-        .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute','angular-confirm', 'ui.bootstrap.tpls'])
+        .controller('meetupIndexController', function ($scope, $resource, $q, $log, $confirm) {
 
             var currentShowingMeetupCount = 0;
             var MEETUPS_PER_PAGE = 5;
@@ -141,6 +141,14 @@
             //
             //  Delete comment 
             //
+
+            $scope.delete = function () {
+                $confirm({ text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No' })
+                    .then(function () {
+                        alert("You click yes");
+                    });
+            }
+
             $scope.deleteComment = function (meetupView, commentId) {
                 if (confirm("Are you sure you want to delete this comment?")) {
                     CommentView

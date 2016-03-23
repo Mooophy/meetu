@@ -249,6 +249,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-confirm.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-moment.js" />
     <Content Include="Scripts\angular-moment.min.js" />
@@ -303,6 +304,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.2.5.min.js" />
     <Content Include="Scripts\Views\Meetup\create.html" />
     <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
