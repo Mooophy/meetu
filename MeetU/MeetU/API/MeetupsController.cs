@@ -24,6 +24,7 @@ namespace MeetU.API
             var meetups =
                 db.Meetups
                 .Where(m => m.IsCancelled == false)
+                .OrderByDescending(m => m.CreatedAt)
                 .Select(
                 m => new MeetupViewModel
                 {
@@ -49,7 +50,7 @@ namespace MeetU.API
             var pagedMeetups =
                 db.Meetups
                 .Where(m => m.IsCancelled == false)
-                .OrderByDescending(m => m.When)
+                .OrderByDescending(m => m.CreatedAt)
                 .Skip(start)
                 .Take(amount)
                 .Select(
