@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute'])
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angularModalService', 'ngAnimate'])
         .controller('meetupIndexController', function ($scope, $resource, $q, $log) {
 
             var currentShowingMeetupCount = 0;
@@ -186,7 +186,33 @@
             $scope.polishUserName = function (name) {
                 return name.muStrip('@').muCapitalizeFirstLetter();
             };
-        });//End of controller
+        })
+        .controller('newdialogController', ['$scope', 'ModalService', function ($scope, ModalService) {
+
+                    $scope.showYesNo = function () {
+
+                        ModalService.showModal({
+                            templateUrl: "/Scripts/Views/Dialog/dialog.html",
+                            controller: "dialogController"
+                        }).then(function (modal) {
+                            modal.element.modal();
+                            modal.close.then(function (result) {
+                                if (result) {
+                                    alert("You click Yes");
+                                } else {
+                                    alert("You click No");
+                                }
+                            });
+                        });
+                    };
+                }])
+        .controller('dialogController', ['$scope', 'close', function ($scope, close) {
+            $scope.close = function (result) {
+                close(result, 500); // close, but give 500ms for bootstrap to animate
+            };
+        }]);
+        //End of controller
+
     //
     //  Strip the string specified
     //  To be tested later on
