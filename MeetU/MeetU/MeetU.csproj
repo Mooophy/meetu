@@ -284,7 +284,6 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Controllers\Dialog\dialogController.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />
