@@ -1,4 +1,4 @@
-﻿<div ng-controller="MeetupCreateController">
+﻿<div ng-controller="MeetupCreateController as meetupCreating">
     <div class="meetup-subpage-title">Create a Meetup</div>
     <hr />
     <div class="form-vertical meetup-create-form">
@@ -6,40 +6,37 @@
         <div class="form-group meetup-form-group">
             <label for="meetup-create-title" class="control-label col-md-2 meetup-create-form-label">Title</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-title" placeholder="Party, BBQ, Hiking..." />
+                <input type="text" class="form-control meetup-create-input" id="meetup-create-title" 
+                       placeholder="Party, BBQ, Hiking..." ng-model="meetupCreating.createParams.title" />
             </div>
         </div>
         <div class="form-group meetup-form-group">
             <label for="meetup-create-description" class="control-label col-md-2 meetup-create-form-label">Description</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-description" placeholder="Make it attractive!" />
+                <input type="text" class="form-control meetup-create-input" id="meetup-create-description"
+                       placeholder="Make it attractive!" ng-model="meetupCreating.createParams.description" />
             </div>
         </div>
 
         <div class="form-group meetup-form-group">
-            <label for="meetup-create-date" class="control-label col-md-2 meetup-create-form-label">Date</label>
+            <label for="meetup-create-time" class="control-label col-md-2 meetup-create-form-label">When</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-date" />
-            </div>
-        </div>
-
-        <div class="form-group meetup-form-group">
-            <label for="meetup-create-time" class="control-label col-md-2 meetup-create-form-label">Time</label>
-            <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-time" />
+                <input type="text" class="form-control meetup-create-input js-meetup-create-when" id="meetup-create-time"
+                       ng-model="meetupCreating.createParams.when" />
             </div>
         </div>
 
         <div class="form-group meetup-form-group">
             <label for="meetup-create-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-where" />
+                <input type="text" class="form-control meetup-create-input js-meetup-create-where" id="meetup-create-where"
+                       ng-model="meetupCreating.createParams.where" />
             </div>
         </div>
 
         <div class="form-group meetup-form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="CREATE" class="btn btn-default meetup-create-submit-button"/>
+                <button class="btn btn-default meetup-create-submit-button" ng-click="meetupCreating.submitForm()">CREATE</button>
             </div>
         </div>
 

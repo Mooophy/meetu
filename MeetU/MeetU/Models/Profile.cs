@@ -22,9 +22,7 @@ namespace MeetU.Models
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
-        [Required]
-        [DataType(DataType.DateTime)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public int LoginCount { get; set; }
     }
 }

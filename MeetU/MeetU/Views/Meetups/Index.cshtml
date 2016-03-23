@@ -10,6 +10,7 @@
 </div>
 @section scripts{
     @Scripts.Render("~/Scripts/underscore.min.js")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-resource.min.js")
     @Scripts.Render("~/Scripts/moment.min.js")
@@ -20,5 +21,7 @@
     @Scripts.Render("~/Scripts/Controllers/Mixins/tab.js")
     @Scripts.Render("~/Scripts/Directives/history-back.js")
     @Scripts.Render("~/Scripts/Router/router-config.js")
-    @Scripts.Render("http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places")
+    @Scripts.Render("http://maps.googleapis.com/maps/api/js?libraries=places")
+    @Scripts.Render("~/Scripts/jquery.placepicker.min.js")
+    @Scripts.Render("~/Scripts/jquery.datetimepicker.full.min.js")
 }

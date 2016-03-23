@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="meetup-detail-content">
                                         <span class="glyphicon glyphicon-time"></span>
-                                        {{ meetupView.meetup.when | date: "HH:mm" }} {{ meetupView.meetup.date | date:'dd-MM-yyyy' }}
+                                        {{ meetupView.meetup.when | date:"h:mma '|' d MMMM" }}
                                     </div>
                                 </div>
                                 <div>
@@ -98,7 +98,6 @@
         </div>
     </div>
     <div class="meetup-create ng-cloak">
-        <!--<a class="btn meetup-create-button" href='@Url.Action("Create")'><span class="glyphicon glyphicon-plus"></span></a>-->
         <a class="btn meetup-create-button" href='Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>
     </div>
     <div class="cssload-loader" ng-hide="hasLoaded">
