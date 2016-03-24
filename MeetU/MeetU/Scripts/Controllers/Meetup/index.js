@@ -143,7 +143,7 @@
             //
 
             $scope.deleteComment = function (meetupView, commentId) {
-                $confirm({ text: 'Are you sure you want to delete this comment?', title: 'Delete comment', ok: 'Yes', cancel: 'No' })
+                $confirm({ text: 'Are you sure you want to delete this comment?', title: 'Deleting a comment', ok: 'Yes', cancel: 'No' })
                     .then(function () {
                         CommentView
                             .delete({ id: commentId })
@@ -159,10 +159,14 @@
                             });
                     });
             }
-
+            
+            //
+            //  Delete Meetup
+            //
+            
             $scope.deleteMeetup = function (meetupId) {
                 // TODO: need to show a joined name list in confirm box
-                $confirm({ text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No' })
+                $confirm({ text: 'Are you sure you want to delete this MeetUp?', title: 'Deleting a meetup', ok: 'Yes', cancel: 'No' })
                     .then(function () {
                         Meetup.delete({ id: meetupId })
                             .$promise
