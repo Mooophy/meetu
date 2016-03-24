@@ -91,7 +91,7 @@
                 </div>
                 <div class="meetup-functional-button-wrapper" ng-show="meetupView.meetup.sponsor === userId">
                     <span class="glyphicon glyphicon-edit meetup-functional-button hidden"></span>
-                    <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="delete()"></span>
+                    <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="deleteMeetup(meetupView.meetup.id)"></span>
                 </div>
             </div>
             <hr class="meetup-separator" />

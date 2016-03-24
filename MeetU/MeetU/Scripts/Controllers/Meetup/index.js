@@ -142,46 +142,41 @@
             //  Delete comment 
             //
 
-            $scope.delete = function () {
-                $confirm({ text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No' })
+            $scope.deleteComment = function (meetupView, commentId) {
+                $confirm({ text: 'Are you sure you want to delete this comment?', title: 'Delete comment', ok: 'Yes', cancel: 'No' })
                     .then(function () {
-                        alert("You click yes");
+                        CommentView
+                            .delete({ id: commentId })
+                            .$promise
+                            .then(function () {
+                                var comments = meetupView.commentData;
+                                comments.splice(comments.findIndex(function (c) {
+                                    return c.id === commentId;
+                                }), 1);
+                                meetupView.commentCount = meetupView.commentData.length;
+                            }, function (message) {
+                                $log.error(message);
+                            });
                     });
             }
 
-            $scope.deleteComment = function (meetupView, commentId) {
-                if (confirm("Are you sure you want to delete this comment?")) {
-                    CommentView
-                        .delete({ id: commentId })
-                        .$promise
-                        .then(function () {
-                            var comments = meetupView.commentData;
-                            comments.splice(comments.findIndex(function (c) {
-                                return c.id === commentId;
-                            }), 1);
-                            meetupView.commentCount = meetupView.commentData.length;
-                        }, function (message) {
-                            $log.error(message);
-                        });
-                }
-            };
-
             $scope.deleteMeetup = function (meetupId) {
-
                 // TODO: need to show a joined name list in confirm box
-                if (confirm("Are you sure you want to delete this MeetUp?")) {
-                    Meetup.delete({ id: meetupId })
-                        .$promise
-                        .then(function () {
-                            var meetupViews = $scope.meetupViews;
-                            meetupViews.splice(meetupViews.findIndex(function (meetup) {
-                                return meetup.meetup.id === meetupId;
-                            }), 1);
-                        }, function (message) {
-                            $log.error(message);
-                        });
-                }
-            };
+                $confirm({ text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No' })
+                    .then(function () {
+                        Meetup.delete({ id: meetupId })
+                            .$promise
+                            .then(function () {
+                                var meetupViews = $scope.meetupViews;
+                                meetupViews.splice(meetupViews.findIndex(function (meetup) {
+                                    return meetup.meetup.id === meetupId;
+                                }), 1);
+                            }, function (message) {
+                                $log.error(message);
+                            });
+                    });
+            }
+
             //
             //  Generate joined user names 
             //
