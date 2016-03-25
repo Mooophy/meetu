@@ -1,0 +1,27 @@
+﻿@import "variables.less";
+@import "z-index.less";
+
+.meetu-subpage-nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: @nav-height;
+    background-color: @nav-background-color;
+    z-index: @zIndex-subpagebar;
+
+    .meetu-subpage-nav-button {
+        height: @nav-height;
+        padding: 15px 18px;
+        font-size: 16px;
+        color: @main-background-color-light;
+    }
+
+    .meetu-subpage-nav-back {
+        float: left;
+    }
+
+    .meetu-subpage-nav-commit {
+        float: right;
+    }
+}

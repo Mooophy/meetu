@@ -7,12 +7,11 @@
                 restrict: 'E',
                 transclude: true,
                 scope: {
-                    'cancel': '&onCancel',
                     'submit': '&onSubmit',
                     'back': '&onBack',
                     'title': '='
                 },
-                templateUrl: 'subpage-nav.html'
+                templateUrl: '/Scripts/Directives/subpage-nav/subpage-nav.html'
             };
         });
 })()
