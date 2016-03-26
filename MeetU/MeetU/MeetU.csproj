@@ -284,8 +284,10 @@
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />
+    <Content Include="Scripts\Directives\validation.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\bootstrap.js" />

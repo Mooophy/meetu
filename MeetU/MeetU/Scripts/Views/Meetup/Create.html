@@ -8,6 +8,7 @@
             display: block;
         }
     </style>
+    <subpage-nav on-submit="meetupCreating.submitForm()"></subpage-nav>
     <div class="meetup-subpage-title">Create a Meetup</div>
     <hr />
     <form class="form-vertical meetup-create-form" name="meetupCreateForm" novalidate>
@@ -64,8 +65,10 @@
         </div>
 
         <div class="form-group meetup-form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-default" back>BACK</button>
+            <label for="meetup-create-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control meetup-create-input js-meetup-create-where" id="meetup-create-where"
+                       ng-model="meetupCreating.createParams.where"/>
             </div>
         </div>
     </form>
