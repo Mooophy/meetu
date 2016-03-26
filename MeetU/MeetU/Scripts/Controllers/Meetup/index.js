@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute','angular-confirm', 'ui.bootstrap.tpls'])
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls'])
         .controller('meetupIndexController', function ($scope, $resource, $q, $log, $confirm) {
 
             var currentShowingMeetupCount = 0;
@@ -159,11 +159,11 @@
                             });
                     });
             }
-            
+
             //
             //  Delete Meetup
             //
-            
+
             $scope.deleteMeetup = function (meetupId) {
                 // TODO: need to show a joined name list in confirm box
                 $confirm({ text: 'Are you sure you want to delete this MeetUp?', title: 'Deleting a meetup', ok: 'Yes', cancel: 'No' })
