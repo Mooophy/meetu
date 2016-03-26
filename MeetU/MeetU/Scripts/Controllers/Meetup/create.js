@@ -2,7 +2,7 @@
     "use strict";
     angular
         .module('meetupModule')
-        .controller('MeetupCreateController', MeetupCreateController);
+        .controller('MeetupCreateController', MeetupCreateController)
 
     MeetupCreateController.$inject = ["$log", "$q", "$resource", "$location"];
     function MeetupCreateController($log, $q, $resource, $location) {
