@@ -25,10 +25,10 @@
 
       })
       .value('$confirmModalDefaults', {
-        template: '<div class="modal-header"><h3 class="modal-title">{{data.title}}</h3></div>' +
+        template: '<div class="modal-header" ng-enter="ok()"><h3 class="modal-title">{{data.title}}</h3></div>' +
         '<div class="modal-body">{{data.text}}</div>' +
         '<div class="modal-footer">' +
-        '<button class="btn btn-primary" ng-click="ok()">{{data.ok}}</button>' +
+        '<button class="btn btn-primary" ng-click="ok()" focused="true">{{data.ok}}</button>' +
         '<button class="btn btn-default" ng-click="cancel()">{{data.cancel}}</button>' +
         '</div>',
         controller: 'ConfirmModalController',
@@ -98,5 +98,5 @@
 
           }
         }
-      });
+      })
 }));

@@ -1,29 +1,52 @@
 ﻿<div ng-controller="MeetupCreateController as meetupCreating">
+    <style>
+        .form-group .help-block {
+            display: none;
+        }
+
+        .form-group.has-error .help-block {
+            display: block;
+        }
+    </style>
     <subpage-nav on-submit="meetupCreating.submitForm()"></subpage-nav>
     <div class="meetup-subpage-title">Create a Meetup</div>
-    <hr/>
-    <div class="form-vertical meetup-create-form">
+    <hr />
+    <form class="form-vertical meetup-create-form" name="meetupCreateForm" novalidate>
         <div class="meetup-subpage-validation"></div>
-        <div class="form-group meetup-form-group">
+        <div class="form-group meetup-form-group" my-validation>
             <label for="meetup-create-title" class="control-label col-md-2 meetup-create-form-label">Title</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-title"
-                       placeholder="Party, BBQ, Hiking..." ng-model="meetupCreating.createParams.title"/>
+                <input type="text" class="form-control meetup-create-input" id="meetup-create-title" name="title"
+                       placeholder="Party, BBQ, Hiking..." ng-model="meetupCreating.createParams.title" ng-required="true"
+                       ng-maxlength="200" ng-pattern="/^[a-zA-Z0-9\s]+$/"/>
+                <span class="help-block"
+                      ng-if="meetupCreateForm.title.$error.required">Title is required!</span>
+                <span class="help-block"
+                      ng-if="meetupCreateForm.title.$error.maxlength">Title must under 200 words!</span>
+                <span class="help-block"
+                      ng-if="meetupCreateForm.title.$error.pattern">Title can't have special characters!</span>
             </div>
         </div>
-        <div class="form-group meetup-form-group">
+        <div class="form-group meetup-form-group"  my-validation>
             <label for="meetup-create-description" class="control-label col-md-2 meetup-create-form-label">Description</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-description"
-                       placeholder="Make it attractive!" ng-model="meetupCreating.createParams.description"/>
+                <input type="text" class="form-control meetup-create-input" id="meetup-create-description" name="description"
+                       placeholder="Make it attractive!" ng-model="meetupCreating.createParams.description" ng-required="true" 
+                       ng-maxlength="1000" ng-pattern="/^[a-zA-Z0-9\s!,.]+$/">
+                <span class="help-block"
+                      ng-if="meetupCreateForm.description.$error.required">Description is required!</span>
+                <span class="help-block"
+                      ng-if="meetupCreateForm.description.$error.maxlength">Description must under 1000 words!</span>
+                <span class="help-block"
+                      ng-if="meetupCreateForm.description.$error.pattern">Description can only have letter(a-z A-Z),numbers,comma,period and exclamation:</span>
             </div>
         </div>
 
         <div class="form-group meetup-form-group">
             <label for="meetup-create-time" class="control-label col-md-2 meetup-create-form-label">When</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input js-meetup-create-when" id="meetup-create-time" readonly="readonly"
-                       ng-model="meetupCreating.createParams.when"/>
+                <input type="text" class="form-control meetup-create-input js-meetup-create-when" id="meetup-create-time"
+                       ng-model="meetupCreating.createParams.when" ng-required="true"/>
             </div>
         </div>
 
@@ -31,8 +54,8 @@
             <label for="meetup-create-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input js-meetup-create-where" id="meetup-create-where"
-                       ng-model="meetupCreating.createParams.where"/>
+                       ng-model="meetupCreating.createParams.where" ng-required="true"/>
             </div>
         </div>
-    </div>
+    </form>
 </div>
