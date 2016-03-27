@@ -41,6 +41,7 @@
             function triggerMeetupLoading() {
                 var hasFetchedAll = false;
                 var actualFetchedDataCount = 0;
+                $scope.hasLoaded = false;
                 Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
                     $scope.meetupViews.push.apply($scope.meetupViews, data);
                     actualFetchedDataCount = data.length;
@@ -50,6 +51,8 @@
                     }
                     if (!hasFetchedAll) {
                         $(window).bind('scroll', bindScroll);
+                    } else {
+                        $scope.hasLoaded = true;
                     }
                 });
             }
@@ -193,7 +196,13 @@
             $scope.polishUserName = function (name) {
                 return name.muStrip('@').muCapitalizeFirstLetter();
             };
-        });//End of controller
+        })//End of controller
+        .directive('loadingCircle', function () {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.template = "<div class='cssload-loader' ng-hide='hasLoaded'><div class='cssload-inner cssload-one'></div><div class='cssload-inner cssload-two'></div><div class='cssload-inner cssload-three'></div></div>"
+            return directive;
+        });
     //
     //  Strip the string specified
     //  To be tested later on
