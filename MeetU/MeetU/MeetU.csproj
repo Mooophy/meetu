@@ -293,6 +293,7 @@
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Controllers\Profile\profile-display.js" />
     <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />
@@ -336,6 +337,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\Views\Profile\profile-display.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

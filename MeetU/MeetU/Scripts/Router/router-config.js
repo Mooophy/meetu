@@ -10,7 +10,7 @@
                     templateUrl: '/Scripts/Views/Meetup/Index.html'
                 })
                 .when('/Profile/:profileId', {
-                    templateUrl: '/Scripts/Views/Profile/ShowProfile.html'
+                    templateUrl: '/Scripts/Views/Profile/profile-display.html'
                 })
                 .when('/Meetup/Create', {
                     templateUrl: '/Scripts/Views/Meetup/Create.html'
