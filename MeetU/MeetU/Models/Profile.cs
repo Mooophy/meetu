@@ -19,9 +19,10 @@ namespace MeetU.Models
         public string FamilyName { get; set; }
         public string Picture { get; set; }
         public string Gender { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public int LoginCount { get; set; }
-
     }
 }

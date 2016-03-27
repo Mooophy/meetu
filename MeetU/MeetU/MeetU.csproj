@@ -45,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSSDK.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.1.4.3\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.S3, Version=3.1.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.S3.3.1.4.0\lib\net45\AWSSDK.S3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
@@ -200,10 +208,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\CommentsController.cs" />
+    <Compile Include="API\ImageDemoController.cs" />
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
     <Compile Include="API\MeetupsController.cs" />
-    <Compile Include="API\TestsController.cs" />
     <Compile Include="API\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -218,50 +226,6 @@
     <Compile Include="Controllers\MeetupsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603110120509_add-profile.cs" />
-    <Compile Include="Migrations\201603110120509_add-profile.Designer.cs">
-      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.cs" />
-    <Compile Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.Designer.cs">
-      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120335448_remove-google-id.cs" />
-    <Compile Include="Migrations\201603120335448_remove-google-id.Designer.cs">
-      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.cs" />
-    <Compile Include="Migrations\201603120401142_LoginCountCanntBeNull.Designer.cs">
-      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.cs" />
-    <Compile Include="Migrations\201603120407058_set-nick-name-as-not-null.Designer.cs">
-      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.cs" />
-    <Compile Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.Designer.cs">
-      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.cs" />
-    <Compile Include="Migrations\201603160342012_MakeCancelledAtNullable.Designer.cs">
-      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603161344502_FixTypo.cs" />
-    <Compile Include="Migrations\201603161344502_FixTypo.Designer.cs">
-      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.cs" />
-    <Compile Include="Migrations\201603181316578_AddNewColumnUpdatedAt.Designer.cs">
-      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.cs" />
-    <Compile Include="Migrations\201603182053403_RemoveUpdatedAt.Designer.cs">
-      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.cs" />
-    <Compile Include="Migrations\201603182057028_AddedUpdatedAtAgain.Designer.cs">
-      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -293,6 +257,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-confirm.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-moment.js" />
     <Content Include="Scripts\angular-moment.min.js" />
@@ -319,6 +284,7 @@
     <Content Include="Content\z-index.less" />
     <Content Include="Content\Tab.less" />
     <Content Include="Content\Site.less" />
+    <Content Include="Content\subpage-nav.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -326,9 +292,16 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-moment.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\app\meetu-meetup.js" />
-    <Content Include="Scripts\app\meetu-profile.js" />
-    <Content Include="Scripts\app\meetu-tabController.js" />
+    <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Controllers\Profile\profile-display.js" />
+    <Content Include="Scripts\Directives\enter-key.js" />
+    <Content Include="Scripts\Directives\history-back.js" />
+    <Content Include="Scripts\Controllers\Meetup\index.js" />
+    <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
+    <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
+    <Content Include="Scripts\Directives\validation.js" />
+    <Content Include="Scripts\Router\router-config.js" />
+    <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -345,6 +318,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.2.5.min.js" />
+    <Content Include="Scripts\Views\Meetup\create.html" />
+    <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -361,6 +337,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\Views\Profile\profile-display.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -413,39 +390,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603110120509_add-profile.resx">
-      <DependentUpon>201603110120509_add-profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120316561_added-CreatedAt-and-LoginCount.resx">
-      <DependentUpon>201603120316561_added-CreatedAt-and-LoginCount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120335448_remove-google-id.resx">
-      <DependentUpon>201603120335448_remove-google-id.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120401142_LoginCountCanntBeNull.resx">
-      <DependentUpon>201603120401142_LoginCountCanntBeNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603120407058_set-nick-name-as-not-null.resx">
-      <DependentUpon>201603120407058_set-nick-name-as-not-null.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603160328312_AddCancelFeatrueForMeetups.resx">
-      <DependentUpon>201603160328312_AddCancelFeatrueForMeetups.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603160342012_MakeCancelledAtNullable.resx">
-      <DependentUpon>201603160342012_MakeCancelledAtNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603161344502_FixTypo.resx">
-      <DependentUpon>201603161344502_FixTypo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603181316578_AddNewColumnUpdatedAt.resx">
-      <DependentUpon>201603181316578_AddNewColumnUpdatedAt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603182053403_RemoveUpdatedAt.resx">
-      <DependentUpon>201603182053403_RemoveUpdatedAt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603182057028_AddedUpdatedAtAgain.resx">
-      <DependentUpon>201603182057028_AddedUpdatedAtAgain.cs</DependentUpon>
-    </EmbeddedResource>
+    <Analyzer Include="..\packages\AWSSDK.S3.3.1.4.0\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

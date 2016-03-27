@@ -24,6 +24,7 @@ namespace MeetU.API
             var meetups =
                 db.Meetups
                 .Where(m => m.IsCancelled == false)
+                .OrderByDescending(m => m.CreatedAt)
                 .Select(
                 m => new MeetupViewModel
                 {
@@ -49,7 +50,7 @@ namespace MeetU.API
             var pagedMeetups =
                 db.Meetups
                 .Where(m => m.IsCancelled == false)
-                .OrderByDescending(m => m.Date)
+                .OrderByDescending(m => m.CreatedAt)
                 .Skip(start)
                 .Take(amount)
                 .Select(
@@ -72,7 +73,7 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = 
+            Meetup meetup =
                 await db.Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -86,34 +87,40 @@ namespace MeetU.API
 
         // PUT: api/Meetups/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMeetup(int id, Meetup meetup)
+        public async Task<IHttpActionResult> PutMeetup(Meetup meetup)
         {
+            // Ensure it's post by sponser
+            if (meetup.Sponsor != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+            // Ensure valid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != meetup.Id)
+            // Ensure existing
+            var old = await db.Meetups.FirstOrDefaultAsync(m => m.Id == meetup.Id);
+            if (old == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            db.Entry(meetup).State = EntityState.Modified;
-
+            // Update and save
+            old.Description = meetup.Description;
+            old.Title = meetup.Title;
+            old.When = meetup.When;
+            old.Where = meetup.Where; 
+            meetup.UpdatedAt = DateTime.Now;
+            db.Entry(old).State = EntityState.Modified;
             try
             {
                 await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MeetupExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -123,6 +130,14 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> PostMeetup(Meetup meetup)
         {
+            if (meetup.Sponsor != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+
+            meetup.IsCancelled = false;
+            meetup.CreatedAt = DateTime.Now;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -138,13 +153,13 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> DeleteMeetup(int id)
         {
-            Meetup meetup = 
+            Meetup meetup =
                 await db.Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
                 return NotFound();
-            if(meetup.Sponsor != User.Identity.GetUserId())
+            if (meetup.Sponsor != User.Identity.GetUserId())
                 return StatusCode(HttpStatusCode.Forbidden);
             meetup.IsCancelled = true;
             meetup.CancelledAt = DateTime.Now;

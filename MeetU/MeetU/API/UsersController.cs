@@ -65,7 +65,7 @@ namespace MeetU.API
                 return NotFound();
             }
 
-            profile.Gender = user.FamilyName;
+            profile.Gender = user.Gender;
             profile.FamilyName = user.FamilyName;
             profile.GivenName = user.GivenName;
             profile.NickName = user.NickName;

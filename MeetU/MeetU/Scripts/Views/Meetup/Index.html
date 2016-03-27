@@ -1,0 +1,108 @@
+﻿
+<div ng-controller="meetupIndexController">
+    <div class="col-md-1"></div>
+    <div class="col-md-8 ng-cloak">
+        <div ng-repeat="meetupView in meetupViews | orderBy:'-meetup.createdAt'">
+            <div class="meetup-wrapper">
+                <div class="meetup-brief" ng-click="isDetailShowing = !isDetailShowing; toggleDetail(meetupView, isDetailShowing);">
+                    <div class="meetup-from col-sm-10 col-xs-10">
+                        <span>@{{ meetupView.sponsorUserName }} 发起了活动</span>
+                    </div>
+                    <div class="meetup-catagory-logo col-sm-1 col-xs-1"></div>
+                    <div class="meetup-content-wrapper col-sm-10 col-xs-9">
+                        <div class="meetup-title">
+                            <span class="text-capitalize"> {{ meetupView.meetup.title }}</span>
+                        </div>
+                        <div class="meetup-description">
+                            <span>{{ meetupView.meetup.description }}</span>
+                        </div>
+                    </div>
+                    <div class="meetup-join-button-container col-sm-2 col-xs-3">
+                        <div class="btn-group btn-group-xs meetup-join" ng-class="isIn(meetupView.joins) ? 'meetup-join-joined' : ''" role="group" ng-click="toggleJoin(meetupView);$event.stopPropagation();">
+                            <button type="button" class="btn meetup-join-button">
+                                <span> {{isIn(meetupView.joins) ? 'Joined' : 'Join'}} </span>
+                            </button>
+                            <button type="button" class="btn meetup-join-count">
+                                <span> {{ meetupView.joins.length }} </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meetup-detail" ng-show="isDetailShowing">
+                    <div class="meetup-detail-container meetu-tab-container" ng-controller="TabController">
+                        <ul class="meetup-detail-tabs meetu-tab-tabs">
+                            <li class="meetu-tab-item" ng-class="{ active: isSet(1) }"><a ng-click="setTab(1)">Info</a></li>
+                            <li class="meetu-tab-item" ng-class="{ active: isSet(2) }"><a ng-click="setTab(2)">Comments({{ meetupView.commentCount }})</a></li>
+                        </ul>
+                        <div class="meetup-detail-content meetu-tab-content-container">
+                            <div ng-show="isSet(1)">
+                                <div>
+                                    <div class="meetup-detail-title">
+                                        Who
+                                    </div>
+                                    <div class="meetup-detail-content">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins">{{ parseParticipantName(participant) + " "}}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="meetup-detail-title">
+                                        When
+                                    </div>
+                                    <div class="meetup-detail-content">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        {{ meetupView.meetup.when | date:"h:mma '|' d MMMM" }}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="meetup-detail-title">
+                                        Where
+                                    </div>
+                                    <div class="meetup-detail-content">
+                                        <span class="glyphicon glyphicon-map-marker"></span>
+                                        {{ meetupView.meetup.where }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="isSet(2)">
+                                <div class="comment-input-group input-group input-group-sm">
+                                    <input type="text" class="form-control comment-input-box " style="max-width: 100%" placeholder="How about you?" ng-model="meetupView.newComment">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-sm comment-input-btn" type="button" ng-click="addComment( meetupView )">Comment</button>
+                                    </span>
+                                </div>
+                                <div ng-repeat="cv in meetupView.commentData | limitTo : -(numLimit || (numLimit = 5)) | orderBy:'-at'">
+                                    <div>
+                                        <span class="meetup-comment-control">{{ cv.content }}</span>
+                                        <span class="text-primary meetup-comment-control">{{ polishUserName( cv.by ) }}</span>
+                                        <span class="text-primary meetup-comment-control" am-time-ago=cv.at></span>
+                                        <div class="comment-delete-button meetup-comment-control" ng-click="deleteComment(meetupView, cv.id)" ng-show="cv.by === userName">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                            <span>Delete</span>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                                <div class="comment-paging-trigger" ng-click="numLimit = numLimit + 5;" ng-hide="numLimit >= meetupView.commentCount">Show more comments...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meetup-functional-button-wrapper" ng-show="meetupView.meetup.sponsor === userId">
+                    <span class="glyphicon glyphicon-edit meetup-functional-button hidden"></span>
+                    <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="deleteMeetup(meetupView.meetup.id)"></span>
+                </div>
+            </div>
+            <hr class="meetup-separator" />
+        </div>
+    </div>
+    <div class="meetup-create ng-cloak">
+        <a class="btn meetup-create-button" href='Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    <div class="cssload-loader" ng-hide="hasLoaded">
+        <div class="cssload-inner cssload-one"></div>
+        <div class="cssload-inner cssload-two"></div>
+        <div class="cssload-inner cssload-three"></div>
+    </div>
+</div>
