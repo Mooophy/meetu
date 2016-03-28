@@ -203,7 +203,13 @@
             $scope.polishUserName = function (name) {
                 return name.muStrip('@').muCapitalizeFirstLetter();
             };
-        });//End of controller
+        })//End of controller
+        .directive('loadingCircle', function () {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.template = "<div class='cssload-loader' ng-hide='hasLoaded'><div class='cssload-inner cssload-one'></div><div class='cssload-inner cssload-two'></div><div class='cssload-inner cssload-three'></div></div>"
+            return directive;
+        });
     //
     //  Strip the string specified
     //  To be tested later on
