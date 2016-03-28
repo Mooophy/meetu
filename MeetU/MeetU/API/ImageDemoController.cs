@@ -4,11 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Amazon;
+using Amazon.S3;
+using MeetU.Lib;
+
 
 namespace MeetU.API
 {
     public class ImageDemoController : ApiController
     {
+
         // GET: api/ImageDemo
         public IEnumerable<string> Get()
         {
@@ -24,7 +29,8 @@ namespace MeetU.API
         // POST: api/ImageDemo
         public void Post(dynamic paras)
         {
-            var len = paras.dataUri;
+            var dataUri = new DataUri((string)paras.dataUri);
+            var img = dataUri.ToImage();
         }
 
         // PUT: api/ImageDemo/5
@@ -37,4 +43,5 @@ namespace MeetU.API
         {
         }
     }
+
 }
