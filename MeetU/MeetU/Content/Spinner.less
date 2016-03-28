@@ -1,16 +1,31 @@
 ﻿//http://cssload.net/en/spinners/2
+@loading-circle-size-lg: 62px;
+@loading-circle-size-sm: 31px;
+
+@loading-circle-margin-lg: 50px;
+@loading-circle-margin-sm: 20px;
+
 
 .cssload-loader {
-    margin: 30px auto;
 	position: relative;
-	width: 62px;
-	height: 62px;
 	border-radius: 50%;
 		-o-border-radius: 50%;
 		-ms-border-radius: 50%;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
 	perspective: 780px;
+}
+
+.cssload-loader.loading-circle-lg {
+    margin: @loading-circle-margin-lg auto;
+	width: @loading-circle-size-lg;
+	height: @loading-circle-size-lg;
+}
+
+.cssload-loader.loading-circle-sm {
+    margin: @loading-circle-margin-sm auto;
+	width: @loading-circle-size-sm;
+	height: @loading-circle-size-sm;
 }
 
 .cssload-inner {

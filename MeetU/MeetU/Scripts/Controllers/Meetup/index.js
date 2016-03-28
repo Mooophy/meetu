@@ -17,10 +17,11 @@
             //  Queries
             //
             $scope.hasLoaded = false;
+            $scope.hasFetchedAll = false;
             $q.all([
-                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
+                Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE * 2 }, function (data) {
                     $scope.meetupViews = data;
-                    currentShowingMeetupCount += MEETUPS_PER_PAGE;
+                    currentShowingMeetupCount += MEETUPS_PER_PAGE * 2;
                 }).$promise,
                 Userview.query(function (userViews) {
                     $scope.userId = userViews[0].userId;
@@ -28,9 +29,8 @@
                 }).$promise
             ]).then(function () {
                 $scope.hasLoaded = true;
-                //todo: should be unbound at some moment;
                 $(window).scroll(bindScroll);
-                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                if ($(window).scrollTop() + $(window).height() > $(document).height()) {
                     triggerMeetupLoading();
                 }
             });
@@ -39,7 +39,6 @@
             // trigger it when scrolled to bottom-100px
             //
             function triggerMeetupLoading() {
-                var hasFetchedAll = false;
                 var actualFetchedDataCount = 0;
                 $scope.hasLoaded = false;
                 Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
@@ -47,9 +46,9 @@
                     actualFetchedDataCount = data.length;
                     currentShowingMeetupCount += actualFetchedDataCount;
                     if (actualFetchedDataCount < 5) {
-                        hasFetchedAll = true;
+                        $scope.hasFetchedAll = true;
                     }
-                    if (!hasFetchedAll) {
+                    if (!$scope.hasFetchedAll) {
                         $(window).bind('scroll', bindScroll);
                     } else {
                         $scope.hasLoaded = true;

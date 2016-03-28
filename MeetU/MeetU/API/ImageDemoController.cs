@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Amazon;
-using Amazon.S3;
-using Amazon.S3.Model;
+//using Amazon;
+//using Amazon.S3;
+//using Amazon.S3.Model;
 using MeetU.Lib;
 
 
