@@ -27,6 +27,5 @@ namespace MeetU.Lib
         public readonly string Mime;
         public readonly string Encoding;
         public readonly string Data;
-        public readonly string Extension;
     }
 }

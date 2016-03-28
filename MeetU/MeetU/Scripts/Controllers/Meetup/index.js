@@ -13,11 +13,6 @@
             var Userview = $resource('/api/loggedUser');
             var Join = $resource('/api/Joins');
             var CommentView = $resource('/api/Comments/');
-
-            var ImageDemo = $resource('api/ImageDemo');
-            var img = new ImageDemo({ dataUri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' });
-            img.$save();
-
             //
             //  Queries
             //

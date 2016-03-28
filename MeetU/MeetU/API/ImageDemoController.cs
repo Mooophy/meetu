@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Amazon;
 using Amazon.S3;
+using Amazon.S3.Model;
 using MeetU.Lib;
 
 
@@ -27,10 +28,16 @@ namespace MeetU.API
         }
 
         // POST: api/ImageDemo
-        public void Post(dynamic paras)
+        public IHttpActionResult Post(dynamic paras)
         {
             var dataUri = new DataUri((string)paras.dataUri);
+            if (dataUri.Mime != "image/png")
+            {
+                return BadRequest();
+            }
             var img = dataUri.ToImage();
+
+            return Ok();
         }
 
         // PUT: api/ImageDemo/5
