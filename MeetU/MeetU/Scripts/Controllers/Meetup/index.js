@@ -41,6 +41,7 @@
             function triggerMeetupLoading() {
                 var hasFetchedAll = false;
                 var actualFetchedDataCount = 0;
+                $scope.hasLoaded = false;
                 Meetup.query({ start: currentShowingMeetupCount, amount: MEETUPS_PER_PAGE }, function (data) {
                     $scope.meetupViews.push.apply($scope.meetupViews, data);
                     actualFetchedDataCount = data.length;
@@ -50,6 +51,8 @@
                     }
                     if (!hasFetchedAll) {
                         $(window).bind('scroll', bindScroll);
+                    } else {
+                        $scope.hasLoaded = true;
                     }
                 });
             }

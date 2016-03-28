@@ -297,6 +297,8 @@
     <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />
+    <Content Include="Scripts\Directives\loading-circle\loading-circle.html" />
+    <Content Include="Scripts\Directives\loading-circle\loading-circle.js" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
     <Content Include="Scripts\Directives\validation.js" />
