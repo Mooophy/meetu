@@ -61,6 +61,13 @@
             }, 200);
 
             //
+            // Unbind scroll event when the scope of the controller is destroyed
+            //
+            $scope.$on('$destroy', function () {
+                $(window).unbind('scroll');
+            });
+
+            //
             //  Check if logged userId has joined.
             //
             $scope.isIn = function (js) {
