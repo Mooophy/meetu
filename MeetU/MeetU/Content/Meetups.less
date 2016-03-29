@@ -4,6 +4,7 @@
 
 @meetup-padding-base: 3px;
 @meetup-padding-horizontal: @meetup-padding-base * 2;
+@meetup-padding-vertical: @meetup-padding-base * 4;
 
 @meetup-join-button-height: 40px;
 
@@ -171,7 +172,10 @@
             cursor: pointer;
             color: fade(grey, 50%);
             font-size: @meetup-font-size-md;
-            padding-left: @meetup-padding-base; 
+            padding-bottom: @meetup-padding-vertical;
+            padding-top:@meetup-padding-vertical;
+            padding-left: @meetup-padding-horizontal;
+            padding-right: @meetup-padding-horizontal;
 
             &:hover {
                 color: grey;
@@ -242,6 +246,14 @@
         outline: 0;
         height: 35px;
     }
+}
+
+.meetup-no-more-results {
+    text-align: center;
+    font-size: @meetup-font-size-xl;
+    font-weight: bold;
+    color: lightgrey;
+    margin: 15px auto 25px auto;
 }
 
 .meetup-create {

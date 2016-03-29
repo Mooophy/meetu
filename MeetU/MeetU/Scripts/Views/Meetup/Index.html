@@ -96,13 +96,10 @@
             </div>
             <hr class="meetup-separator" />
         </div>
+        <loading-circle size="meetupViews.length > 0 ? 'loading-circle-sm' : 'loading-circle-lg'" ng-hide="hasLoaded"></loading-circle>
+        <div class="meetup-no-more-results" ng-show="hasFetchedAll">NO MORE RESULTS</div>
     </div>
     <div class="meetup-create ng-cloak">
         <a class="btn meetup-create-button" href='Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>
-    </div>
-    <div class="cssload-loader" ng-hide="hasLoaded">
-        <div class="cssload-inner cssload-one"></div>
-        <div class="cssload-inner cssload-two"></div>
-        <div class="cssload-inner cssload-three"></div>
     </div>
 </div>
