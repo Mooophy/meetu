@@ -7,6 +7,7 @@
                 restrict: 'E',
                 transclude: true,
                 scope: {
+                    'hassubmit': '=',
                     'submit': '&onSubmit',
                     'back': '&onBack',
                     'title': '='
