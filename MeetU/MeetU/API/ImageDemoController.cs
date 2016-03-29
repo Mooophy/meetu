@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,6 +37,12 @@ namespace MeetU.API
                 return BadRequest();
             }
             var img = dataUri.ToImage();
+            var stream = dataUri.ToStream();
+
+            using (var s3 = new AmazonS3Client(RegionEndpoint.APSoutheast2))
+            {
+                
+            }
 
             return Ok();
         }

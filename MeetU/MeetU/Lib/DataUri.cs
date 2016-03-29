@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,6 +21,11 @@ namespace MeetU.Lib
         public byte[] ToImage()
         {
             return Convert.FromBase64String(Data);
+        }
+
+        public Stream ToStream()
+        {
+            return new MemoryStream(ToImage());
         }
 
         public readonly Regex Regex;
