@@ -35,17 +35,17 @@ namespace MeetU.API
         public async Task<IHttpActionResult> Post(dynamic paras)
         {
             var dataUri = new DataUri((string)paras.dataUri);
-            if (dataUri.Mime != "image/png")
+            if (!dataUri.IsSupported)
             {
                 return BadRequest();
             }
-            string objectName = null; 
+            string objectName = null;
             using (IAmazonS3 client = new AmazonS3Client(awsAccessKeyId: "AKIAJSG5URXPSALPTZKQ", awsSecretAccessKey: "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", region: RegionEndpoint.APSoutheast2))
             {
                 var utility = new TransferUtility(client);
                 var request = new TransferUtilityUploadRequest();
                 request.BucketName = "meet.u";
-                objectName = DateTime.Now.Ticks.ToString() + ".png";
+                objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
                 request.Key = objectName;
                 request.InputStream = dataUri.ToStream;
                 await utility.UploadAsync(request);

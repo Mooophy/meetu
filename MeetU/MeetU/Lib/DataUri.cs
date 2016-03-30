@@ -19,7 +19,7 @@ namespace MeetU.Lib
         }
 
         public static HashSet<string> FormatsSupported
-            => new HashSet<string> { "png", "jpg", "gif", "bmp", "svg" };
+            => new HashSet<string> { "png", "jpeg" };
 
         public byte[] ToBytes
             => Convert.FromBase64String(Data);
