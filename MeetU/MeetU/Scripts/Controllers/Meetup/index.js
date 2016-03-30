@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls'])
-        .controller('meetupIndexController',meetupIndexController)
-         meetupIndexController.$inject=["$scope", "$resource", "$q", "$log", "$confirm"]      
-         function meetupIndexController($scope, $resource, $q, $log, $confirm) {
+        .controller('meetupIndexController', meetupIndexController)
+    meetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm"];
+    function meetupIndexController($scope, $resource, $q, $log, $confirm) {
 
         var currentShowingMeetupCount = 0;
         var MEETUPS_PER_PAGE = 5;
@@ -205,9 +205,9 @@
             return name.muStrip('@').muCapitalizeFirstLetter();
         };
     }
-    
-    
-    
+
+
+
     //End of controller
     //
     //  Strip the string specified
