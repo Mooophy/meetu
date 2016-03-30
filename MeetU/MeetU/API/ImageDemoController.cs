@@ -47,7 +47,7 @@ namespace MeetU.API
                 request.BucketName = "meet.u";
                 objectName = DateTime.Now.Ticks.ToString() + ".png";
                 request.Key = objectName;
-                request.InputStream = dataUri.ToStream();
+                request.InputStream = dataUri.ToStream;
                 await utility.UploadAsync(request);
             }
 
