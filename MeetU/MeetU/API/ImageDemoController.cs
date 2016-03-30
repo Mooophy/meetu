@@ -39,16 +39,17 @@ namespace MeetU.API
             {
                 return BadRequest();
             }
-            string objectName = null;
+
+            string objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
             using (IAmazonS3 client = new AmazonS3Client(awsAccessKeyId: "AKIAJSG5URXPSALPTZKQ", awsSecretAccessKey: "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", region: RegionEndpoint.APSoutheast2))
             {
-                var utility = new TransferUtility(client);
-                var request = new TransferUtilityUploadRequest();
-                request.BucketName = "meet.u";
-                objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
-                request.Key = objectName;
-                request.InputStream = dataUri.ToStream;
-                await utility.UploadAsync(request);
+                var request = new TransferUtilityUploadRequest
+                {
+                    BucketName = "meet.u",
+                    Key = objectName,
+                    InputStream = dataUri.ToStream
+                };
+                await new TransferUtility(client).UploadAsync(request);
             }
 
             return Ok(@"https://s3-ap-southeast-2.amazonaws.com/meet.u/" + objectName);
