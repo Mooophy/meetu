@@ -305,6 +305,7 @@
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
     <Content Include="Scripts\Directives\validation.js" />
+    <Content Include="Scripts\Helper\template-cache-helper.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\bootstrap.js" />

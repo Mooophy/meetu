@@ -5,11 +5,6 @@
     angular
         .module("meetupModule")
         .config(route)
-        .run(function ($templateCache,$http) {
-            $http.get('/Scripts/Views/Meetup/Index.html', { cache: $templateCache });
-            $http.get('/Scripts/Views/Profile/profile-display.html', { cache: $templateCache });
-            $http.get('/Scripts/Views/Meetup/Create.html', { cache: $templateCache });
-        })
         route.$inject = ["$routeProvider", "$locationProvider"]
         function route($routeProvider, $locationProvider) {
             $routeProvider
