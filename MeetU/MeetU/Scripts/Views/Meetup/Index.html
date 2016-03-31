@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="meetup-detail-content">
                                         <span class="glyphicon glyphicon-user"></span>
-                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins">{{ parseParticipantName(participant) + " "}}</span>
+                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins"><a href="/Profile/{{ participant.userId }}">{{ parseParticipantName(participant) }}</a> &nbsp;</span>
                                     </div>
                                 </div>
                                 <div>
