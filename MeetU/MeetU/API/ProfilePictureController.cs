@@ -36,24 +36,25 @@ namespace MeetU.API
             {
                 return StatusCode(HttpStatusCode.Forbidden);
             }
-
             var dataUri = new DataUri(profilePicture.Data);
-
             if (!dataUri.IsSupported)
             {
                 return BadRequest();
             }
 
-            string objectName = String.Format("{0}.{1}", profilePicture.UserId, dataUri.Format);
+            var objectName = String.Format("{0}.{1}", profilePicture.UserId, dataUri.Format);
             var finalUrl = @"https://s3-ap-southeast-2.amazonaws.com/meet.u/ProfilePictures/" + objectName;
-
             var deferred = Task
                 .Factory
                 .StartNew(
-                    () => UploadToS3Async(profilePicture.UserId, dataUri, objectName)
+                    () => 
+                        UploadToS3Async(profilePicture.UserId, dataUri, objectName)
                 );
             await deferred
-                .ContinueWith(d => UpdateProfileTableAsync(profilePicture.UserId, finalUrl), TaskContinuationOptions.OnlyOnRanToCompletion);
+                .ContinueWith(
+                    d => 
+                        UpdateProfileTableAsync(profilePicture.UserId, finalUrl), TaskContinuationOptions.OnlyOnRanToCompletion
+                );
 
             return Ok(finalUrl);
         }
