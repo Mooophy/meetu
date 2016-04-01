@@ -4,7 +4,9 @@
     angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
     angular
         .module("meetupModule")
-        .config(function ($routeProvider, $locationProvider) {
+        .config(route)
+        route.$inject = ["$routeProvider", "$locationProvider"]
+        function route($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/index', {
                     templateUrl: '/Scripts/Views/Meetup/Index.html'
@@ -19,5 +21,5 @@
                     redirectTo: '/index'
                 });
             $locationProvider.html5Mode(true);
-        });
+        }
 })()
