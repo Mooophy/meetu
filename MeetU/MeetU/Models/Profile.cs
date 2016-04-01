@@ -14,11 +14,17 @@ namespace MeetU.Models
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
         [Required]
+        [MaxLength(32)]
         public string NickName { get; set; }
+        [MaxLength(32)]
         public string GivenName { get; set; }
+        [MaxLength(32)]
         public string FamilyName { get; set; }
         public string Picture { get; set; }
+        [MaxLength(32)]
         public string Gender { get; set; }
+        [MaxLength(256)]
+        public string Brief { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }

@@ -27,6 +27,7 @@ namespace MeetU.Models
         public string FamilyName { get; set; }
         public string Picture { get; set; }
         public string Gender { get; set; }
+        public string Brief { get; set; }
 
         // Read only
         public DateTime? UpdatedAt { get; set; }
