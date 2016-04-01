@@ -4,7 +4,6 @@ using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Http;
-using System.Web.Http.Description;
 using MeetU.Models;
 using Microsoft.AspNet.Identity;
 
@@ -15,12 +14,11 @@ namespace MeetU.API
         private readonly MuDbContext db = new MuDbContext();
 
         // GET: api/Users/5
-        [ResponseType(typeof(UserViewModel))]
         public async Task<IHttpActionResult> Get(string userId)
         {
             var user = await db.Users.FirstOrDefaultAsync(u => u.Id == userId);
             var profile = await db.Profiles.FirstOrDefaultAsync(p => p.UserId == userId);
-            // if neither presents
+            // if neither presented
             if (user == null && profile == null)
             {
                 return NotFound();
@@ -31,29 +29,35 @@ namespace MeetU.API
                 return StatusCode(HttpStatusCode.InternalServerError);
             }
 
-            var userView = new UserViewModel
+            var userView = new PrivateUserViewModel
             {
                 UserId = userId,
                 Email = user.Email,
                 UserName = user.UserName,
                 Number = user.Number,
 
-                //this part can be updated by PUT.
                 NickName = profile.NickName,
-                GivenName = profile.GivenName,
-                FamilyName = profile.FamilyName,
                 Picture = profile.Picture,
                 Gender = profile.Gender,
+                Brief = profile.Brief,
 
                 CreatedAt = profile.CreatedAt,
-                UpdatedAt = profile.UpdatedAt,
-                LoginCount = profile.LoginCount
+                UpdatedAt = profile.UpdatedAt
             };
+            if (userId != User.Identity.GetUserId())
+            {
+                return Ok(userView as PublicUserViewModel);
+            }
+
+            //only when user is trying to view his own profile
+            userView.GivenName = profile.GivenName;
+            userView.FamilyName = profile.FamilyName;
+            userView.LoginCount = profile.LoginCount;
             return Ok(userView);
         }
 
         //PUT: api/Users?
-        public async Task<IHttpActionResult> Put(UserViewModel user)
+        public async Task<IHttpActionResult> Put(PrivateUserViewModel user)
         {
             if (user.UserId != User.Identity.GetUserId())
             {

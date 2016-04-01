@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MeetU.Models
 {
-    public class UserViewModel
+    public class PublicUserViewModel
     {
         //
         // Of table AspNetUsers
@@ -16,22 +16,24 @@ namespace MeetU.Models
         public string Email { get; set; }
         public string UserName { get; set; }
         public int Number { get; set; }
-        
+
         //
         // Of table Profiles
         //
 
         // Read and Update
         public string NickName { get; set; }
-        public string GivenName { get; set; }
-        public string FamilyName { get; set; }
         public string Picture { get; set; }
         public string Gender { get; set; }
         public string Brief { get; set; }
-
-        // Read only
         public DateTime? UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
+    }
+
+    public class PrivateUserViewModel: PublicUserViewModel
+    {
+        public string GivenName { get; set; }
+        public string FamilyName { get; set; }
         public int LoginCount { get; set; }
     }
 }
