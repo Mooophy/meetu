@@ -4,7 +4,7 @@
 
 A small social web app developed, and being used, by me and my friends. 
 
- * [Login](http://ec2-54-206-117-78.ap-southeast-2.compute.amazonaws.com/Meetups) Meet.u.
+ * [Login](http://54.206.75.70) Meet.u.
  * [GitHub](https://github.com/Mooophy/meetu) for code repository.
  * [Trello](https://trello.com/b/gfeCbpJT/meetu) to discuss with us.
  * [StackShare](http://stackshare.io/Mooophy/meet-u) to check the tech stack details.
