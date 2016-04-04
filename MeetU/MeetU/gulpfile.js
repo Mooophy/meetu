@@ -52,7 +52,7 @@ gulp.task('minifystyles', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('Scripts/*.js', ['minifyjs', 'minifyjs2', 'minifyjs3', 'minifyjs4', 'minifyjs5']);
+    gulp.watch('Scripts/**/**/*.js', ['minifyjs', 'minifyjs2', 'minifyjs3', 'minifyjs4', 'minifyjs5']);
 })
 
 gulp.task('default', ['minifyjs', 'minifyjs2', 'minifyjs3', 'minifyjs4', 'minifyjs5', 'watch']);
