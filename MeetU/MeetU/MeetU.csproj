@@ -289,6 +289,7 @@
     <Content Include="Content\Tab.less" />
     <Content Include="Content\Site.less" />
     <Content Include="Content\subpage-nav.less" />
+    <Content Include="Content\Profile.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
     <Content Include="Scripts\angular.min.js.map" />

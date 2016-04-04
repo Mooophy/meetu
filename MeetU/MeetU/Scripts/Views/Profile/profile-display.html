@@ -1,24 +1,123 @@
 ﻿<div class="profile-subpage-wrapper" ng-controller="ProfileDisplayController as profileDisplayController">
     <subpage-nav hassubmit='false'></subpage-nav>
     <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.hasLoaded"></loading-circle>
-    <div class="col-sm-4 col-xs-12 profile-abstract-wrapper" ng-show="profileDisplayController.hasLoaded">
-        <hr />
-        <div class="profile-abstract-left col-xs-5">
-            <div class="profile-image"></div>
+    <div class="row ">
+        <div class="col-xs-2 block"></div>
+        <div class="col-xs-8 mainContainer">
+            <div class="col-xs-12 profile-cover card" ng-show="profileDisplayController.hasLoaded">
+                <div class="col-xs-12 profile-cover-bg">
+                    <div class="profile-cover-bg-image"></div>
+                    <div class="profile-info-wrapper">
+                        <div class="profile-image">Image here</div>
+                        <div class="profile-intro-wrapper">
+                            <div class="profile-intro-nickname">
+                                {{profileDisplayController.userData.nickName}}
+                            </div>
+                            <div class="profile-intro-brief">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                </div>
+
+                <!--<div class="profile-abstract-right col-sm-12 col-md-4">
+                    <div class="row">
+                        <div class="profile-name">{{profileDisplayController.userData.nickName}}</div>
+                        <div class="profile-gender-age">{{profileDisplayController.userData.age}} + {{profileDisplayController.userData.gender}}</div>
+                        <div class="profile-brief">{{profileDisplayController.userData.brief}}</div>
+                    </div>
+                    <div class="row profile-abstract-follow-information">
+                        <div class="profile-follower"></div>
+                        <div class="profile-following"></div>
+                        <div class="profile-follow-button"></div>
+                    </div>
+                </div>-->
+                <div class="col-xs-12 card-footer">
+                    <div class="col-sm-12 col-md-3 block block-36">
+                        Footer
+                    </div>
+                    <div class="col-sm-12 col-md-9 follow-menu">
+                        <div class="col-sm-4 col-md-4 follow-menu-button">
+                            Following
+                        </div>
+                        <div class="col-sm-4 col-md-4 follow-menu-button">
+                            Follower
+                        </div>
+                        <div class="col-sm-4 col-md-4 follow-menu-button">
+                            +Follow
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 profile-you-might-like card">
+                <div class="col-xs-12 card-header card-header-medium">
+                    你可能喜欢的
+                    <div class="more-wrapper">
+                        <span class="glyphicon glyphicon-chevron-right">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 card-body">
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="event-toon">
+                            Event
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 profile-section card">
+                <div class="col-xs-12 card-header card-header-medium">
+                    他参与的MeetUp
+                    <div class="more-wrapper">
+                        <span class="glyphicon glyphicon-chevron-right">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 card-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere justo in leo scelerisque cursus. Aliquam rhoncus interdum ex, vel efficitur diam accumsan nec. Donec et velit odio. Suspendisse accumsan ultrices urna, quis consequat lectus efficitur vel. Nunc interdum posuere metus, id aliquet eros bibendum eu. Pellentesque lobortis, felis ultrices sodales sagittis, augue ante porttitor augue, non tristique felis leo non ex. Morbi dignissim, mauris tristique feugiat vulputate, elit magna imperdiet lacus, nec cursus elit velit id purus. Sed rhoncus nibh est, vitae congue ex consectetur id.
+                </div>
+            </div>
+            <div class="col-xs-12 profile-section card">
+                <div class="col-xs-12 card-header card-header-medium">
+                    他发起的MeetUp
+                    <div class="more-wrapper">
+                        <span class="glyphicon glyphicon-chevron-right">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 card-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere justo in leo scelerisque cursus. Aliquam rhoncus interdum ex, vel efficitur diam accumsan nec. Donec et velit odio. Suspendisse accumsan ultrices urna, quis consequat lectus efficitur vel. Nunc interdum posuere metus, id aliquet eros bibendum eu. Pellentesque lobortis, felis ultrices sodales sagittis, augue ante porttitor augue, non tristique felis leo non ex. Morbi dignissim, mauris tristique feugiat vulputate, elit magna imperdiet lacus, nec cursus elit velit id purus. Sed rhoncus nibh est, vitae congue ex consectetur id.
+                </div>
+            </div>
         </div>
-        <div class="profile-abstract-right col-xs-7">
-            <div class="profile-name">{{profileDisplayController.userData.nickName}}</div>
-            <div class="profile-gender-age">{{profileDisplayController.userData.age}} + {{profileDisplayController.userData.gender}}</div>
-            <div class="profile-brief">{{profileDisplayController.userData.brief}}</div>
-        </div>
-        <div class="profile-abstract-follow-information col-xs-12">
-            <div class="profile-follower"></div>
-            <div class="profile-following"></div>
-            <div class="profile-follow-button"></div>
-        </div>
+        <div class="col-xs-2 block"></div>
     </div>
-    <div class="col-sm-8 col-xs-12 profile-content-wrapper" ng-show="profileDisplayController.hasLoaded">
-        <div class="profile-paticipation">他参与的MeetUp</div>
-        <div class="profile-meetups">他发起的MeetUp</div>
-    </div>
+
 </div>
