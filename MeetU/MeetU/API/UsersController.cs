@@ -31,7 +31,7 @@ namespace MeetU.API
 
             var userView = new PrivateUserViewModel
             {
-                UserId = userId,
+                UserId = user.Id,
                 Email = user.Email,
                 UserName = user.UserName,
                 Number = user.Number,
@@ -74,6 +74,7 @@ namespace MeetU.API
             profile.GivenName = user.GivenName;
             profile.NickName = user.NickName;
             profile.Picture = user.Picture;
+            profile.Brief = user.Brief;
             profile.UpdatedAt = DateTime.Now;
 
             db.Entry(profile).State = EntityState.Modified;

@@ -152,7 +152,6 @@
         //
         //  Delete comment 
         //
-
         $scope.deleteComment = function (meetupView, commentId) {
             $confirm({ text: 'Are you sure you want to delete this comment?', title: 'Deleting a comment', ok: 'Yes', cancel: 'No' })
                 .then(function () {
@@ -170,11 +169,9 @@
                         });
                 });
         }
-
         //
         //  Delete Meetup
         //
-
         $scope.deleteMeetup = function (meetupId) {
             // TODO: need to show a joined name list in confirm box
             $confirm({ text: 'Are you sure you want to delete this MeetUp?', title: 'Deleting a meetup', ok: 'Yes', cancel: 'No' })
@@ -191,7 +188,6 @@
                         });
                 });
         }
-
         //
         //  Generate joined user names 
         //
@@ -204,11 +200,7 @@
         $scope.polishUserName = function (name) {
             return name.muStrip('@').muCapitalizeFirstLetter();
         };
-    }
-
-
-
-    //End of controller
+    }//End of controller
     //
     //  Strip the string specified
     //  To be tested later on
