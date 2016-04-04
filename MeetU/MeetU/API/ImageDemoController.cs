@@ -41,7 +41,7 @@ namespace MeetU.API
             }
 
             string objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
-            using (IAmazonS3 client = new AmazonS3Client(awsAccessKeyId: "AKIAJSG5URXPSALPTZKQ", awsSecretAccessKey: "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", region: RegionEndpoint.APSoutheast2))
+            using (IAmazonS3 client = new AmazonS3Client(region: RegionEndpoint.APSoutheast2))
             {
                 var request = new TransferUtilityUploadRequest
                 {
