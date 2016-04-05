@@ -5,8 +5,16 @@ using System.Web;
 
 namespace MeetU.Models
 {
-    public class PublicUserViewModel
+    public class UserViewModel
     {
+        //
+        //  Front end uses this property to tell if private info has been hidden
+        //
+        public bool IsPrivateInfoHidden { get; set; }
+        public UserViewModel(bool isPrivateInfoHidden)
+        {
+            IsPrivateInfoHidden = isPrivateInfoHidden;
+        }
         //
         // Of table AspNetUsers
         //
@@ -28,10 +36,7 @@ namespace MeetU.Models
         public string Brief { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
-    }
 
-    public class PrivateUserViewModel: PublicUserViewModel
-    {
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public int LoginCount { get; set; }

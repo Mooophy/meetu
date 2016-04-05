@@ -29,7 +29,7 @@ namespace MeetU.API
                 return StatusCode(HttpStatusCode.InternalServerError);
             }
 
-            var userView = new PrivateUserViewModel
+            var userView = new UserViewModel(isPrivateInfoHidden: true)
             {
                 UserId = user.Id,
                 Email = user.Email,
@@ -46,10 +46,10 @@ namespace MeetU.API
             };
             if (userId != User.Identity.GetUserId())
             {
-                return Ok(userView as PublicUserViewModel);
+                return Ok(userView);
             }
 
-            //only when user is trying to view his own profile
+            userView.IsPrivateInfoHidden = false;
             userView.GivenName = profile.GivenName;
             userView.FamilyName = profile.FamilyName;
             userView.LoginCount = profile.LoginCount;
@@ -57,7 +57,7 @@ namespace MeetU.API
         }
 
         //PUT: api/Users?
-        public async Task<IHttpActionResult> Put(PrivateUserViewModel user)
+        public async Task<IHttpActionResult> Put(UserViewModel user)
         {
             if (user.UserId != User.Identity.GetUserId())
             {
