@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
-using System.Data.Entity;
 using Amazon;
 using Amazon.S3;
 using Amazon.S3.Transfer;
@@ -67,7 +63,7 @@ namespace MeetU.API
         #region  helpers
         async Task UploadToS3Async(string userId, DataUri dataUri, string objectName)
         {
-            using (IAmazonS3 client = new AmazonS3Client(awsAccessKeyId: "AKIAJSG5URXPSALPTZKQ", awsSecretAccessKey: "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", region: RegionEndpoint.APSoutheast2))
+            using (IAmazonS3 client = new AmazonS3Client(region: RegionEndpoint.APSoutheast2))
             {
                 var request = new TransferUtilityUploadRequest
                 {

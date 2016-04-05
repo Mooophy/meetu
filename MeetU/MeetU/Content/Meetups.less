@@ -4,6 +4,7 @@
 
 @meetup-padding-base: 3px;
 @meetup-padding-horizontal: @meetup-padding-base * 2;
+@meetup-padding-vertical: @meetup-padding-base * 2;
 
 @meetup-join-button-height: 40px;
 
@@ -171,7 +172,8 @@
             cursor: pointer;
             color: fade(grey, 50%);
             font-size: @meetup-font-size-md;
-            padding-left: @meetup-padding-base; 
+            padding: @meetup-padding-horizontal @meetup-padding-vertical;
+            margin: -@meetup-padding-horizontal -@meetup-padding-vertical;
 
             &:hover, &:active {
                 color: grey;
