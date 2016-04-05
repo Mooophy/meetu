@@ -41,7 +41,8 @@ gulp.task('minifyjs_all', function () {
                'Scripts/ui-bootstrap-tpls-1.2.5.js',
                'Scripts/angular-confirm.js',
                'Scripts/Directives/enter-key.js',
-               'Scripts/Directives/validation.js'
+               'Scripts/Directives/validation.js',
+               'Scripts/Directives/scroll-on-focus.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
