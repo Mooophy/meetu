@@ -131,7 +131,7 @@ namespace MeetU.API
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> DeleteComment(int id)
         {
-            Comment comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
+            var comment = await db.Comments.FirstOrDefaultAsync(x => x.Id == id);
             if (comment == null)
             {
                 return NotFound();

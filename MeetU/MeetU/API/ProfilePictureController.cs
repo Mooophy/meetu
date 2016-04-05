@@ -55,11 +55,6 @@ namespace MeetU.API
             return Ok(finalUrl);
         }
 
-        // DELETE: api/ProfilePicture/5
-        public void Delete(int id)
-        {
-        }
-
         #region  helpers
         async Task UploadToS3Async(string userId, DataUri dataUri, string objectName)
         {
