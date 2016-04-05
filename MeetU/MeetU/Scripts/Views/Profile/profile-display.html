@@ -3,36 +3,72 @@
     <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.hasLoaded"></loading-circle>
     <div class="profile-main-container">
         <div class="row profile-cover">
-            <div class="col-md-3 col-sm-12 profile-image-container">
+            <div class="col-sm-3 col-xs-12 profile-image-container">
                 <div class="profile-image-wrapper">
                     <img src="\Content\Images\dummyHead.PNG" />
                 </div>
             </div>
-            <div class="col-md-9 col-sm-12 profile-info-container">
-                <div class="col-md-12 profile-info-block">
+            <div class="col-sm-9 col-xs-12 profile-info-container">
+                <div class="col-sm-12 profile-info-block">
                     
                 </div>
-                <div class="col-md-12 profile-info-nickname">
+                <div class="col-sm-12 profile-info-nickname">
                     {{profileDisplayController.userData.nickName}}
                 </div>
-                <div class="col-md-12 profile-info-brief">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi nibh, bibendum ornare interdum quis, consequat nec eros. Suspendisse pellentesque fringilla volutpat. 
-                </div>
-                <div class="col-md-12 profile-info-follows">
-                    <div class="col-md-4 profile-info-follow">
-                        Follower
-                    </div>
-                    <div class="col-md-4 profile-info-follow">
-                        Following
-                    </div>
-                    <div class="col-md-4 profile-info-follow">
-                        + Follow
-                    </div>
+                <div class="col-sm-12 profile-info-brief">
+                    {{profileDisplayController.userData.brief||"这家伙很懒，什么也没留下。"}}
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 profile-content">
-            asdfdasf
+        <div class="row profile-menu">
+            <div class="col-md-4 col-sm-3 col-xs-0 profile-menu-block">
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12 profile-menu-follows">
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <a class="link-normal">关注者</a>
+                </div>
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <a class="link-normal">关注了</a>
+                </div>
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <button class="button-follow">+ 关注我</button>
+                </div>
+            </div>
+        </div>
+        <div class="row profile-content">
+            <div class="col-md-9 col-sm-8 col-xs-12 profile-content-main">
+                <div class="row profile-participated section">
+                    <div class="section-header">
+                        参加的meetup
+                        <span class="header-more glyphicon glyphicon-chevron-right">
+                            
+                        </span>
+                    </div>
+                    <div class="section-body">
+                        <div class="participated-meetup" ng-repeat="n in profileDisplayController.participateList">
+                            <div class="meetup-title">{{n.title}} <span class="text-light">发起者</span> @{{n.host}} </div>
+                            <p>{{n.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row profile-hosted section">
+                    <div class="section-header">
+                        发起的meetup
+                        <span class="header-more glyphicon glyphicon-chevron-right">
+
+                        </span>
+                    </div>
+                    <div class="section-body">
+                        <div class="hosted-meetup" ng-repeat="m in profileDisplayController.hostList">
+                            <div class="meetup-title">{{m.title}}</div>
+                            <p>{{m.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12 profile-content-side">
+
+            </div>
         </div>
     </div>
 </div>

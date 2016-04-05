@@ -5,17 +5,16 @@
 .profile-subpage-wrapper{
     overflow: hidden;
     position: relative;
-    color: @text-color-decent;
+    color: @text-color-raven;
     box-sizing:border-box;
 
     .profile-main-container{
         width:851px;
         margin:auto;
-        left:0;
-        right:0;
+        left:0px;
+        right:0px;
 
         .profile-cover{
-            border-bottom:1px solid #cccccc;
             min-height:180px;
 
             .profile-image-container{
@@ -26,11 +25,11 @@
                     height:140px;
                     width:140px;
                     border-radius: 140px;
-                    border:1px solid #cccccc;
+                    border:1px solid @splitter-color-medium;
                     overflow:hidden;
                 }
 
-                @media only screen and (max-width: 750px){
+                @media only screen and (max-width: 767px){
                     .profile-image-wrapper{
                         margin-left:auto;
                         margin-right:auto;
@@ -43,7 +42,7 @@
 
             .profile-info-container{
                 .profile-info-block{
-                    height:70px;
+                    height:40px;
                 }
                 .profile-info-nickname{
                     font-size:@meetup-font-size-lg;
@@ -51,31 +50,91 @@
                     height:24px;
                     line-height:24px;
                     vertical-align:middle;
-                    /*border-bottom:1px solid #cccccc;*/
                 }
                 .profile-info-brief{
                     font-size:@meetup-font-size-sm;
-                    color:#666666;
+                    color:@text-color-asherstone;
                 }
-                .profile-info-follows{
-                    margin-bottom:0px;
-                    .profile-info-follow{
-                        border-right:1px solid #cccccc;
+
+                @media only screen and (max-width:767px){
+                    .profile-info-block{
+                        display:none;
                     }
-                    .profile-info-follow:last-child{
-                        border-right:none;
-                    }
+                }
+            }
+
+           
+
+        }
+         .profile-menu{
+            border-bottom:1px solid @splitter-color-medium;
+
+            .profile-menu-block{
+
+            }
+            @media only screen and (max-width: 767px){
+                .profile-menu-block{
+                    display:none;
+                }
+            }
+            .profile-menu-follows{
+                .profile-menu-follow{
+                    text-align:center;
+                    border-right:1px solid @splitter-color-medium;
+                    height:28px;
+                    line-height:28px
+                }
+                .profile-menu-follow:last-child{
+                    border-right:none;
                 }
             }
         }
 
         .profile-content{
+            .profile-content-main{
+                border-right:1px solid #cccccc;
+                min-height:300px;
+                .profile-participated{
+                    .participated-meetup{
+                        border-bottom:1px solid @splitter-color-light;
+                        padding-top:6px;
+                        /*height:74px;*/
+                        .meetup-title{
+                            color:@color-coral;
+                            /*font-weight:bold;*/
+                        }
+                    }
 
+                    .participated-meetup:last-child{
+                        border-bottom:none;
+                    }
+                }
+                .profile-hosted{
+                    .hosted-meetup{
+                        border-bottom:1px solid @splitter-color-light;
+                        padding-top:6px;
+                        /*height:74px;*/
+                        .meetup-title{
+                            color:@color-coral;
+                            /*font-weight:bold;*/
+                        }
+                    }
+
+                    .hosted-meetup:last-child{
+                        border-bottom:none;
+                    }
+                }
+            }
         }
 
     }
+    @media only screen and (max-width: 991px){
+        .profile-main-container{
+            width:750px;
+        }
+    }
 
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 767px){
         .profile-main-container{
             width:100%;
         }
@@ -87,8 +146,89 @@
 
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 767px){
     .block{
         display:none;
+    }
+}
+
+.section{
+    border-bottom:1px solid @splitter-color-medium;
+    min-height:200px;
+    padding: 6px 16px;
+    .section-header{
+        padding-left:14px;
+        padding-right:6px;
+        padding-top:4px;
+        padding-bottom:4px;
+        font-weight:bold;
+        font-size:@meetup-font-size-md;
+        .header-more{
+            float:right;
+        }
+    }
+    .section-body{
+        padding-left:14px;
+        padding-right:6px;
+        padding-top:6px;
+        padding-bottom:6px;
+        font-size:@meetup-font-size-md;
+    }
+}
+.section:last-child{
+    border-bottom:none;
+}
+
+
+.text-light{
+    color:@text-color-gray;
+    font-weight:normal;
+}
+
+p{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+a.link-normal{
+    text-decoration:none;
+    color:@color-coral;
+    cursor:pointer;
+}
+a.link-normal:hover{
+    color:@color-coral-darkest;
+}
+
+button.button-follow{
+    border-radius:3px;
+    border:none;
+    background-color:@color-coral-lightest;
+    color:@color-coral;
+    padding-left:24px;
+    padding-right:24px;
+    height:24px;
+    line-height:24px;
+    /*font-weight:bold;*/
+    font-size:@meetup-font-size-md;
+}
+
+button.button-follow:focus{
+    outline:0;
+}
+
+button.button-follow:hover{
+    /*background-color:@color-coral-lighter;*/
+    
+}
+
+button.button-follow:active{
+    background-color:@color-coral-lighter;
+    /*color:white;*/
+    /*border:1px solid @color-coral-light;*/
+}
+@media only screen and (max-width:395px){
+    button.button-follow{
+        padding:0px 8px;
     }
 }
