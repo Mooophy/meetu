@@ -37,6 +37,7 @@ gulp.task('minifyjs_all', function () {
                'Scripts/Directives/loading-circle/loading-circle.js',
                'Scripts/Router/router-config.js',
                'Scripts/jquery.placepicker.js',
+               'Scripts/jquery.datetimepicker.full.js',
                'Scripts/ui-bootstrap-tpls-1.2.5.js',
                'Scripts/angular-confirm.js',
                'Scripts/Directives/enter-key.js',
