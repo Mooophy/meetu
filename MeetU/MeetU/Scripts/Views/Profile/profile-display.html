@@ -45,9 +45,9 @@
                         </span>
                     </div>
                     <div class="section-body">
-                        <div class="participated-meetup" ng-repeat="n in profileDisplayController.participateList">
-                            <div class="meetup-title">{{n.title}} <span class="text-light">发起者</span> @{{n.host}} </div>
-                            <p>{{n.description}}</p>
+                        <div class="participated-meetup" ng-repeat="participatedMeetup in profileDisplayController.participatedMeetups">
+                            <div class="meetup-title">{{participatedMeetup.title}} <span class="text-light">发起者</span> @{{participatedMeetup.host}} </div>
+                            <p>{{participatedMeetup.description}}</p>
                         </div>
                     </div>
                 </div>
@@ -59,9 +59,9 @@
                         </span>
                     </div>
                     <div class="section-body">
-                        <div class="hosted-meetup" ng-repeat="m in profileDisplayController.hostList">
-                            <div class="meetup-title">{{m.title}}</div>
-                            <p>{{m.description}}</p>
+                        <div class="hosted-meetup" ng-repeat="hostedMeetup in profileDisplayController.hostedMeetups">
+                            <div class="meetup-title">{{hostedMeetup.title}}</div>
+                            <p>{{hostedMeetup.description}}</p>
                         </div>
                     </div>
                 </div>

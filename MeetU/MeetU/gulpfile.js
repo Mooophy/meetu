@@ -42,7 +42,8 @@ gulp.task('minifyjs_all', function () {
                'Scripts/angular-confirm.js',
                'Scripts/Directives/enter-key.js',
                'Scripts/Directives/validation.js',
-               'Scripts/Directives/scroll-on-focus.js'
+               'Scripts/Directives/scroll-on-focus.js',
+               'Scripts/Service/dummyDataService.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
