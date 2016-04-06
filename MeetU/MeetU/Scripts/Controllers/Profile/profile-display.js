@@ -12,6 +12,7 @@
         var Users = $resource('/api/Users');
         vm.participatedMeetups = dummyDataService.participatedMeetups();
         vm.hostedMeetups = dummyDataService.hostedMeetups();
+        vm.loremIpsum = dummyDataService.loremIpsum;
 
         //  GET
         Users.get({ userId: $routeParams.profileId }, function(user) {
