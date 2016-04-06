@@ -9,21 +9,7 @@
   }
 }(this, function (angular) {
   angular.module('angular-confirm', ['ui.bootstrap.modal'])
-      .controller('ConfirmModalController', function ($scope, $uibModalInstance, data) {
-        $scope.data = angular.copy(data);
-
-        $scope.ok = function (closeMessage) {
-          $uibModalInstance.close(closeMessage);
-        };
-
-        $scope.cancel = function (dismissMessage) {
-          if (angular.isUndefined(dismissMessage)) {
-            dismissMessage = 'cancel';
-          }
-          $uibModalInstance.dismiss(dismissMessage);
-        };
-
-      })
+      .controller('ConfirmModalController',ConfirmModalController )
       .value('$confirmModalDefaults', {
         template: '<div class="modal-header" ng-enter="ok()"><h3 class="modal-title">{{data.title}}</h3></div>' +
         '<div class="modal-body">{{data.text}}</div>' +
@@ -38,7 +24,26 @@
           cancel: 'Cancel'
         }
       })
-      .factory('$confirm', function ($uibModal, $confirmModalDefaults) {
+      .factory('$confirm',$confirm )
+      .directive('confirm', confirm)
+    ConfirmModalController.$inject = ["$scope", "$uibModalInstance", "data"];
+    function ConfirmModalController($scope, $uibModalInstance, data) {
+      $scope.data = angular.copy(data);
+
+      $scope.ok = function (closeMessage) {
+          $uibModalInstance.close(closeMessage);
+      };
+
+      $scope.cancel = function (dismissMessage) {
+          if (angular.isUndefined(dismissMessage)) {
+              dismissMessage = 'cancel';
+          }
+          $uibModalInstance.dismiss(dismissMessage);
+      };
+
+    }
+    $confirm.$inject = ["$uibModal", "$confirmModalDefaults"];
+    function $confirm($uibModal, $confirmModalDefaults) {
         return function (data, settings) {
           var defaults = angular.copy($confirmModalDefaults);
           settings = angular.extend(defaults, (settings || {}));
@@ -57,8 +62,9 @@
 
           return $uibModal.open(settings).result;
         };
-      })
-      .directive('confirm', function ($confirm) {
+      }
+    confirm.$inject = ["$confirm"];
+    function confirm ($confirm) {
         return {
           priority: 1,
           restrict: 'A',
@@ -98,5 +104,6 @@
 
           }
         }
-      })
+    }
+
 }));

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -72,7 +70,6 @@ namespace MeetU.API
             {
                 return NotFound();
             }
-
             return Ok(comment);
         }
 
@@ -120,10 +117,8 @@ namespace MeetU.API
             {
                 return BadRequest(ModelState);
             }
-
             db.Comments.Add(comment);
             await db.SaveChangesAsync();
-
             return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
         }
 
@@ -144,10 +139,8 @@ namespace MeetU.API
             {
                 return StatusCode(HttpStatusCode.Forbidden);
             }
-
             db.Comments.Remove(comment);
             await db.SaveChangesAsync();
-
             return Ok(comment);
         }
 
