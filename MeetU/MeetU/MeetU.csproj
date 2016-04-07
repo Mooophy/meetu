@@ -309,27 +309,7 @@
     <Content Include="Scripts\Minify_scripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
-<<<<<<< HEAD
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\FileAPI.flash.swf" />
-    <Content Include="Scripts\FileAPI.js" />
-    <Content Include="Scripts\FileAPI.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
-    <Content Include="Scripts\jquery.datetimepicker.js" />
-    <Content Include="Scripts\jquery.datetimepicker.min.js" />
-    <Content Include="Scripts\jquery.placepicker.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Service\dummyDataService.js" />
-    <Content Include="Scripts\ui-bootstrap-tpls-1.2.5.js" />
-    <Content Include="Scripts\ui-bootstrap-tpls-1.2.5.min.js" />
-=======
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
@@ -342,7 +322,6 @@
     <Content Include="Scripts\Vender_plugins\jquery.datetimepicker.full.js" />
     <Content Include="Scripts\Vender_plugins\jquery.placepicker.js" />
     <Content Include="Scripts\Vender_plugins\ui-bootstrap-tpls-1.2.5.js" />
->>>>>>> upstream/dev
     <Content Include="Scripts\Views\Meetup\create.html" />
     <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\Views\Profile\profile-display.html" />
