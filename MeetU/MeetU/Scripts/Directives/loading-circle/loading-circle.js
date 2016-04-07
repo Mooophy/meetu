@@ -2,7 +2,7 @@
     "use strict";
     angular
         .module("meetupModule")
-        .directive('loadingCircle', function(){
+        .directive('loadingCircle', function () {
             return {
                 restrict: 'E',
                 scope: {
@@ -11,4 +11,4 @@
                 templateUrl: '/Scripts/Directives/loading-circle/loading-circle.html',
             };
         });
-})()
+})();

@@ -73,15 +73,13 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup =
-                await db.Meetups
+            Meetup meetup = await db.Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
             {
                 return NotFound();
             }
-
             return Ok(meetup);
         }
 
@@ -111,7 +109,7 @@ namespace MeetU.API
             old.Description = meetup.Description;
             old.Title = meetup.Title;
             old.When = meetup.When;
-            old.Where = meetup.Where; 
+            old.Where = meetup.Where;
             meetup.UpdatedAt = DateTime.Now;
             db.Entry(old).State = EntityState.Modified;
             try
@@ -137,7 +135,6 @@ namespace MeetU.API
 
             meetup.IsCancelled = false;
             meetup.CreatedAt = DateTime.Now;
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -145,7 +142,6 @@ namespace MeetU.API
 
             db.Meetups.Add(meetup);
             await db.SaveChangesAsync();
-
             return CreatedAtRoute("DefaultApi", new { id = meetup.Id }, meetup);
         }
 
