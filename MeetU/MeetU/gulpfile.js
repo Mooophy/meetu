@@ -7,27 +7,27 @@ var gulp = require('gulp');
 var minify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
+var notify = require("gulp-notify");
 
 
 
 gulp.task('minifyjs', function () {
-    gulp.src(['Scripts/underscore.min.js',
-               'Scripts/jquery-1.10.2.js',
-               'Scripts/angular.js',
-               'Scripts/angular-resource.js',
-               'Scripts/moment.js',
-               'Scripts/angular-moment.js',
-               'Scripts/angular-route.js'
+    gulp.src(['Scripts/Venders/underscore.js',
+               'Scripts/Venders/jquery-1.10.2.js',
+               'Scripts/Venders/angular.js',
+               'Scripts/Venders/*.js',
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('vender.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-      .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(notify("Venders minify successed"));
 });
 
 
 gulp.task('minifyjs_all', function () {
+<<<<<<< HEAD
     gulp.src(['Scripts/Controllers/Meetup/index.js',
                'Scripts/Controllers/Meetup/create.js',
                'Scripts/Controllers/Mixins/tab.js',
@@ -44,12 +44,31 @@ gulp.task('minifyjs_all', function () {
                'Scripts/Directives/validation.js',
                'Scripts/Directives/scroll-on-focus.js',
                'Scripts/Service/dummyDataService.js'
+=======
+    gulp.src([ 'Scripts/Controllers/Meetup/index.js',
+               'Scripts/Controllers/**/*.js',
+               'Scripts/Router/*.js',
+               'Scripts/Vender_plugins/angular-moment.js',
+               'Scripts/Vender_plugins/ui-bootstrap-tpls-1.2.5.js',
+               'Scripts/Vender_plugins/angular-confirm.js',
+               'Scripts/Vender_plugins/*.js',
+               'Scripts/Directives/*.js',
+>>>>>>> upstream/dev
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-      .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(notify("All our scripts minify successed"));
 });
 
+<<<<<<< HEAD
 gulp.task('default', ['minifyjs', 'minifyjs_all']);
+=======
+gulp.task('watch', function () {
+    gulp.watch(['Scripts/**/*.js','Scripts/**/**/*.js', '!Scripts/_references.js','!Scripts/Minify_scripts/*.js'], ['minifyjs', 'minifyjs_all']);
+})
+
+gulp.task('default', ['minifyjs', 'minifyjs_all','watch']);
+>>>>>>> upstream/dev
