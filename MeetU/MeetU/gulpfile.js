@@ -21,31 +21,35 @@ gulp.task('minifyjs', function () {
         .pipe(concat('vender.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(gulp.dest('Scripts/MinifyScripts'))
         .pipe(notify("Venders minify successed"));
 });
 
 
 gulp.task('minifyjs_all', function () {
-    gulp.src([ 'Scripts/Controllers/Meetup/index.js',
+    gulp.src(['Scripts/Controllers/Meetup/index.js',
                'Scripts/Controllers/**/*.js',
+               'Scripts/Directives/history-back.js',
+               'Scripts/Directives/subpage-nav/subpage-nav.js',
+               'Scripts/Directives/loading-circle/loading-circle.js',
                'Scripts/Router/*.js',
-               'Scripts/Vender_plugins/angular-moment.js',
-               'Scripts/Vender_plugins/ui-bootstrap-tpls-1.2.5.js',
-               'Scripts/Vender_plugins/angular-confirm.js',
-               'Scripts/Vender_plugins/*.js',
+               'Scripts/VenderPlugins/angular-moment.js',
+               'Scripts/VenderPlugins/ui-bootstrap-tpls-1.2.5.js',
+               'Scripts/VenderPlugins/angular-confirm.js',
+               'Scripts/VenderPlugins/*.js',
                'Scripts/Directives/*.js',
+               'Scripts/Directives/**/*.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(gulp.dest('Scripts/MinifyScripts'))
         .pipe(notify("All our scripts minify successed"));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['Scripts/**/*.js','Scripts/**/**/*.js', '!Scripts/_references.js','!Scripts/Minify_scripts/*.js'], ['minifyjs', 'minifyjs_all']);
+    gulp.watch(['Scripts/**/*.js','Scripts/**/**/*.js', '!Scripts/_references.js','!Scripts/MinifyScripts/*.js'], ['minifyjs', 'minifyjs_all']);
 })
 
 gulp.task('default', ['minifyjs', 'minifyjs_all','watch']);
