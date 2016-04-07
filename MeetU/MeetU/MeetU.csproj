@@ -282,6 +282,7 @@
     <Content Include="Content\Tab.less" />
     <Content Include="Content\Site.less" />
     <Content Include="Content\subpage-nav.less" />
+    <Content Include="Content\Profile.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
@@ -308,6 +309,7 @@
     <Content Include="Scripts\Minify_scripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
+    <Content Include="Scripts\Service\dummyDataService.js" />
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
