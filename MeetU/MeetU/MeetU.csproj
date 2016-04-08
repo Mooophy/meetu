@@ -262,8 +262,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
-    <Content Include="js\all.js" />
-    <Content Include="js\vender.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -304,8 +302,8 @@
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
     <Content Include="Scripts\Directives\validation.js" />
     <Content Include="Scripts\Helper\template-cache-helper.js" />
-    <Content Include="Scripts\Minify_scripts\all.js" />
-    <Content Include="Scripts\Minify_scripts\vender.js" />
+    <Content Include="Scripts\MinifyScripts\all.js" />
+    <Content Include="Scripts\MinifyScripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\Venders\angular-resource.js" />
@@ -315,11 +313,11 @@
     <Content Include="Scripts\Venders\jquery-1.10.2.js" />
     <Content Include="Scripts\Venders\moment.js" />
     <Content Include="Scripts\Venders\underscore.js" />
-    <Content Include="Scripts\Vender_plugins\angular-confirm.js" />
-    <Content Include="Scripts\Vender_plugins\angular-moment.js" />
-    <Content Include="Scripts\Vender_plugins\jquery.datetimepicker.full.js" />
-    <Content Include="Scripts\Vender_plugins\jquery.placepicker.js" />
-    <Content Include="Scripts\Vender_plugins\ui-bootstrap-tpls-1.2.5.js" />
+    <Content Include="Scripts\VenderPlugins\angular-confirm.js" />
+    <Content Include="Scripts\VenderPlugins\angular-moment.js" />
+    <Content Include="Scripts\VenderPlugins\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\VenderPlugins\jquery.placepicker.js" />
+    <Content Include="Scripts\VenderPlugins\ui-bootstrap-tpls-1.2.5.js" />
     <Content Include="Scripts\Views\Meetup\create.html" />
     <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\Views\Profile\profile-display.html" />
