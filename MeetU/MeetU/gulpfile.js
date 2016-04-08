@@ -36,7 +36,8 @@ gulp.task('minifyjs_all', function () {
                'Scripts/VenderPlugins/angular-confirm.js',
                'Scripts/VenderPlugins/**/*.js',
                'Scripts/Directives/**/*.js',
-               'Scripts/Helper/**/*.js'
+               'Scripts/Helper/**/*.js',
+               'Scripts/Services/**/*.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
