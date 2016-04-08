@@ -15,37 +15,39 @@ gulp.task('minifyjs', function () {
     gulp.src(['Scripts/Venders/underscore.js',
                'Scripts/Venders/jquery-1.10.2.js',
                'Scripts/Venders/angular.js',
-               'Scripts/Venders/*.js',
+               'Scripts/Venders/**/*.js',
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('vender.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(gulp.dest('Scripts/MinifyScripts'))
         .pipe(notify("Venders minify successed"));
 });
 
 
 gulp.task('minifyjs_all', function () {
     gulp.src([ 'Scripts/Controllers/Meetup/index.js',
+               'Scripts/Helper/template-cache-helper.js',
                'Scripts/Controllers/**/*.js',
-               'Scripts/Router/*.js',
-               'Scripts/Vender_plugins/angular-moment.js',
-               'Scripts/Vender_plugins/ui-bootstrap-tpls-1.2.5.js',
-               'Scripts/Vender_plugins/angular-confirm.js',
-               'Scripts/Vender_plugins/*.js',
-               'Scripts/Directives/*.js',
+               'Scripts/Router/**/*.js',
+               'Scripts/VenderPlugins/angular-moment.js',
+               'Scripts/VenderPlugins/ui-bootstrap-tpls-1.2.5.js',
+               'Scripts/VenderPlugins/angular-confirm.js',
+               'Scripts/VenderPlugins/**/*.js',
+               'Scripts/Directives/**/*.js',
+               'Scripts/Helper/**/*.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/Minify_scripts'))
+        .pipe(gulp.dest('Scripts/MinifyScripts'))
         .pipe(notify("All our scripts minify successed"));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['Scripts/**/*.js','Scripts/**/**/*.js', '!Scripts/_references.js','!Scripts/Minify_scripts/*.js'], ['minifyjs', 'minifyjs_all']);
+    gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js'], ['minifyjs', 'minifyjs_all']);
 })
 
-gulp.task('default', ['minifyjs', 'minifyjs_all','watch']);
+gulp.task('default', ['minifyjs', 'minifyjs_all', 'watch']);
