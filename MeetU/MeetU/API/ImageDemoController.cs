@@ -18,12 +18,6 @@ namespace MeetU.API
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/ImageDemo/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/ImageDemo
         public async Task<IHttpActionResult> Post(dynamic paras)
         {
