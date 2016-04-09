@@ -22,7 +22,7 @@ gulp.task('minifyjs', function () {
         .pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifyScripts'))
-        .pipe(notify("Venders minify successed"));
+        .pipe(notify("Vender scripts minified"));
 });
 
 
@@ -44,11 +44,11 @@ gulp.task('minifyjs_all', function () {
         .pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifyScripts'))
-        .pipe(notify("All our scripts minify successed"));
+        .pipe(notify("Meetu scripts minified"));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js'], ['minifyjs', 'minifyjs_all']);
+    gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js', '!Scripts/Unittests/**/*.js'], ['minifyjs', 'minifyjs_all']);
 })
 
 gulp.task('default', ['minifyjs', 'minifyjs_all', 'watch']);
