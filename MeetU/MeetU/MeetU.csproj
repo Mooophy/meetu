@@ -210,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\CommentsController.cs" />
+    <Compile Include="API\DbMonitorController.cs" />
     <Compile Include="API\ImageDemoController.cs" />
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
