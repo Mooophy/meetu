@@ -24,5 +24,14 @@ namespace MeetU.Models
         public virtual IDbSet<Join> Joins { get; set; }
         public virtual IDbSet<Comment> Comments { get; set; }
         public virtual IDbSet<Profile> Profiles { get; set; }
+        public virtual IDbSet<ProfileNotInUsers> ProfilesNotInUsers { get; set; }
+        public virtual IDbSet<UserNotInProfiles> UsersNotInProfiles { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<UserNotInProfiles>().ToTable("UsersNotInProfiles");
+            builder.Entity<ProfileNotInUsers>().ToTable("ProfilesNotInUsers");
+        }
     }
 }
