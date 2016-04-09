@@ -231,10 +231,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib\DataUri.cs" />
-    <Compile Include="Migrations\201604090151526_dummy.cs" />
-    <Compile Include="Migrations\201604090151526_dummy.Designer.cs">
-      <DependentUpon>201604090151526_dummy.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MuDbContext.cs" />
@@ -257,6 +253,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\dummyHead.PNG" />
     <Content Include="Content\Images\Logos\Logo-with-text-160x80.png" />
     <Content Include="Content\Images\Logos\Logo-with-text-320x160.png" />
     <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
@@ -388,11 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.S3.3.1.4.0\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604090151526_dummy.resx">
-      <DependentUpon>201604090151526_dummy.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
