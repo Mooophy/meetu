@@ -27,7 +27,7 @@ namespace MeetU.API
                 return BadRequest();
             }
 
-            string objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
+            var objectName = String.Format("{0}.{1}", DateTime.Now.Ticks.ToString(), dataUri.Format);
             using (IAmazonS3 client = new AmazonS3Client(region: RegionEndpoint.APSoutheast2))
             {
                 var request = new TransferUtilityUploadRequest

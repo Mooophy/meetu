@@ -7,10 +7,6 @@ namespace MeetU.Models
 {
     public class PublicUserViewModel
     {
-        //
-        // Of table AspNetUsers
-        //
-
         // Read only
         public string UserId { get; set; }
         public string Email { get; set; }
@@ -28,6 +24,10 @@ namespace MeetU.Models
         public string Brief { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
+        public int LaunchedMeetupsTotal { get; set; }
+        public int JoinedMeetupsTotal { get; set; }
+        public IQueryable<Meetup> LaunchedMeetups { get; set; }
+        public IQueryable<Meetup> JoinedMeetups { get; set; }
     }
 
     public class PrivateUserViewModel: PublicUserViewModel

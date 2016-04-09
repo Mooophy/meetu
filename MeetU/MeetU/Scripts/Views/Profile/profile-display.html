@@ -1,24 +1,74 @@
 ﻿<div class="profile-subpage-wrapper" ng-controller="ProfileDisplayController as profileDisplayController">
     <subpage-nav hassubmit='false'></subpage-nav>
     <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.hasLoaded"></loading-circle>
-    <div class="col-sm-4 col-xs-12 profile-abstract-wrapper" ng-show="profileDisplayController.hasLoaded">
-        <hr />
-        <div class="profile-abstract-left col-xs-5">
-            <div class="profile-image"></div>
+    <div class="profile-main-container">
+        <div class="row profile-cover">
+            <div class="col-sm-3 col-xs-12 profile-image-container">
+                <div class="profile-image-wrapper">
+                    <img src="\Content\Images\dummyHead.PNG" />
+                </div>
+            </div>
+            <div class="col-sm-9 col-xs-12 profile-info-container">
+                <div class="col-sm-12 profile-info-block">
+
+                </div>
+                <div class="col-sm-12 profile-info-nickname">
+                    {{profileDisplayController.userData.nickName}}
+                </div>
+                <div class="col-sm-12 profile-info-brief">
+                    {{profileDisplayController.userData.brief||"这家伙很懒，什么也没留下。"}}
+                </div>
+            </div>
         </div>
-        <div class="profile-abstract-right col-xs-7">
-            <div class="profile-name">{{profileDisplayController.userData.nickName}}</div>
-            <div class="profile-gender-age">{{profileDisplayController.userData.age}} + {{profileDisplayController.userData.gender}}</div>
-            <div class="profile-brief">{{profileDisplayController.userData.brief}}</div>
+        <div class="row profile-menu">
+            <div class="col-md-4 col-sm-3 col-xs-0 profile-menu-block">
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12 profile-menu-follows">
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <a class="link-normal">关注者</a>
+                </div>
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <a class="link-normal">关注了</a>
+                </div>
+                <div class="col-sm-4 col-xs-4 profile-menu-follow">
+                    <button class="button-follow">+ 关注我</button>
+                </div>
+            </div>
         </div>
-        <div class="profile-abstract-follow-information col-xs-12">
-            <div class="profile-follower"></div>
-            <div class="profile-following"></div>
-            <div class="profile-follow-button"></div>
+        <div class="row profile-content">
+            <div class="col-md-9 col-sm-8 col-xs-12 profile-content-main">
+                <div class="row profile-participated section">
+                    <div class="section-header">
+                        参加的meetup
+                        <span class="header-more glyphicon glyphicon-chevron-right">
+
+                        </span>
+                    </div>
+                    <div class="section-body">
+                        <div class="participated-meetup" ng-repeat="participatedMeetup in profileDisplayController.participatedMeetups">
+                            <div class="meetup-title">{{participatedMeetup.title}} <span class="text-light">发起者</span> @{{participatedMeetup.host}} </div>
+                            <p>{{participatedMeetup.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row profile-hosted section">
+                    <div class="section-header">
+                        发起的meetup
+                        <span class="header-more glyphicon glyphicon-chevron-right">
+
+                        </span>
+                    </div>
+                    <div class="section-body">
+                        <div class="hosted-meetup" ng-repeat="hostedMeetup in profileDisplayController.hostedMeetups">
+                            <div class="meetup-title">{{hostedMeetup.title}}</div>
+                            <p>{{hostedMeetup.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12 profile-content-side">
+
+            </div>
         </div>
-    </div>
-    <div class="col-sm-8 col-xs-12 profile-content-wrapper" ng-show="profileDisplayController.hasLoaded">
-        <div class="profile-paticipation">他参与的MeetUp</div>
-        <div class="profile-meetups">他发起的MeetUp</div>
     </div>
 </div>

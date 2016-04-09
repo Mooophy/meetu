@@ -9,27 +9,8 @@
     </div>
 </div>
 @section scripts{
-    @Scripts.Render("~/Scripts/underscore.min.js")
-    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-    @Scripts.Render("~/Scripts/angular.js")
-    @Scripts.Render("~/Scripts/angular-resource.min.js")
-    @Scripts.Render("~/Scripts/moment.min.js")
-    @Scripts.Render("~/Scripts/angular-moment.min.js")
-    @Scripts.Render("~/Scripts/angular-route.min.js")
-    @Scripts.Render("~/Scripts/Controllers/Meetup/index.js")
-    @Scripts.Render("~/Scripts/Controllers/Meetup/create.js")
-    @Scripts.Render("~/Scripts/Controllers/Mixins/tab.js")
-    @Scripts.Render("~/Scripts/Controllers/Profile/profile-display.js")
-    @Scripts.Render("~/Scripts/Directives/history-back.js")
-    @Scripts.Render("~/Scripts/Directives/subpage-nav/subpage-nav.js")
-    @Scripts.Render("~/Scripts/Directives/loading-circle/loading-circle.js")
-    @Scripts.Render("~/Scripts/Router/router-config.js")
+    @Scripts.Render("~/Scripts/MinifyScripts/vender.js")
     @Scripts.Render("http://maps.googleapis.com/maps/api/js?libraries=places")
-    @Scripts.Render("~/Scripts/jquery.placepicker.min.js")
-    @Scripts.Render("~/Scripts/jquery.datetimepicker.full.min.js")
-    @Scripts.Render("~/Scripts/ui-bootstrap-tpls-1.2.5.min.js")
-    @Scripts.Render("~/Scripts/angular-confirm.js")
-    @Scripts.Render("~/Scripts/Directives/enter-key.js")
-    @Scripts.Render("~/Scripts/Directives/validation.js")
-    @Scripts.Render("~/Scripts/Directives/scroll-on-focus.js")
+    @Scripts.Render("~/Scripts/MinifyScripts/all.js")
+
 }
