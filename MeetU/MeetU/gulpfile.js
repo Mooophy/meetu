@@ -8,11 +8,13 @@ var minify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var notify = require("gulp-notify");
+var gutil = require("gulp-util");
 
-
-
-gulp.task('minifyjs', function () {
-    gulp.src(['Scripts/Venders/underscore.js',
+var onError = function(error) {
+    gutil.log(error.message);
+};
+gulp.task('minify-vender-scripts', function () {
+    return gulp.src(['Scripts/Venders/underscore.js',
                'Scripts/Venders/jquery-1.10.2.js',
                'Scripts/Venders/angular.js',
                'Scripts/Venders/**/*.js',
@@ -22,12 +24,16 @@ gulp.task('minifyjs', function () {
         .pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifyScripts'))
-        .pipe(notify("Vender scripts minified"));
+        .pipe(notify("Vender scripts minified"))
+        .on('error', onError);
 });
 
+gulp.task('watch-vender-scripts', function () {
+    return gulp.watch(['Scripts/Venders/**/*.js'], ['minify-vender-scripts']);
+});
 
-gulp.task('minifyjs_all', function () {
-    gulp.src([ 'Scripts/Controllers/Meetup/index.js',
+gulp.task('minify-meetu-scripts', function () {
+    return gulp.src([ 'Scripts/Controllers/Meetup/index.js',
                'Scripts/Helper/template-cache-helper.js',
                'Scripts/Controllers/**/*.js',
                'Scripts/Router/**/*.js',
@@ -44,11 +50,24 @@ gulp.task('minifyjs_all', function () {
         .pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifyScripts'))
-        .pipe(notify("Meetu scripts minified"));
+        .pipe(notify("Meetu scripts minified"))
+        .on('error', onError);;
 });
 
-gulp.task('watch', function () {
-    gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js', '!Scripts/Unittests/**/*.js'], ['minifyjs', 'minifyjs_all']);
-})
+gulp.task('watch-meetu-scripts', function () {
+    return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js', '!Scripts/UnitTests/**/*.js','!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
+});
 
-gulp.task('default', ['minifyjs', 'minifyjs_all', 'watch']);
+gulp.task('concat-unittest-scripts', function () {
+    return gulp.src(['Scripts/UnitTests/tests/**/*.js'])
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest('Scripts/UnitTests'))
+        .pipe(notify("UnitTest scripts concatenated"))
+        .on('error', onError);;
+});
+
+gulp.task('watch-unittest-scripts', function () {
+    return gulp.watch(['Scripts/UnitTests/tests/**/*.js'], ['concat-unittest-scripts']);
+});
+
+gulp.task('default', ['minify-vender-scripts', 'watch-vender-scripts', 'minify-meetu-scripts', 'watch-meetu-scripts', 'concat-unittest-scripts', 'watch-unittest-scripts']);
