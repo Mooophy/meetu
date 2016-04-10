@@ -23,7 +23,7 @@ gulp.task('minify-vender-scripts', function () {
         .pipe(concat('vender.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/MinifyScripts'))
+        .pipe(gulp.dest('Scripts/MinifiedScripts'))
         .pipe(notify("Vender scripts minified"))
         .on('error', onError);
 });
@@ -49,13 +49,13 @@ gulp.task('minify-meetu-scripts', function () {
         .pipe(concat('all.js'))
         .pipe(minify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('Scripts/MinifyScripts'))
+        .pipe(gulp.dest('Scripts/MinifiedScripts'))
         .pipe(notify("Meetu scripts minified"))
         .on('error', onError);;
 });
 
 gulp.task('watch-meetu-scripts', function () {
-    return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifyScripts/*.js', '!Scripts/UnitTests/**/*.js','!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
+    return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifiedScripts/*.js', '!Scripts/UnitTests/**/*.js','!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
 });
 
 gulp.task('concat-unittest-scripts', function () {

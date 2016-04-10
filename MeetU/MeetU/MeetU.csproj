@@ -307,8 +307,8 @@
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
     <Content Include="Scripts\Directives\validation.js" />
     <Content Include="Scripts\Helper\template-cache-helper.js" />
-    <Content Include="Scripts\MinifyScripts\all.js" />
-    <Content Include="Scripts\MinifyScripts\vender.js" />
+    <Content Include="Scripts\MinifiedScripts\all.js" />
+    <Content Include="Scripts\MinifiedScripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\Services\dummyDataService.js" />
