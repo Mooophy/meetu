@@ -35,6 +35,9 @@ namespace MeetU.API
                 return StatusCode(HttpStatusCode.InternalServerError);
             }
 
+            var JoinedMeetupIds = db
+                .Joins
+                .Where(j => j.UserId == user.Id);
             var publicUserView = new PublicUserViewModel()
             {
                 UserId = user.Id,
@@ -46,26 +49,10 @@ namespace MeetU.API
                 Gender = profile.Gender,
                 Brief = profile.Brief,
                 CreatedAt = profile.CreatedAt,
-                UpdatedAt = profile.UpdatedAt
+                UpdatedAt = profile.UpdatedAt,
+                JoinedMeetupsTotal = db.Meetups.Where(m => JoinedMeetupIds.Count(j => j.MeetupId == m.Id) > 0).Count(),
+                LaunchedMeetupsTotal = db.Meetups.Where(m => m.Sponsor == user.Id).Count()
             };
-
-            var JoinedMeetupIds = db.Joins.Where(j => j.UserId == user.Id);
-            publicUserView.JoinedMeetups = db
-                .Meetups
-                .Where(m => JoinedMeetupIds.Count(j => j.MeetupId == m.Id) > 0)
-                .Take(joinedAmount);
-            publicUserView.JoinedMeetupsTotal = db
-                .Meetups
-                .Where(m => JoinedMeetupIds.Count(j => j.MeetupId == m.Id) > 0)
-                .Count();
-            publicUserView.LaunchedMeetups = db
-                .Meetups
-                .Where(m => m.Sponsor == userId)
-                .Take(launchedAmount);
-            publicUserView.LaunchedMeetupsTotal = db
-                .Meetups
-                .Where(m => m.Sponsor == user.Id)
-                .Count();
 
             return Ok(publicUserView);
         }
@@ -114,18 +101,10 @@ namespace MeetU.API
             };
 
             var JoinedMeetupIds = db.Joins.Where(j => j.UserId == user.Id);
-            privateUserView.JoinedMeetups = db
-                .Meetups
-                .Where(m => JoinedMeetupIds.Count(j => j.MeetupId == m.Id) > 0)
-                .Take(joinedAmount);
             privateUserView.JoinedMeetupsTotal = db
                 .Meetups
                 .Where(m => JoinedMeetupIds.Count(j => j.MeetupId == m.Id) > 0)
                 .Count();
-            privateUserView.LaunchedMeetups = db
-                .Meetups
-                .Where(m => m.Sponsor == userId)
-                .Take(launchedAmount);
             privateUserView.LaunchedMeetupsTotal = db
                 .Meetups
                 .Where(m => m.Sponsor == user.Id)

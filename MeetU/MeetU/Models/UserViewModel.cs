@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MeetU.Models
 {
@@ -24,10 +21,10 @@ namespace MeetU.Models
         public string Brief { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        // Read and Calculated
         public int LaunchedMeetupsTotal { get; set; }
         public int JoinedMeetupsTotal { get; set; }
-        public IQueryable<Meetup> LaunchedMeetups { get; set; }
-        public IQueryable<Meetup> JoinedMeetups { get; set; }
     }
 
     public class PrivateUserViewModel: PublicUserViewModel
