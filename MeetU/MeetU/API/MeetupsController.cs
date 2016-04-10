@@ -17,6 +17,24 @@ namespace MeetU.API
     {
         private MuDbContext db = new MuDbContext();
 
+        [Route("api/Meetups/LaunchedBy")]
+        public IHttpActionResult GetMeetupsLaunchedBy(string userId)
+        {
+            return Ok(db
+                .Meetups
+                .Where(m => m.Sponsor == userId)
+                .Select(
+                    m => new MeetupViewModel
+                    {
+                        Meetup = m,
+                        SponsorUserName = m.ApplicationUser.UserName,
+                        SponsorNickName = (db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor)).NickName,
+                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                    }
+                )
+            );
+        }
+
         // GET: api/Meetups
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         public IQueryable<MeetupViewModel> GetMeetups()
