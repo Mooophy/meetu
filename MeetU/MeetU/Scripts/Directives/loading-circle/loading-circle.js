@@ -8,7 +8,7 @@
                 scope: {
                     'size': '='
                 },
-                templateUrl: '/Scripts/Directives/loading-circle/loading-circle.html',
+                templateUrl: '/Scripts/Directives/loading-circle/loading-circle.html'
             };
         });
 })();
