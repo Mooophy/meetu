@@ -22,6 +22,12 @@ namespace MeetU
             );
 
             routes.MapRoute(
+                name: "Profile page",
+                url: "Profile/{user-id}",
+                defaults: new { controller = "Meetups", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Meetups", action = "Index" }

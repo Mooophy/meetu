@@ -1,4 +1,12 @@
-﻿
+﻿<script type="text/javascript">
+    //  A quick and dirty fix for the routing bug
+    //  To Do: Find a more elegant way instead.
+    if(window.location.pathname !== '/index')
+    {
+        window.location.pathname = '/index';
+    }
+</script>
+
 <div ng-controller="meetupIndexController">
     <div class="col-md-1"></div>
     <div class="col-md-8 ng-cloak">
