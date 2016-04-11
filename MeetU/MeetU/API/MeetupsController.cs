@@ -17,6 +17,29 @@ namespace MeetU.API
     {
         private MuDbContext db = new MuDbContext();
 
+        [Route("api/Meetups/JoinedBy")]
+        public IHttpActionResult GetMeetupsJoinedBy(string userId)
+        {
+            return Ok(db
+                .Meetups
+                .Where(
+                    m => db
+                        .Joins
+                        .Where(j => j.UserId == userId)
+                        .Any(j => j.MeetupId == m.Id)
+                )
+                .Select(
+                    m => new MeetupViewModel
+                    {
+                        Meetup = m,
+                        SponsorUserName = m.ApplicationUser.UserName,
+                        SponsorNickName = (db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor)).NickName,
+                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                    }
+                )
+            );
+        }
+
         [Route("api/Meetups/LaunchedBy")]
         public IHttpActionResult GetMeetupsLaunchedBy(string userId)
         {
