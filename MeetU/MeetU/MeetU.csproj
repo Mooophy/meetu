@@ -320,6 +320,8 @@
     <Content Include="Scripts\Unittests\jasmine\jasmine.js" />
     <Content Include="Scripts\Unittests\jasmine\jasmine_favicon.png" />
     <Content Include="Scripts\Unittests\script.js" />
+    <Content Include="Scripts\Unittests\tests\ut-meetup-index-controller.js" />
+    <Content Include="Scripts\Unittests\tests\ut-router-configuration.js" />
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />

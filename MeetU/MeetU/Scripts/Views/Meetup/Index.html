@@ -1,12 +1,4 @@
-﻿<script type="text/javascript">
-    //  A quick and dirty fix for the routing bug
-    //  To Do: Find a more elegant way instead.
-    if(window.location.pathname !== '/index')
-    {
-        window.location.pathname = '/index';
-    }
-</script>
-
+﻿
 <div ng-controller="meetupIndexController">
     <div class="col-md-1"></div>
     <div class="col-md-8 ng-cloak">
@@ -14,7 +6,7 @@
             <div class="meetup-wrapper">
                 <div class="meetup-brief" ng-click="isDetailShowing = !isDetailShowing; toggleDetail(meetupView, isDetailShowing);">
                     <div class="meetup-from col-sm-10 col-xs-10">
-                        <span><a href="/Profile/{{ meetupView.meetup.sponsor }}">@{{ meetupView.sponsorUserName }} </a>发起了活动</span>
+                        <span><a href="#/Profile/{{ meetupView.meetup.sponsor }}">@{{ meetupView.sponsorUserName }} </a>发起了活动</span>
                     </div>
                     <div class="meetup-catagory-logo col-sm-1 col-xs-1"></div>
                     <div class="meetup-content-wrapper col-sm-10 col-xs-9">
@@ -50,7 +42,7 @@
                                     </div>
                                     <div class="meetup-detail-content">
                                         <span class="glyphicon glyphicon-user"></span>
-                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins"><a href="/Profile/{{ participant.userId }}">{{ parseParticipantName(participant) }}</a> &nbsp;</span>
+                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins"><a href="#/Profile/{{ participant.userId }}">{{ parseParticipantName(participant) }}</a> &nbsp;</span>
                                     </div>
                                 </div>
                                 <div>
@@ -107,6 +99,6 @@
         <div class="meetup-no-more-results" ng-show="hasFetchedAll">NO MORE RESULTS</div>
     </div>
     <div class="meetup-create ng-cloak">
-        <a class="btn meetup-create-button" href='Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>
+        <a class="btn meetup-create-button" href='#/Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>
     </div>
 </div>
