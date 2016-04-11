@@ -17,12 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Meet.U", "Index", "Meetups", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="/">Meet.U</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Meetups", "Index", "Meetups")</li>
-                    <li><a href="https://github.com/Mooophy/meetu"  target="_blank">GitHub</a></li>
+                    <li><a href="/">Meetups</a></li>
+                    <li><a href="https://github.com/Mooophy/meetu" target="_blank">GitHub</a></li>
                     <li><a href="https://github.com/Mooophy/meetu/issues" target="_blank">Issues</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")

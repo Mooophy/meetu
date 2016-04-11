@@ -14,29 +14,29 @@
             <span class="glyphicon glyphicon-menu-up login-phone-mode-homepage-arrow"></span>
         </div>
     </div>
-    <div class="panel login-wrapper js-login-form" >
+    <div class="panel login-wrapper js-login-form">
         <div class="panel-heading login-heading">login</div>
         <div class="panel-body login-body">
             <div class="col-md-10 col-md-offset-1 login-form-wrapper">
                 <section id="loginForm">
-                    @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.UserName, new {@class = "form-control login-input", @style = "max-width: none", @placeholder = "User Name"})
-                            @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control login-input", @style = "max-width: none", @placeholder = "User Name" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
 
-                            @Html.PasswordFor(m => m.Password, new {@class = "form-control login-input", @style = "max-width: none", @placeholder = "Password"})
-                            @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control login-input", @style = "max-width: none", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
-                            <input type="submit" value="Go!" class="btn btn-primary btn-block form-control login-button" style="max-width: none"/>
+                            <input type="submit" value="Go!" class="btn btn-primary btn-block form-control login-button" style="max-width: none" />
                         </div>
                     }
                 </section>
-                <hr class="login-separator"/>
+                <hr class="login-separator" />
                 <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = "/" })
                 </section>
             </div>
         </div>
