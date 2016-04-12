@@ -23,7 +23,7 @@ namespace MeetU.API
             return Ok(db
                 .Meetups
                 .Where(
-                    m => db
+                    m => m.IsCancelled == false && db
                         .Joins
                         .Where(j => j.UserId == userId)
                         .Any(j => j.MeetupId == m.Id)
@@ -45,7 +45,7 @@ namespace MeetU.API
         {
             return Ok(db
                 .Meetups
-                .Where(m => m.Sponsor == userId)
+                .Where(m => m.Sponsor == userId && m.IsCancelled == false)
                 .Select(
                     m => new MeetupViewModel
                     {
