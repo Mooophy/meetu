@@ -16,6 +16,9 @@
             .when('/Meetup/Create', {
                 templateUrl: '/Scripts/Views/Meetup/Create.html'
             })
+            .when('/Meetup/Edit', {
+                templateUrl: '/Scripts/Views/Meetup/edit.html'
+            })
             .otherwise({
                 redirectTo: '/index'
             });
