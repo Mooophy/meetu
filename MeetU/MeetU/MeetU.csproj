@@ -211,6 +211,7 @@
   <ItemGroup>
     <Compile Include="API\CommentsController.cs" />
     <Compile Include="API\DbMonitorController.cs" />
+    <Compile Include="API\FollowsController.cs" />
     <Compile Include="API\ImageDemoController.cs" />
     <Compile Include="API\JoinsController.cs" />
     <Compile Include="API\LoggedUserController.cs" />
@@ -232,6 +233,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib\DataUri.cs" />
+    <Compile Include="Migrations\201604121255013_Follow.cs" />
+    <Compile Include="Migrations\201604121255013_Follow.Designer.cs">
+      <DependentUpon>201604121255013_Follow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Follow.cs" />
@@ -389,6 +394,11 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.S3.3.1.4.0\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604121255013_Follow.resx">
+      <DependentUpon>201604121255013_Follow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

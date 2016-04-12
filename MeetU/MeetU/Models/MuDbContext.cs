@@ -26,6 +26,7 @@ namespace MeetU.Models
         public virtual IDbSet<Profile> Profiles { get; set; }
         public virtual IDbSet<ProfileNotInUsers> ProfilesNotInUsers { get; set; }
         public virtual IDbSet<UserNotInProfiles> UsersNotInProfiles { get; set; }
+        public virtual IDbSet<Follow> Follows { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
