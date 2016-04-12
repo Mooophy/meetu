@@ -1,8 +1,4 @@
-﻿//
-//  This controller to return views of meetup index and create pages.
-//  
-using System;
-using System.Data.Entity;
+﻿using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using MeetU.Models;
@@ -13,22 +9,14 @@ namespace MeetU.Controllers
     [Authorize]
     public class MeetupsController : Controller
     {
-        private Models.MuDbContext db = new Models.MuDbContext();
+        private MuDbContext db = new MuDbContext();
 
         // GET: Meetups
-        public async Task<ActionResult> Index()
-        {
-            var user = User.Identity.GetUserId();
-            var meetups = db.Meetups.Include(m => m.ApplicationUser);
-            return View(await meetups.ToListAsync());
-        }
+        public ActionResult Index() => View();
 
         // GET: Meetups/Create
         [Authorize]
-        public ActionResult Create()
-        {
-            return View();
-        }
+        public ActionResult Create() => View();
 
         // POST: Meetups/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
