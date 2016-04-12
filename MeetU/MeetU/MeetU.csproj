@@ -234,6 +234,7 @@
     <Compile Include="Lib\DataUri.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Follow.cs" />
     <Compile Include="Models\MuDbContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
