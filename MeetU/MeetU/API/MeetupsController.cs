@@ -62,17 +62,18 @@ namespace MeetU.API
         // note: this controller returns an array of MeetupViewModels to front end, rather than array of Meetup.
         public IQueryable<MeetupViewModel> GetMeetups()
         {
-            var meetups =
-                db.Meetups
+            var meetups = db
+                .Meetups
                 .Where(m => m.IsCancelled == false)
                 .OrderByDescending(m => m.CreatedAt)
                 .Select(
-                m => new MeetupViewModel
-                {
-                    Meetup = m,
-                    SponsorUserName = m.ApplicationUser.UserName,
-                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
-                });
+                    m => new MeetupViewModel
+                    {
+                        Meetup = m,
+                        SponsorUserName = m.ApplicationUser.UserName,
+                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                    }
+                );
 
             //append user name
             foreach (var m in meetups)
@@ -88,19 +89,20 @@ namespace MeetU.API
         // To be abstact together with the api controller: GetMeetups() 
         public IQueryable<MeetupViewModel> GetMeetups(int start, int amount)
         {
-            var pagedMeetups =
-                db.Meetups
+            var pagedMeetups =db
+                .Meetups
                 .Where(m => m.IsCancelled == false)
                 .OrderByDescending(m => m.CreatedAt)
                 .Skip(start)
                 .Take(amount)
                 .Select(
-                m => new MeetupViewModel
-                {
-                    Meetup = m,
-                    SponsorUserName = m.ApplicationUser.UserName,
-                    Joins = db.Joins.Where(j => j.MeetupId == m.Id)
-                });
+                    m => new MeetupViewModel
+                    {
+                        Meetup = m,
+                        SponsorUserName = m.ApplicationUser.UserName,
+                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                    }
+                );
 
             foreach (var m in pagedMeetups)
                 foreach (var j in m.Joins)
@@ -114,7 +116,8 @@ namespace MeetU.API
         [ResponseType(typeof(Meetup))]
         public async Task<IHttpActionResult> GetMeetup(int id)
         {
-            Meetup meetup = await db.Meetups
+            Meetup meetup = await db
+                .Meetups
                 .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (meetup == null)
