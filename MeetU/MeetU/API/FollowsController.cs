@@ -23,63 +23,15 @@ namespace MeetU.API
             return db.Follows;
         }
 
-        // GET: api/Follows/5
-        //[ResponseType(typeof(Follow))]
-        //public async Task<IHttpActionResult> GetFollow(string id)
-        //{
-        //    Follow follow = await db.Follows.FindAsync(id);
-        //    if (follow == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(follow);
-        //}
-
-        // PUT: api/Follows/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutFollow(string id, Follow follow)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != follow.FollowedUserId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(follow).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FollowExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Follows
         [ResponseType(typeof(Follow))]
         public async Task<IHttpActionResult> PostFollow(Follow follow)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || follow.FollowingUserId == follow.FollowedUserId)
             {
                 return BadRequest(ModelState);
             }
-
+            follow.At = DateTime.Now;
             db.Follows.Add(follow);
 
             try
