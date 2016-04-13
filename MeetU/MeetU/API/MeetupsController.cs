@@ -19,6 +19,7 @@ namespace MeetU.API
     {
         private MuDbContext db = new MuDbContext();
 
+        // GET: api/Meetups/JoinedBy
         [Route("api/Meetups/JoinedBy")]
         public IHttpActionResult GetMeetupsJoinedBy(string userId)
         {
@@ -39,16 +40,19 @@ namespace MeetU.API
                         JoinViews = db
                             .Joins
                             .Where(j => j.MeetupId == m.Id)
-                            .Select(j => new JoinView
-                            {
-                                Join = j,
-                                TheJoinedUserNickName = db.Profiles.FirstOrDefault( p => p.UserId == j.UserId).NickName
-                            })
+                            .Select(
+                                j => new JoinView
+                                {
+                                    Join = j,
+                                    TheJoinedUserNickName = db.Profiles.FirstOrDefault(p => p.UserId == j.UserId).NickName
+                                }
+                            )
                     }
                 )
             );
         }
 
+        //GET: api/Meetups/LaunchedBy
         [Route("api/Meetups/LaunchedBy")]
         public IHttpActionResult GetMeetupsLaunchedBy(string userId)
         {
@@ -56,12 +60,21 @@ namespace MeetU.API
                 .Meetups
                 .Where(m => m.Sponsor == userId && m.IsCancelled == false)
                 .Select(
-                    m => new MeetupViewModel
+                    m => new MeetupView
                     {
                         Meetup = m,
                         SponsorUserName = m.ApplicationUser.UserName,
-                        SponsorNickName = (db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor)).NickName,
-                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                        SponsorNickName = db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor).NickName,
+                        JoinViews = db
+                            .Joins
+                            .Where(j => j.MeetupId == m.Id)
+                            .Select(
+                                j => new JoinView
+                                {
+                                    Join = j,
+                                    TheJoinedUserNickName = db.Profiles.FirstOrDefault(p => p.UserId == j.UserId).NickName
+                                }
+                            )
                     }
                 )
             );
@@ -98,7 +111,7 @@ namespace MeetU.API
         // To be abstact together with the api controller: GetMeetups() 
         public IQueryable<MeetupViewModel> GetMeetups(int start, int amount)
         {
-            var pagedMeetups =db
+            var pagedMeetups = db
                 .Meetups
                 .Where(m => m.IsCancelled == false)
                 .OrderByDescending(m => m.CreatedAt)
