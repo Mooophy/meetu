@@ -3,11 +3,11 @@
     angular
         .module('meetupModule')
         .controller('MeetupEditController', MeetupEditController)
-    MeetupEditController.$inject = ["$log", "$q", "$resource", "$location", "$scope","MeetupDataService"];
-    function MeetupEditController($log, $q, $resource, $location, $scope, MeetupDataService) {
+    MeetupEditController.$inject = ["$log", "$resource", "$location", "$scope","$route", "EditingMeetupService"];
+    function MeetupEditController($log, $resource, $location, $scope, $route, EditingMeetupService) {
         var vm = this;
         vm.editParams={}
-        vm.editParams = MeetupDataService.getTemp();
+        vm.editParams = EditingMeetupService.getEditing();
         vm.submitForm = function() {
         var Meetup = $resource('/api/Meetups', null, {
             'update': { method: 'PUT' }
@@ -26,11 +26,13 @@
                 m.where = vm.editParams.where;
 
                 Meetup.update(m, function (r) {
-                    console.log(r);
+                    $log.debug(r)
+                    EditingMeetupService.deleteEditing()
                 }, function (r) {
-                    console.log(r);
+                    $log.debug(r)
                 })
                 $location.path('/index');
+                $route.reload();
             });
             }
         $(".js-meetup-edit-where").placepicker();

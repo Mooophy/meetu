@@ -319,7 +319,7 @@
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\Services\dummyDataService.js" />
-    <Content Include="Scripts\Services\MeetupDataService.js" />
+    <Content Include="Scripts\Services\EditingMeetupService.js" />
     <Content Include="Scripts\Unittests\index.html" />
     <Content Include="Scripts\Unittests\jasmine\boot.js" />
     <Content Include="Scripts\Unittests\jasmine\console.js" />
