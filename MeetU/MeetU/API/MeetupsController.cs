@@ -7,8 +7,10 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using MeetU.Models;
 using Microsoft.AspNet.Identity;
+using MeetU.Models;
+using MeetU.ViewModels;
+
 
 namespace MeetU.API
 {
@@ -29,12 +31,19 @@ namespace MeetU.API
                         .Any(j => j.MeetupId == m.Id)
                 )
                 .Select(
-                    m => new MeetupViewModel
+                    m => new MeetupView
                     {
                         Meetup = m,
                         SponsorUserName = m.ApplicationUser.UserName,
-                        SponsorNickName = (db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor)).NickName,
-                        Joins = db.Joins.Where(j => j.MeetupId == m.Id)
+                        SponsorNickName = db.Profiles.FirstOrDefault(p => p.UserId == m.Sponsor).NickName,
+                        JoinViews = db
+                            .Joins
+                            .Where(j => j.MeetupId == m.Id)
+                            .Select(j => new JoinView
+                            {
+                                Join = j,
+                                TheJoinedUserNickName = db.Profiles.FirstOrDefault( p => p.UserId == j.UserId).NickName
+                            })
                     }
                 )
             );

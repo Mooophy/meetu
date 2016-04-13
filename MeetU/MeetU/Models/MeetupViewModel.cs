@@ -2,6 +2,9 @@
 
 namespace MeetU.Models
 {
+    //
+    //  Deprecated
+    //
     public class MeetupViewModel
     {
         public Meetup Meetup { get; set; }
