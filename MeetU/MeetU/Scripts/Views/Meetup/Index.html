@@ -1,4 +1,19 @@
-﻿
+﻿<div ng-controller="mainNavbarController as mainNavbarVm">
+    <div class="main-navbar-wrapper navbar navbar-inverse navbar-fixed-top main-toolbar">
+        <div class="main-navbar-text navbar-brand">Meet.U</div>
+        <div class="main-navbar-menu-wrapper pull-right">
+            <div class="dropdown">
+                <button class="dropdown-toggle main-navbar-menu-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                    <span class="main-navbar-menu-icon glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#/Profile/{{ mainNavbarVm.loggedUser.id }}"><span class="glyphicon glyphicon-user"></span>My Profile</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div ng-controller="meetupIndexController">
     <div class="col-md-1"></div>
     <div class="col-md-8 ng-cloak">

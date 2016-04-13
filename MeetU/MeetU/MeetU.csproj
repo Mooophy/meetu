@@ -293,6 +293,7 @@
     <Content Include="Content\Site.less" />
     <Content Include="Content\subpage-nav.less" />
     <Content Include="Content\profile.less" />
+    <Content Include="Content\main-navbar.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
@@ -304,6 +305,7 @@
     <Content Include="Scripts\Bundles\modernizr-2.6.2.js" />
     <Content Include="Scripts\Bundles\respond.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
     <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
