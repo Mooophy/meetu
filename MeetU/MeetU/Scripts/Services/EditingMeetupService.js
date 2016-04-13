@@ -5,27 +5,27 @@
         .factory('EditingMeetupService', EditingMeetupService)
     function EditingMeetupService() {
          var currentlyEditing = {};
-         var flag = "editing";
+         var flag = "isEditing";
          return {
-             getEditing: function () {
-                 if (flag = "edited") {
+             getEditingMeetup: function () {
+                 if (flag = "hasEdited") {
                      return currentlyEditing;
                      flag = "editing";
                  } else {
-                     console.log("getEditing Error");
+                     console.log("getEditingMeetup Error");
                  }
              },
-             setEditing: function (value) {
+             setEditingMeetup: function (value) {
                  if (flag = "editing") {
                      currentlyEditing = value;
-                     flag = "edited";
+                     flag = "hasEdited";
                  } else {
-                     console.log("getEditing Error");
+                     console.log("setEditingMeetup Error");
                  }
              },
-             deleteEditing: function () {
+             clearEditingMeetup: function () {
                  currentlyEditing = {}
-                 flag="editing";
+                 flag = "hasEditing";
              }
          }
      }   

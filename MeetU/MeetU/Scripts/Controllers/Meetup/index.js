@@ -193,7 +193,7 @@
         //
 
         $scope.editMeetup = function (meetup) {
-            EditingMeetupService.setEditing(meetup);
+            EditingMeetupService.setEditingMeetup(meetup);
           }
 
         //
