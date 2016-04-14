@@ -24,7 +24,8 @@
                 if (!vm.totalLaunchedMeetups[i].meetup.isCancelled) {
                     vm.launchedMeetups.push(vm.totalLaunchedMeetups[i]);
                 }
-            }            
+            }
+            console.log(vm.launchedMeetups);
         });
            
 

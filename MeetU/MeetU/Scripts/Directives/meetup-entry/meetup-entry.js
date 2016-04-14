@@ -13,7 +13,7 @@
                 function init() {
                     var data = angular.copy(vm.datasource),
                         meetup = data.meetup,
-                        joins = data.joins,
+                        joins = data.joinViews,
                         i, len, currentPerson;
 
                     vm.meetup = {
@@ -36,9 +36,9 @@
 
                     for (i = 0, len = joins.length; i < len; ++i) {
                         currentPerson = {};
-                        currentPerson.name = joins[i].nickName || joins[i].userName;
-                        currentPerson.id = joins[i].userId;
-                        currentPerson.joinedAt = convertTime(joins[i].at).completeTimeString;
+                        currentPerson.name = joins[i].theJoinedUserNickName || joins[i].join.userName;
+                        currentPerson.id = joins[i].join.userId;
+                        currentPerson.joinedAt = convertTime(joins[i].join.at).completeTimeString;
                         vm.joins.joinedPeople.push(currentPerson);
                     }
 

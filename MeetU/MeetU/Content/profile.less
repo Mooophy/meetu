@@ -32,7 +32,7 @@
                     width:150px;
                     border:1px solid white;
                     border-radius:100%;
-                    margin-left:25px;
+                    margin-left:50px;
                     margin-top:25px;
                     /*background-color:@color-coral-lighterer;*/
                     .cover-image{
@@ -75,7 +75,33 @@
                     height:30px;
                     line-height:30px;
                     vertical-align:middle;
-
+                    .info-nickname{
+                        float:left;
+                    }
+                    
+                    .info-follow-button-wrapper{
+                        height:26px;
+                        /*width:80px;*/
+                        /*border:1px solid @color-coral-lighter;*/
+                        background-color:@color-coral-lighter;
+                        border-radius:2px;
+                        display:inline-block;
+                        margin-left:20px;
+                        .info-follow-button{
+                            /*padding: 0px 10px;*/
+                            background-color:@color-coral-light;
+                            margin-top:4px;
+                            height:19px;
+                            line-height:22px;
+                            margin-left:2px;
+                            margin-right:2px;
+                            padding:0px 8px;
+                            border-radius:2px;
+                            color:white;
+                            font-weight:bold;
+                            font-size:@meetup-font-size-md;
+                        }
+                    }
                 }
                 .info-brief{
                     padding:5px 0px 5px 10px;
@@ -99,22 +125,6 @@
                             text-align:center;
                             border-right:1px solid @splitter-color-light;
                         }
-                        .follow-btn-wrapper{
-                            padding:0px;
-                            text-align:center;
-                            .follow-btn{
-                                border:1px solid @color-coral-lighterer;
-                                background-color:@color-coral-lightest;
-                                color:@color-coral;
-                                border-radius: 2px;
-                                height:40px;
-                                line-height:40px;
-                                width:80px;
-                                text-align:center;
-                                font-weight:normal;
-                                .u-horizontal-alignment-center-relative();
-                            }
-                        }
 
                         .follow-txt{
                             color:@text-color-sterling;
@@ -136,36 +146,35 @@
                 padding-left:0px;
                 padding-right:4px;
                 .content-main{
-                    background-color:white;
-                    border:1px solid @splitter-color-light;
+                    /*background-color:white;*/
+                    /*border:1px solid @splitter-color-light;*/
                     /*min-height:300px;*/
-                    padding:0px 20px;
+                    /*padding:0px 20px;*/
 
                     .content-main-tabbar{
                         border-bottom:1px solid @splitter-color-medium;
-                        height:36px;
-                        background-color:white;
-                        .tab-block{
-                            @media only screen and (max-width:767px){
-                                display:none;
-                            }
-                        }
+                        height:35px;
+                        background-color:transparent;
                         .tab{
                             color:@text-color-asherstone;
                             background-color:white;
                             font-size:@meetup-font-size-lg;
                             text-align:center;
-                            height:28px;
+                            height:36px;
                             line-height:28px;
-                            margin-top:8px;
                             font-weight:bold;
+                            border-top:1px solid @splitter-color-medium;
+                            border-left:1px solid @splitter-color-medium;
+                        }
+                        .tab:last-child{
+                            border-right:1px solid @splitter-color-medium;
                         }
                         .tab-active{
-                            border:1px solid @splitter-color-medium;
                             border-bottom:1px solid white;
                         }
                         .tab-inactive{
                             border-bottom:1px solid @splitter-color-medium;
+                            /*border-bottom:1px solid @splitter-color-medium;*/
                         }
                     }
                     .content-main-body{
@@ -174,8 +183,8 @@
                         
                         .content-home-launch{
                             border:1px solid @splitter-color-medium;
-                            margin-top:16px;
-                            margin-bottom:16px;
+                            /*margin-top:16px;
+                            margin-bottom:16px;*/
                             .home-launch-title{
                                 padding:4px 16px;
                                 border-bottom:1px solid @splitter-color-medium;
