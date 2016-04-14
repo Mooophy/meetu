@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 using MeetU.Models;
 
 namespace MeetU.API
@@ -27,11 +28,16 @@ namespace MeetU.API
         [ResponseType(typeof(Follow))]
         public async Task<IHttpActionResult> PostFollow(Follow follow)
         {
+            if (follow.FollowingUserId != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+            follow.At = DateTime.Now;
             if (!ModelState.IsValid || follow.FollowingUserId == follow.FollowedUserId)
             {
                 return BadRequest(ModelState);
             }
-            follow.At = DateTime.Now;
+
             db.Follows.Add(follow);
 
             try
