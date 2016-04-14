@@ -51,15 +51,14 @@
             <div class="col-sm-8 col-xs-12 profile-content-left">
                 <div class="content-main">
                     <div class="content-main-tabbar">
-                        <!--<div class="col-xs-1 tab-block"></div>-->
-                        <div class="col-xs-3 tab tab-active">
-                            <span class="glyphicon glyphicon-home"></span> Home
+                        <div class="col-xs-4 tab tab-active">
+                            <span class="tab-wrapper"><span class="glyphicon glyphicon-home"></span> Home</span>
                         </div>
-                        <div class="col-xs-3 tab tab-inactive">
-                            Hosted
+                        <div class="col-xs-4 tab">
+                            <span class="tab-wrapper">Hosted</span>
                         </div>
-                        <div class="col-xs-3 tab tab-inactive">
-                            Joined
+                        <div class="col-xs-4 tab">
+                            <span class="tab-wrapper">Joined</span>
                         </div>
                     </div>
                     <div class="content-main-body">
@@ -70,7 +69,7 @@
                                     Launched Meetups
                                 </div>
                                 <div class="home-launch-body">
-                                    <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetups">
+                                    <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetupShortList">
                                         <meetup-entry dataSource="meetup"></meetup-entry>
                                     </div>
                                 </div>

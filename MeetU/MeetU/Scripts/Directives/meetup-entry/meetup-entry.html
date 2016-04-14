@@ -1,25 +1,27 @@
 ﻿<div class="row meetup-entry">
     <div class="row meetup-entry-brief">
-        <div class="col-xs-2 meetup-entry-when">
+        <!--<div class="col-xs-2 meetup-entry-when">
             <div class="entry-when-wrapper">
                 <span class="meetup-when-time">{{vm.meetup.when.time}}</span>
                 <span class="meetup-when-meridiem"> {{vm.meetup.when.meridiem}}</span>
                 <br /><span class="meetup-when-weekday">{{vm.meetup.when.weekday}}</span>
                 <br /><span class="meetup-when-date">{{vm.meetup.when.date}}</span>   
             </div>
-        </div>
-        <div class="col-xs-8 meetup-entry-title">
+        </div>-->
+        <div class="col-xs-9 meetup-entry-title">
             <span class="meetup-launch-txt">Launched by </span>
             <span class="meetup-launch-value">@{{vm.meetup.sponsorNickName}}</span>
             <br/><span class="meetup-title">{{vm.meetup.title}}</span>
         </div>
-        <div class="col-xs-2 meetup-entry-status">
-            <div class="meetup-join-button {{vm.meetup.expired ? "join-expired" : "join-active"}}">
-                <span class="meetup-join-button-txt {{vm.meetup.expired ? "join-expired" : "join-active"}}">
-                    {{vm.meetup.expired ? "Join" : "Expired"}}
-                </span>
-                <span class="meetup-join-button-value">
-                    {{vm.joins.joinedNumber}}
+        <div class="col-xs-3 meetup-entry-status">
+            <div class="meetup-status-wrapper">
+                <span class="meetup-join {{vm.meetup.status}}">
+                    <span class="meetup-join-button-txt {{vm.meetup.status}}">
+                        {{vm.meetup.expired ? "Join" : "Expired"}}
+                    </span>
+                    <span class="meetup-join-button-value">
+                        {{vm.joins.joinedNumber}}
+                    </span>
                 </span>
             </div>
         </div>

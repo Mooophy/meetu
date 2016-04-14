@@ -20,8 +20,8 @@
         .profile-cover{
             background-color:white;
             min-height:200px;
-            margin-bottom:8px;
-            border:1px solid @splitter-color-light;
+            /*margin-bottom:8px;*/
+            border-bottom:1px solid @splitter-color-dark;
             padding:0px;
             .cover-image-container{
                 height:200px;
@@ -45,17 +45,6 @@
                         margin-left:4px;
                         margin-top:4px;
                         /*.u-horizontal-alignment-center-relative();*/
-                    }
-                }
-                .cover-follow{
-                    padding-left:20px;
-                    padding-right:20px;
-                    .follower{
-                        /*border-right:1px solid @splitter-color-light;*/
-                        text-align:center;
-                    }
-                    .following{
-                        text-align:center;
                     }
                 }
             }
@@ -118,12 +107,12 @@
                         .follower{
                             padding:0px;
                             text-align:center;
-                            border-right:1px solid @splitter-color-light;
+                            border-right:1px solid @splitter-color-dark;
                         }
                         .following{
                             padding:0px;
                             text-align:center;
-                            border-right:1px solid @splitter-color-light;
+                            /*border-right:1px solid @splitter-color-light;*/
                         }
 
                         .follow-txt{
@@ -144,49 +133,67 @@
         .profile-content{
             .profile-content-left{
                 padding-left:0px;
-                padding-right:4px;
+                padding-right:0px;
+                border-right:1px solid @splitter-color-dark;
                 .content-main{
                     /*background-color:white;*/
-                    /*border:1px solid @splitter-color-light;*/
+                    /*border:1px solid @splitter-color-medium;*/
                     /*min-height:300px;*/
-                    /*padding:0px 20px;*/
+                    padding:0px 20px;
 
                     .content-main-tabbar{
                         border-bottom:1px solid @splitter-color-medium;
-                        height:35px;
+                        height:36px;
                         background-color:transparent;
+
                         .tab{
-                            color:@text-color-asherstone;
+                            color:@text-color-raven;
                             background-color:white;
                             font-size:@meetup-font-size-lg;
                             text-align:center;
-                            height:36px;
+                            height:28px;
+                            margin-top:10px;
                             line-height:28px;
                             font-weight:bold;
-                            border-top:1px solid @splitter-color-medium;
-                            border-left:1px solid @splitter-color-medium;
+                            /*border-top:1px solid @splitter-color-medium;*/
+                            /*border-left:1px solid @splitter-color-medium;*/
+                            border-bottom:1px solid @splitter-color-medium;
+                            .tab-wrapper{
+                                padding:6px 16px;
+                                border-radius:4px;
+                                /*text-decoration:underline;*/
+                            }
+                            .tab-active{
+                                background-color:@color-coral-lightest;
+
+                                /*border-bottom:1px solid white;*/
+                            }
                         }
                         .tab:last-child{
-                            border-right:1px solid @splitter-color-medium;
+                            /*border-right:1px solid @splitter-color-medium;*/
                         }
+
                         .tab-active{
                             border-bottom:1px solid white;
+                            border-top:1px solid @splitter-color-medium;
+                            border-left:1px solid @splitter-color-medium;
+                            border-right:1px solid @splitter-color-medium;
                         }
-                        .tab-inactive{
-                            border-bottom:1px solid @splitter-color-medium;
-                            /*border-bottom:1px solid @splitter-color-medium;*/
-                        }
+
                     }
                     .content-main-body{
+                        /*border:1px solid @splitter-color-medium;*/
                         background-color:white;
                         min-height:300px;
+                        padding:20px;
                         
                         .content-home-launch{
                             border:1px solid @splitter-color-medium;
-                            /*margin-top:16px;
-                            margin-bottom:16px;*/
+                            border-radius:2px;
                             .home-launch-title{
-                                padding:4px 16px;
+                                padding:4px 14px;
+                                font-weight:bold;
+                                color:@text-color-raven;
                                 border-bottom:1px solid @splitter-color-medium;
                             }
                         }
@@ -194,11 +201,11 @@
                 }
             }
             .profile-content-right{
-                padding-left:4px;
+                padding-left:0px;
                 padding-right:0px;
                 .content-side{
                     background-color:white;
-                    border:1px solid @splitter-color-light;
+                    /*border:1px solid @splitter-color-light;*/
                     min-height:100px;
                 }
             }
@@ -216,34 +223,70 @@
 }
 
 .meetup-wrapper{
-    border-bottom:1px dashed @splitter-color-dark;
+    /*border-bottom:1px dashed @splitter-color-dark;*/
 
     .meetup-entry{
         padding:10px 0px;
 
         .meetup-entry-brief{
-            height: 64px;
-            .meetup-entry-when{
-                /*padding:0px 10px 0px 10px;*/
+            height:auto;
+            /*.meetup-entry-when{
                 .entry-when-wrapper{
                     border-radius:4px;
                     padding:0px;
-                    /*background-color:@color-coral-lightest;*/
                     color:@text-color-asher;
-                    /*text-align:center;*/
-                    /*font-weight:bold;*/
                     .meetup-when-time{
                     }
                     .meetup-when-meridiem{
                         font-size:@meetup-font-size-xs;
                         text-decoration: underline;
-                        /*font-weight:normal;*/
                     }
                     .meetup-when-weekday{
                     }
                 }
+            }*/
+            .meetup-entry-title{
+                .meetup-launch-txt{
+                    font-size:@meetup-font-size-xs;
+                    color:@text-color-gray;
+                }
+                .meetup-launch-value{
+                    font-size:@meetup-font-size-xs;
+                    color: @meetup-link-blue;
+                }
+                .meetup-title{
+                    font-size:@meetup-font-size-xxxl;
+                    color:@text-color-asher;
+                }
             }
-
+            .meetup-entry-status{
+                .meetup-status-wrapper{
+                    text-align:center;
+                    .meetup-join{
+                        background-color:@color-coral-lighter;
+                        border-radius:2px;
+                        padding:5px 2px 7px 2px;
+                        .meetup-join-button-txt{
+                            padding:4px 2px;
+                            border-radius:2px;
+                            background-color:@color-coral-light;
+                            color:white;
+                            font-weight:600;
+                            font-size:@meetup-font-size-xs;
+                        }
+                        .meetup-join-button-value{
+                            background-color:white;
+                            margin-left:2px;
+                            padding:4px 4px;
+                            border-radius:2px;
+                            text-align:center;
+                            font-weight:bold;
+                            color:@text-color-asher;
+                            font-size:@meetup-font-size-xs;
+                        }
+                    }
+                }
+            }
 
         }
     }
@@ -253,3 +296,10 @@
     border-bottom:none;
 }
 
+.join-expired{
+    background-color:@splitter-color-dark !important;
+    color:@text-color-gray !important;
+}
+.join-active{
+    background-color:@color-coral-light;
+}

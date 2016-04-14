@@ -29,6 +29,8 @@
                         where: meetup.where,
                     };
 
+                    vm.meetup.status = vm.meetup.when.expired ? "join-expired" : "join-active";
+
                     vm.joins = {
                         joinedNumber: joins.length,
                         joinedPeople: []

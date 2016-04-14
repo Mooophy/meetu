@@ -25,7 +25,7 @@
                     vm.launchedMeetups.push(vm.totalLaunchedMeetups[i]);
                 }
             }
-            console.log(vm.launchedMeetups);
+            vm.launchedMeetupShortList = vm.launchedMeetups.slice(0, 3);
         });
            
 
