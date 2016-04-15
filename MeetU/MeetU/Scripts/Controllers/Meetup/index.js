@@ -192,7 +192,7 @@
         // Edit meetup
         //
         $rootScope.editMeetup = function (meetup) {
-            console.log(meetup);
+            $log.debug(meetup);
             $timeout(function () {
                 $rootScope.$broadcast("UpdateMeetup", meetup)
             });
