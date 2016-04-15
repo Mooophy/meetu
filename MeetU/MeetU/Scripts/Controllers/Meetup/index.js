@@ -3,8 +3,8 @@
     angular
         .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls'])
         .controller('meetupIndexController', meetupIndexController)
-    meetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm"];
-    function meetupIndexController($scope, $resource, $q, $log, $confirm) {
+    meetupIndexController.$inject = ["$rootScope", "$scope", "$resource", "$q", "$log", "$confirm", "$timeout"];
+    function meetupIndexController($rootScope, $scope, $resource, $q, $log, $confirm, $timeout) {
 
         var currentShowingMeetupCount = 0;
         var MEETUPS_PER_PAGE = 5;
@@ -188,6 +188,15 @@
                         });
                 });
         }
+        //
+        // Edit meetup
+        //
+        $rootScope.editMeetup = function (meetup) {
+            console.log(meetup);
+            $timeout(function () {
+                $rootScope.$broadcast("UpdateMeetup", meetup)
+            });
+        };
         //
         //  Generate joined user names 
         //
