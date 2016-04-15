@@ -29,7 +29,10 @@
                         where: meetup.where,
                     };
 
-                    vm.meetup.status = vm.meetup.when.expired ? "join-expired" : "join-active";
+                    vm.meetup.colorBackClass = vm.meetup.when.expired ? "expired-back" : "";
+                    vm.meetup.colorFrontClass = vm.meetup.when.expired ? "expired-front" : "";
+                    vm.meetup.colorTxtClass = vm.meetup.when.expired ? "expired-txt" : "";
+                    vm.meetup.colorMeridiem = vm.meetup.when.meridiem === "AM" ? "when-am" : "when-pm";
 
                     vm.joins = {
                         joinedNumber: joins.length,
@@ -60,7 +63,9 @@
                     var time = convertTimeMeridiem(when.getHours()).hour + ":" + paddingZero(when.getMinutes()),
                         meridiem = convertTimeMeridiem(when.getHours()).meridiem,
                         weekday = weekdays[when.getDay()],
-                        date = when.getDate() + ", " + months[when.getMonth()],
+                        date = when.getDate(),
+                        dataPostFix = getNumberPostFix(date),
+                        month = months[when.getMonth()],
                         completeTimeString = time + " " + meridiem + " " + date + " " + when.getYear();
 
                     return {
@@ -68,9 +73,18 @@
                         meridiem: meridiem,
                         weekday: weekday,
                         date: date,
+                        datePostFix : dataPostFix,
+                        month : month,
                         expired: now > when ? true : false,
                         completeTimeString: completeTimeString
                     }
+                }
+                
+                function getNumberPostFix(number){
+                    if (number % 10 === 1) return "st";
+                    if (number % 10 === 2) return "nd";
+                    if (number % 10 === 3) return "rd";
+                    return "th";
                 }
 
                 function convertTimeMeridiem(hour) {
