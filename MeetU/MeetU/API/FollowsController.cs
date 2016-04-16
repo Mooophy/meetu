@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 using MeetU.Models;
 
 namespace MeetU.API
@@ -27,11 +28,16 @@ namespace MeetU.API
         [ResponseType(typeof(Follow))]
         public async Task<IHttpActionResult> PostFollow(Follow follow)
         {
+            if (follow.FollowingUserId != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+            follow.At = DateTime.Now;
             if (!ModelState.IsValid || follow.FollowingUserId == follow.FollowedUserId)
             {
                 return BadRequest(ModelState);
             }
-            follow.At = DateTime.Now;
+
             db.Follows.Add(follow);
 
             try
@@ -53,21 +59,24 @@ namespace MeetU.API
             return CreatedAtRoute("DefaultApi", new { id = follow.FollowedUserId }, follow);
         }
 
-        // DELETE: api/Follows/5
-        //[ResponseType(typeof(Follow))]
-        //public async Task<IHttpActionResult> DeleteFollow(string id)
-        //{
-        //    Follow follow = await db.Follows.FindAsync(id);
-        //    if (follow == null)
-        //    {
-        //        return NotFound();
-        //    }
+        //DELETE: api/Follows/5
+        [ResponseType(typeof(Follow))]
+        public async Task<IHttpActionResult> DeleteFollow(string followedUserId, string followingUserId)
+        {
+            if (followingUserId != User.Identity.GetUserId())
+            {
+                return StatusCode(HttpStatusCode.Forbidden);
+            }
+            var follow = db.Follows.Find(followedUserId, followingUserId);
+            if (follow == null)
+            {
+                return NotFound();
+            }
 
-        //    db.Follows.Remove(follow);
-        //    await db.SaveChangesAsync();
-
-        //    return Ok(follow);
-        //}
+            db.Follows.Remove(follow);
+            await db.SaveChangesAsync();
+            return Ok(follow);
+        }
 
         protected override void Dispose(bool disposing)
         {
