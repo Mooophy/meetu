@@ -5,7 +5,7 @@
 }
 
 <div class="login-content-wrapper">
-    <div class="login-phone-mode-homepage-wrapper">
+    <div class="login-phone-mode-homepage-wrapper" onclick="scrollLogin(900)">
         <div class="login-phone-mode-homepage">
             <img class="login-phone-mode-logo" src="../../Content/Images/Logos/meetu-logo-160x160.png" />
             <img class="login-phone-mode-text" src="../../Content/Images/Logos/MeetU-text-240x80.png" />
@@ -48,11 +48,18 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(".js-login-jump-icon").click(function () {
+        if ($(".validation-summary-errors").length > 0) {
+            scrollLogin(0)
+        } else {
+            setTimeout(scrollLogin, 1500, 900);
+        }
+
+        // Scroll down to login panel
+        function scrollLogin(speed) {
             $('body').animate({
                 scrollTop: $(".js-login-form").offset().top
             },
-                700);
-        });
+                speed);
+        }
     </script>
 }
