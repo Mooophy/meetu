@@ -14,6 +14,13 @@ using MeetU.Models;
 
 namespace MeetU.API
 {
+    public class FollowingOrFollowedView
+    {
+        public string UserId { get; set; }
+        public string NickName { get; set; }
+        public string Picture { get; set; }
+    }
+
     public class FollowsController : ApiController
     {
         private MuDbContext db = new MuDbContext();
@@ -22,6 +29,42 @@ namespace MeetU.API
         public IQueryable<Follow> GetFollows()
         {
             return db.Follows;
+        }
+
+        // GET: api/Following/5
+        [HttpGet]
+        [Route("api/Following/{userId}")]
+        public IQueryable<FollowingOrFollowedView> GetProfileByFollowingUserId(string userId)
+        {
+            return
+                from p in db.Profiles
+                join f in db.Follows
+                on p.UserId equals f.FollowedUserId
+                where f.FollowingUserId == userId
+                select new FollowingOrFollowedView
+                {
+                    UserId = p.UserId,
+                    NickName = p.NickName,
+                    Picture = p.Picture
+                };
+        }
+
+        //GET: api/FollowedBy/5
+        [HttpGet]
+        [Route("api/FollowedBy/{userId}")]
+        public IQueryable<FollowingOrFollowedView> GetProfileByFollowedUserId(string userId)
+        {
+            return
+                from p in db.Profiles
+                join f in db.Follows
+                on p.UserId equals f.FollowingUserId
+                where f.FollowedUserId == userId
+                select new FollowingOrFollowedView
+                {
+                    UserId = p.UserId,
+                    NickName = p.NickName,
+                    Picture = p.Picture
+                };
         }
 
         // POST: api/Follows
