@@ -13,7 +13,7 @@
         vm.infoHasLoaded = false;
         vm.contentHasLoaded = false;
 
-        launchedMeetups.query({ userId: 'b1d9d320-15cc-4d44-ad4d-9bd57d48ecd5' }, function (data) {
+        launchedMeetups.query({ userId: $routeParams.profileId }, function (data) {
             vm.totalLaunchedMeetups = data;
         }).$promise.then(function () {
             vm.contentHasLoaded = true;
