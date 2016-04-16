@@ -8,25 +8,22 @@
     function ProfileDisplayController($log, $q, $resource, $routeParams, dummyDataService) {
         var vm = this,
             PublicProfile = $resource('api/Users/Public'),
-            launchedMeetups = $resource('api/Meetups/LaunchedBy');
+            MeetupsLaunchedBy = $resource('api/Meetups/LaunchedBy');
+            MeetupsJoinedBy = $resource('api/Meetups/JoinedBy');
 
         vm.infoHasLoaded = false;
         vm.contentHasLoaded = false;
 
-        launchedMeetups.query({ userId: $routeParams.profileId }, function (data) {
-            vm.totalLaunchedMeetups = data;
-        }).$promise.then(function () {
+        $q.all([
+            MeetupsLaunchedBy.query({ userId: $routeParams.profileId }, function (data) {
+                vm.launchedMeetups = data;
+            }).$promise,
+            MeetupsJoinedBy.query({ userId: $routeParams.profileId }, function (data) {
+                vm.joinedMeetups = data;
+            }).$promise
+        ]).then(function(){
             vm.contentHasLoaded = true;
-            vm.launchedMeetups = [];
-            var launchedMeetups =[],
-                i, len, currentMeetup, time;
-            for (i = 0, len = vm.totalLaunchedMeetups.length; i < len; ++i) {
-                if (!vm.totalLaunchedMeetups[i].meetup.isCancelled) {
-                    vm.launchedMeetups.push(vm.totalLaunchedMeetups[i]);
-                }
-            }
-            vm.launchedMeetupShortList = vm.launchedMeetups.slice(0, 3);
-        });
+        })
            
 
         //var gender = "<i class='fa fa-genderless'></i>";

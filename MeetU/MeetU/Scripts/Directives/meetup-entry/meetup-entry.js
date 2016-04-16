@@ -29,6 +29,7 @@
                         where: meetup.where,
                     };
 
+                    vm.meetup.status = vm.meetup.expired ? "Expired" : "Join";
                     vm.meetup.colorBackClass = vm.meetup.when.expired ? "expired-back" : "";
                     vm.meetup.colorFrontClass = vm.meetup.when.expired ? "expired-front" : "";
                     vm.meetup.colorTxtClass = vm.meetup.when.expired ? "expired-txt" : "";

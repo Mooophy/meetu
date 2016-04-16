@@ -2,90 +2,90 @@
 <div class="profile-subpage-wrapper" ng-controller="ProfileDisplayController as profileDisplayController">
     <subpage-nav hassubmit='false'></subpage-nav>
     <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.infoHasLoaded"></loading-circle>
-    <div class="profile-main-container">
-        <div class="row profile-cover">
-            <div class="col-sm-3 col-xs-12 cover-image-container">
-                <div class="cover-image-wrapper">
-                    <div class="cover-image">
-                        <img src="/Content/Images/dummyHead.PNG" />
+    <div class="row profile-container">
+        <div class="col-md-9 profile-main-container">
+            <div class="row profile-main-title">
+                Her profile
+            </div>
+            <div class="row profile-cover">
+                <div class="col-sm-3 col-xs-12 cover-image-container">
+                    <div class="cover-image-wrapper">
+                        <div class="cover-image">
+                            <img src="/Content/Images/dummyHead.PNG" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-9 col-xs-12 cover-info-container">
-                <div class="cover-info">
-                    <div class="col-xs-12 info-block">
+                <div class="col-sm-9 col-xs-12 cover-info-container">
+                    <div class="cover-info">
+                        <div class="col-xs-12 info-block">
 
-                    </div>
-                    <div class="col-xs-12 info-name">
-                        <div class="info-nickname"><span class="fa fa-mars color-male"></span> Feedfedfat</div>
-                        <div class="info-follow-button-wrapper">
-                            <div class="info-follow-button">
-                                + Follow
+                        </div>
+                        <div class="col-xs-12 info-name">
+                            <div class="info-nickname"><span class="fa fa-mars color-male"></span> Feedfedfat</div>
+                            <div class="info-follow-button-wrapper">
+                                <div class="info-follow-button">
+                                    + Follow
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 info-brief">
+                            Au fil du temps Le temps C'est la vie.
+                        </div>
+                        <div class="col-xs-12 info-follows">
+                            <div class="info-follow">
+                                <div class="col-sm-6 col-xs-6 follower">
+                                    <span class="follow-value">12</span><br />
+                                    <span class="follow-txt">Follower</span>
+                                </div>
+                                <div class="col-sm-6 col-xs-6 following">
+                                    <span class="follow-value">12</span><br />
+                                    <span class="follow-txt">Following</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 info-brief">
-                        Au fil du temps Le temps C'est la vie.
+                </div>
+            </div>
+            <div class="row profile-content">
+                <div class="col-sm-3 col-xs-12 profile-content-left-container">
+                    <div class="content-side-title">
+                        Her feeds
                     </div>
-                    <div class="col-xs-12 info-follows">
-                        <div class="info-follow">
-                            <div class="col-sm-6 col-xs-6 follower">
-                                <span class="follow-value">12</span><br /> 
-                                <span class="follow-txt">Follower</span> 
-                            </div>
-                            <div class="col-sm-6 col-xs-6 following">
-                                <span class="follow-value">12</span><br />
-                                <span class="follow-txt">Following</span>
+                    <div class="content-side-body">
+                        <a class="profile-content-menu">Launched Meetups 3</a>
+                        <a class="profile-content-menu">Joined Meetups 14</a>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-12 profile-content-right-container">
+                    <div class="content-main-title">
+                        {{profileDisplayController.activeMenu || "Foo"}}
+                    </div>
+                    <div class="content-main-body">
+                        <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.contentHasLoaded"></loading-circle>
+                        <div class="launched-list">
+                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetupShortList">
+                                <meetup-entry dataSource="meetup"></meetup-entry>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row profile-content">
-            <div class="col-sm-8 col-xs-12 profile-content-left-container">
-                <div class="content-main">
-                    <div class="content-main-tabbar">
-                        <div class="col-xs-4 tab tab-active">
-                            <span class="tab-text"><span class="glyphicon glyphicon-home"></span> Home</span>
-                        </div>
-                        <div class="col-xs-4 tab">
-                            <span class="tab-text">Hosted</span>
-                        </div>
-                        <div class="col-xs-4 tab">
-                            <span class="tab-text">Joined</span>
-                        </div>
-                    </div>
-                    <div class="content-main-body">
-                        <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.contentHasLoaded"></loading-circle>
-                        <div class="content-home">
-                            <div class="content-home-launch">
-                                <div class="home-launch-title">
-                                    Launched Meetups
-                                </div>
-                                <div class="home-launch-body">
-                                    <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetupShortList">
-                                        <meetup-entry dataSource="meetup"></meetup-entry>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--<div class="content-home-join">
-                                <div class="home-join-title">
-                                    Joined Meetups
-                                </div>
-                                <div class="home-join-body">
-                                    <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.homeJoinedMeetups">
-                                        <meetup-entry dataSource="meetup"></<meetup-entry>
-                                    </div>
-                                </div>
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-3 profile-side-container">
+            <div class="profile-side-title">
+                Side content
             </div>
-            <div class="col-sm-4 col-xs-12 profile-content-right">
-                <div class="content-side">
-                </div>
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
             </div>
         </div>
     </div>
