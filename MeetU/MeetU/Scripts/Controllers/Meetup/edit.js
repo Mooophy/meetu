@@ -12,7 +12,6 @@
         Meetup.get({ id: $routeParams.id })
             .$promise
             .then(function (meetup) {
-                //console.log(meetup);
                 vm.editParams = meetup
             });
         vm.submitForm = function () {
