@@ -15,7 +15,6 @@ var onError = function(error) {
 };
 gulp.task('minify-vender-scripts', function () {
     return gulp.src(['Scripts/Venders/underscore.js',
-               'Scripts/Venders/jquery-1.10.2.js',
                'Scripts/Venders/angular.js',
                'Scripts/Venders/**/*.js',
     ])
