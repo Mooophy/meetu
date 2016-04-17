@@ -335,8 +335,6 @@
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
-    <Content Include="Scripts\Venders\bootstrap.js" />
-    <Content Include="Scripts\Venders\jquery-1.10.2.js" />
     <Content Include="Scripts\Venders\moment.js" />
     <Content Include="Scripts\Venders\underscore.js" />
     <Content Include="Scripts\VenderPlugins\angular-confirm.js" />
