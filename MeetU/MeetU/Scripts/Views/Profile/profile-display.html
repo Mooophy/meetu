@@ -4,14 +4,14 @@
     <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.infoHasLoaded"></loading-circle>
     <div class="row profile-container">
         <div class="col-md-9 profile-main-container">
-            <div class="row profile-main-title">
-                Her profile
-            </div>
+            <!--<div class="row profile-main-title">
+                Profile
+            </div>-->
             <div class="row profile-cover">
                 <div class="col-sm-3 col-xs-12 cover-image-container">
                     <div class="cover-image-wrapper">
                         <div class="cover-image">
-                            <img src="/Content/Images/dummyHead.PNG" />
+                            <img src="/Content/Images/default-male.PNG" />
                         </div>
                     </div>
                 </div>
@@ -21,15 +21,18 @@
 
                         </div>
                         <div class="col-xs-12 info-name">
-                            <div class="info-nickname"><span class="fa fa-mars color-male"></span> Feedfedfat</div>
-                            <div class="info-follow-button-wrapper">
-                                <div class="info-follow-button">
+                            <div class="info-nickname">
+                                <span class="fa {{profileDisplayController.profileInformation.genderIcon}} {{profileDisplayController.profileInformation.genderColor}}"></span> 
+                                {{profileDisplayController.profileInformation.nickName}}
+                            </div>
+                            <div class="meetup-follow-wrapper">
+                                <span class="meetup-follow-button">
                                     + Follow
-                                </div>
+                                </span>
                             </div>
                         </div>
                         <div class="col-xs-12 info-brief">
-                            Au fil du temps Le temps C'est la vie.
+                            {{profileDisplayController.profileInformation.brief}}
                         </div>
                         <div class="col-xs-12 info-follows">
                             <div class="info-follow">
@@ -49,21 +52,46 @@
             <div class="row profile-content">
                 <div class="col-sm-3 col-xs-12 profile-content-left-container">
                     <div class="content-side-title">
-                        Her feeds
+                        Feeds
                     </div>
                     <div class="content-side-body">
-                        <a class="profile-content-menu">Launched Meetups 3</a>
-                        <a class="profile-content-menu">Joined Meetups 14</a>
+                        <div class="profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}" ng-hide="!profileDisplayController.isPrivate">
+                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showPersonalInfo()">
+                                Personal Info
+                            </a>
+                        </div>
+                        <div class="profile-content-menu {{profileDisplayController.isJoinedMeetups? 'menu-active' : ''}}">
+                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showJoinedList()">
+                                Joined Meetups <span class="color-number">{{profileDisplayController.profileInformation.meetupsJoined}}</span>
+                            </a>
+                        </div>
+                        <div class="profile-content-menu {{profileDisplayController.isLaunchedMeetups? 'menu-active' : ''}}">
+                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showLaunchedList()">
+                                Launched Meetups <span class="color-number">{{profileDisplayController.profileInformation.meetupsLaunched}}</span>
+                            </a>
+                        </div>
+
+                        
                     </div>
                 </div>
                 <div class="col-sm-9 col-xs-12 profile-content-right-container">
                     <div class="content-main-title">
-                        {{profileDisplayController.activeMenu || "Foo"}}
+                        {{profileDisplayController.activeMenu}}
                     </div>
                     <div class="content-main-body">
                         <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.contentHasLoaded"></loading-circle>
-                        <div class="launched-list">
-                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetupShortList">
+                        <div class="personal-information" ng-show="profileDisplayController.isPersonalInformation">
+                            Personal<br/>
+                            Info<br/>
+                            Mation<br/>
+                        </div>
+                        <div class="joined-list" ng-show="profileDisplayController.isJoinedMeetups">
+                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.joinedMeetups">
+                                <meetup-entry dataSource="meetup"></meetup-entry>
+                            </div>
+                        </div>
+                        <div class="launched-list" ng-show="profileDisplayController.isLaunchedMeetups">
+                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetups">
                                 <meetup-entry dataSource="meetup"></meetup-entry>
                             </div>
                         </div>
@@ -72,9 +100,9 @@
             </div>
         </div>
         <div class="col-md-3 profile-side-container">
-            <div class="profile-side-title">
+            <!--<div class="profile-side-title">
                 Side content
-            </div>
+            </div>-->
             <div class="side-section">
                 under construction
             </div>
