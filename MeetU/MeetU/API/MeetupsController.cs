@@ -155,6 +155,7 @@ namespace MeetU.API
         {
             var meetup = await db
                 .Meetups
+                .Where(m => m.IsCancelled == false)
                 .FirstOrDefaultAsync(m => m.Id == updated.Id);
             if (meetup == null)
                 return NotFound();
