@@ -59,9 +59,6 @@
                     .info-name{
                         padding-left:10px;
                         font-size:@meetup-font-size-xl;
-                        
-                        height:30px;
-                        line-height:30px;
                         vertical-align:middle;
                         display:inline;
                         .info-nickname{
@@ -85,42 +82,23 @@
                                 cursor:pointer;                  
                             }
                         }
+
+                        .meetup-follow-information{
+                            display:inline;
+                            margin-left:20px;
+                            color:@text-color-asherstone;
+                            font-size:@meetup-font-size-sm;
+                            .meetup-follower{
+                                cursor:pointer;
+                            }
+                            .meetup-following{
+                                cursor:pointer;
+                            }
+                        }
                     }
                     .info-brief{
                         padding:5px 0px 5px 10px;
                         color:@text-color-asher;
-                    }
-                    .info-follows{
-                        padding-left:0px;
-                        padding-right:0px;
-                        margin-top:36px !important;
-                        .info-follow{
-                            float:right;
-                            width:330px;
-                            height:40px !important;
-                            .follower{
-                                padding:0px;
-                                text-align:center;
-                                border-right:1px solid @splitter-color-dark;
-                            }
-                            .following{
-                                padding:0px;
-                                text-align:center;
-                            }
-
-                            .follow-txt{
-                                color:@text-color-sterling;
-                                font-size:@meetup-font-size-sm;
-                            }
-                            .follow-value{
-                                color:@color-coral-light;
-                                font-weight:bold;
-                                font-size:@meetup-font-size-xl;
-                                cursor:pointer;
-                            }
-                        }
-                        margin-top:20px;
-
                     }
                 }
 
@@ -129,49 +107,76 @@
                 
                 .profile-content-left-container{
                     padding:0px 15px 0px 0px;
+                    @media only screen and (max-width:767px){
+                        padding:0px;
+                    }
                     .content-side-title{
                         padding:2px 16px 0px 16px;
                         border-bottom:1px solid @splitter-color-dark;
                         color:@text-color-asherstone;
                         font-size:@meetup-font-size-sm;
+                        @media only screen and (max-width:767px){
+                            display:none;
+                        }
                     }
                     .content-side-body{
-                        min-height:100px;
                         padding:16px 15px;
-
+                        @media only screen and (max-width:767px){
+                            /*border-top:1px solid @splitter-color-dark;*/
+                            border-bottom:1px solid @splitter-color-dark;
+                            padding:0px;
+                        }
                         .profile-content-menu{
-                            border-radius: 6px;
                             padding:4px 6px;
+                            @media only screen and (max-width:767px){
+                                text-align:center;
+                            }
                             .profile-content-menu-link{
                                 color:@text-color-raven;
-                            }
-                            profile-content-menu-link:focus{
-                                text-decoration: none !important;
+                                cursor:pointer;
+
                             }
                             .color-number{
                                 color:@color-blue-light;
+                            }
+                        }
+                        .content-menu-full{
+                            @media only screen and (max-width:767px){
+                                display:none;
+                            }
+                        }
+                        .content-menu-short{
+                            display:none;
+                            @media only screen and (max-width:767px){
+                                display:inline;
                             }
                         }
                     }
                 }
                 .profile-content-right-container{
                     padding:0px 0px 0px 15px;
-                    .content-main-title{
-                        border-bottom:1px solid @splitter-color-dark;
-                        padding:2px 16px 0px 16px;
-                        color:@text-color-asherstone;
-                        font-size:@meetup-font-size-sm;
+                    @media only screen and (max-width:767px){
+                        padding:0px;
                     }
                     .content-main-body{
-                        padding:8px 0px;
                         .personal-information{
                             padding:0px 15px;
+
                         }
                         .joined-list{
                              
                         }
                         .launched-list{
 
+                        }
+                        .content-main-title{
+                            border-bottom:1px solid @splitter-color-dark;
+                            padding:2px 16px 0px 16px;
+                            color:@text-color-asherstone;
+                            font-size:@meetup-font-size-sm;
+                            @media only screen and (max-width:767px){
+                                display:none;
+                            }
                         }
                     }
                 }
@@ -207,12 +212,19 @@
     font-weight:bold;
 }
 
+.color-female{
+    color:#ffb3b3;
+    font-weight:bold;
+}
+
 .meetup-wrapper{
-    border-bottom:1px dashed @splitter-color-light;
+    border-bottom:1px dashed @splitter-color-dark;
     .meetup-entry{
-        padding:6px 15px;
+        padding:18px 24px;
         
         .meetup-entry-brief{
+            text-overflow:ellipsis;
+            
             .meetup-entry-when{
                 padding:4px 0px 4px 0px;
                 .entry-when-wrapper{
@@ -238,7 +250,7 @@
                 }
             }
             .meetup-entry-title{
-                padding:0px !important;
+                padding:0px 15px !important;
                 .meetup-launch-txt{
                     font-size:@meetup-font-size-xs;
                     color:@text-color-gray;
@@ -251,6 +263,7 @@
                     font-size:@meetup-font-size-xxl;
                     color:@text-color-raven;
                     font-weight:bold;
+                    text-overflow:ellipsis;
                 }
             }
             .meetup-entry-status{
@@ -306,9 +319,19 @@
 }
 
 .expired-txt{
-    color:@text-color-gray !important;
+    color:@splitter-color-dark !important;
 }
 
 .menu-active{
-    background-color: @color-coral-lightest;
+    font-weight:bold;
+}
+
+.splitter-bullet{
+    color:@text-color-asherstone;
+    margin:0px 8px;
+}
+
+.meetup-number-follow{
+    color:@color-coral;
+    font-weight:bold;
 }

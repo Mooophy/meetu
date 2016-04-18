@@ -305,6 +305,8 @@
     <Content Include="Scripts\Bundles\respond.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
+    <Content Include="Scripts\Directives\custom-button\custom-button.html" />
+    <Content Include="Scripts\Directives\custom-button\custom-button.js" />
     <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />

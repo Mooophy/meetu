@@ -8,8 +8,6 @@
 
                 init();
 
-                console.log(vm);
-
                 function init() {
                     var data = angular.copy(vm.datasource),
                         meetup = data.meetup,

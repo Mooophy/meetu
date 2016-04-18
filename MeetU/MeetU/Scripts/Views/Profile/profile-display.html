@@ -11,7 +11,7 @@
                 <div class="col-sm-3 col-xs-12 cover-image-container">
                     <div class="cover-image-wrapper">
                         <div class="cover-image">
-                            <img src="/Content/Images/default-male.PNG" />
+                            <img src={{profileDisplayController.profileInformation.picture}} />
                         </div>
                     </div>
                 </div>
@@ -30,21 +30,18 @@
                                     + Follow
                                 </span>
                             </div>
+                            <div class="meetup-follow-information">
+                                <span class="meetup-follower">
+                                    Follower <span class="meetup-number-follow">12</span>
+                                </span>
+                                <span class="splitter-bullet">&#8226</span>
+                                <span class="meetup-following">
+                                    Following <span class="meetup-number-follow">12</span>
+                                </span>
+                            </div>
                         </div>
                         <div class="col-xs-12 info-brief">
                             {{profileDisplayController.profileInformation.brief}}
-                        </div>
-                        <div class="col-xs-12 info-follows">
-                            <div class="info-follow">
-                                <div class="col-sm-6 col-xs-6 follower">
-                                    <span class="follow-value">12</span><br />
-                                    <span class="follow-txt">Follower</span>
-                                </div>
-                                <div class="col-sm-6 col-xs-6 following">
-                                    <span class="follow-value">12</span><br />
-                                    <span class="follow-txt">Following</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,43 +51,49 @@
                     <div class="content-side-title">
                         Feeds
                     </div>
-                    <div class="content-side-body">
-                        <div class="profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}" ng-hide="!profileDisplayController.isPrivate">
-                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showPersonalInfo()">
-                                Personal Info
-                            </a>
+                    <div class="row content-side-body">
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}" ng-hide="!profileDisplayController.isPrivate">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showPersonalInfo()">
+                                <span class="content-menu-full">Personal Info</span>
+                                <span class="content-menu-short">Personal</span>
+                            </span>
                         </div>
-                        <div class="profile-content-menu {{profileDisplayController.isJoinedMeetups? 'menu-active' : ''}}">
-                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showJoinedList()">
-                                Joined Meetups <span class="color-number">{{profileDisplayController.profileInformation.meetupsJoined}}</span>
-                            </a>
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isJoinedMeetups? 'menu-active' : ''}}">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showJoinedList()">
+                                <span class="content-menu-full">Joined Meetups</span>
+                                <span class="content-menu-short">Joined</span>
+                            </span>
                         </div>
-                        <div class="profile-content-menu {{profileDisplayController.isLaunchedMeetups? 'menu-active' : ''}}">
-                            <a href="" class="profile-content-menu-link" ng-click="profileDisplayController.showLaunchedList()">
-                                Launched Meetups <span class="color-number">{{profileDisplayController.profileInformation.meetupsLaunched}}</span>
-                            </a>
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isLaunchedMeetups? 'menu-active' : ''}}">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showLaunchedList()">
+                                <span class="content-menu-full">Launched Meetups</span>
+                                <span class="content-menu-short">Launched</span>
+                            </span>
                         </div>
 
                         
                     </div>
                 </div>
                 <div class="col-sm-9 col-xs-12 profile-content-right-container">
-                    <div class="content-main-title">
-                        {{profileDisplayController.activeMenu}}
-                    </div>
                     <div class="content-main-body">
                         <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.contentHasLoaded"></loading-circle>
                         <div class="personal-information" ng-show="profileDisplayController.isPersonalInformation">
-                            Personal<br/>
-                            Info<br/>
-                            Mation<br/>
+                            <div class="content-main-title">
+                                Personal Information
+                            </div>
                         </div>
                         <div class="joined-list" ng-show="profileDisplayController.isJoinedMeetups">
+                            <div class="content-main-title">
+                                Joined Meetups {{profileDisplayController.joinedMeetups.length}}
+                            </div>
                             <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.joinedMeetups">
                                 <meetup-entry dataSource="meetup"></meetup-entry>
                             </div>
                         </div>
                         <div class="launched-list" ng-show="profileDisplayController.isLaunchedMeetups">
+                            <div class="content-main-title">
+                                Launched Meetups {{profileDisplayController.launchedMeetups.length}}
+                            </div>
                             <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetups">
                                 <meetup-entry dataSource="meetup"></meetup-entry>
                             </div>

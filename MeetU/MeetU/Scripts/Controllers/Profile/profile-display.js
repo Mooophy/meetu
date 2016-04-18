@@ -12,8 +12,15 @@
             MeetupsLaunchedBy = $resource('api/Meetups/LaunchedBy'),
             MeetupsJoinedBy = $resource('api/Meetups/JoinedBy');
 
-        init();
+        var User = $resource('/api/loggedUser');
+        User.query(function (user) {
+            vm.loggedUser = user[0];
+        }).$promise.then(function () {
+            console.log(vm.loggedUser);
+        });
 
+        init();
+        
         PrivateProfile.get(
             {
                 userId: $routeParams.profileId,
@@ -103,7 +110,7 @@
         function getProfileInformation(profile, isPrivate) {
             var genderIcon = (profile.gender === null || profile.gender === "male") ? "fa-mars" : "fa-venus",
                 genderColor = (profile.gender === null || profile.gender === "male") ? "color-male" : "color-female",
-                defaultPicture = (profile.gender === null || profile.gender === "male") ? "/Content/Images/default-male.PNG" : "/Content/Images/default-female.PNG"
+                defaultPicture = "/Content/Images/dummyHead.PNG"
                 
             var profileInfo = {
                 nickName: profile.nickName,
