@@ -32,7 +32,7 @@ namespace MeetU.API
             return db.Follows;
         }
 
-        // GET: api/Following/5
+        // GET: api/Following?userId=some-userId
         [HttpGet]
         [Route("api/Following")]
         public IQueryable<FollowingOrFollowedView> GetProfileByFollowingUserId(string userId)
@@ -51,9 +51,9 @@ namespace MeetU.API
                 };
         }
 
-        //GET: api/FollowedBy/5
+        //GET: api/FollowedBy?userId=some-userId
         [HttpGet]
-        [Route("api/FollowedBy/{userId}")]
+        [Route("api/FollowedBy")]
         public IQueryable<FollowingOrFollowedView> GetProfileByFollowedUserId(string userId)
         {
             return
