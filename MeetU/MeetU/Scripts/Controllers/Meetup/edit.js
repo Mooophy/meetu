@@ -27,7 +27,7 @@
                 $location.path('/index');
             },
             function () {
-                $log.debug("edited error")
+                alert("Your attempt to edit this meetup has failed, please try again.")
                 $location.path('/index');
             }
             );
