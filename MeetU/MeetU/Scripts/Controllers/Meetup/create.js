@@ -19,7 +19,7 @@
                     .$promise.then(function () {
                         $log.debug(vm.createParams);
                         $location.path('/index');
-                    });
+                    }); 
             });
         }
     }

@@ -15,6 +15,7 @@
                 vm.editParams = meetup
             });
         vm.submitForm = function () {
+            vm.editParams.where = document.querySelector('.js-meetup-edit-where').value;
             Meetup.update({
                 // id must be provided
                 id: $routeParams.id,
@@ -32,8 +33,5 @@
             }
             );
         }
-
-        $(".js-meetup-edit-where").placepicker();
-        $(".js-meetup-edit-when").datetimepicker({ minDate: '0' });
     }
 })();
