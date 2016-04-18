@@ -37,7 +37,8 @@
             <label for="meetup-create-time" class="control-label col-md-2 meetup-create-form-label">When</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input js-meetup-create-when" id="meetup-create-time"
-                       ng-model="meetupCreating.createParams.when" ng-required="true"/>
+                      placeholder="Select your time"
+                      datetimepicker ng-model="meetupCreating.createParams.when" ng-required="true"/>
             </div>
         </div>
 
@@ -45,7 +46,8 @@
             <label for="meetup-create-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input js-meetup-create-where" id="meetup-create-where"
-                       ng-model="meetupCreating.createParams.where" ng-required="true"/>
+                      placeholder="Enter the location"
+                      placepicker ng-model="meetupCreating.createParams.where" ng-required="true"/>
             </div>
         </div>
     </form>

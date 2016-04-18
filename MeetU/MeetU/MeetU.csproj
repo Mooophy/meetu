@@ -309,11 +309,13 @@
     <Content Include="Scripts\Controllers\Meetup\edit.js" />
     <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
+    <Content Include="Scripts\Directives\datetimepicker.js" />
     <Content Include="Scripts\Directives\enter-key.js" />
     <Content Include="Scripts\Directives\history-back.js" />
     <Content Include="Scripts\Controllers\Meetup\index.js" />
     <Content Include="Scripts\Directives\loading-circle\loading-circle.html" />
     <Content Include="Scripts\Directives\loading-circle\loading-circle.js" />
+    <Content Include="Scripts\Directives\placepicker.js" />
     <Content Include="Scripts\Directives\scroll-on-focus.js" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
