@@ -19,6 +19,7 @@ namespace MeetU.API
         public string UserId { get; set; }
         public string NickName { get; set; }
         public string Picture { get; set; }
+        public DateTime At { get; set; }
     }
 
     public class FollowsController : ApiController
@@ -33,19 +34,20 @@ namespace MeetU.API
 
         // GET: api/Following/5
         [HttpGet]
-        [Route("api/Following/{userId}")]
+        [Route("api/Following")]
         public IQueryable<FollowingOrFollowedView> GetProfileByFollowingUserId(string userId)
         {
             return
-                from p in db.Profiles
-                join f in db.Follows
-                on p.UserId equals f.FollowedUserId
+                from f in db.Follows
                 where f.FollowingUserId == userId
+                join p in db.Profiles
+                on f.FollowedUserId equals p.UserId
                 select new FollowingOrFollowedView
                 {
                     UserId = p.UserId,
                     NickName = p.NickName,
-                    Picture = p.Picture
+                    Picture = p.Picture,
+                    At = f.At
                 };
         }
 
@@ -55,15 +57,16 @@ namespace MeetU.API
         public IQueryable<FollowingOrFollowedView> GetProfileByFollowedUserId(string userId)
         {
             return
-                from p in db.Profiles
-                join f in db.Follows
-                on p.UserId equals f.FollowingUserId
+                from f in db.Follows
                 where f.FollowedUserId == userId
+                join p in db.Profiles
+                on f.FollowingUserId equals p.UserId
                 select new FollowingOrFollowedView
                 {
                     UserId = p.UserId,
                     NickName = p.NickName,
-                    Picture = p.Picture
+                    Picture = p.Picture,
+                    At = f.At
                 };
         }
 
