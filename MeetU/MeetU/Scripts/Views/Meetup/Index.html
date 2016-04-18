@@ -110,7 +110,7 @@
             </div>
             <hr class="meetup-separator" />
         </div>
-        <loading-circle size="meetupViews.length > 0 ? 'loading-circle-sm' : 'loading-circle-lg'" ng-hide="indexVm.hasLoaded"></loading-circle>
+        <loading-circle size="indexVm.meetupViews.length > 0 ? 'loading-circle-sm' : 'loading-circle-lg'" ng-hide="indexVm.hasLoaded"></loading-circle>
         <div class="meetup-no-more-results" ng-show="indexVm.hasFetchedAll">NO MORE RESULTS</div>
     </div>
     <div class="meetup-create ng-cloak">
