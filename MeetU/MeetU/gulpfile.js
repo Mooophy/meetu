@@ -59,7 +59,7 @@ gulp.task('watch-meetu-scripts', function () {
 });
 
 gulp.task('template-cache', function () {
-    return gulp.src('Scripts/Views/**/*.html')
+    return gulp.src('Scripts/**/*.html')
       .pipe(templateCache(
         {
             filename: 'templates.js',
@@ -70,7 +70,7 @@ gulp.task('template-cache', function () {
 });
 
 gulp.task('watch-template-cache', function () {
-    return gulp.watch(['Scripts/Views/**/*.html'], ['template-cache']);
+    return gulp.watch(['Scripts/**/*.html'], ['template-cache']);
 });
 
 gulp.task('concat-unittest-scripts', function () {

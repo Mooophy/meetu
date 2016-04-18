@@ -27,7 +27,7 @@
                 $location.path('/index');
             },
             function () {
-                alert("edited error");
+                $log.debug("edited error")
                 $location.path('/index');
             }
             );
