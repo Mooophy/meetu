@@ -1,73 +1,124 @@
-﻿<div class="profile-subpage-wrapper" ng-controller="ProfileDisplayController as profileDisplayController">
+﻿<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<div class="profile-subpage-wrapper" ng-controller="ProfileDisplayController as profileDisplayController">
     <subpage-nav hassubmit='false'></subpage-nav>
-    <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.hasLoaded"></loading-circle>
-    <div class="profile-main-container">
-        <div class="row profile-cover">
-            <div class="col-sm-3 col-xs-12 profile-image-container">
-                <div class="profile-image-wrapper">
-                    <img src="\Content\Images\dummyHead.PNG" />
-                </div>
-            </div>
-            <div class="col-sm-9 col-xs-12 profile-info-container">
-                <div class="col-sm-12 profile-info-block">
-
-                </div>
-                <div class="col-sm-12 profile-info-nickname">
-                    {{profileDisplayController.userData.nickName}}
-                </div>
-                <div class="col-sm-12 profile-info-brief">
-                    {{profileDisplayController.userData.brief||"这家伙很懒，什么也没留下。"}}
-                </div>
-            </div>
-        </div>
-        <div class="row profile-menu">
-            <div class="col-md-4 col-sm-3 col-xs-0 profile-menu-block">
-            </div>
-            <div class="col-md-8 col-sm-9 col-xs-12 profile-menu-follows">
-                <div class="col-sm-4 col-xs-4 profile-menu-follow">
-                    <a class="link-normal">关注者</a>
-                </div>
-                <div class="col-sm-4 col-xs-4 profile-menu-follow">
-                    <a class="link-normal">关注了</a>
-                </div>
-                <div class="col-sm-4 col-xs-4 profile-menu-follow">
-                    <button class="button-follow">+ 关注我</button>
-                </div>
-            </div>
-        </div>
-        <div class="row profile-content">
-            <div class="col-md-9 col-sm-8 col-xs-12 profile-content-main">
-                <div class="row profile-participated section">
-                    <div class="section-header">
-                        参加的meetup
-                        <span class="header-more glyphicon glyphicon-chevron-right">
-
-                        </span>
-                    </div>
-                    <div class="section-body">
-                        <div class="participated-meetup" ng-repeat="participatedMeetup in profileDisplayController.participatedMeetups">
-                            <div class="meetup-title">{{participatedMeetup.title}} <span class="text-light">发起者</span> @{{participatedMeetup.host}} </div>
-                            <p>{{participatedMeetup.description}}</p>
+    <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.infoHasLoaded"></loading-circle>
+    <div class="row profile-container">
+        <div class="col-md-9 profile-main-container">
+            <!--<div class="row profile-main-title">
+                Profile
+            </div>-->
+            <div class="row profile-cover">
+                <div class="col-sm-3 col-xs-12 cover-image-container">
+                    <div class="cover-image-wrapper">
+                        <div class="cover-image">
+                            <img src={{profileDisplayController.profileInformation.picture}} />
                         </div>
                     </div>
                 </div>
-                <div class="row profile-hosted section">
-                    <div class="section-header">
-                        发起的meetup
-                        <span class="header-more glyphicon glyphicon-chevron-right">
+                <div class="col-sm-9 col-xs-12 cover-info-container">
+                    <div class="cover-info">
+                        <div class="col-xs-12 info-block">
 
-                        </span>
-                    </div>
-                    <div class="section-body">
-                        <div class="hosted-meetup" ng-repeat="hostedMeetup in profileDisplayController.hostedMeetups">
-                            <div class="meetup-title">{{hostedMeetup.title}}</div>
-                            <p>{{hostedMeetup.description}}</p>
+                        </div>
+                        <div class="col-xs-12 info-name">
+                            <div class="info-nickname">
+                                <span class="fa {{profileDisplayController.profileInformation.genderIcon}} {{profileDisplayController.profileInformation.genderColor}}"></span> 
+                                {{profileDisplayController.profileInformation.nickName}}
+                            </div>
+                            <div class="meetup-follow-wrapper">
+                                <span class="meetup-follow-button">
+                                    + Follow
+                                </span>
+                            </div>
+                            <div class="meetup-follow-information">
+                                <span class="meetup-follower">
+                                    Follower <span class="meetup-number-follow">12</span>
+                                </span>
+                                <span class="splitter-bullet">&#8226</span>
+                                <span class="meetup-following">
+                                    Following <span class="meetup-number-follow">12</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 info-brief">
+                            {{profileDisplayController.profileInformation.brief}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-12 profile-content-side">
+            <div class="row profile-content">
+                <div class="col-sm-3 col-xs-12 profile-content-left-container">
+                    <div class="content-side-title">
+                        Feeds
+                    </div>
+                    <div class="row content-side-body">
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showPersonalInfo()">
+                                <span class="content-menu-full">Personal Info</span>
+                                <span class="content-menu-short">Personal</span>
+                            </span>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isJoinedMeetups? 'menu-active' : ''}}">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showJoinedList()">
+                                <span class="content-menu-full">Joined Meetups</span>
+                                <span class="content-menu-short">Joined</span>
+                            </span>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isLaunchedMeetups? 'menu-active' : ''}}">
+                            <span class="profile-content-menu-link" ng-click="profileDisplayController.showLaunchedList()">
+                                <span class="content-menu-full">Launched Meetups</span>
+                                <span class="content-menu-short">Launched</span>
+                            </span>
+                        </div>
 
+                        
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-12 profile-content-right-container">
+                    <div class="content-main-body">
+                        <loading-circle size="'loading-circle-lg'" ng-hide="profileDisplayController.contentHasLoaded"></loading-circle>
+                        <div class="personal-information" ng-show="profileDisplayController.isPersonalInformation">
+                            <div class="content-main-title">
+                                Personal Information
+                            </div>
+                            <div class="content-information">
+                            </div>
+                        </div>
+                        <div class="joined-list" ng-show="profileDisplayController.isJoinedMeetups">
+                            <div class="content-main-title">
+                                Joined Meetups {{profileDisplayController.joinedMeetups.length}}
+                            </div>
+                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.joinedMeetups">
+                                <meetup-entry dataSource="meetup"></meetup-entry>
+                            </div>
+                        </div>
+                        <div class="launched-list" ng-show="profileDisplayController.isLaunchedMeetups">
+                            <div class="content-main-title">
+                                Launched Meetups {{profileDisplayController.launchedMeetups.length}}
+                            </div>
+                            <div class="meetup-wrapper" ng-repeat="meetup in profileDisplayController.launchedMeetups">
+                                <meetup-entry dataSource="meetup"></meetup-entry>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 profile-side-container">
+            <!--<div class="profile-side-title">
+                Side content
+            </div>-->
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
+            </div>
+            <div class="side-section">
+                under construction
             </div>
         </div>
     </div>

@@ -2,7 +2,8 @@
 @screen-xs-min: 320px;
 
 /*Color*/
-@main-background-color-light: #FFFFFE;
+/*@main-background-color-light: #FFFFFE;*/
+@main-background-color-light:#ffffff;
 @main-background-color-dark: #FFF1E6;
 @heading-background-color-dark: rgb(210, 95, 0);
 @heading-background-color-light: #D78E52;
@@ -10,19 +11,31 @@
 @nav-background-color: rgba(40,40,40,.95);
 
 @login-form-backgroud: rgba(230,230,230,0.7);
-@login-form-heading-backgroud: rgba(210, 95, 0,0.85);
+@login-form-heading-backgroud: rgba(210, 95, 0,1);
 @text-color-light: #FFFFFE;
 @text-color-dark: rgb(210, 95, 0);
 @input-box-shadow: rgba(210, 95, 0, .6);
 
-@color-coral-darkest:#c2571a;
+/*@color-coral-darkest:#c2571a;
 @color-coral-darker:#DA621E;
-/*@color-coral:#f26d21;*/
 @color-coral:rgb(210,95,0);
-@color-coral-light:#f58b4c;
+@color-coral-light:#f8b087;
 @color-coral-lighter:#ffe3cc;
-@color-coral-lightest:#fff1e6;
+@color-coral-lightest:#fff1e6;*/
 
+@color-coral:#d25f00;
+@color-coral-light:lighten(@color-coral, 20%);
+@color-coral-lighter:lighten(@color-coral, 30%);
+@color-coral-lighterer:lighten(@color-coral, 40%);
+@color-coral-lightest:lighten(@color-coral, 55%);
+@color-coral-dark: darken(@color-coral, 20%);
+@color-coral-darker: darken(@color-coral,40%);
+
+@color-blue-light:#66c2ff;
+@color-btn-active:lighten(@color-coral, 56.5%);
+@color-btn-inactive:#f9f9f9;
+
+//decent text colors, dark to light
 @text-color-jet:#131516;
 @text-color-raven:#373d3f;
 @text-color-asher:#555f61;
@@ -31,11 +44,14 @@
 @text-color-gray:#8c979a;
 @text-color-sterling:#a7b0b2;
 
+@meetup-link-blue: #337ab7;
+
 @input-box-shadow: rgba(210, 95, 0, .6);
   
 @splitter-color-dark:#ccc;
 @splitter-color-medium:#ddd;
-@splitter-color-light:#eee;
+@splitter-color-light:#e6e6e6;
+@splitter-color-lightest:#eeeeee;
 
 
 /*Padding*/
@@ -43,20 +59,30 @@
 @separator-margin: @padding-base;
 
 /*Font*/
+@meetup-font-size-xxxs:8px;
+@meetup-font-size-xxs: 9px;
 @meetup-font-size-xs: 10px;
 @meetup-font-size-sm: 11px;
 @meetup-font-size-md: 12px;
 @meetup-font-size-lg: 14px;
 @meetup-font-size-xl: 16px;
+@meetup-font-size-xxl: 18px;
+@meetup-font-size-xxxl: 20px;
+@meetup-font-size-xxxxl: 24px;
 @login-heading-font-size: 24px;
-@profile-menu-font-size: 18px;
 
 /*Width*/
+@max-width-for-desktop: 1002px;
 @max-width-for-phone: 414px;
 @min-width-for-phone: 320px;
+@profile-image-wrapper-width:150px;
+@profile-image-width: 140px;
+@profile-cover-width-min: 200px;
 
 /*Height*/
 @nav-height: 50px;
+@profile-image-wrapper-height: 150px;
+@profile-image-height:140px;
 
 /*Form Control*/
 @login-form-control-height: 40px;
