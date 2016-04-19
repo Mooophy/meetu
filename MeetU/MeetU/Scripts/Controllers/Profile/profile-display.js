@@ -7,57 +7,49 @@
     ProfileDisplayController.$inject = ["$log", "$q", "$resource", "$routeParams"];
     function ProfileDisplayController($log, $q, $resource, $routeParams) {
         var vm = this,
+            User = $resource('/api/loggedUser'),
             PublicProfile = $resource('api/Users/Public'),
             PrivateProfile = $resource('api/Users/Private'),
             MeetupsLaunchedBy = $resource('api/Meetups/LaunchedBy'),
             MeetupsJoinedBy = $resource('api/Meetups/JoinedBy');
 
-        var User = $resource('/api/loggedUser');
+
+
+        init();
+
         User.query(function (user) {
             vm.loggedUser = user[0];
         }).$promise.then(function () {
             console.log(vm.loggedUser);
-        });
-
-        init();
-        
-        PrivateProfile.get(
-            {
-                userId: $routeParams.profileId,
-                joinedAmount: 3,
-                launchedAmount: 3
-            }, function (privateProfile) {
-                vm.privateProfile = privateProfile;
-            }
-        ).$promise.then(function (data) {
-            vm.infoHasLoaded = true;
-            vm.isPrivate = true;
-            console.log("isPrivate");
-            console.log(vm.privateProfile);
-            vm.profileInformation = getProfileInformation(data, vm.isPrivate);
-        }, function (reason) {
-            vm.isPrivate = false;
-            return $q.reject(reason);
-        }).then(null, function () {
-            PublicProfile.get(
-                {
+            if (vm.loggedUser.userId === $routeParams.profileId) {
+                vm.isPrivate = true;
+                PrivateProfile.get(
+                    {
+                        userId: $routeParams.profileId,
+                        joinedAmount: 3,
+                        launchedAmount: 3
+                    }, function (privateProfile) {
+                        vm.privateProfile = privateProfile;
+                    }
+                ).$promise.then(function (data) {
+                    vm.infoHasLoaded = true;
+                    vm.profileInformation = getProfileInformation(data, vm.isPrivate);
+                });
+            } else {
+                vm.isPrivate = false;
+                PublicProfile.get({
                     userId: $routeParams.profileId,
                     joinedAmount: 3,
                     launchedAmount: 3
                 }, function (publicProfile) {
                     vm.publicProfile = publicProfile;
                 }
-            ).$promise.then(function (data) {
-                console.log("isPublic");
-                console.log(vm.publicProfile);
-                vm.infoHasLoaded = true;
-                vm.profileInformation = data;
-                vm.isPrivate = false;
-                vm.profileInformation = getProfileInformation(data, vm.isPrivate);
-                showJoinedList();
-            });
+                ).$promise.then(function (data) {
+                    vm.infoHasLoaded = true;
+                    vm.profileInformation = getProfileInformation(data, vm.isPrivate);
+                });
+            }
         });
-        
 
         $q.all([
             MeetupsLaunchedBy.query({ userId: $routeParams.profileId }, function (data) {
@@ -66,15 +58,9 @@
             MeetupsJoinedBy.query({ userId: $routeParams.profileId }, function (data) {
                 vm.joinedMeetups = data;
             }).$promise
-        ]).then(function(){
+        ]).then(function () {
             vm.contentHasLoaded = true;
         })
-
-        vm.showPersonalInfo = showPersonalInformation;
-
-        vm.showLaunchedList = showLaunchedList;
-
-        vm.showJoinedList = showJoinedList;
 
         function showPersonalInformation() {
             vm.isPersonalInformation = true;
@@ -101,21 +87,24 @@
             vm.infoHasLoaded = false;
             vm.contentHasLoaded = false;
             vm.isPrivate = false;
-
-            showPersonalInformation();
-
             vm.profileInformation = {};
+
+            vm.showPersonalInfo = showPersonalInformation;
+            vm.showLaunchedList = showLaunchedList;
+            vm.showJoinedList = showJoinedList;
+
+            vm.showJoinedList();
         }
 
         function getProfileInformation(profile, isPrivate) {
             var genderIcon = (profile.gender === null || profile.gender === "male") ? "fa-mars" : "fa-venus",
                 genderColor = (profile.gender === null || profile.gender === "male") ? "color-male" : "color-female",
                 defaultPicture = "/Content/Images/dummyHead.PNG"
-                
+
             var profileInfo = {
                 nickName: profile.nickName,
                 brief: profile.brief || "...",
-                gender:profile.gender || "genderless",
+                gender: profile.gender || "genderless",
                 genderIcon: genderIcon,
                 genderColor: genderColor,
                 createdAt: profile.createdAt,
@@ -140,8 +129,6 @@
 
             return profileInfo;
         }
-
-
     }
 
     function convertGender(gender) {

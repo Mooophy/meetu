@@ -52,7 +52,7 @@
                         Feeds
                     </div>
                     <div class="row content-side-body">
-                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}" ng-hide="!profileDisplayController.isPrivate">
+                        <div class="col-md-12 col-sm-12 col-xs-4 profile-content-menu {{profileDisplayController.isPersonalInformation? 'menu-active' : ''}}">
                             <span class="profile-content-menu-link" ng-click="profileDisplayController.showPersonalInfo()">
                                 <span class="content-menu-full">Personal Info</span>
                                 <span class="content-menu-short">Personal</span>
@@ -80,6 +80,8 @@
                         <div class="personal-information" ng-show="profileDisplayController.isPersonalInformation">
                             <div class="content-main-title">
                                 Personal Information
+                            </div>
+                            <div class="content-information">
                             </div>
                         </div>
                         <div class="joined-list" ng-show="profileDisplayController.isJoinedMeetups">
