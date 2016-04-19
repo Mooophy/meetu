@@ -151,33 +151,26 @@ namespace MeetU.API
 
         // PUT: api/Meetups/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMeetup(Meetup meetup)
+        public async Task<IHttpActionResult> PutMeetup(Meetup updated)
         {
-            // Ensure it's post by sponser
-            if (meetup.Sponsor != User.Identity.GetUserId())
-            {
-                return StatusCode(HttpStatusCode.Forbidden);
-            }
-            // Ensure valid
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            // Ensure existing
-            var old = await db.Meetups.FirstOrDefaultAsync(m => m.Id == meetup.Id);
-            if (old == null)
-            {
+            var meetup = await db
+                .Meetups
+                .Where(m => m.IsCancelled == false)
+                .FirstOrDefaultAsync(m => m.Id == updated.Id);
+            if (meetup == null)
                 return NotFound();
-            }
+            if (meetup.Sponsor != User.Identity.GetUserId())
+                return StatusCode(HttpStatusCode.Forbidden);
+            if (updated.Title != null && updated.Title.Length > 200)
+                return BadRequest(ModelState);
 
-            // Update and save
-            old.Description = meetup.Description;
-            old.Title = meetup.Title;
-            old.When = meetup.When;
-            old.Where = meetup.Where;
+            meetup.Description = updated.Description ?? meetup.Description;
+            meetup.Title = updated.Title ?? meetup.Title;
+            meetup.Where = updated.Where ?? meetup.Where;
+            if (updated.When != default(DateTime))
+                meetup.When = updated.When;
             meetup.UpdatedAt = DateTime.Now;
-            db.Entry(old).State = EntityState.Modified;
+
             try
             {
                 await db.SaveChangesAsync();
@@ -187,7 +180,7 @@ namespace MeetU.API
                 throw;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(meetup);
         }
 
         // POST: api/Meetups

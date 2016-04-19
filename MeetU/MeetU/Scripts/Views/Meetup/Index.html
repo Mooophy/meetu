@@ -1,10 +1,25 @@
-﻿
-<div ng-controller="meetupIndexController">
+﻿<div ng-controller="mainNavbarController as mainNavbarVm">
+    <div class="main-navbar-wrapper navbar navbar-inverse navbar-fixed-top main-toolbar">
+        <div class="main-navbar-text navbar-brand">Meet.U</div>
+        <div class="main-navbar-menu-wrapper pull-right">
+            <div class="dropdown">
+                <button class="dropdown-toggle main-navbar-menu-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                    <span class="main-navbar-menu-icon glyphicon glyphicon-option-vertical"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#/Profile/{{ mainNavbarVm.loggedUser.userId }}"><span class="main-navbar-dropdown-menu-icon glyphicon glyphicon-user"></span>My Profile</a></li>
+                    <li><a href="#" ng-click="mainNavbarVm.logOut();"><span class="main-navbar-dropdown-menu-icon glyphicon glyphicon-log-out"></span>Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-controller="MeetupIndexController as indexVm">
     <div class="col-md-1"></div>
     <div class="col-md-8 ng-cloak">
-        <div ng-repeat="meetupView in meetupViews | orderBy:'-meetup.createdAt'">
+        <div ng-repeat="meetupView in indexVm.meetupViews | orderBy:'-meetup.createdAt'">
             <div class="meetup-wrapper">
-                <div class="meetup-brief" ng-click="isDetailShowing = !isDetailShowing; toggleDetail(meetupView, isDetailShowing);">
+                <div class="meetup-brief" ng-click="isDetailShowing = !isDetailShowing; indexVm.toggleDetail(meetupView, isDetailShowing);">
                     <div class="meetup-from col-sm-10 col-xs-10">
                         <span><a href="#/Profile/{{ meetupView.meetup.sponsor }}">@{{ meetupView.sponsorUserName }} </a>发起了活动</span>
                     </div>
@@ -18,9 +33,9 @@
                         </div>
                     </div>
                     <div class="meetup-join-button-container col-sm-2 col-xs-3">
-                        <div class="btn-group btn-group-xs meetup-join" ng-class="isIn(meetupView.joins) ? 'meetup-join-joined' : ''" role="group" ng-click="toggleJoin(meetupView);$event.stopPropagation();">
+                        <div class="btn-group btn-group-xs meetup-join" ng-class="indexVm.isIn(meetupView.joins) ? 'meetup-join-joined' : ''" role="group" ng-click="indexVm.toggleJoin(meetupView);$event.stopPropagation();">
                             <button type="button" class="btn meetup-join-button">
-                                <span> {{isIn(meetupView.joins) ? 'Joined' : 'Join'}} </span>
+                                <span> {{ indexVm.isIn(meetupView.joins) ? 'Joined' : 'Join' }} </span>
                             </button>
                             <button type="button" class="btn meetup-join-count">
                                 <span> {{ meetupView.joins.length }} </span>
@@ -42,7 +57,7 @@
                                     </div>
                                     <div class="meetup-detail-content">
                                         <span class="glyphicon glyphicon-user"></span>
-                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins"><a href="#/Profile/{{ participant.userId }}">{{ parseParticipantName(participant) }}</a> &nbsp;</span>
+                                        <span class="meetup-detail-participant text-primary" ng-repeat="participant in meetupView.joins"><a href="#/Profile/{{ participant.userId }}">{{ indexVm.parseParticipantName(participant) }}</a> &nbsp;</span>
                                     </div>
                                 </div>
                                 <div>
@@ -68,15 +83,15 @@
                                 <div class="comment-input-group input-group input-group-sm">
                                     <input type="text" class="form-control comment-input-box " style="max-width: 100%" placeholder="How about you?" ng-model="meetupView.newComment">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-sm comment-input-btn" type="button" ng-click="addComment( meetupView )">Comment</button>
+                                        <button class="btn btn-sm comment-input-btn" type="button" ng-click="indexVm.addComment( meetupView )">Comment</button>
                                     </span>
                                 </div>
                                 <div ng-repeat="cv in meetupView.commentData | limitTo : -(numLimit || (numLimit = 5)) | orderBy:'-at'">
                                     <div>
                                         <span class="meetup-comment-control">{{ cv.content }}</span>
-                                        <span class="text-primary meetup-comment-control">{{ polishUserName( cv.by ) }}</span>
+                                        <span class="text-primary meetup-comment-control">{{ indexVm.polishUserName( cv.by ) }}</span>
                                         <span class="text-primary meetup-comment-control" am-time-ago=cv.at></span>
-                                        <div class="comment-delete-button meetup-comment-control" ng-click="deleteComment(meetupView, cv.id)" ng-show="cv.by === userName">
+                                        <div class="comment-delete-button meetup-comment-control" ng-click="indexVm.deleteComment(meetupView, cv.id)" ng-show="cv.by === indexVm.userName">
                                             <span class="glyphicon glyphicon-trash"></span>
                                             <span>Delete</span>
                                         </div>
@@ -88,15 +103,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="meetup-functional-button-wrapper" ng-show="meetupView.meetup.sponsor === userId">
-                    <span class="glyphicon glyphicon-edit meetup-functional-button hidden"></span>
-                    <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="deleteMeetup(meetupView.meetup.id)"></span>
+                <div class="meetup-functional-button-wrapper" ng-show="meetupView.meetup.sponsor === indexVm.userId">
+                    <a class="glyphicon glyphicon-edit meetup-functional-button" href="#/Meetup/Edit/{{ meetupView.meetup.id }}"></a>
+                    <span class="glyphicon glyphicon-trash meetup-functional-button" ng-click="indexVm.deleteMeetup(meetupView.meetup.id)"></span>
                 </div>
             </div>
             <hr class="meetup-separator" />
         </div>
-        <loading-circle size="meetupViews.length > 0 ? 'loading-circle-sm' : 'loading-circle-lg'" ng-hide="hasLoaded"></loading-circle>
-        <div class="meetup-no-more-results" ng-show="hasFetchedAll">NO MORE RESULTS</div>
+        <loading-circle size="indexVm.meetupViews.length > 0 ? 'loading-circle-sm' : 'loading-circle-lg'" ng-hide="indexVm.hasLoaded"></loading-circle>
+        <div class="meetup-no-more-results" ng-show="indexVm.hasFetchedAll">NO MORE RESULTS</div>
     </div>
     <div class="meetup-create ng-cloak">
         <a class="btn meetup-create-button" href='#/Meetup/Create'><span class="glyphicon glyphicon-plus"></span></a>

@@ -293,6 +293,8 @@
     <Content Include="Content\Site.less" />
     <Content Include="Content\subpage-nav.less" />
     <Content Include="Content\profile.less" />
+    <Content Include="Content\main-navbar.less" />
+    <Content Include="Content\Create.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
@@ -304,6 +306,8 @@
     <Content Include="Scripts\Bundles\modernizr-2.6.2.js" />
     <Content Include="Scripts\Bundles\respond.js" />
     <Content Include="Scripts\Controllers\Meetup\create.js" />
+    <Content Include="Scripts\Controllers\Meetup\edit.js" />
+    <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
     <Content Include="Scripts\Directives\custom-button\custom-button.html" />
     <Content Include="Scripts\Directives\custom-button\custom-button.js" />
@@ -324,6 +328,7 @@
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
     <Content Include="Scripts\Services\dummyDataService.js" />
+    <Content Include="Scripts\TemplateCache\templates.js" />
     <Content Include="Scripts\Unittests\index.html" />
     <Content Include="Scripts\Unittests\jasmine\boot.js" />
     <Content Include="Scripts\Unittests\jasmine\console.js" />
@@ -337,8 +342,6 @@
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
-    <Content Include="Scripts\Venders\bootstrap.js" />
-    <Content Include="Scripts\Venders\jquery-1.10.2.js" />
     <Content Include="Scripts\Venders\moment.js" />
     <Content Include="Scripts\Venders\underscore.js" />
     <Content Include="Scripts\VenderPlugins\angular-confirm.js" />
@@ -347,6 +350,7 @@
     <Content Include="Scripts\VenderPlugins\jquery.placepicker.js" />
     <Content Include="Scripts\VenderPlugins\ui-bootstrap-tpls-1.2.5.js" />
     <Content Include="Scripts\Views\Meetup\create.html" />
+    <Content Include="Scripts\Views\Meetup\edit.html" />
     <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\Views\Profile\profile-display.html" />
     <Content Include="Scripts\_references.js" />

@@ -9,13 +9,13 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var notify = require("gulp-notify");
 var gutil = require("gulp-util");
+var templateCache = require('gulp-angular-templatecache');
 
 var onError = function(error) {
     gutil.log(error.message);
 };
 gulp.task('minify-vender-scripts', function () {
     return gulp.src(['Scripts/Venders/underscore.js',
-               'Scripts/Venders/jquery-1.10.2.js',
                'Scripts/Venders/angular.js',
                'Scripts/Venders/**/*.js',
     ])
@@ -34,7 +34,7 @@ gulp.task('watch-vender-scripts', function () {
 
 gulp.task('minify-meetu-scripts', function () {
     return gulp.src([ 'Scripts/Controllers/Meetup/index.js',
-               'Scripts/Helper/template-cache-helper.js',
+               'Scripts/TemplateCache/*.js',
                'Scripts/Controllers/**/*.js',
                'Scripts/Router/**/*.js',
                'Scripts/VenderPlugins/angular-moment.js',
@@ -58,6 +58,21 @@ gulp.task('watch-meetu-scripts', function () {
     return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifiedScripts/*.js', '!Scripts/UnitTests/**/*.js','!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
 });
 
+gulp.task('template-cache', function () {
+    return gulp.src('Scripts/**/*.html')
+      .pipe(templateCache(
+        {
+            filename: 'templates.js',
+            module: 'meetupModule'
+        }
+        ))
+      .pipe(gulp.dest('Scripts/TemplateCache'));
+});
+
+gulp.task('watch-template-cache', function () {
+    return gulp.watch(['Scripts/**/*.html'], ['template-cache']);
+});
+
 gulp.task('concat-unittest-scripts', function () {
     return gulp.src(['Scripts/UnitTests/tests/**/*.js'])
         .pipe(concat('script.js'))
@@ -70,4 +85,4 @@ gulp.task('watch-unittest-scripts', function () {
     return gulp.watch(['Scripts/UnitTests/tests/**/*.js'], ['concat-unittest-scripts']);
 });
 
-gulp.task('default', ['minify-vender-scripts', 'watch-vender-scripts', 'minify-meetu-scripts', 'watch-meetu-scripts', 'concat-unittest-scripts', 'watch-unittest-scripts']);
+gulp.task('default', ['template-cache', 'minify-vender-scripts', 'watch-vender-scripts', 'minify-meetu-scripts', 'watch-meetu-scripts', 'concat-unittest-scripts', 'watch-unittest-scripts', 'watch-template-cache']);
