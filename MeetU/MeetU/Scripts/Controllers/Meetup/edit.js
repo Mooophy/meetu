@@ -14,6 +14,7 @@
             .then(function (meetup) {
                 vm.editParams = meetup
             });
+
         vm.submitForm = function () {
             Meetup.update({
                 // id must be provided
@@ -32,8 +33,5 @@
             }
             );
         }
-
-        $(".js-meetup-edit-where").placepicker();
-        $(".js-meetup-edit-when").datetimepicker({ minDate: '0' });
     }
 })();
