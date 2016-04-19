@@ -1,5 +1,5 @@
-﻿<div ng-controller="MeetupEditController as editCreating">
-    <subpage-nav hassubmit="true" on-submit="editCreating.submitForm()"></subpage-nav>
+﻿<div ng-controller="MeetupEditController as meetupEditing">
+    <subpage-nav hassubmit="true" on-submit="meetupEditing.submitForm()"></subpage-nav>
     <div class="meetup-subpage-title">Edit a Meetup</div>
     <hr />
     <form class="form-vertical meetup-create-form" name="meetupEditForm" novalidate>
@@ -8,7 +8,7 @@
             <label for="meetup-edit-title" class="control-label col-md-2 meetup-create-form-label">Title</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input" id="meetup-edit-title" name="title"
-                       placeholder="Party, BBQ, Hiking..." ng-model="editCreating.editParams.title" ng-required="true"
+                       placeholder="Party, BBQ, Hiking..." ng-model="meetupEditing.editParams.title" ng-required="true"
                        ng-maxlength="200" ng-pattern="/^[a-zA-Z0-9\s]+$/" />
                 <span class="help-block"
                       ng-if="meetupEditForm.title.$error.required">Title is required!</span>
@@ -22,7 +22,7 @@
             <label for="meetup-edit-description" class="control-label col-md-2 meetup-create-form-label">Description</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input" id="meetup-edit-description" name="description"
-                       placeholder="Make it attractive!" ng-model="editCreating.editParams.description" ng-required="true"
+                       placeholder="Make it attractive!" ng-model="meetupEditing.editParams.description" ng-required="true"
                        ng-maxlength="1000" ng-pattern="/^[a-zA-Z0-9\s!,.]+$/">
                 <span class="help-block"
                       ng-if="meetupEditForm.description.$error.required">Description is required!</span>
@@ -33,19 +33,25 @@
             </div>
         </div>
 
-        <div class="form-group meetup-form-group">
+        <div class="form-group meetup-form-group" my-validation>
             <label for="meetup-edit-time" class="control-label col-md-2 meetup-create-form-label">When</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input js-meetup-edit-when" id="meetup-edit-time"
-                       ng-model="editCreating.editParams.when" ng-required="true" />
+                       name="when" placeholder="Select your time"
+                       datetimepicker  ng-model="meetupEditing.editParams.when" ng-required="true" />
+                <span class="help-block"
+                      ng-if="meetupEditForm.when.$error.required">Time is required!</span>
             </div>
         </div>
 
-        <div class="form-group meetup-form-group">
+        <div class="form-group meetup-form-group" my-validation>
             <label for="meetup-edit-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetup-create-input js-meetup-edit-where" id="meetup-create-where"
-                       ng-model="editCreating.editParams.where" ng-required="true" />
+                       name="where" placeholder="Enter the location"
+                       placepicker ng-model="meetupEditing.editParams.where" ng-required="true" />
+                <span class="help-block"
+                      ng-if="meetupEditForm.where.$error.required">Location is required!</span>
             </div>
         </div>
     </form>

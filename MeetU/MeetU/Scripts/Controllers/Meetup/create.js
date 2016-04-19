@@ -19,12 +19,8 @@
                     .$promise.then(function () {
                         $log.debug(vm.createParams);
                         $location.path('/index');
-                    });
+                    }); 
             });
         }
-
-        // TODO: should be refactored to angular style 
-        $(".js-meetup-create-where").placepicker();
-        $(".js-meetup-create-when").datetimepicker({minDate: '0'});
     }
 })();
