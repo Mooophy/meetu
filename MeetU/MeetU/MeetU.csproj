@@ -324,7 +324,6 @@
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
     <Content Include="Scripts\Directives\validation.js" />
-    <Content Include="Scripts\Helper\template-cache-helper.js" />
     <Content Include="Scripts\MinifiedScripts\all.js" />
     <Content Include="Scripts\MinifiedScripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
@@ -396,6 +395,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
