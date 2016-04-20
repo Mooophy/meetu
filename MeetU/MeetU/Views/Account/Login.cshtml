@@ -48,7 +48,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(".js-login-click-to-scroll").click({ param: 500 }, scrollLogin); // "{param: "data"}" can be used to pass parameter as an object
+        $(".js-login-click-to-scroll").click({ param: 500 }, scrollLogin);
 
         if ($(".js-invalid-login-message").length > 0) {
             scrollLogin()
@@ -59,9 +59,9 @@
 
         // Scroll down to login panel
         function scrollLogin(speed) {
-            if (speed == undefined) { // Set default value for speed
+            if (!speed) { 
                 speed = 0
-            } else if (typeof speed === 'object') { // Pass speed value if speed is an object
+            } else if (typeof speed === 'object') { 
                 speed = speed.data.param
             }
             $('body').animate({
