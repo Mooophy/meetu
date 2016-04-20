@@ -5,7 +5,7 @@
 }
 
 <div class="login-content-wrapper">
-    <div class="login-phone-mode-homepage-wrapper">
+    <div class="login-phone-mode-homepage-wrapper js-login-click-to-scroll">
         <div class="login-phone-mode-homepage">
             <img class="login-phone-mode-logo" src="../../Content/Images/Logos/meetu-logo-160x160.png" />
             <img class="login-phone-mode-text" src="../../Content/Images/Logos/MeetU-text-240x80.png" />
@@ -22,7 +22,7 @@
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger js-invalid-login-message" })
                         <div class="form-group">
                             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control login-input", @style = "max-width: none", @placeholder = "User Name" })
                             @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
@@ -48,11 +48,26 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(".js-login-jump-icon").click(function () {
+        $(".js-login-click-to-scroll").click({ param: 500 }, scrollLogin);
+
+        if ($(".js-invalid-login-message").length > 0) {
+            scrollLogin()
+        } else {
+            // Executes scrollLogin(speed) in x mileseconds
+            setTimeout(function () { scrollLogin(2000) }, 1500);
+        }
+
+        // Scroll down to login panel
+        function scrollLogin(speed) {
+            if (!speed) { 
+                speed = 0
+            } else if (typeof speed === 'object') { 
+                speed = speed.data.param
+            }
             $('body').animate({
                 scrollTop: $(".js-login-form").offset().top
             },
-                700);
-        });
+                speed);
+        }
     </script>
 }
