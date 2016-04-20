@@ -268,7 +268,6 @@
     <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
     <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
     <Content Include="Content\Images\pusheencat.png" />
-    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -295,6 +294,7 @@
     <Content Include="Content\profile.less" />
     <Content Include="Content\main-navbar.less" />
     <Content Include="Content\Create.less" />
+    <Content Include="Content\bootstrap-datetimepicker.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
@@ -309,6 +309,7 @@
     <Content Include="Scripts\Controllers\Meetup\edit.js" />
     <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
+    <Content Include="Scripts\Directives\angular-datetimepicker.js" />
     <Content Include="Scripts\Directives\custom-button\custom-button.html" />
     <Content Include="Scripts\Directives\custom-button\custom-button.js" />
     <Content Include="Scripts\Directives\enter-key.js" />
@@ -318,6 +319,7 @@
     <Content Include="Scripts\Directives\loading-circle\loading-circle.js" />
     <Content Include="Scripts\Directives\meetup-entry\meetup-entry.html" />
     <Content Include="Scripts\Directives\meetup-entry\meetup-entry.js" />
+    <Content Include="Scripts\Directives\placepicker.js" />
     <Content Include="Scripts\Directives\scroll-on-focus.js" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.html" />
     <Content Include="Scripts\Directives\subpage-nav\subpage-nav.js" />
@@ -339,6 +341,7 @@
     <Content Include="Scripts\Unittests\script.js" />
     <Content Include="Scripts\Unittests\tests\ut-meetup-index-controller.js" />
     <Content Include="Scripts\Unittests\tests\ut-router-configuration.js" />
+    <Content Include="Scripts\VenderPlugins\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
@@ -346,8 +349,6 @@
     <Content Include="Scripts\Venders\underscore.js" />
     <Content Include="Scripts\VenderPlugins\angular-confirm.js" />
     <Content Include="Scripts\VenderPlugins\angular-moment.js" />
-    <Content Include="Scripts\VenderPlugins\jquery.datetimepicker.full.js" />
-    <Content Include="Scripts\VenderPlugins\jquery.placepicker.js" />
     <Content Include="Scripts\VenderPlugins\ui-bootstrap-tpls-1.2.5.js" />
     <Content Include="Scripts\Views\Meetup\create.html" />
     <Content Include="Scripts\Views\Meetup\edit.html" />
