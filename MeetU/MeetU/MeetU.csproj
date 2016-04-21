@@ -295,6 +295,7 @@
     <Content Include="Content\main-navbar.less" />
     <Content Include="Content\Create.less" />
     <Content Include="Content\bootstrap-datetimepicker.less" />
+    <Content Include="Content\Input.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />

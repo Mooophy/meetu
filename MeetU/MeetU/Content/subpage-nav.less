@@ -1,5 +1,6 @@
 ﻿@import "variables.less";
 @import "z-index.less";
+@import "utilities.less";
 
 .meetu-subpage-nav-wrapper {
     position: fixed;
@@ -23,5 +24,13 @@
 
     .meetu-subpage-nav-commit {
         float: right;
+    }
+
+    .meetu-subpage-nav-title {
+        .u-absolute-center();
+        color: @main-background-color-light;
+        letter-spacing: 0.4px;
+        font-size: @meetup-font-size-xl;
+        font-weight: bold;
     }
 }
