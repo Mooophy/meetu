@@ -11,7 +11,7 @@ var notify = require("gulp-notify");
 var gutil = require("gulp-util");
 var templateCache = require('gulp-angular-templatecache');
 
-var onError = function(error) {
+var onError = function (error) {
     gutil.log(error.message);
 };
 gulp.task('minify-vender-scripts', function () {
@@ -33,7 +33,7 @@ gulp.task('watch-vender-scripts', function () {
 });
 
 gulp.task('minify-meetu-scripts', function () {
-    return gulp.src([ 'Scripts/Controllers/Meetup/index.js',
+    return gulp.src(['Scripts/Controllers/Meetup/index.js',
                'Scripts/TemplateCache/*.js',
                'Scripts/Controllers/**/*.js',
                'Scripts/Router/**/*.js',
@@ -51,11 +51,11 @@ gulp.task('minify-meetu-scripts', function () {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifiedScripts'))
         .pipe(notify("Meetu scripts minified"))
-        .on('error', onError);;
+        .on('error', onError);
 });
 
 gulp.task('watch-meetu-scripts', function () {
-    return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifiedScripts/*.js', '!Scripts/UnitTests/**/*.js','!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
+    return gulp.watch(['Scripts/**/*.js', '!Scripts/_references.js', '!Scripts/MinifiedScripts/*.js', '!Scripts/UnitTests/**/*.js', '!Scripts/Venders/**/*.js'], ['minify-meetu-scripts']);
 });
 
 gulp.task('template-cache', function () {
@@ -66,8 +66,8 @@ gulp.task('template-cache', function () {
                 module: 'meetupModule'
             }))
         .pipe(gulp.dest('Scripts/TemplateCache'))
-        .pipe(notify("template cached"))
-        .on('error', onError);;;
+        .pipe(notify("Template cached"))
+        .on('error', onError);
 });
 
 gulp.task('watch-template-cache', function () {
@@ -79,7 +79,7 @@ gulp.task('concat-unittest-scripts', function () {
         .pipe(concat('script.js'))
         .pipe(gulp.dest('Scripts/UnitTests'))
         .pipe(notify("UnitTest scripts concatenated"))
-        .on('error', onError);;
+        .on('error', onError);
 });
 
 gulp.task('watch-unittest-scripts', function () {

@@ -50,8 +50,8 @@
 
     .meetup-title {
         font-size: @meetup-font-size-xl;
-        padding-bottom: @meetup-padding-base;
         font-weight: bold;
+        .u-ellipsis();
     }
 
     .meetup-description {
@@ -181,6 +181,7 @@
 
             &:last-child {
                 padding-right: @meetup-padding-base * 5;
+                margin-right: -@meetup-padding-base * 5;
             }
 
             &:hover, &:active {
