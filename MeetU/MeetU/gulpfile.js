@@ -60,13 +60,14 @@ gulp.task('watch-meetu-scripts', function () {
 
 gulp.task('template-cache', function () {
     return gulp.src('Scripts/**/*.html')
-      .pipe(templateCache(
-        {
-            filename: 'templates.js',
-            module: 'meetupModule'
-        }
-        ))
-      .pipe(gulp.dest('Scripts/TemplateCache'));
+        .pipe(templateCache(
+            {
+                filename: 'templates.js',
+                module: 'meetupModule'
+            }))
+        .pipe(gulp.dest('Scripts/TemplateCache'))
+        .pipe(notify("template cached"))
+        .on('error', onError);;;
 });
 
 gulp.task('watch-template-cache', function () {
