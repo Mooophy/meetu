@@ -172,8 +172,16 @@
             cursor: pointer;
             color: fade(grey, 50%);
             font-size: @meetup-font-size-md;
-            padding: @meetup-padding-horizontal @meetup-padding-vertical;
-            margin: -@meetup-padding-horizontal -@meetup-padding-vertical;
+            padding: @meetup-padding-base * 5 @meetup-padding-base;
+            margin: -@meetup-padding-base * 3 0;
+
+            &:first-child {
+                padding-left: @meetup-padding-base * 5;
+            }
+
+            &:last-child {
+                padding-right: @meetup-padding-base * 5;
+            }
 
             &:hover, &:active {
                 color: grey;
