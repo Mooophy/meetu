@@ -1,13 +1,11 @@
 ﻿<div ng-controller="MeetupCreateController as meetupCreating">
     <subpage-nav hassubmit="true" on-submit="meetupCreating.submitForm()" title="'Create a Meetup'"></subpage-nav>
-    <div class="meetup-subpage-title">Create a Meetup</div>
-    <hr />
-    <form class="form-vertical meetup-create-form" name="meetupCreateForm" novalidate>
+    <form class="form-vertical meetup-create-form meetu-form" name="meetupCreateForm" novalidate>
         <div class="meetup-subpage-validation"></div>
         <div class="form-group meetup-form-group" my-validation>
-            <label for="meetup-create-title" class="control-label col-md-2 meetup-create-form-label">Title</label>
+            <label for="meetup-create-title" class="control-label col-md-2 meetu-input-label">Title</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-title" name="title"
+                <input type="text" class="form-control meetu-input" id="meetup-create-title" name="title"
                        placeholder="Party, BBQ, Hiking..." ng-model="meetupCreating.createParams.title" ng-required="true"
                        ng-maxlength="200" ng-pattern="/^[a-zA-Z0-9\s]+$/"/>
                 <span class="help-block"
@@ -19,9 +17,9 @@
             </div>
         </div>
         <div class="form-group meetup-form-group"  my-validation>
-            <label for="meetup-create-description" class="control-label col-md-2 meetup-create-form-label">Description</label>
+            <label for="meetup-create-description" class="control-label col-md-2 meetu-input-label">Description</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input" id="meetup-create-description" name="description"
+                <input type="text" class="form-control meetu-input" id="meetup-create-description" name="description"
                        placeholder="Make it attractive!" ng-model="meetupCreating.createParams.description" ng-required="true" 
                        ng-maxlength="1000" ng-pattern="/^[a-zA-Z0-9\s!,.]+$/">
                 <span class="help-block"
@@ -34,19 +32,19 @@
         </div>
 
         <div class="form-group meetup-form-group" my-validation>
-            <label for="meetup-create-time" class="control-label col-md-2 meetup-create-form-label">When</label>
+            <label for="meetup-create-time" class="control-label col-md-2 meetu-input-label">When</label>
             <div class="col-md-10">
-                <input class="form-control meetup-create-input" type="text" datetimepicker datetimepicker-options="{locale:'en-nz',format:'YYYY.MM.DD HH:mm'}" ng-model="meetupCreating.createParams.when"
-                       id="meetup-create-when" name="when" placeholder="Select your time" ng-required="true" />
+                <input class="form-control meetu-input" type="text" datetimepicker datetimepicker-options="{locale:'en-nz',format:'YYYY.MM.DD HH:mm'}" ng-model="meetupCreating.createParams.when"
+                       id="meetup-create-when" name="when" placeholder="Select your time" ng-required="true"/>
                 <span class="help-block"
                       ng-if="meetupCreateForm.where.$error.required">Time is required!</span>
             </div>
         </div>
 
         <div class="form-group meetup-form-group" my-validation>
-            <label for="meetup-create-where" class="control-label col-md-2 meetup-create-form-label">Where</label>
+            <label for="meetup-create-where" class="control-label col-md-2 meetu-input-label">Where</label>
             <div class="col-md-10">
-                <input type="text" class="form-control meetup-create-input js-meetup-create-where" id="meetup-create-where"
+                <input type="text" class="form-control meetu-input js-meetup-create-where" id="meetup-create-where"
                        name="where" placeholder="Enter the location"
                        googleplace ng-model="meetupCreating.createParams.where" ng-required="true" />
                 <span class="help-block"
