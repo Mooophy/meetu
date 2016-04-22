@@ -34,7 +34,9 @@ namespace MeetU.API
                         p.Gender,
                         p.NickName,
                         p.Picture,
-                        p.UpdatedAt
+                        p.UpdatedAt,
+                        JoinedMeetupsTotal = db.Joins.Where(j => j.UserId == p.UserId).Count(),
+                        LaunchedMeetupsTotal = db.Meetups.Where( m => m.Sponsor == p.UserId).Count()
                     }
                 )
             );
@@ -58,7 +60,9 @@ namespace MeetU.API
                         p.Gender,
                         p.NickName,
                         p.Picture,
-                        p.UpdatedAt
+                        p.UpdatedAt,
+                        JoinedMeetupsTotal = db.Joins.Where(j => j.UserId == p.UserId).Count(),
+                        LaunchedMeetupsTotal = db.Meetups.Where(m => m.Sponsor == p.UserId).Count()
                     }
                 )
             );
