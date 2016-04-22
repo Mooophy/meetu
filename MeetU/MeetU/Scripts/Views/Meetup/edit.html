@@ -1,5 +1,6 @@
 ﻿<div ng-controller="MeetupEditController as meetupEditing">
-    <subpage-nav hassubmit="true" on-submit="meetupEditing.submitForm()" title="'Edit Meetup'"></subpage-nav>
+    <subpage-nav hassubmit="true" ng-show="meetupEditForm.$valid" on-submit="meetupEditing.submitForm()" title="'Edit Meetup'"></subpage-nav>
+    <subpage-nav hassubmit="true" ng-show="meetupEditForm.$invalid" title="'Edit Meetup'"></subpage-nav>
     <form class="form-vertical meetup-edit-form meetu-form" name="meetupEditForm" novalidate>
         <div class="meetup-subpage-validation"></div>
         <div class="form-group meetup-form-group" my-validation>
@@ -7,7 +8,7 @@
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-title" name="title"
                        placeholder="Party, BBQ, Hiking..." ng-model="meetupEditing.editParams.title" ng-required="true"
-                       ng-maxlength="200" ng-pattern="/^(([^\^\.<>%&',;=?$"':#@!~\]\[{}\\/`\|])*)$/"/" />
+                       ng-maxlength="200" ng-pattern="/^(([^\^\.<>%&',;=?$:#@!~\]\[{}\\/`\|])*)$/"/>
                 <span class="help-block"
                       ng-if="meetupEditForm.title.$error.required">Title is required!</span>
                 <span class="help-block"
@@ -21,7 +22,7 @@
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-description" name="description"
                        placeholder="Make it attractive!" ng-model="meetupEditing.editParams.description" ng-required="true"
-                       ng-maxlength="1000" ng-pattern="/^(([^\^\.<>%&',;=?$"':#@!~\]\[{}\\/`\|])*)$/"/">
+                       ng-maxlength="1000" ng-pattern="/^(([^\^\.<>%&',;=?$:#@!~\]\[{}\\/`\|])*)$/"/>
                 <span class="help-block"
                       ng-if="meetupEditForm.description.$error.required">Description is required!</span>
                 <span class="help-block"
