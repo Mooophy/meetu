@@ -14,14 +14,6 @@ using MeetU.Models;
 
 namespace MeetU.API
 {
-    public class FollowingOrFollowedView
-    {
-        public string UserId { get; set; }
-        public string NickName { get; set; }
-        public string Picture { get; set; }
-        public DateTime At { get; set; }
-    }
-
     public class FollowsController : ApiController
     {
         private MuDbContext db = new MuDbContext();
@@ -30,44 +22,6 @@ namespace MeetU.API
         public IQueryable<Follow> GetFollows()
         {
             return db.Follows;
-        }
-
-        // GET: api/Following?userId=some-userId
-        [HttpGet]
-        [Route("api/Following")]
-        public IQueryable<FollowingOrFollowedView> GetProfileByFollowingUserId(string userId)
-        {
-            return
-                from f in db.Follows
-                where f.FollowingUserId == userId
-                join p in db.Profiles
-                on f.FollowedUserId equals p.UserId
-                select new FollowingOrFollowedView
-                {
-                    UserId = p.UserId,
-                    NickName = p.NickName,
-                    Picture = p.Picture,
-                    At = f.At
-                };
-        }
-
-        //GET: api/FollowedBy?userId=some-userId
-        [HttpGet]
-        [Route("api/FollowedBy")]
-        public IQueryable<FollowingOrFollowedView> GetProfileByFollowedUserId(string userId)
-        {
-            return
-                from f in db.Follows
-                where f.FollowedUserId == userId
-                join p in db.Profiles
-                on f.FollowingUserId equals p.UserId
-                select new FollowingOrFollowedView
-                {
-                    UserId = p.UserId,
-                    NickName = p.NickName,
-                    Picture = p.Picture,
-                    At = f.At
-                };
         }
 
         // POST: api/Follows
