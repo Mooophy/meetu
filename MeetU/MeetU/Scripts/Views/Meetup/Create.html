@@ -1,6 +1,5 @@
 ﻿<div ng-controller="MeetupCreateController as meetupCreating">
-    <subpage-nav hassubmit="true" ng-show="meetupCreateForm.$valid" on-submit="meetupCreating.submitForm()" title="'Create a Meetup'"></subpage-nav>
-    <subpage-nav hassubmit="true" ng-show="meetupCreateForm.$invalid"  title="'Create a Meetup'"></subpage-nav>
+    <subpage-nav hassubmit="true"  on-submit="meetupCreating.submitForm()" title="'Create a Meetup'"></subpage-nav>
     <form class="form-vertical meetup-create-form meetu-form" name="meetupCreateForm" novalidate>
         <div class="meetup-subpage-validation"></div>
         <div class="form-group meetup-form-group" my-validation>
