@@ -153,6 +153,14 @@ namespace MeetU.API
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMeetup(Meetup updated)
         {
+            if (updated.Title == null 
+                || updated.When == null 
+                || updated.Where == null 
+                || updated.Description == null)
+                return BadRequest();
+
+            if (updated.Title != null && updated.Title.Length > 200)
+                return BadRequest(ModelState);
             var meetup = await db
                 .Meetups
                 .Where(m => m.IsCancelled == false)
@@ -161,8 +169,6 @@ namespace MeetU.API
                 return NotFound();
             if (meetup.Sponsor != User.Identity.GetUserId())
                 return StatusCode(HttpStatusCode.Forbidden);
-            if (updated.Title != null && updated.Title.Length > 200)
-                return BadRequest(ModelState);
 
             meetup.Description = updated.Description ?? meetup.Description;
             meetup.Title = updated.Title ?? meetup.Title;
