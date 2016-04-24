@@ -2,7 +2,7 @@
     "use strict";
            angular
               .module("meetupModule")
-              .directive('myValidation', function () {
+              .directive('muValidation', function () {
             return {
                 restrict: 'A',
                 require: '^form',
