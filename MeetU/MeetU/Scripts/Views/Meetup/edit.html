@@ -7,7 +7,7 @@
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-title" name="title"
                        placeholder="Party, BBQ, Hiking..." ng-model="meetupEditing.editParams.title" ng-required="true"
-                       ng-maxlength="200" ng-pattern="/^[a-zA-Z0-9\s]+$/" />
+                       ng-maxlength="200" ng-pattern="/^(([^\^\.<>%&',;=?$:#@!~\]\[{}\\/`\|])*)$/"/>
                 <span class="help-block"
                       ng-if="meetupEditForm.title.$error.required">Title is required!</span>
                 <span class="help-block"
@@ -21,7 +21,7 @@
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-description" name="description"
                        placeholder="Make it attractive!" ng-model="meetupEditing.editParams.description" ng-required="true"
-                       ng-maxlength="1000" ng-pattern="/^[a-zA-Z0-9\s!,.]+$/">
+                       ng-maxlength="1000" ng-pattern="/^(([^\^\.<>%&',;=?$:#@!~\]\[{}\\/`\|])*)$/"/>
                 <span class="help-block"
                       ng-if="meetupEditForm.description.$error.required">Description is required!</span>
                 <span class="help-block"

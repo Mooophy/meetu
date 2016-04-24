@@ -3,8 +3,8 @@
     angular
         .module('meetupModule')
         .controller('MeetupEditController', MeetupEditController)
-    MeetupEditController.$inject = ["$log", "$resource", "$location", "$routeParams"];
-    function MeetupEditController($log, $resource, $location, $routeParams) {
+    MeetupEditController.$inject = ["$log", "$resource", "$location", "$routeParams","$scope"];
+    function MeetupEditController($log, $resource, $location, $routeParams,$scope) {
         var vm = this;
         var Meetup = $resource('/api/Meetups', null, {
             'update': { method: 'PUT' }
@@ -16,6 +16,10 @@
             });
 
         vm.submitForm = function () {
+            $scope.$broadcast('show-errors-event');
+            if ($scope.meetupEditForm.$invalid) {
+                return;
+            }
             Meetup.update({
                 // id must be provided
                 id: $routeParams.id,
