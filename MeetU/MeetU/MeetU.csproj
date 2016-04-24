@@ -310,7 +310,7 @@
     <Content Include="Scripts\Controllers\Meetup\edit.js" />
     <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
-    <Content Include="Scripts\Directives\angular-datetimepicker.js" />
+    <Content Include="Scripts\Directives\datetimepicker.js" />
     <Content Include="Scripts\Directives\custom-button\custom-button.html" />
     <Content Include="Scripts\Directives\custom-button\custom-button.js" />
     <Content Include="Scripts\Directives\enter-key.js" />

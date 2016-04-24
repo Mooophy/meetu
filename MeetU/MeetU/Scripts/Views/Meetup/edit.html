@@ -2,7 +2,7 @@
     <subpage-nav hassubmit="true" on-submit="meetupEditing.submitForm()" title="'Edit Meetup'"></subpage-nav>
     <form class="form-vertical meetup-edit-form meetu-form" name="meetupEditForm" novalidate>
         <div class="meetup-subpage-validation"></div>
-        <div class="form-group meetup-form-group" my-validation>
+        <div class="form-group meetup-form-group" mu-validation>
             <label for="meetup-edit-title" class="control-label col-md-2 meetu-input-label">Title</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-title" name="title"
@@ -16,7 +16,7 @@
                       ng-if="meetupEditForm.title.$error.pattern">Title can't have special characters!</span>
             </div>
         </div>
-        <div class="form-group meetup-form-group" my-validation>
+        <div class="form-group meetup-form-group" mu-validation>
             <label for="meetup-edit-description" class="control-label col-md-2 meetu-input-label">Description</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-edit-description" name="description"
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="form-group meetup-form-group" my-validation>
+        <div class="form-group meetup-form-group" mu-validation>
             <label for="meetup-edit-time" class="control-label col-md-2 meetu-input-label">When</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input js-meetup-edit-when" id="meetup-edit-time"
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="form-group meetup-form-group" my-validation>
+        <div class="form-group meetup-form-group" mu-validation>
             <label for="meetup-edit-where" class="control-label col-md-2 meetu-input-label">Where</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input js-meetup-edit-where" id="meetup-create-where"

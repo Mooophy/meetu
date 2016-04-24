@@ -2,7 +2,7 @@
     <subpage-nav hassubmit="true"  on-submit="meetupCreating.submitForm()" title="'Create a Meetup'"></subpage-nav>
     <form class="form-vertical meetup-create-form meetu-form" name="meetupCreateForm" novalidate>
         <div class="meetup-subpage-validation"></div>
-        <div class="form-group meetup-form-group" my-validation>
+        <div class="form-group meetup-form-group" mu-validation>
             <label for="meetup-create-title" class="control-label col-md-2 meetu-input-label">Title</label>
             <div class="col-md-10" scroll-on-focus>
                 <input type="text" class="form-control meetu-input" id="meetup-create-title" name="title"
@@ -16,7 +16,7 @@
                       ng-if="meetupCreateForm.title.$error.pattern">Title can't have special characters!</span>
             </div>
         </div>
-        <div class="form-group meetup-form-group"  my-validation scroll-on-focus>
+        <div class="form-group meetup-form-group"  mu-validation scroll-on-focus>
             <label for="meetup-create-description" class="control-label col-md-2 meetu-input-label">Description</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input" id="meetup-create-description" name="description"
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="form-group meetup-form-group" my-validation scroll-on-focus>
+        <div class="form-group meetup-form-group" mu-validation scroll-on-focus>
             <label for="meetup-create-time" class="control-label col-md-2 meetu-input-label">When</label>
             <div class="col-md-10">
                 <input class="form-control meetu-input" type="text" datetimepicker datetimepicker-options="{locale:'en-nz',format:'YYYY.MM.DD HH:mm'}" ng-model="meetupCreating.createParams.when"
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="form-group meetup-form-group" my-validation scroll-on-focus>
+        <div class="form-group meetup-form-group" mu-validation scroll-on-focus>
             <label for="meetup-create-where" class="control-label col-md-2 meetu-input-label">Where</label>
             <div class="col-md-10">
                 <input type="text" class="form-control meetu-input js-meetup-create-where" id="meetup-create-where"
