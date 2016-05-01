@@ -1,0 +1,24 @@
+﻿<div ng-controller="mainNavbarController as mainNavbarVm">
+    <div class="main-navbar-wrapper navbar navbar-inverse navbar-fixed-top main-toolbar">
+        <div class="main-navbar-text navbar-brand">Meet.U</div>
+        <div class="main-navbar-menu-wrapper pull-right">
+            <div class="dropdown">
+                <button class="dropdown-toggle main-navbar-menu-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                    <span class="main-navbar-menu-icon glyphicon glyphicon-option-vertical"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#/Profile/{{ mainNavbarVm.loggedUser.userId }}"><span class="main-navbar-dropdown-menu-icon glyphicon glyphicon-user"></span>My Profile</a></li>
+                    <li><a href="#" ng-click="mainNavbarVm.logOut();"><span class="main-navbar-dropdown-menu-icon glyphicon glyphicon-log-out"></span>Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div  ng-controller="ProfileImageEditController">
+    <div>Select an image file: <input type="file" id="fileInput" /></div>
+    <div class="cropArea">
+        <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+    </div>
+    <div>Cropped Image:</div>
+    <div><img ng-src="{{myCroppedImage}}" /></div>
+</div>

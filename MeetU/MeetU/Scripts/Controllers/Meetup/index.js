@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls'])
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls', 'ngImgCrop'])
         .controller('MeetupIndexController', MeetupIndexController)
     MeetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm"];
     function MeetupIndexController($scope, $resource, $q, $log, $confirm) {
