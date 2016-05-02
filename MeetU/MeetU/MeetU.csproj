@@ -268,7 +268,6 @@
     <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
     <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
     <Content Include="Content\Images\pusheencat.png" />
-    <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -296,6 +295,7 @@
     <Content Include="Content\Create.less" />
     <Content Include="Content\bootstrap-datetimepicker.less" />
     <Content Include="Content\Input.less" />
+    <Content Include="Content\ng-img-crop.less" />
     <None Include="Properties\PublishProfiles\54.206.9.26.pubxml" />
     <None Include="Properties\PublishProfiles\75-70.pubxml" />
     <None Include="Properties\PublishProfiles\ec2-54-206-11-11.ap-southeast-2.compute.amazonaws..pubxml" />
@@ -310,6 +310,7 @@
     <Content Include="Scripts\Controllers\Meetup\edit.js" />
     <Content Include="Scripts\Controllers\Meetup\main-navbar.js" />
     <Content Include="Scripts\Controllers\Profile\profile-display.js" />
+    <Content Include="Scripts\Controllers\Profile\profile-img-edit.js" />
     <Content Include="Scripts\Directives\datetimepicker.js" />
     <Content Include="Scripts\Directives\custom-button\custom-button.html" />
     <Content Include="Scripts\Directives\custom-button\custom-button.js" />
@@ -342,6 +343,7 @@
     <Content Include="Scripts\Unittests\tests\ut-meetup-index-controller.js" />
     <Content Include="Scripts\Unittests\tests\ut-router-configuration.js" />
     <Content Include="Scripts\VenderPlugins\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\VenderPlugins\ng-img-crop.js" />
     <Content Include="Scripts\Venders\angular-resource.js" />
     <Content Include="Scripts\Venders\angular-route.js" />
     <Content Include="Scripts\Venders\angular.js" />
@@ -354,6 +356,7 @@
     <Content Include="Scripts\Views\Meetup\edit.html" />
     <Content Include="Scripts\Views\Meetup\index.html" />
     <Content Include="Scripts\Views\Profile\profile-display.html" />
+    <Content Include="Scripts\Views\Profile\profile-img-edit.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -1,0 +1,11 @@
+﻿<div ng-controller="ProfileImageEditController as ProfileImageEdit">
+    <subpage-nav hassubmit="true" on-submit="ProfileImageEdit.submit()" title="'Edit Image'"></subpage-nav>
+        <div>
+            <div>Select an image file: <input type="file" class="js-fileInput" /></div>
+            <div class="crop-area">
+                <img-crop image="Image" result-image="CroppedImage" result-image-size="140"></img-crop>
+            </div>
+            <div>Cropped Image:</div>
+            <div><img ng-src="{{CroppedImage}}" /></div>
+        </div>
+</div>
