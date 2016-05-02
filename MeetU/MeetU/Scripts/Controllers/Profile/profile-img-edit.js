@@ -11,18 +11,16 @@
 
         User.query(function (user) {
             vm.loggedUser = user[0];
-        }).$promise.then(function () {
-            //console.log(vm.loggedUser); test
-        })
+        });
 
         $scope.Image = '';
         $scope.CroppedImage = '';
-        var handleFileSelect = function (evt) {
-            var file = evt.currentTarget.files[0];
+        var handleFileSelect = function (event) {
+            var file = event.currentTarget.files[0];
             var reader = new FileReader();
-            reader.onload = function (evt) {
+            reader.onload = function (event) {
                 $scope.$apply(function ($scope) {
-                    $scope.Image = evt.target.result;
+                    $scope.Image = event.target.result;
                 });
             };
             reader.readAsDataURL(file);
@@ -37,11 +35,9 @@
                 alert("Image must be png/jpeg format");
                 return;
             }
-            //console.log(vm.loggedUser.userId); test
-            //console.log($scope.CroppedImage); test
             var picture = new ProFilePicture({
                 userId:
-                    vm.loggedUser.userId, // note: this string must be the currently logged in user's id
+                    vm.loggedUser.userId, 
                 data:
                     $scope.CroppedImage,
             });
