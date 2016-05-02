@@ -268,7 +268,6 @@
     <Content Include="Content\Images\Logos\meetu-logo-160x160.png" />
     <Content Include="Content\Images\Logos\MeetU-text-240x80.png" />
     <Content Include="Content\Images\pusheencat.png" />
-    <Content Include="Content\ng-img-crop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
