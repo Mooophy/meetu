@@ -42,7 +42,7 @@
                     $scope.CroppedImage,
             });
             picture.$save();
-            $location.path('/Profile/' + vm.loggedUser.userId);
+            window.history.back();
         }
     }
 })();
