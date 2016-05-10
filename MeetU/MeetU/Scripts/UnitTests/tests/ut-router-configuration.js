@@ -5,7 +5,7 @@
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Index.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Create.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Profile/profile-display.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
-		  $httpBackend.when('GET', '/Scripts/Views/Profile/profile-img-edit.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
+		$httpBackend.when('GET', '/Scripts/Views/Profile/profile-img-edit.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/subpage-nav/subpage-nav.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/loading-circle/loading-circle.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         route = $route;

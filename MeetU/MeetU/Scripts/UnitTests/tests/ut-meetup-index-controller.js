@@ -15,7 +15,7 @@ describe('meetupIndexController tests', function () {
     });
 
     it('$scope.isIn', function () {
-	     var vm = $controller("MeetupIndexController", { $scope: $scope });
+	    var vm = $controller("MeetupIndexController", { $scope: $scope });
         expect(typeof vm.isIn === "function").toBe(true);
     });
 });
