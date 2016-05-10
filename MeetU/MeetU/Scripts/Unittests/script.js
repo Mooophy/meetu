@@ -15,7 +15,7 @@ describe('meetupIndexController tests', function () {
     });
 
     it('$scope.isIn', function () {
-	    var vm = $controller("MeetupIndexController", { $scope: $scope });
+        var vm = $controller("MeetupIndexController", { $scope: $scope });
         expect(typeof vm.isIn === "function").toBe(true);
     });
 });
@@ -27,7 +27,7 @@ describe('routeConfiguration tests', function () {
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Index.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Create.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Profile/profile-display.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
-		$httpBackend.when('GET', '/Scripts/Views/Profile/profile-img-edit.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
+        $httpBackend.when('GET', '/Scripts/Views/Profile/profile-img-edit.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/subpage-nav/subpage-nav.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/loading-circle/loading-circle.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         route = $route;
@@ -49,7 +49,7 @@ describe('routeConfiguration tests', function () {
         rootScope.$digest();
         expect(route.current.templateUrl).toBe('/Scripts/Views/Profile/profile-display.html');
     });
-	 it('route directs to /ProfileEdit/Image', function () {
+    it('route directs to /ProfileEdit/Image', function () {
         location.path('/ProfileEdit/Image');
         rootScope.$digest();
         expect(route.current.templateUrl).toBe('/Scripts/Views/Profile/profile-img-edit.html');
@@ -59,7 +59,7 @@ describe('routeConfiguration tests', function () {
         rootScope.$digest();
         expect(route.current.templateUrl).toBe('/Scripts/Views/Meetup/Create.html');
     });
-    it('route directs to otherwise', function() {
+    it('route directs to otherwise', function () {
         location.path('/otherwise');
         rootScope.$digest();
         expect(location.path()).toBe('/index');
