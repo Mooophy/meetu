@@ -4,7 +4,7 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 */
 
 var gulp = require('gulp');
-var minify = require('gulp-uglify');
+//var minify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var notify = require("gulp-notify");
@@ -21,7 +21,7 @@ gulp.task('minify-vender-scripts', function () {
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('vender.js'))
-        .pipe(minify())
+        //.pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifiedScripts'))
         .pipe(notify("Vender scripts minified"))
@@ -47,7 +47,7 @@ gulp.task('minify-meetu-scripts', function () {
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
-        .pipe(minify())
+       // .pipe(minify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/MinifiedScripts'))
         .pipe(notify("Meetu scripts minified"))
