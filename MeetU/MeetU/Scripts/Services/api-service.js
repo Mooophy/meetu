@@ -1,10 +1,16 @@
-﻿(function() {
+﻿(function () {
     "use strict";
     angular
         .module('meetupModule')
-        .factory('CommentViewService', CommentViewService);
-    CommentViewService.$inject = ['$resource'];
-    function CommentViewService($resource) {
-        return $resource('/api/Comments/');
+        .factory('$api', $api);
+    $api.$inject = ['$resource'];
+    function $api($resource) {
+        return {
+            comment: {
+                get: function () {
+                   return $resource('/api/Comments/');
+                }
+            }
+        }
     }
 })();

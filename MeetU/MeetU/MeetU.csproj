@@ -341,6 +341,7 @@
     <Content Include="Scripts\Unittests\jasmine\jasmine.js" />
     <Content Include="Scripts\Unittests\jasmine\jasmine_favicon.png" />
     <Content Include="Scripts\Unittests\script.js" />
+    <Content Include="Scripts\Unittests\tests\ut-api-service.js" />
     <Content Include="Scripts\Unittests\tests\ut-meetup-index-controller.js" />
     <Content Include="Scripts\Unittests\tests\ut-router-configuration.js" />
     <Content Include="Scripts\VenderPlugins\bootstrap-datetimepicker.js" />

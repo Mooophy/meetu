@@ -3,8 +3,8 @@
     angular
         .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls', 'ngImgCrop'])
         .controller('MeetupIndexController', MeetupIndexController)
-    MeetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm", 'CommentViewService'];
-    function MeetupIndexController($scope, $resource, $q, $log, $confirm, CommentViewService) {
+    MeetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm", '$api'];
+    function MeetupIndexController($scope, $resource, $q, $log, $confirm, $api) {
         var vm = this;
 
         var currentShowingMeetupCount = 0;
@@ -15,7 +15,7 @@
         var Meetup = $resource('/api/Meetups');
         var Userview = $resource('/api/loggedUser');
         var Join = $resource('/api/Joins');
-        var CommentView = CommentViewService;
+        var CommentView = $api.comment.get();
         //
         //  Queries
         //
