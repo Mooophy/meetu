@@ -10,6 +10,21 @@
                 get: function () {
                    return $resource('/api/Comments/');
                 }
+            },
+            join: {
+                get: function () {
+                    return $resource('/api/Joins');
+                }
+            },
+            meetup: {
+                get: function () {
+                    return $resource('/api/Meetups');
+                },
+                put: function () {
+                    return $resource('/api/Meetups', null, {
+                        'update': { method: 'PUT' }
+                    });
+                }
             }
         }
     }

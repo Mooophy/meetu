@@ -12,9 +12,9 @@
         //
         //  Lazy resources
         //
-        var Meetup = $resource('/api/Meetups');
+        var Meetup = $api.meetup.get();
         var Userview = $resource('/api/loggedUser');
-        var Join = $resource('/api/Joins');
+        var Join = $api.join.get();
         var CommentView = $api.comment.get();
         //
         //  Queries
