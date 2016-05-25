@@ -330,6 +330,7 @@
     <Content Include="Scripts\MinifiedScripts\vender.js" />
     <Content Include="Scripts\Router\router-config.js" />
     <Content Include="Scripts\Controllers\Mixins\tab.js" />
+    <Content Include="Scripts\Services\api-service.js" />
     <Content Include="Scripts\Services\dummyDataService.js" />
     <Content Include="Scripts\TemplateCache\templates.js" />
     <Content Include="Scripts\Unittests\index.html" />
