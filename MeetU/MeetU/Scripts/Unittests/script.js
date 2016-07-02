@@ -1,3 +1,26 @@
+describe('MeetupApi', function () {
+	beforeEach(module('meetupModule'))
+
+	beforeEach(inject(function($injector){
+		$httpBackend=$injector.get('$httpBackend');
+		$rootScope=$injector.get('$rootScope');
+		Service=$injector.get('$api');
+	}))
+
+	it('Comments should be exist',function(){
+		expect(Service.comment).not.toBeNull();
+	})
+
+	it('Comments should get success',function(){
+		var result={};
+		$httpBackend.expect('GET','/api/Comments?meetupId=123').respond([{meetupId:123}]);
+		Service.comment.get().query({meetupId:123},function(data){
+		result=data;
+		})
+		$httpBackend.flush()
+		expect(result[0].meetupId).toBe(123);
+	})
+})
 describe('meetupIndexController tests', function () {
     beforeEach(module('meetupModule'));
 
@@ -8,14 +31,15 @@ describe('meetupIndexController tests', function () {
     }));
     beforeEach(inject(function ($rootScope) {
         $scope = $rootScope.$new();
-        controller = $controller('meetupIndexController', { $scope: $scope });
+        controller = $controller('MeetupIndexController', { $scope: $scope });
     }));
     it('exists', function () {
         expect(controller).not.toBeNull();
     });
 
     it('$scope.isIn', function () {
-        expect(typeof $scope.isIn === "function").toBe(true);
+        var vm = $controller("MeetupIndexController", { $scope: $scope });
+        expect(typeof vm.isIn === "function").toBe(true);
     });
 });
 
@@ -26,6 +50,7 @@ describe('routeConfiguration tests', function () {
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Index.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Meetup/Create.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Views/Profile/profile-display.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
+        $httpBackend.when('GET', '/Scripts/Views/Profile/profile-img-edit.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/subpage-nav/subpage-nav.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         $httpBackend.when('GET', '/Scripts/Directives/loading-circle/loading-circle.html').respond({ userId: 'userX' }, { 'A-Token': 'xxx' });
         route = $route;
@@ -47,12 +72,17 @@ describe('routeConfiguration tests', function () {
         rootScope.$digest();
         expect(route.current.templateUrl).toBe('/Scripts/Views/Profile/profile-display.html');
     });
+    it('route directs to /ProfileEdit/Image', function () {
+        location.path('/ProfileEdit/Image');
+        rootScope.$digest();
+        expect(route.current.templateUrl).toBe('/Scripts/Views/Profile/profile-img-edit.html');
+    });
     it('route directs to /meetup/create', function () {
         location.path('/Meetup/Create');
         rootScope.$digest();
         expect(route.current.templateUrl).toBe('/Scripts/Views/Meetup/Create.html');
     });
-    it('route directs to otherwise', function() {
+    it('route directs to otherwise', function () {
         location.path('/otherwise');
         rootScope.$digest();
         expect(location.path()).toBe('/index');

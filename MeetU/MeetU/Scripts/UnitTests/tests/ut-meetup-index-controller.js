@@ -8,13 +8,14 @@ describe('meetupIndexController tests', function () {
     }));
     beforeEach(inject(function ($rootScope) {
         $scope = $rootScope.$new();
-        controller = $controller('meetupIndexController', { $scope: $scope });
+        controller = $controller('MeetupIndexController', { $scope: $scope });
     }));
     it('exists', function () {
         expect(controller).not.toBeNull();
     });
 
     it('$scope.isIn', function () {
-        expect(typeof $scope.isIn === "function").toBe(true);
+        var vm = $controller("MeetupIndexController", { $scope: $scope });
+        expect(typeof vm.isIn === "function").toBe(true);
     });
 });

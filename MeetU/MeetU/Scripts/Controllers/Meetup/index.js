@@ -1,10 +1,10 @@
 ﻿(function () {
     "use strict";
     angular
-        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls'])
+        .module('meetupModule', ['ngResource', 'angularMoment', 'ngRoute', 'angular-confirm', 'ui.bootstrap.tpls', 'ngImgCrop'])
         .controller('MeetupIndexController', MeetupIndexController)
-    MeetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm"];
-    function MeetupIndexController($scope, $resource, $q, $log, $confirm) {
+    MeetupIndexController.$inject = ["$scope", "$resource", "$q", "$log", "$confirm", '$api'];
+    function MeetupIndexController($scope, $resource, $q, $log, $confirm, $api) {
         var vm = this;
 
         var currentShowingMeetupCount = 0;
@@ -12,10 +12,10 @@
         //
         //  Lazy resources
         //
-        var Meetup = $resource('/api/Meetups');
+        var Meetup = $api.meetup.get();
         var Userview = $resource('/api/loggedUser');
-        var Join = $resource('/api/Joins');
-        var CommentView = $resource('/api/Comments/');
+        var Join = $api.join.get();
+        var CommentView = $api.comment.get();
         //
         //  Queries
         //

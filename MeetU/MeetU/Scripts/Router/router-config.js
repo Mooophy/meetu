@@ -13,6 +13,9 @@
             .when('/Profile/:profileId', {
                 templateUrl: '/Scripts/Views/Profile/profile-display.html'
             })
+           .when('/ProfileEdit/Image', {
+                templateUrl: '/Scripts/Views/Profile/profile-img-edit.html'
+            })
             .when('/Meetup/Create', {
                 templateUrl: '/Scripts/Views/Meetup/Create.html'
             })

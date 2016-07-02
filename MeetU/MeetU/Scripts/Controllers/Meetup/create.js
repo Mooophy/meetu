@@ -4,8 +4,8 @@
         .module('meetupModule')
         .controller('MeetupCreateController', MeetupCreateController)
 
-    MeetupCreateController.$inject = ["$log", "$q", "$resource", "$location","$scope"];
-    function MeetupCreateController($log, $q, $resource, $location,$scope) {
+    MeetupCreateController.$inject = ["$log", "$q", "$resource", "$location", "$scope", "$api"];
+    function MeetupCreateController($log, $q, $resource, $location, $scope, $api) {
         var vm = this;
         vm.createParams = {};
         vm.submitForm = function () {
@@ -17,7 +17,7 @@
                 vm.createParams.sponsor = userViews[0].userId;
             }).$promise.then(function () {
                 $log.debug(vm.createParams);
-                $resource('/api/Meetups').save(vm.createParams)
+                $api.meetup.get().save(vm.createParams)
                     .$promise.then(function () {
                         $log.debug(vm.createParams);
                         $location.path('/index');

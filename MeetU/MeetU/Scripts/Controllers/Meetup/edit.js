@@ -3,12 +3,10 @@
     angular
         .module('meetupModule')
         .controller('MeetupEditController', MeetupEditController)
-    MeetupEditController.$inject = ["$log", "$resource", "$location", "$routeParams","$scope"];
-    function MeetupEditController($log, $resource, $location, $routeParams,$scope) {
+    MeetupEditController.$inject = ["$log", "$resource", "$location", "$routeParams","$scope","$api"];
+    function MeetupEditController($log, $resource, $location, $routeParams, $scope, $api) {
         var vm = this;
-        var Meetup = $resource('/api/Meetups', null, {
-            'update': { method: 'PUT' }
-        });
+        var Meetup = $api.meetup.put();
         Meetup.get({ id: $routeParams.id })
             .$promise
             .then(function (meetup) {
